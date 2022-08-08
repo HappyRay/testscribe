@@ -1,3 +1,3 @@
 #!/bin/env bash
 
-poetry run flake8 python
+poetry run flake8 src
