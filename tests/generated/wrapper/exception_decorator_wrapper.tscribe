@@ -1,0 +1,20 @@
+format_version: 1
+module: wrapper.exception_decorator_wrapper
+tests:
+- name: test_run_dummy_app
+  short_name: _
+  target:
+    name: run_dummy_app
+  parameters: []
+  result: !!python/tuple
+  - 1
+  - |
+    Aborted due to an exception:
+    Traceback (most recent call last):
+      File "python/src/test_scribe/exception_decorator.py", line 27, in wrapper_decorator
+        return func(*args, **kwargs)
+      File "python/tests/test_data/dummy_app.py", line 10, in raise_exception
+        raise Exception("Test exception")
+    Exception: Test exception
+
+    Aborted!

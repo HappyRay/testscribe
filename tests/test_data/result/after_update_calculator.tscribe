@@ -1,0 +1,14 @@
+format_version: 1
+module: test_data.calculator
+tests:
+- name: test_add
+  short_name: _
+  description: new
+  target:
+    name: add
+  parameters:
+  - name: a
+    value: 1
+  - name: b
+    value: 2
+  result: 3

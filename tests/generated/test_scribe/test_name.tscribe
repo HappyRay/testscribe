@@ -1,0 +1,227 @@
+format_version: 1
+module: test_scribe.test_name
+tests:
+- name: test_create_proper_short_name_space
+  short_name: _space
+  target:
+    name: create_proper_short_name
+  parameters:
+  - name: raw_short_name
+    value: Hi you
+  result: hi_you
+- name: test_create_proper_short_name_camel_case
+  short_name: _camel_case
+  target:
+    name: create_proper_short_name
+  parameters:
+  - name: raw_short_name
+    value: HelloWorld
+  result: hello_world
+- name: test_create_proper_test_name
+  short_name: _
+  target:
+    name: create_proper_test_name
+  parameters:
+  - name: short_name
+    value: _foo
+  - name: target_func_name
+    value: f
+  result: test_f_foo
+- name: test_generate_unique_test_name_conflict
+  short_name: _conflict
+  target:
+    name: generate_unique_test_name
+  parameters:
+  - name: base_name
+    value: a
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: test_to_update_index
+    value: -1
+  result: a_1
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      - !test_scribe/mock 'm_test_model_1'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: a
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: a_2
+- name: test_generate_unique_test_name_no_conflict
+  short_name: _no_conflict
+  target:
+    name: generate_unique_test_name
+  parameters:
+  - name: base_name
+    value: a
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: test_to_update_index
+    value: -1
+  result: a
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests: []
+- name: test_get_default_short_name_update
+  short_name: _update
+  target:
+    name: get_default_short_name
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: 0
+  result: s
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      short_name: s
+- name: test_get_default_short_name_add
+  short_name: _add
+  target:
+    name: get_default_short_name
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: -1
+  result: _
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+- name: test_get_other_test_names_update
+  short_name: _update
+  target:
+    name: get_other_test_names
+  parameters:
+  - name: test_to_update_index
+    value: 0
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result: !test_scribe/set
+  - t2
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      - !test_scribe/mock 'm_test_model_1'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: t2
+- name: test_get_other_test_names_add
+  short_name: _add
+  target:
+    name: get_other_test_names
+  parameters:
+  - name: test_to_update_index
+    value: -1
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result: !test_scribe/set
+  - t
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: t
+- name: test_get_raw_short_name_do_not_ask_for_name
+  short_name: _do_not_ask_for_name
+  target:
+    name: get_raw_short_name
+  parameters:
+  - name: default_short_name
+    value: s
+  - name: ask_for_test_name
+    value: false
+  result: s
+- name: test_get_short_name
+  short_name: _
+  target:
+    name: get_short_name
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: ask_for_test_name
+    value: false
+  - name: index_of_test_to_update
+    value: -1
+  result: _
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+- name: test_get_test_name
+  short_name: _
+  target:
+    name: get_test_name
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: -1
+  - name: ask_for_test_name
+    value: false
+  - name: target_func_name
+    value: f
+  result: !!python/tuple
+  - _
+  - test_f
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests: []
+- name: test_replace_leading_underscore_with_function_name_no_place_holder
+  short_name: _no_place_holder
+  target:
+    name: replace_leading_underscore_with_function_name
+  parameters:
+  - name: s
+    value: foo
+  - name: function_name
+    value: f
+  result: foo
+- name: test_replace_leading_underscore_with_function_name_lead_with_underscore
+  short_name: _lead_with_underscore
+  target:
+    name: replace_leading_underscore_with_function_name
+  parameters:
+  - name: s
+    value: _foo
+  - name: function_name
+    value: f
+  result: f_foo
+- name: test_replace_leading_underscore_with_function_name_underscore_only
+  short_name: _underscore_only
+  target:
+    name: replace_leading_underscore_with_function_name
+  parameters:
+  - name: s
+    value: _
+  - name: function_name
+    value: f
+  result: f

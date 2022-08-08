@@ -1,0 +1,258 @@
+format_version: 1
+module: test_scribe.eval_expression
+tests:
+- name: test_contain_mock_proxy_false
+  short_name: _false
+  target:
+    name: contain_mock_proxy
+  parameters:
+  - name: value
+    value:
+    - 1
+    - 2
+  result: false
+- name: test_eval_with_injected_names
+  short_name: _
+  target:
+    name: eval_with_injected_names
+  parameters:
+  - name: expression
+    value: (a, m, test_data.simple.INT_VALUE)
+  result: !!python/tuple
+  - 2
+  - !test_scribe/callable
+    name: m
+    module: test_scribe.api.mock_api
+  - 1
+  patches:
+  - target: test_scribe.eval_expression.global_var.g_name_mock_dict
+    replacement:
+      a: 2
+- name: test_expand_class_alias_class_without_c_alias
+  short_name: _class_without_c_alias
+  target:
+    name: expand_class_alias
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Optional[test_data.simple.C]'
+  - name: expression
+    value: None
+  result: None
+- name: test_expand_class_alias_class
+  short_name: _class
+  target:
+    name: expand_class_alias
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Optional[test_data.simple.C]'
+  - name: expression
+    value: c(1)
+  result: test_data.simple.C(1)
+- name: test_expand_class_alias_not_a_class_type
+  short_name: _not_a_class_type
+  target:
+    name: expand_class_alias
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'str'
+  - name: expression
+    value: c1
+  result: c1
+- name: test_expand_one_string_alias_beginning_of_the_string
+  short_name: _beginning_of_the_string
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: A.foo
+  - name: alias
+    value: A
+  - name: full_str
+    value: abc
+  result: abc.foo
+- name: test_expand_one_string_alias_no_alias_in_input
+  short_name: _no_alias_in_input
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: A.foo
+  - name: alias
+    value: B
+  - name: full_str
+    value: abc
+  result: A.foo
+- name: test_expand_one_string_alias_alias_not_by_itself
+  short_name: _alias_not_by_itself
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: Ab
+  - name: alias
+    value: A
+  - name: full_str
+    value: abc
+  result: Ab
+- name: test_expand_one_string_alias_alias_in_the_middle
+  short_name: _alias_in_the_middle
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: 1 + A.foo()
+  - name: alias
+    value: A
+  - name: full_str
+    value: abc
+  result: 1 + abc.foo()
+- name: test_expand_one_string_alias_alias_at_the_end
+  short_name: _alias_at_the_end
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: so.A
+  - name: alias
+    value: A
+  - name: full_str
+    value: abc
+  result: so.abc
+- name: test_expand_one_string_alias_full_test_is_a_number_string
+  short_name: _full_test_is_a_number_string
+  target:
+    name: expand_one_string_alias
+  parameters:
+  - name: expression
+    value: 1 + A
+  - name: alias
+    value: A
+  - name: full_str
+    value: '2'
+  result: 1 + 2
+- name: test_expand_string_aliases
+  short_name: _
+  target:
+    name: expand_string_aliases
+  parameters:
+  - name: expression
+    value: a-b
+  result: hello-World
+  patches:
+  - target: test_scribe.eval_expression.g_aliases
+    replacement:
+      a: hello
+      b: World
+- name: test_get_normaized_item_types_tuple_with_ellipsis
+  short_name: _tuple_with_ellipsis
+  target:
+    name: get_normaized_item_types
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Tuple[int, ...]'
+  - name: v
+    value: !!python/tuple
+    - 1
+    - 2
+  result: !!python/tuple
+  - !test_scribe/callable
+    name: int
+    module: builtins
+  - !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_is_m_function_in_expression_m_function
+  short_name: _m_function
+  target:
+    name: is_m_function_in_expression
+  parameters:
+  - name: expression
+    value: '[ m (test_data.simple.C)]'
+  result: true
+- name: test_is_m_function_in_expression_no_m_function
+  short_name: _no_m_function
+  target:
+    name: is_m_function_in_expression
+  parameters:
+  - name: expression
+    value: ("am", "m", bm())
+  result: false
+- name: test_process_mock_marker_no_mock_in_input
+  short_name: _no_mock_in_input
+  target:
+    name: process_mock_marker
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Any'
+  - name: v
+    value: 1
+  result: 1
+- name: test_process_mock_marker_input_tuple_size_not_match_type
+  short_name: _input_tuple_size_not_match_type
+  description: Input expression doesn't match the type should throw an exception
+  target:
+    name: process_mock_marker
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Tuple[int, str]'
+  - name: v
+    value: !!python/tuple
+    - 1
+    - 2
+    - 3
+  exception:
+    type: test_scribe.error.InputError
+    message: tuple value ((1, 2, 3)) size doesn't match the tuple type (typing.Tuple[int,
+      str]).
+- name: test_process_mock_marker_type_mismatch_throw_error
+  short_name: _type_mismatch_throw_error
+  target:
+    name: process_mock_marker
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Tuple[int, int]'
+  - name: v
+    value: !test_scribe/expression '(test_scribe.api.mock_api.m, 1)'
+  exception:
+    type: test_scribe.error.InputError
+    message: The type (<class 'int'>) can't be mocked.
+- name: test_process_mock_marker_dict_not_dict_type
+  short_name: _not_dict_type
+  target:
+    name: process_mock_marker_dict
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Any'
+  - name: v
+    value: 1
+  result: 1
+- name: test_process_mock_marker_list_not_list_type
+  short_name: _not_list_type
+  target:
+    name: process_mock_marker_list
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Any'
+  - name: v
+    value: 1
+  result: 1
+- name: test_process_mock_marker_tuple_not_tuple_type
+  short_name: _not_tuple_type
+  target:
+    name: process_mock_marker_tuple
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Any'
+  - name: v
+    value: 1
+  result: 1
+- name: test_wrap_input_value_simple
+  short_name: _simple
+  target:
+    name: wrap_input_value
+  parameters:
+  - name: expression
+    value: a
+  - name: v
+    value: 1
+  result: 1

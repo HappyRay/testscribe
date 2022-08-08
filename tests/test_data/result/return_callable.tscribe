@@ -1,0 +1,13 @@
+format_version: 1
+module: test_data.return_callable
+tests:
+- name: test_echo_func
+  short_name: _
+  target:
+    name: echo_func
+  parameters:
+  - name: f
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: !test_scribe/callable
+    name: foo
+    module: test_data.simple

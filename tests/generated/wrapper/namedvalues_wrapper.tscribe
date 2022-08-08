@@ -1,0 +1,27 @@
+format_version: 1
+module: wrapper.namedvalues_wrapper
+tests:
+- name: test_get_item_via_index
+  short_name: _
+  target:
+    name: get_item_via_index
+  parameters: []
+  result: !!python/tuple
+  - b
+  - 2
+- name: test_get_repr_of_named_values_default_constructor
+  short_name: _default_constructor
+  target:
+    name: get_repr_of_named_values
+  parameters:
+  - name: nv
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+  result: NamedValues([])
+- name: test_get_repr_of_named_values
+  short_name: _
+  target:
+    name: get_repr_of_named_values
+  parameters:
+  - name: nv
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+  result: NamedValues([('a', 1)])

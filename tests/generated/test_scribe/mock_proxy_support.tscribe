@@ -1,0 +1,286 @@
+format_version: 1
+module: test_scribe.mock_proxy_support
+tests:
+- name: test_check_unsupported_attributes_supported
+  short_name: _supported
+  target:
+    name: check_unsupported_attributes
+  parameters:
+  - name: attribute_name
+    value: foo
+  result: null
+- name: test_check_unsupported_attributes_len_magic_method_is_not_supported
+  short_name: _len_magic_method_is_not_supported
+  target:
+    name: check_unsupported_attributes
+  parameters:
+  - name: attribute_name
+    value: __len__
+  exception:
+    type: AttributeError
+    message: mocking the __len__ method is not supported.
+- name: test_create_default_mock_name
+  short_name: _
+  target:
+    name: create_default_mock_name
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: m_c
+- name: test_create_mock_call
+  short_name: _
+  target:
+    name: create_mock_call
+  parameters:
+  - name: method_name
+    value: f
+  - name: mock_name
+    value: m
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  - name: mock_calls
+    value: []
+  result: !test_scribe/object
+    type: test_scribe.mock_call.MockCall
+    members:
+      method_name: f
+      mock_name: m
+      spec: !test_scribe/callable
+        name: C
+        module: test_data.simple
+      previous_call_count: 0
+      args: !test_scribe/object
+        type: test_scribe.namedvalues.NamedValues
+        repr: NamedValues([])
+      return_value: null
+- name: test_create_mock_name_default_name
+  short_name: _default_name
+  target:
+    name: create_mock_name
+  parameters:
+  - name: name
+    value: ''
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: m_c
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+- name: test_create_mock_name_has_explict_name
+  short_name: _has_explict_name
+  target:
+    name: create_mock_name
+  parameters:
+  - name: name
+    value: a
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: a
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+- name: test_create_unique_mock_name_special_name_m
+  short_name: _special_name_m
+  description: There should be no mock object named "m" which conflicts with the function
+    m.
+  target:
+    name: create_unique_mock_name
+  parameters:
+  - name: name
+    value: m
+  result: m_1
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+- name: test_get_attribute_type_function
+  short_name: _function
+  target:
+    name: get_attribute_type
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.foo'
+  - name: name
+    value: a
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_attribute_type_dynamic_field_without_type_info
+  short_name: _dynamic_field_without_type_info
+  target:
+    name: get_attribute_type
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.D'
+  - name: name
+    value: a
+  result: !test_scribe/object
+    type: typing._SpecialForm
+    repr: typing.Any
+- name: test_get_attribute_type_data_class
+  short_name: _data_class
+  target:
+    name: get_attribute_type
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.SimpleDataClass'
+  - name: name
+    value: a
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_attribute_type_field
+  short_name: _field
+  target:
+    name: get_attribute_type
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  - name: name
+    value: a
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_attribute_type_method
+  short_name: _method
+  target:
+    name: get_attribute_type
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  - name: name
+    value: bar
+  result: !test_scribe/callable
+    name: FunctionType
+    module: types
+- name: test_get_default_mock_attribute_value_no_matching_mock_in_the_test_to_infer
+  short_name: _no_matching_mock_in_the_test_to_infer
+  target:
+    name: get_default_mock_attribute_value
+  parameters:
+  - name: mock_name
+    value: m
+  - name: attribute_name
+    value: a
+  - name: test_to_infer_default_inputs
+    value: !test_scribe/mock 'm_test_model'
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []
+- name: test_get_default_mock_attribute_value_no_test_to_infer
+  short_name: _no_test_to_infer
+  target:
+    name: get_default_mock_attribute_value
+  parameters:
+  - name: mock_name
+    value: m
+  - name: attribute_name
+    value: a
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+- name: test_get_previous_call_count
+  short_name: _
+  target:
+    name: get_previous_call_count
+  parameters:
+  - name: mock_calls
+    value:
+    - !test_scribe/mock 'm_mock_call'
+    - !test_scribe/mock 'm_mock_call_1'
+    - !test_scribe/mock 'm_mock_call_2'
+  - name: method_name
+    value: f
+  result: 2
+  mocks:
+  - name: m_mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: f
+  - name: m_mock_call_1
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: f1
+  - name: m_mock_call_2
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: f
+- name: test_get_spec_name_class
+  short_name: _class
+  target:
+    name: get_spec_name
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: C
+- name: test_get_spec_name_callable
+  short_name: _callable
+  target:
+    name: get_spec_name
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'typing.Callable[[int], int]'
+  result: Callable
+- name: test_get_type_from_type_hints_data_class_field_with_inconsistent_initialization
+  short_name: _data_class_field_with_inconsistent_initialization
+  target:
+    name: get_type_from_type_hints
+  parameters:
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.SimpleDataClass'
+  - name: attribute_name
+    value: s
+  result: !test_scribe/callable
+    name: str
+    module: builtins
+- name: test_infer_default_mock_attribute_value_from_mock_has_a_matching_attribute
+  short_name: _has_a_matching_attribute
+  target:
+    name: infer_default_mock_attribute_value_from_mock
+  parameters:
+  - name: attribute_name
+    value: a
+  - name: existing_mock
+    value: !test_scribe/mock 'm_mock_model'
+  result: 1
+  mocks:
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      attributes:
+        a: 1
+- name: test_infer_default_mock_attribute_value_from_mock_no_matching_mock_attribute_to_infer
+  short_name: _no_matching_mock_attribute_to_infer
+  target:
+    name: infer_default_mock_attribute_value_from_mock
+  parameters:
+  - name: attribute_name
+    value: a
+  - name: existing_mock
+    value: !test_scribe/mock 'm_mock_model'
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      attributes: {}
+- name: test_infer_default_mock_attribute_value_from_mock_no_mock_to_infer
+  short_name: _no_mock_to_infer
+  target:
+    name: infer_default_mock_attribute_value_from_mock
+  parameters:
+  - name: attribute_name
+    value: a
+  - name: existing_mock
+    value: null
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type

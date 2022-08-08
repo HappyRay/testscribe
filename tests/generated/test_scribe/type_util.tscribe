@@ -1,0 +1,352 @@
+format_version: 1
+module: test_scribe.type_util
+tests:
+- name: test_get_class_type_union_with_multiple_classes
+  short_name: _union_with_multiple_classes
+  target:
+    name: get_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Union[test_data.simple.Dummy, test_data.simple.C]'
+  result: !test_scribe/callable
+    name: Dummy
+    module: test_data.simple
+- name: test_get_class_type_union_with_class
+  short_name: _union_with_class
+  target:
+    name: get_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Union[int, test_data.simple.C]'
+  result: !test_scribe/callable
+    name: C
+    module: test_data.simple
+- name: test_optional_non_class
+  short_name: optional_non_class
+  target:
+    name: get_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Optional[int]'
+  result: null
+- name: test_get_class_type_optional_class
+  short_name: _optional_class
+  target:
+    name: get_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Optional[test_data.simple.C]'
+  result: !test_scribe/callable
+    name: C
+    module: test_data.simple
+- name: test_get_class_type_class
+  short_name: _class
+  target:
+    name: get_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: !test_scribe/callable
+    name: C
+    module: test_data.simple
+- name: test_get_type_args_list_without_element_type
+  short_name: _list_without_element_type
+  target:
+    name: get_type_args
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.List'
+  result: !!python/tuple []
+- name: test_get_type_args_list_of_string
+  short_name: _list_of_string
+  target:
+    name: get_type_args
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.List[str]'
+  result: !!python/tuple
+  - !test_scribe/callable
+    name: str
+    module: builtins
+- name: test_get_type_args
+  short_name: _
+  target:
+    name: get_type_args
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Callable[[str] ,int]'
+  result: !!python/tuple
+  - - !test_scribe/callable
+      name: str
+      module: builtins
+  - !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_type_origin_1
+  short_name: _
+  target:
+    name: get_type_origin
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.List[str]'
+  result: !test_scribe/callable
+    name: list
+    module: builtins
+- name: test_get_type_origin
+  short_name: _
+  target:
+    name: get_type_origin
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.List'
+  result: !test_scribe/callable
+    name: list
+    module: builtins
+- name: test_get_type_origin_list_has_no_origin
+  short_name: _list_has_no_origin
+  target:
+    name: get_type_origin
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'list'
+  result: null
+- name: test_is_a_class_instance_false
+  short_name: _false
+  target:
+    name: is_a_class_instance
+  parameters:
+  - name: v
+    value: 1
+  result: false
+- name: test_is_a_class_instance_true
+  short_name: _true
+  target:
+    name: is_a_class_instance
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.simple.C(1)'
+  result: true
+- name: test_is_class_type_union
+  short_name: _union
+  target:
+    name: is_class_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Union[int, str]'
+  result: false
+- name: test_is_function_instance_int
+  short_name: _int
+  target:
+    name: is_function_instance
+  parameters:
+  - name: v
+    value: 1
+  result: false
+- name: test_is_function_instance_builtin_method_instance
+  short_name: _builtin_method_instance
+  target:
+    name: is_function_instance
+  parameters:
+  - name: v
+    value: !test_scribe/expression '[].append'
+  result: true
+- name: test_is_function_instance_method_instance
+  short_name: _method_instance
+  target:
+    name: is_function_instance
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.simple.C(1).bar'
+  result: true
+- name: test_is_function_instance_builtin_func
+  short_name: _builtin_func
+  target:
+    name: is_function_instance
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'len'
+  result: true
+- name: test_is_function_instance_func
+  short_name: _func
+  target:
+    name: is_function_instance
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: true
+- name: test_is_function_type_callable_type
+  short_name: _callable_type
+  target:
+    name: is_function_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Callable'
+  result: false
+- name: test_is_primitive_container_type_int
+  short_name: _int
+  target:
+    name: is_primitive_container_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'int'
+  result: false
+- name: test_is_primitive_container_type_set
+  short_name: _set
+  target:
+    name: is_primitive_container_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'set'
+  result: true
+- name: test_is_primitive_container_type_tuple
+  short_name: _tuple
+  target:
+    name: is_primitive_container_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'tuple'
+  result: true
+- name: test_is_primitive_container_type_dict
+  short_name: _dict
+  target:
+    name: is_primitive_container_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'dict'
+  result: true
+- name: test_is_primitive_container_type_list
+  short_name: _list
+  target:
+    name: is_primitive_container_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'list'
+  result: true
+- name: test_is_primitive_type_func_type
+  short_name: _func_type
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'type(test_data.simple.foo)'
+  result: true
+- name: test_is_primitive_type_func
+  short_name: _func
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: false
+- name: test_is_primitive_type_float
+  short_name: _float
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'float'
+  result: true
+- name: test_is_primitive_type_str
+  short_name: _str
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'str'
+  result: true
+- name: test_is_primitive_type_bool
+  short_name: _bool
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'bool'
+  result: true
+- name: test_is_primitive_type_int
+  short_name: _int
+  target:
+    name: is_primitive_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'int'
+  result: true
+- name: test_is_spec_value_class_is_spec
+  short_name: _class_is_spec
+  target:
+    name: is_spec_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: true
+- name: test_is_spec_value_func_is_spec
+  short_name: _func_is_spec
+  target:
+    name: is_spec_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: true
+- name: test_is_spec_value_int_not_spec
+  short_name: _int_not_spec
+  target:
+    name: is_spec_value
+  parameters:
+  - name: value
+    value: 1
+  result: false
+- name: test_is_typing_callable_type_3
+  short_name: _
+  target:
+    name: is_typing_callable_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: false
+- name: test_is_typing_callable_type_2
+  short_name: _
+  target:
+    name: is_typing_callable_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Callable[[int], int]'
+  result: true
+- name: test_is_typing_callable_type_1
+  short_name: _
+  target:
+    name: is_typing_callable_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Callable'
+  result: true
+- name: test_is_typing_callable_type
+  short_name: _
+  target:
+    name: is_typing_callable_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'collections.abc.Callable'
+  result: true
+- name: test_is_union_type_optional
+  short_name: _optional
+  target:
+    name: is_union_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Optional[int]'
+  result: true
+- name: test_is_union_type_true
+  short_name: _true
+  target:
+    name: is_union_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'typing.Union[int, str]'
+  result: true
+- name: test_is_union_type_false
+  short_name: _false
+  target:
+    name: is_union_type
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'int'
+  result: false

@@ -1,0 +1,17 @@
+format_version: 1
+module: test_data.duplicate_patch
+tests:
+- name: test_duplicate_patches
+  short_name: _
+  target:
+    name: duplicate_patches
+  parameters: []
+  result: null
+  patches:
+  - target: test_data.patch_function_for_integration_test.func_with_side_effect
+    replacement: !test_scribe/mock 'm_func_with_side_effect'
+  mocks:
+  - name: m_func_with_side_effect
+    spec: test_data.patch_function_for_integration_test.func_with_side_effect
+    calls:
+    - parameters: []

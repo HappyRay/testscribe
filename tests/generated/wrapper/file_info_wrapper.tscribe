@@ -1,0 +1,30 @@
+format_version: 1
+module: wrapper.file_info_wrapper
+tests:
+- name: test_get_module_wrapper_bad_input
+  short_name: _bad_input
+  description: When the file path is not under any directory in the Python path.
+  target:
+    name: get_module_wrapper
+  parameters:
+  - name: test_file_name
+    value: /a/b.py
+  exception:
+    type: test_scribe.error.Error
+    message: The file (/a/b.py) can't be loaded as a python module.
+- name: test_get_module_wrapper_success
+  short_name: _success
+  description: Notice that the input is a relative path and thus is under one of the
+    Python paths.
+  target:
+    name: get_module_wrapper
+  parameters:
+  - name: test_file_name
+    value: a/b/c.py
+  result: !test_scribe/object
+    type: test_scribe.module.Module
+    members:
+      names: !!python/tuple
+      - a
+      - b
+      - c

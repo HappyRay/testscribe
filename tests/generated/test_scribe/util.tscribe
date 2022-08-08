@@ -1,0 +1,211 @@
+format_version: 1
+module: test_scribe.util
+tests:
+- name: test_consistent_hash_str
+  short_name: _
+  target:
+    name: consistent_hash_str
+  parameters:
+  - name: s
+    value: a
+  result: 16955237001963240173058271559858726497
+- name: test_convert_camel_case_to_snake_case
+  short_name: _
+  target:
+    name: convert_camel_case_to_snake_case
+  parameters:
+  - name: s
+    value: FooBar
+  result: foo_bar
+- name: test_flattern_list
+  short_name: _
+  target:
+    name: flattern_list
+  parameters:
+  - name: list_of_list
+    value:
+    - - a
+    - - b
+      - c
+  result:
+  - a
+  - b
+  - c
+- name: test_generic_transform_int
+  short_name: _int
+  target:
+    name: generic_transform
+  parameters:
+  - name: v
+    value: 1
+  - name: transform_func
+    value: !test_scribe/mock 'transform_func'
+  result: 3
+  mocks:
+  - name: transform_func
+    spec: callable
+    calls:
+    - parameters:
+      - name: obj
+        value: 1
+      return: 3
+- name: test_generic_transform_dict
+  short_name: _dict
+  target:
+    name: generic_transform
+  parameters:
+  - name: v
+    value:
+      a: true
+      c: false
+  - name: transform_func
+    value: !test_scribe/mock 'transform_func'
+  result: 5
+  mocks:
+  - name: transform_func
+    spec: callable
+    calls:
+    - parameters:
+      - name: obj
+        value: a
+      return: 1
+    - parameters:
+      - name: obj
+        value: true
+      return: 2
+    - parameters:
+      - name: obj
+        value: c
+      return: 3
+    - parameters:
+      - name: obj
+        value: false
+      return: 4
+    - parameters:
+      - name: obj
+        value:
+          1: 2
+          3: 4
+      return: 5
+- name: test_generic_transform_set
+  short_name: _set
+  target:
+    name: generic_transform
+  parameters:
+  - name: v
+    value: !test_scribe/set
+    - 1
+    - 2
+  - name: transform_func
+    value: !test_scribe/mock 'transform_func'
+  result: 5
+  mocks:
+  - name: transform_func
+    spec: callable
+    calls:
+    - parameters:
+      - name: obj
+        value: 1
+      return: 3
+    - parameters:
+      - name: obj
+        value: 2
+      return: 4
+    - parameters:
+      - name: obj
+        value: !test_scribe/set
+        - 3
+        - 4
+      return: 5
+- name: test_generic_transform_tuple
+  short_name: _tuple
+  target:
+    name: generic_transform
+  parameters:
+  - name: v
+    value: !!python/tuple
+    - 1
+    - 2
+  - name: transform_func
+    value: !test_scribe/mock 'transform_func'
+  result: 5
+  mocks:
+  - name: transform_func
+    spec: callable
+    calls:
+    - parameters:
+      - name: obj
+        value: 1
+      return: 3
+    - parameters:
+      - name: obj
+        value: 2
+      return: 4
+    - parameters:
+      - name: obj
+        value: !!python/tuple
+        - 3
+        - 4
+      return: 5
+- name: test_generic_transform_list
+  short_name: _list
+  target:
+    name: generic_transform
+  parameters:
+  - name: v
+    value:
+    - 1
+    - 2
+  - name: transform_func
+    value: !test_scribe/mock 'transform_func'
+  result: 5
+  mocks:
+  - name: transform_func
+    spec: callable
+    calls:
+    - parameters:
+      - name: obj
+        value: 1
+      return: 3
+    - parameters:
+      - name: obj
+        value: 2
+      return: 4
+    - parameters:
+      - name: obj
+        value:
+        - 3
+        - 4
+      return: 5
+- name: test_remove_trailing_numbers_trailing_numbers
+  short_name: _trailing_numbers
+  target:
+    name: remove_trailing_numbers
+  parameters:
+  - name: s
+    value: a_12
+  result: a
+- name: test_remove_trailing_numbers_without_trailing_numbers
+  short_name: _without_trailing_numbers
+  target:
+    name: remove_trailing_numbers
+  parameters:
+  - name: s
+    value: a
+  result: a
+- name: test_remove_trailing_numbers_number_in_middle
+  short_name: _number_in_middle
+  target:
+    name: remove_trailing_numbers
+  parameters:
+  - name: s
+    value: a1b
+  result: a1b
+- name: test_remove_trailing_numbers_trailing_number_without_underscore
+  short_name: _trailing_number_without_underscore
+  target:
+    name: remove_trailing_numbers
+  parameters:
+  - name: s
+    value: a1
+  result: a1

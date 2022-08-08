@@ -1,0 +1,43 @@
+format_version: 1
+module: test_scribe.value_util
+tests:
+- name: test_get_value_int
+  short_name: _int
+  target:
+    name: get_value
+  parameters:
+  - name: v
+    value: 1
+  result: 1
+- name: test_get_value_input_value
+  short_name: _input_value
+  target:
+    name: get_value
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_scribe.value_util.InputValue("a + 1", 2)'
+  result: 2
+- name: test_get_value_repr_input_value
+  short_name: _input_value
+  target:
+    name: get_value_repr
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_scribe.value_util.InputValue("1+1", 2)'
+  result: 1+1
+- name: test_get_value_repr_str
+  short_name: _str
+  target:
+    name: get_value_repr
+  parameters:
+  - name: v
+    value: a
+  result: '''a'''
+- name: test_get_value_repr_int
+  short_name: _int
+  target:
+    name: get_value_repr
+  parameters:
+  - name: v
+    value: 1
+  result: '1'

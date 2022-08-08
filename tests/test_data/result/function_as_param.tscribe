@@ -1,0 +1,20 @@
+format_version: 1
+module: test_data.function_as_param
+tests:
+- name: test_calc
+  short_name: _
+  target:
+    name: calc
+  parameters:
+  - name: seed
+    value: 1
+  - name: f
+    value: !test_scribe/mock 'm_callable'
+  result: '{"result": 4}'
+  mocks:
+  - name: m_callable
+    spec: typing.Callable[[int], int]
+    calls:
+    - parameters:
+      - value: 2
+      return: 3

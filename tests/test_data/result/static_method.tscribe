@@ -1,0 +1,18 @@
+format_version: 1
+module: test_data.static_method
+tests:
+- name: test_call_static_method
+  short_name: _
+  target:
+    name: call_static_method
+  parameters:
+  - name: s
+    value: !test_scribe/mock 'm_static_service'
+  result: 2
+  mocks:
+  - name: m_static_service
+    spec: test_data.static_method.StaticService
+    calls:
+    - name: do
+      parameters: []
+      return: 2

@@ -1,0 +1,51 @@
+format_version: 1
+module: test_scribe.description
+tests:
+- name: test_get_default_description_new_test
+  short_name: _new_test
+  target:
+    name: get_default_description
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: -1
+  result: ''
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+- name: test_get_default_description_update_test
+  short_name: _update_test
+  target:
+    name: get_default_description
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: 0
+  result: a
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      description: a
+- name: test_get_test_description_new_test_default
+  short_name: _new_test_default
+  target:
+    name: get_test_description
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: -1
+  - name: ask_for_description
+    value: false
+  result: ''
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests

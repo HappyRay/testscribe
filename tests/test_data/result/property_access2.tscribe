@@ -1,0 +1,16 @@
+format_version: 1
+module: test_data.property_access2
+tests:
+- name: test_print_car_year_twice
+  short_name: _
+  target:
+    name: print_car_year_twice
+  parameters:
+  - name: c
+    value: !test_scribe/mock 'm_car'
+  result: 1, 1
+  mocks:
+  - name: m_car
+    spec: test_data.car.Car
+    attributes:
+      year: 1

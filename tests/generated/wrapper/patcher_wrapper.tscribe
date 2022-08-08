@@ -1,0 +1,18 @@
+format_version: 1
+module: wrapper.patcher_wrapper
+tests:
+- name: test_remove_real_mock
+  short_name: _
+  target:
+    name: remove_real_mock
+  parameters: []
+  result: !!python/tuple
+  - a: c
+  - a: 1
+  patches:
+  - target: test_scribe.patcher.global_var.g_name_mock_dict
+    replacement:
+      a: c
+      a_1: d
+  - target: test_scribe.patcher.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter({''a'': 2})'

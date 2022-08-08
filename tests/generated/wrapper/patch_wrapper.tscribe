@@ -1,0 +1,58 @@
+format_version: 1
+module: wrapper.patch_wrapper
+tests:
+- name: test_patch_common_code_gen_dict
+  short_name: _dict
+  target:
+    name: patch_common_code_gen
+  parameters:
+  - name: value
+    value:
+      a: 1
+  result: |2-
+
+        with patch('t', {'a': 1}):
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter()'
+- name: test_patch_common_code_gen_list
+  short_name: _list
+  target:
+    name: patch_common_code_gen
+  parameters:
+  - name: value
+    value:
+    - 1
+    - 2
+  result: |2-
+
+        with patch('t', [1, 2]):
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter()'
+- name: test_patch_common_code_gen_str
+  short_name: _str
+  target:
+    name: patch_common_code_gen
+  parameters:
+  - name: value
+    value: a
+  result: |2-
+
+        with patch('t', 'a'):
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter()'
+- name: test_patch_common_code_gen_int
+  short_name: _int
+  target:
+    name: patch_common_code_gen
+  parameters:
+  - name: value
+    value: 1
+  result: |2-
+
+        with patch('t', 1):
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter()'

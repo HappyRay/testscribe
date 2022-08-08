@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "test-scribe"
+version = "0.1.0"
+description = "Unit test automation tool"
+authors = ["Ray Yang <ruiguo@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0"
+PyYAML = "^5.3.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+pytest-clarity = "^1"
+assertpy = "^1.1"
+flake8 = "^3.9.2"
+black = "^21.9b0"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

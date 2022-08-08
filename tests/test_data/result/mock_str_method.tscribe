@@ -1,0 +1,18 @@
+format_version: 1
+module: test_data.mock_str_method
+tests:
+- name: test_print_simple_data_class
+  short_name: _
+  target:
+    name: print_simple_data_class
+  parameters:
+  - name: s
+    value: !test_scribe/mock 'm_simple_data_class'
+  result: mock m_simple_data_class
+  mocks:
+  - name: m_simple_data_class
+    spec: test_data.simple.SimpleDataClass
+    calls:
+    - name: __str__
+      parameters: []
+      return: mock m_simple_data_class

@@ -1,0 +1,15 @@
+format_version: 1
+module: test_data.return_class
+tests:
+- name: test_create_person
+  short_name: _
+  target:
+    name: create_person
+  parameters:
+  - name: name
+    value: a
+  - name: age
+    value: 1
+  result: !test_scribe/object
+    type: test_data.person.Person
+    repr: Person(name='a', age=1)

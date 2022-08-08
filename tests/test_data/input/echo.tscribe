@@ -1,0 +1,14 @@
+format_version: 1
+module: test_data.echo
+tests:
+- name: test_echo
+  short_name: _
+  target:
+    name: echo
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.simple.C(1)'
+  result: !test_scribe/object
+    type: test_data.simple.C
+    members:
+      a: 1

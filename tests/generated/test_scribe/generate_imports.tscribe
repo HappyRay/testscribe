@@ -1,0 +1,272 @@
+format_version: 1
+module: test_scribe.generate_imports
+tests:
+- name: test_gather_import_statements_for_exception_support_has_exception
+  short_name: gather_import_statements_for_exception_support_has_exception
+  target:
+    name: gather_import_statement_for_exception_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  result: import pytest
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: !test_scribe/mock 'm_exception_model'
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+  - name: m_exception_model
+    spec: test_scribe.model_type.ExceptionModel
+- name: test_gather_import_statements_for_exception_support_no_exception
+  short_name: gather_import_statements_for_exception_support_no_exception
+  target:
+    name: gather_import_statement_for_exception_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result: ''
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: null
+- name: test_gather_import_statement_for_patch_support_has_patch
+  short_name: _has_patch
+  target:
+    name: gather_import_statement_for_patch_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result: from unittest.mock import patch
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      patches:
+      - !test_scribe/mock 'm_patch_model'
+  - name: m_patch_model
+    spec: test_scribe.model_type.PatchModel
+- name: test_gather_import_statement_for_patch_support_no_patch
+  short_name: _no_patch
+  target:
+    name: gather_import_statement_for_patch_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result: ''
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      patches: []
+- name: test_gather_import_statements_for_mock_support_has_mock
+  short_name: _has_mock
+  target:
+    name: gather_import_statements_for_mock_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result:
+  - from test_scribe.api.mock_api import get_normalized_mock_calls
+  - from unittest.mock import ANY, call, create_autospec
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+- name: test_gather_import_statements_for_mock_support_no_mock
+  short_name: _no_mock
+  target:
+    name: gather_import_statements_for_mock_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result: []
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []
+- name: test_gather_import_statements_for_test_targets
+  short_name: _
+  target:
+    name: gather_import_statements_for_test_targets
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result: from m import a, b
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      - !test_scribe/mock 'm_test_model_1'
+      module: m
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: b
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: ''
+      target_func_name: a
+- name: test_generate_import_statements
+  short_name: generate_import_statements
+  description: Should combine statements and add a new line. Can also mock the calls
+    if they were not used by the tool itself.
+  target:
+    name: generate_import_statement_str
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result: |
+    import a.b
+    from test_scribe.api.mock_api import get_normalized_mock_calls
+    from unittest.mock import ANY, call, create_autospec
+    from a.target import func
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      module: a.target
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+      exception: null
+      result: 1
+      init_parameters: null
+      parameters: null
+      patches: []
+      target_class_name: ''
+      target_func_name: func
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      spec_str: a.b.m
+      attributes: {}
+      calls: []
+- name: test_get_target_for_a_test_func
+  short_name: _func
+  target:
+    name: get_target_for_a_test
+  parameters:
+  - name: t
+    value: !test_scribe/mock 't'
+  result: f
+  mocks:
+  - name: t
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: ''
+      target_func_name: f
+- name: test_get_target_for_a_test_class
+  short_name: _class
+  target:
+    name: get_target_for_a_test
+  parameters:
+  - name: t
+    value: !test_scribe/mock 't'
+  result: B
+  mocks:
+  - name: t
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: B
+- name: test_need_exception_support_has_exception
+  short_name: _has_exception
+  target:
+    name: need_exception_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  result: true
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: null
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: !test_scribe/mock 'm_exception_model'
+  - name: m_exception_model
+    spec: test_scribe.model_type.ExceptionModel
+- name: test_need_exception_support_no_exception
+  short_name: _no_exception
+  target:
+    name: need_exception_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  result: false
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: null
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: null
+- name: test_need_mock_support_has_mock
+  short_name: _has_mock
+  target:
+    name: need_mock_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  result: true
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+- name: test_need_mock_support_no_mock
+  short_name: _no_mock
+  target:
+    name: need_mock_support
+  parameters:
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  result: false
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []

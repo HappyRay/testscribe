@@ -1,0 +1,157 @@
+format_version: 1
+module: test_scribe.execution_util
+tests:
+- name: test_compute_output_root_path_from_config
+  short_name: _from_config
+  target:
+    name: compute_output_root_path
+  parameters:
+  - name: config
+    value: !test_scribe/mock 'config'
+  - name: output_root_path
+    value: null
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('c/d')
+  mocks:
+  - name: config
+    spec: test_scribe.config.Config
+    attributes:
+      output_root_path: !test_scribe/expression 'pathlib.Path("c/d")'
+- name: test_compute_output_root_path_has_path_cmd_line_option
+  short_name: _has_path_cmd_line_option
+  target:
+    name: compute_output_root_path
+  parameters:
+  - name: config
+    value: !test_scribe/mock 'config'
+  - name: output_root_path
+    value: !test_scribe/expression 'pathlib.Path("a/b")'
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b')
+  mocks:
+  - name: config
+    spec: test_scribe.config.Config
+- name: test_config_logging_no_config_file
+  short_name: _no_config_file
+  target:
+    name: config_logging
+  parameters: []
+  result: null
+  patches:
+  - target: test_scribe.execution_util.does_logging_config_file_exist
+    replacement: !test_scribe/mock 'm_does_logging_config_file_exist'
+  - target: test_scribe.execution_util.basicConfig
+    replacement: !test_scribe/mock 'm_basic_config'
+  mocks:
+  - name: m_does_logging_config_file_exist
+    spec: test_scribe.execution_util.does_logging_config_file_exist
+    calls:
+    - parameters: []
+      return: false
+  - name: m_basic_config
+    spec: logging.basicConfig
+    calls:
+    - parameters: []
+      return: !test_scribe/expression 'ignore'
+- name: test_config_logging_with_config_file
+  short_name: _with_config_file
+  target:
+    name: config_logging
+  parameters: []
+  result: null
+  patches:
+  - target: test_scribe.execution_util.does_logging_config_file_exist
+    replacement: !test_scribe/mock 'm_does_logging_config_file_exist'
+  - target: test_scribe.execution_util.fileConfig
+    replacement: !test_scribe/mock 'm_file_config'
+  mocks:
+  - name: m_does_logging_config_file_exist
+    spec: test_scribe.execution_util.does_logging_config_file_exist
+    calls:
+    - parameters: []
+      return: true
+  - name: m_file_config
+    spec: logging.config.fileConfig
+    calls:
+    - parameters:
+      - name: fname
+        value: test_scribe_logging.conf
+      - name: disable_existing_loggers
+        value: false
+      return: !test_scribe/expression 'ignore'
+- name: test_create_unit_test_file_name
+  short_name: _
+  target:
+    name: create_unit_test_file_name
+  parameters:
+  - name: base_name
+    value: b
+  result: test_b_g.py
+- name: test_infer_unit_test_file_path_from_scribe_file
+  short_name: _
+  target:
+    name: infer_unit_test_file_path_from_scribe_file
+  parameters:
+  - name: scribe_file_path
+    value: !test_scribe/expression 'pathlib.Path("foo/bar/a.tscribe")'
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('foo/bar/test_a_g.py')
+- name: test_remove_file_if_no_test_has_test
+  short_name: _has_test
+  target:
+    name: remove_file_if_no_test
+  parameters:
+  - name: file_path
+    value: !test_scribe/mock 'file_path'
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+  result: false
+  mocks:
+  - name: file_path
+    spec: pathlib.Path
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+- name: test_remove_file_if_no_test_no_test_no_target_file
+  short_name: _no_test_no_target_file
+  target:
+    name: remove_file_if_no_test
+  parameters:
+  - name: file_path
+    value: !test_scribe/mock 'file_path'
+  - name: tests
+    value: []
+  result: true
+  mocks:
+  - name: file_path
+    spec: pathlib.Path
+    calls:
+    - name: exists
+      parameters: []
+      return: false
+- name: test_remove_file_if_no_test_no_test_existing_file_is_deleted
+  short_name: _no_test_existing_file_is_deleted
+  target:
+    name: remove_file_if_no_test
+  parameters:
+  - name: file_path
+    value: !test_scribe/mock 'file_path'
+  - name: tests
+    value: []
+  result: true
+  mocks:
+  - name: file_path
+    spec: pathlib.Path
+    calls:
+    - name: exists
+      parameters: []
+      return: true
+    - name: unlink
+      parameters: []
+      return: !test_scribe/expression 'ignore'
+    - name: __str__
+      parameters: []
+      return: m

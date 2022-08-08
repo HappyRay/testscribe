@@ -1,0 +1,21 @@
+format_version: 1
+module: wrapper.repr_wrapper
+tests:
+- name: test_obj_repr_tuple
+  short_name: _tuple
+  target:
+    name: obj_repr
+  parameters:
+  - name: v
+    value: !!python/tuple
+    - a
+    - 1
+  result: ('a', 1)
+- name: test_obj_repr_string
+  short_name: _string
+  target:
+    name: obj_repr
+  parameters:
+  - name: v
+    value: a
+  result: '''a'''

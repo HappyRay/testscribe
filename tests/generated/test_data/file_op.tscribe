@@ -1,0 +1,49 @@
+format_version: 1
+module: test_data.file_op
+tests:
+- name: test_write_to_file
+  short_name: _
+  target:
+    name: write_to_file
+  parameters:
+  - name: content
+    value: a
+  - name: file_name
+    value: f
+  result: null
+  patches:
+  - target: test_data.file_op.open
+    replacement: !test_scribe/mock 'm_text_open_spec'
+  mocks:
+  - name: m_text_open_spec
+    spec: test_scribe.api.mock_api.text_open_spec
+    calls:
+    - parameters:
+      - name: file
+        value: f
+      - name: mode
+        value: w
+      return: !test_scribe/mock 'm_text_file_context_mgr_spec'
+  - name: m_text_file_context_mgr_spec
+    spec: test_scribe.api.mock_api.TextFileContextMgrSpec
+    calls:
+    - name: __enter__
+      parameters: []
+      return: !test_scribe/mock 'm_text_file_spec'
+    - name: __exit__
+      parameters:
+      - name: exc_type
+        value: null
+      - name: exc_value
+        value: null
+      - name: traceback
+        value: null
+      return: true
+  - name: m_text_file_spec
+    spec: test_scribe.api.mock_api.TextFileSpec
+    calls:
+    - name: write
+      parameters:
+      - name: content
+        value: a
+      return: 1

@@ -1,0 +1,23 @@
+format_version: 1
+module: wrapper.init_wrapper
+tests:
+- name: test_add_additional_python_paths_no_key
+  short_name: _
+  target:
+    name: add_additional_python_paths_no_key
+  parameters: []
+  result: null
+- name: test_init_config_wrapper
+  short_name: _
+  target:
+    name: init_config_wrapper
+  parameters: []
+  result: !test_scribe/object
+    type: test_scribe.config.Config
+    members:
+      output_root_path: !test_scribe/object
+        type: pathlib.PosixPath
+        repr: PosixPath('python/tests/generated')
+      setup_function: !test_scribe/callable
+        name: setup
+        module: setup

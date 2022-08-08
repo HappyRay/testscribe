@@ -1,0 +1,7 @@
+python-paths:
+- python/src
+- python/tests
+
+output-root-dir: python/tests/generated
+
+setup-function: setup.setup

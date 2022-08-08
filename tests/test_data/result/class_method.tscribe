@@ -1,0 +1,18 @@
+format_version: 1
+module: test_data.class_method
+tests:
+- name: test_call_class_method
+  short_name: _
+  target:
+    name: call_class_method
+  parameters:
+  - name: s
+    value: !test_scribe/mock 'm_class_service'
+  result: 2
+  mocks:
+  - name: m_class_service
+    spec: test_data.class_method.ClassService
+    calls:
+    - name: do
+      parameters: []
+      return: 2

@@ -1,0 +1,31 @@
+format_version: 1
+module: wrapper.sync_cmd_wrapper
+tests:
+- name: test_get_regenerated_test_names
+  short_name: _
+  target:
+    name: get_regenerated_test_names
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result:
+  - test_f_1
+  - test_f
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      - !test_scribe/mock 'm_test_model_1'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: old_name
+      short_name: _
+      target_func_name: f
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      short_name: _
+      target_func_name: f

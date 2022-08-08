@@ -1,0 +1,88 @@
+format_version: 1
+module: test_scribe.namedvalues
+tests:
+- name: test_as_arg_str
+  short_name: _
+  target:
+    name: as_arg_str
+    class_name: NamedValues
+  init_parameters:
+  - name: name_value_list
+    value:
+    - !!python/tuple
+      - ''
+      - 1
+    - !!python/tuple
+      - b
+      - 2
+  parameters: []
+  result: 1, b=2
+- name: test_as_list
+  short_name: _
+  target:
+    name: as_list
+    class_name: NamedValues
+  init_parameters:
+  - name: name_value_list
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+  parameters: []
+  result:
+  - !!python/tuple
+    - a
+    - 1
+- name: test_get_size
+  short_name: _
+  target:
+    name: get_size
+    class_name: NamedValues
+  init_parameters:
+  - name: name_value_list
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+  parameters: []
+  result: 1
+- name: test_get_value_by_name_not_found
+  short_name: _not_found
+  target:
+    name: get_value_by_name
+    class_name: NamedValues
+  init_parameters:
+  - name: name_value_list
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+  parameters:
+  - name: name
+    value: b
+  result: !test_scribe/callable
+    name: NameNotFound
+    module: test_scribe.namedvalues
+- name: test_get_value_by_name_found
+  short_name: _found
+  target:
+    name: get_value_by_name
+    class_name: NamedValues
+  init_parameters:
+  - name: name_value_list
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+  parameters:
+  - name: name
+    value: a
+  result: 1
+- name: test_format_one_param_no_name
+  short_name: _no_name
+  target:
+    name: format_one_param
+  parameters:
+  - name: name
+    value: ''
+  - name: value
+    value: 1
+  result: '1'
+- name: test_format_one_param_has_name
+  short_name: _has_name
+  target:
+    name: format_one_param
+  parameters:
+  - name: name
+    value: a
+  - name: value
+    value: 1
+  result: a=1

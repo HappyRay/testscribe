@@ -1,0 +1,20 @@
+format_version: 1
+module: wrapper.mock_proxy_support_wrapper
+tests:
+- name: test_create_mock_name_twice_should_generate_unique_names
+  short_name: _should_generate_unique_names
+  target:
+    name: create_mock_name_twice
+  parameters: []
+  result: !!python/tuple
+  - a
+  - a_1
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+- name: test_get_mock_attribute_value_wrapper
+  short_name: _
+  target:
+    name: get_mock_attribute_value_wrapper
+  parameters: []
+  result: 1

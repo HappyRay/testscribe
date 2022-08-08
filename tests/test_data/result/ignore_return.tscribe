@@ -1,0 +1,18 @@
+format_version: 1
+module: test_data.ignore_return
+tests:
+- name: test_ignore_return
+  short_name: _
+  target:
+    name: ignore_return
+  parameters:
+  - name: s
+    value: !test_scribe/mock 'm_s'
+  result: null
+  mocks:
+  - name: m_s
+    spec: test_data.ignore_return.S
+    calls:
+    - name: do
+      parameters: []
+      return: !test_scribe/expression 'ignore'

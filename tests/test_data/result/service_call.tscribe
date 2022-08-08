@@ -1,0 +1,35 @@
+format_version: 1
+module: test_data.service_call
+tests:
+- name: test_simple_gen
+  short_name: simple_gen
+  description: integration test
+  target:
+    name: gen_name
+  parameters:
+  - name: service
+    value: !test_scribe/mock 'm_service'
+  - name: keyword
+    value: a
+  - name: start_number
+    value: 1
+  result: '{"name": "b", "number": 5}'
+  mocks:
+  - name: m_service
+    spec: test_data.service.Service
+    calls:
+    - name: search_a_name
+      parameters:
+      - name: keyword
+        value: 'key: a'
+      return: b
+    - name: search_a_number
+      parameters:
+      - name: seed_number
+        value: 1
+      return: 2
+    - name: search_a_number
+      parameters:
+      - name: seed_number
+        value: 2
+      return: 3

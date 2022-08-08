@@ -1,0 +1,48 @@
+format_version: 1
+module: test_data.search_person
+tests:
+- name: test_search_person_age_1
+  description: new
+  target:
+    name: search_person_age
+  parameters:
+  - name: service
+    value: !test_scribe/mock 'service'
+  - name: name
+    value: a
+  result: 2
+  mocks:
+  - name: service
+    spec: test_data.service.Service
+    calls:
+    - name: search_person
+      parameters:
+      - name: name
+        value: a
+      return: !test_scribe/mock 'service_search_person_return'
+  - name: service_search_person_return
+    spec: test_data.person.Person
+    attributes:
+      age: 2
+- name: test_search_person_age
+  target:
+    name: search_person_age
+  parameters:
+  - name: service
+    value: !test_scribe/mock 'service'
+  - name: name
+    value: a
+  result: 1
+  mocks:
+  - name: service
+    spec: test_data.service.Service
+    calls:
+    - name: search_person
+      parameters:
+      - name: name
+        value: a
+      return: !test_scribe/mock 'service_search_person_return'
+  - name: service_search_person_return
+    spec: test_data.person.Person
+    attributes:
+      age: 1

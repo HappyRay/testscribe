@@ -1,0 +1,400 @@
+format_version: 1
+module: test_scribe.mock_call
+tests:
+- name: test_get_arg_str_display_has_argument
+  short_name: _has_argument
+  target:
+    name: get_arg_str_display
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: |2-
+
+    with: p=1
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      args: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([("p", 1)])'
+- name: test_get_arg_str_display_empty_argument
+  short_name: _empty_argument
+  target:
+    name: get_arg_str_display
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: ''
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      args: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+- name: test_get_args_list_internal_method
+  short_name: _method
+  target:
+    name: get_args_list_internal
+  parameters:
+  - name: method_name
+    value: bar
+  - name: sig
+    value: !test_scribe/expression 'inspect.signature(test_data.simple.C.bar)'
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  - name: args
+    value: !!python/tuple
+    - 1
+  - name: kwargs
+    value: {}
+  result:
+  - !!python/tuple
+    - a
+    - 1
+- name: test_get_args_list_internal_function
+  short_name: _function
+  target:
+    name: get_args_list_internal
+  parameters:
+  - name: method_name
+    value: ''
+  - name: sig
+    value: !test_scribe/expression 'inspect.signature(test_data.simple.foo)'
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.foo'
+  - name: args
+    value: !!python/tuple
+    - 1
+  - name: kwargs
+    value: {}
+  result:
+  - !!python/tuple
+    - a
+    - 1
+- name: test_get_call_subject_function
+  short_name: _function
+  target:
+    name: get_call_subject
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: m_f
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      mock_name: m_f
+      method_name: ''
+- name: test_get_call_subject_method
+  short_name: _method
+  target:
+    name: get_call_subject
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: m_c's bar method
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      mock_name: m_c
+      method_name: bar
+- name: test_get_default_mock_call_return_value_str_magic_method
+  short_name: _str_magic_method
+  target:
+    name: get_default_mock_call_return_value
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: mock m_f
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: __str__
+      mock_name: m_f
+- name: test_get_default_return_value_from_models_match_calls
+  short_name: _match_calls
+  target:
+    name: get_default_return_value_from_models
+  parameters:
+  - name: mock_call_models
+    value:
+    - !test_scribe/mock 'm_mock_call_model'
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: 1
+  mocks:
+  - name: m_mock_call_model
+    spec: test_scribe.model_type.MockCallModel
+    attributes:
+      name: f1
+      return_value: 1
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: f1
+      previous_call_count: 2
+- name: test_get_default_return_value_from_models_no_existing_call
+  short_name: _no_existing_call
+  target:
+    name: get_default_return_value_from_models
+  parameters:
+  - name: mock_call_models
+    value:
+    - !test_scribe/mock 'm_mock_call_model'
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: m_mock_call_model
+    spec: test_scribe.model_type.MockCallModel
+    attributes:
+      name: f1
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      method_name: f
+- name: test_get_default_return_value_internal_match_mock
+  short_name: _match_mock
+  target:
+    name: get_default_return_value_internal
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  - name: test_to_infer_default_inputs
+    value: !test_scribe/mock 'm_test_model'
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      mock_name: m_f
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: m_f
+      calls: []
+- name: test_get_default_return_value_internal_no_matching_mock
+  short_name: _no_matching_mock
+  target:
+    name: get_default_return_value_internal
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  - name: test_to_infer_default_inputs
+    value: !test_scribe/mock 'm_test_model'
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      mock_name: m_f
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks: []
+- name: test_get_default_return_value_internal_no_test_to_infer
+  short_name: _no_test_to_infer
+  target:
+    name: get_default_return_value_internal
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !test_scribe/callable
+    name: NoDefault
+    module: test_scribe.special_type
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+- name: test_get_func_args_list_no_param_name
+  short_name: _no_param_name
+  target:
+    name: get_func_args_list
+  parameters:
+  - name: sig
+    value: !test_scribe/expression 'inspect.signature(typing.Callable)'
+  - name: spec
+    value: !test_scribe/expression 'typing.Callable'
+  - name: args
+    value: !!python/tuple
+    - 1
+  - name: kwargs
+    value:
+      a: 2
+  result:
+  - !!python/tuple
+    - ''
+    - 1
+  - !!python/tuple
+    - a
+    - 2
+- name: test_get_func_args_list_has_param_name
+  short_name: _has_param_name
+  target:
+    name: get_func_args_list
+  parameters:
+  - name: sig
+    value: !test_scribe/expression 'inspect.signature(test_data.simple.foo)'
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.foo'
+  - name: args
+    value: !!python/tuple
+    - 1
+  - name: kwargs
+    value: {}
+  result:
+  - !!python/tuple
+    - a
+    - 1
+- name: test_get_mock_call_return_type_class
+  short_name: _class
+  target:
+    name: get_mock_call_return_type
+  parameters:
+  - name: method_name
+    value: ''
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: !test_scribe/callable
+    name: C
+    module: test_data.simple
+- name: test_get_mock_call_return_type_typing_callable
+  short_name: _typing_callable
+  target:
+    name: get_mock_call_return_type
+  parameters:
+  - name: method_name
+    value: ''
+  - name: spec
+    value: !test_scribe/expression 'typing.Callable[[str] ,int]'
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_mock_call_return_type_function
+  short_name: _function
+  target:
+    name: get_mock_call_return_type
+  parameters:
+  - name: method_name
+    value: ''
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_mock_call_return_type_method
+  short_name: _method
+  target:
+    name: get_mock_call_return_type
+  parameters:
+  - name: method_name
+    value: bar
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: !test_scribe/callable
+    name: int
+    module: builtins
+- name: test_get_mock_call_return_type_magic_str_method
+  short_name: _magic_str_method
+  target:
+    name: get_mock_call_return_type
+  parameters:
+  - name: method_name
+    value: __str__
+  - name: spec
+    value: !test_scribe/expression 'test_data.simple.C'
+  result: !test_scribe/callable
+    name: str
+    module: builtins
+- name: test_get_mock_call_signature_function
+  short_name: _function
+  target:
+    name: get_mock_call_signature
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: !test_scribe/object
+    type: inspect.Signature
+    repr: '<Signature (a: int) -> int>'
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      spec: !test_scribe/expression 'test_data.simple.foo'
+      method_name: ''
+- name: test_get_mock_call_signature_method
+  short_name: _method
+  target:
+    name: get_mock_call_signature
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  result: !test_scribe/object
+    type: inspect.Signature
+    repr: '<Signature (self, a: int) -> int>'
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      spec: !test_scribe/expression 'test_data.simple.C'
+      method_name: bar
+- name: test_get_true_return_value_exception_expression
+  short_name: _exception_expression
+  target:
+    name: get_true_return_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_scribe.value_util.InputValue(expression="throw
+      Exception()", value=test_scribe.user_triggered_exception.UserTriggeredException(Exception()))'
+  exception:
+    type: Exception
+    message: ''
+- name: test_get_true_return_value_non_exception_expression
+  short_name: _non_exception_expression
+  target:
+    name: get_true_return_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_scribe.value_util.InputValue("a + 1", 2)'
+  result: 2
+- name: test_get_true_return_value_regular
+  short_name: _regular
+  target:
+    name: get_true_return_value
+  parameters:
+  - name: value
+    value: 1
+  result: 1
+- name: test_save_args
+  short_name: _
+  target:
+    name: save_args
+  parameters:
+  - name: mock_call
+    value: !test_scribe/mock 'mock_call'
+  - name: args
+    value: !!python/tuple
+    - 1
+  - name: kwargs
+    value: {}
+  result: !test_scribe/object
+    type: test_scribe.namedvalues.NamedValues
+    repr: NamedValues([('a', 1)])
+  mocks:
+  - name: mock_call
+    spec: test_scribe.mock_call.MockCall
+    attributes:
+      spec: !test_scribe/expression 'test_data.simple.foo'
+      method_name: ''

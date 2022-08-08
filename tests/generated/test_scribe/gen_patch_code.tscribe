@@ -1,0 +1,69 @@
+format_version: 1
+module: test_scribe.gen_patch_code
+tests:
+- name: test_generate_patch_statement_dict_as_replacement
+  short_name: generate_patch_statement_dict_as_replacement
+  target:
+    name: generate_patch_str
+  parameters:
+  - name: patches
+    value:
+    - !test_scribe/mock 'input_mock'
+  result: |2-
+
+        with patch('t', {'a': 1}):
+  mocks:
+  - name: input_mock
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t
+      replacement:
+        a: 1
+- name: test_generate_patch_statement_mock_as_replacement
+  short_name: generate_patch_statement_mock_as_replacement
+  target:
+    name: generate_patch_str
+  parameters:
+  - name: patches
+    value:
+    - !test_scribe/mock 'input_mock'
+  result: |2-
+
+        with patch('t', m):
+  mocks:
+  - name: input_mock
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t
+      replacement: !test_scribe/expression 'test_scribe.model_type.MockNameModel("m")'
+- name: test_generate_patch_statement_multiple_patch
+  short_name: generate_patch_statement_multiple_patch
+  target:
+    name: generate_patch_str
+  parameters:
+  - name: patches
+    value:
+    - !test_scribe/mock 'input_mock'
+    - !test_scribe/mock 'input_mock_1'
+  result: |2-
+
+        with patch('t', 1), patch('t1', 2):
+  mocks:
+  - name: input_mock
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t
+      replacement: 1
+  - name: input_mock_1
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t1
+      replacement: 2
+- name: test_generate_patch_statement_no_patch
+  short_name: generate_patch_statement_no_patch
+  target:
+    name: generate_patch_str
+  parameters:
+  - name: patches
+    value: []
+  result: ''

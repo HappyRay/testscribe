@@ -1,0 +1,27 @@
+format_version: 1
+module: test_data.echo
+tests:
+- name: test_simple_string
+  short_name: simple_string
+  description: A simple string result should use the default flow style in the tscribe
+    yaml file
+  target:
+    name: echo
+  parameters:
+  - name: v
+    value: a
+  result: a
+- name: test_multiline_string
+  short_name: multiline_string
+  description: multiline string values should be encoded as block style in the tscribe
+    file.
+  target:
+    name: echo
+  parameters:
+  - name: v
+    value: |-
+      a
+      b
+  result: |-
+    a
+    b

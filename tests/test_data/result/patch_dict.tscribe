@@ -1,0 +1,14 @@
+format_version: 1
+module: test_data.patch_dict
+tests:
+- name: test_get_patched_dict
+  short_name: _
+  target:
+    name: get_patched_dict
+  parameters: []
+  result:
+    b: 2
+  patches:
+  - target: test_data.patch_dict.a_dict
+    replacement:
+      b: 2

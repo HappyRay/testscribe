@@ -1,0 +1,32 @@
+format_version: 1
+module: test_scribe.patcher
+tests:
+- name: test_decrement_counter_only_one
+  short_name: _only_one
+  target:
+    name: decrement_counter
+  parameters:
+  - name: name_counter
+    value: !test_scribe/expression 'collections.Counter({"a": 1})'
+  - name: nomalized_name
+    value: a
+  result: {}
+- name: test_decrement_counter_more_than_1
+  short_name: _more_than_1
+  target:
+    name: decrement_counter
+  parameters:
+  - name: name_counter
+    value: !test_scribe/expression 'collections.Counter({"a": 2})'
+  - name: nomalized_name
+    value: a
+  result:
+    a: 1
+- name: test_remove_mock_not_a_mock
+  short_name: _not_a_mock
+  target:
+    name: remove_mock
+  parameters:
+  - name: replacement_spec
+    value: 1
+  result: null

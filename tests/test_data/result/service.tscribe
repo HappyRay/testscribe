@@ -1,0 +1,15 @@
+format_version: 1
+module: test_data.service
+tests:
+- name: test_search_a_name
+  short_name: _
+  target:
+    name: search_a_name
+    class_name: Service
+  init_parameters:
+  - name: prefix
+    value: a
+  parameters:
+  - name: keyword
+    value: b
+  result: 'b: a Alice'

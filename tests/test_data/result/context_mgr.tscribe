@@ -1,0 +1,39 @@
+format_version: 1
+module: test_data.context_mgr
+tests:
+- name: test_use_resource
+  short_name: _
+  target:
+    name: use_resource
+  parameters:
+  - name: g
+    value: !test_scribe/mock 'm_gate'
+  result: null
+  mocks:
+  - name: m_gate
+    spec: test_data.context_mgr.Gate
+    calls:
+    - parameters:
+      - name: name
+        value: a
+      return: !test_scribe/mock 'm_gate_1'
+  - name: m_gate_1
+    spec: test_data.context_mgr.Gate
+    calls:
+    - name: __enter__
+      parameters: []
+      return: !test_scribe/mock 'm_resource'
+    - name: __exit__
+      parameters:
+      - name: type
+        value: null
+      - name: value
+        value: null
+      - name: traceback
+        value: null
+      return: true
+  - name: m_resource
+    spec: test_data.context_mgr.Resource
+    calls:
+    - name: do_somthing
+      parameters: []

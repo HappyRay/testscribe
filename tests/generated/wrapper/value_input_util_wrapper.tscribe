@@ -1,0 +1,9 @@
+format_version: 1
+module: wrapper.value_input_util_wrapper
+tests:
+- name: test_transform_real_default_value_wrapper
+  short_name: _
+  target:
+    name: transform_real_default_value_wrapper
+  parameters: []
+  result: m(spec, 'a')

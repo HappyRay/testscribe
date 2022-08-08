@@ -1,0 +1,229 @@
+format_version: 1
+module: test_scribe.result_assertion
+tests:
+- name: test_generate_assertion_module_type
+  short_name: _module_type
+  target:
+    name: generate_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("m")'
+  result: |2-
+        from types import ModuleType
+        assert type(a) == ModuleType
+        a.__name__ == 'm'
+- name: test_generate_assertion_class_result
+  short_name: _class_result
+  target:
+    name: generate_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression 'test_scribe.transformer.transform_value(test_data.simple.C(1))'
+  result: |2-
+        assert isinstance(a, test_data.simple.C)
+        assert a.a == 1
+- name: test_generate_complex_type_assertion_module_type
+  short_name: _module_type
+  target:
+    name: generate_complex_type_assertion
+  parameters:
+  - name: target
+    value: t
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("m")'
+  result: |2-
+        from types import ModuleType
+        assert type(t) == ModuleType
+        t.__name__ == 'm'
+- name: test_generate_module_assertion
+  short_name: _
+  target:
+    name: generate_module_assertion
+  parameters:
+  - name: target
+    value: t
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("m")'
+  result: |2-
+        from types import ModuleType
+        assert type(t) == ModuleType
+        t.__name__ == 'm'
+- name: test_generate_result_assertion_bytes
+  short_name: _bytes
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: !test_scribe/expression 'b"\x01"'
+  result: |2-
+
+        assert result == b'\x01'
+- name: test_generate_result_assertion_string
+  short_name: _string
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: a
+  result: |2-
+
+        assert result == 'a'
+- name: test_generate_result_assertion_none
+  short_name: _none
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: null
+  result: |2-
+
+        assert result is None
+- name: test_generate_result_assertion_with_class_with_class_member
+  short_name: _with_class_with_class_member
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: !test_scribe/expression 'test_scribe.transformer.transform_value(test_data.person.Family(husband=test_data.person.Person("a",
+      1), wife=test_data.person.Person("b", 2), kids=[]))'
+  result: |2-
+
+        assert isinstance(result, test_data.person.Family)
+        assert isinstance(result.husband, test_data.person.Person)
+        assert repr(result.husband) == "Person(name='a', age=1)"
+        assert isinstance(result.wife, test_data.person.Person)
+        assert repr(result.wife) == "Person(name='b', age=2)"
+        assert result.kids == []
+- name: test_generate_result_assertion_bool
+  short_name: _bool
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: true
+  result: |2-
+
+        assert result is True
+- name: test_generate_result_assertion_float
+  short_name: _float
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: 1.2
+  result: |2-
+
+        assert result == 1.2
+- name: test_generate_result_assertion_int
+  short_name: _int
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: 1
+  result: |2-
+
+        assert result == 1
+- name: test_generate_result_assertion_mock
+  short_name: _mock
+  target:
+    name: generate_result_assertion
+  parameters:
+  - name: result
+    value: !test_scribe/expression 'test_scribe.model_type.MockNameModel("a")'
+  result: |2-
+
+        assert result is a
+- name: test_generate_set_assertion_target_str_not_a_valid_identifier_name
+  short_name: _target_str_not_a_valid_identifier_name
+  target:
+    name: generate_set_assertion
+  parameters:
+  - name: target
+    value: result[1]
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.SetModel([1, 2])'
+  result: |2-
+        assert isinstance(result[1], set)
+        assert sorted(list(result[1])) == [1, 2]
+- name: test_generate_set_assertion
+  short_name: _
+  target:
+    name: generate_set_assertion
+  parameters:
+  - name: target
+    value: r
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.SetModel([1, 2])'
+  result: |2-
+        assert isinstance(r, set)
+        assert sorted(list(r)) == [1, 2]
+- name: test_generate_special_collection_assertion_complex_tuple_in_list
+  short_name: _complex_tuple_in_list
+  target:
+    name: generate_special_collection_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression '[ (1,2), {''k'': False}, (3, test_data.value.object_model_c)]'
+  result: |2-
+        assert isinstance(a, list)
+        assert len(a) == 3
+        assert a[0] == (1, 2)
+        assert a[1] == {'k': False}
+        assert isinstance(a[2], tuple)
+        assert len(a[2]) == 2
+        assert a[2][0] == 3
+        assert isinstance(a[2][1], test_data.simple.C)
+        assert a[2][1].a == 1
+- name: test_generate_special_collection_assertion_object_in_dict
+  short_name: _object_in_dict
+  target:
+    name: generate_special_collection_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression '{''k'': test_data.value.object_model_c, ''z'':
+      1}'
+  result: |2-
+        assert isinstance(a, dict)
+        assert len(a) == 2
+        assert isinstance(a['k'], test_data.simple.C)
+        assert a['k'].a == 1
+        assert a['z'] == 1
+- name: test_generate_special_collection_assertion_object_in_tuple
+  short_name: _object_in_tuple
+  target:
+    name: generate_special_collection_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression '(test_data.value.object_model_c, ''s'')'
+  result: |2-
+        assert isinstance(a, tuple)
+        assert len(a) == 2
+        assert isinstance(a[0], test_data.simple.C)
+        assert a[0].a == 1
+        assert a[1] == 's'
+- name: test_generate_special_collection_assertion_object_tag_in_list
+  short_name: _object_tag_in_list
+  target:
+    name: generate_special_collection_assertion
+  parameters:
+  - name: target
+    value: a
+  - name: value
+    value: !test_scribe/expression '[1, test_data.value.object_model_c]'
+  result: |2-
+        assert isinstance(a, list)
+        assert len(a) == 2
+        assert a[0] == 1
+        assert isinstance(a[1], test_data.simple.C)
+        assert a[1].a == 1

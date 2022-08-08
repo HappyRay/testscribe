@@ -1,0 +1,45 @@
+format_version: 1
+module: test_scribe.cli
+tests:
+- name: test_get_test_description_from_user_cli
+  short_name: _
+  target:
+    name: get_test_description_cli
+  parameters:
+  - name: default
+    value: default
+  result: a b
+  patches:
+  - target: test_scribe.cli.prompt
+    replacement: !test_scribe/mock 'm_prompt'
+  mocks:
+  - name: m_prompt
+    spec: click.termui.prompt
+    calls:
+    - parameters:
+      - name: text
+        value: Provide a description of the test.
+      - name: default
+        value: default
+      return: a b
+- name: test_get_test_description_from_user_cli_empty
+  short_name: _empty
+  target:
+    name: get_test_description_cli
+  parameters:
+  - name: default
+    value: default
+  result: ''
+  patches:
+  - target: test_scribe.cli.prompt
+    replacement: !test_scribe/mock 'm_prompt'
+  mocks:
+  - name: m_prompt
+    spec: click.termui.prompt
+    calls:
+    - parameters:
+      - name: text
+        value: Provide a description of the test.
+      - name: default
+        value: default
+      return: ''''''

@@ -1,0 +1,13 @@
+format_version: 1
+module: test_data.simple
+tests:
+- name: test_add
+  short_name: _
+  target:
+    name: add
+  parameters:
+  - name: a
+    value: 1
+  - name: b
+    value: 2
+  result: 3

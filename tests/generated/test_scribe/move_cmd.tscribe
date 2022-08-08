@@ -1,0 +1,375 @@
+format_version: 1
+module: test_scribe.move_cmd
+tests:
+- name: test_add_one_test
+  short_name: _
+  target:
+    name: add_one_test
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  - name: test
+    value: !test_scribe/mock 'test'
+  result: !test_scribe/object
+    type: test_scribe.model_type.AllTests
+    members:
+      module: a.b
+      tests:
+      - !test_scribe/mock 'test'
+      - !test_scribe/mock 'm_test_model'
+      name_to_index:
+        test_f_1: 0
+        test_f: 1
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      module: a.b
+  - name: test
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: test_f
+      short_name: _
+      target_func_name: f
+      target_class_name: ''
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: test_f
+      target_class_name: ''
+      target_func_name: f
+- name: test_do_move_no_test_to_move
+  short_name: _no_test_to_move
+  target:
+    name: do_move
+  parameters:
+  - name: module
+    value: !test_scribe/expression 'test_scribe.module.Module(["foo", "bar", "m"])'
+  - name: output_root_path
+    value: !test_scribe/expression 'pathlib.Path("a/b")'
+  - name: tests_to_move
+    value: []
+  result: false
+- name: test_does_test_match_target_name_negative
+  short_name: _negative
+  target:
+    name: does_test_match_target_name
+  parameters:
+  - name: test
+    value: !test_scribe/mock 'test'
+  - name: class_or_function_name
+    value: c
+  - name: target_is_class
+    value: true
+  result: false
+  mocks:
+  - name: test
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: D
+- name: test_does_test_match_target_name_positive
+  short_name: _positive
+  target:
+    name: does_test_match_target_name
+  parameters:
+  - name: test
+    value: !test_scribe/mock 'test'
+  - name: class_or_function_name
+    value: f
+  - name: target_is_class
+    value: false
+  result: true
+  mocks:
+  - name: test
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+- name: test_get_name_to_compare_with_class
+  short_name: _class
+  target:
+    name: get_name_to_compare_with
+  parameters:
+  - name: target_is_class
+    value: true
+  - name: test
+    value: !test_scribe/mock 'test'
+  result: C
+  mocks:
+  - name: test
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_class_name: C
+- name: test_get_name_to_compare_with_func
+  short_name: _func
+  target:
+    name: get_name_to_compare_with
+  parameters:
+  - name: target_is_class
+    value: false
+  - name: test
+    value: !test_scribe/mock 'test'
+  result: f
+  mocks:
+  - name: test
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+- name: test_get_tests_to_move_from_one_file_no_matching_test
+  short_name: _no_matching_test
+  target:
+    name: get_tests_to_move_from_one_file
+  parameters:
+  - name: class_or_function_name
+    value: f
+  - name: target_is_class
+    value: false
+  - name: scribe_file
+    value: !test_scribe/expression 'fixture.helper.get_test_result_path()/"service.tscribe"'
+  - name: target_module_str
+    value: a
+  result: []
+- name: test_get_tests_to_move_from_one_file_skip
+  short_name: _skip
+  target:
+    name: get_tests_to_move_from_one_file
+  parameters:
+  - name: class_or_function_name
+    value: f
+  - name: target_is_class
+    value: false
+  - name: scribe_file
+    value: !test_scribe/expression 'fixture.helper.get_test_result_path()/"service.tscribe"'
+  - name: target_module_str
+    value: test_data.service
+  result: []
+- name: test_is_class_name_function
+  short_name: _function
+  target:
+    name: is_class_name
+  parameters:
+  - name: module_str
+    value: test_data.product
+  - name: class_or_function_name
+    value: get_a_product_total
+  result: false
+- name: test_is_class_name_method
+  short_name: _method
+  target:
+    name: is_class_name
+  parameters:
+  - name: module_str
+    value: test_data.product
+  - name: class_or_function_name
+    value: create_sample_products
+  exception:
+    type: test_scribe.error.Error
+    message: create_sample_products is not a valid function or class in the module
+      test_data.product
+- name: test_is_class_name_class
+  short_name: _class
+  target:
+    name: is_class_name
+  parameters:
+  - name: module_str
+    value: test_data.product
+  - name: class_or_function_name
+    value: Product
+  result: true
+- name: test_is_class_name_non_exist_symbol
+  short_name: _non_exist_symbol
+  target:
+    name: is_class_name
+  parameters:
+  - name: module_str
+    value: test_data.product
+  - name: class_or_function_name
+    value: foo
+  exception:
+    type: test_scribe.error.Error
+    message: foo is not a valid function or class in the module test_data.product
+- name: test_module_contain_same_symbol_method_should_not_match
+  short_name: _method_should_not_match
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_data.service
+  - name: name
+    value: search_a_name
+  - name: is_class
+    value: false
+  - name: target_module_str
+    value: foo
+  result: false
+- name: test_module_contain_same_symbol_not_exist_function
+  short_name: _not_exist_function
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_data.calculator
+  - name: name
+    value: f
+  - name: is_class
+    value: false
+  - name: target_module_str
+    value: foo
+  result: false
+- name: test_module_contain_same_symbol_exist_function
+  short_name: _exist_function
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_data.calculator
+  - name: name
+    value: add
+  - name: is_class
+    value: false
+  - name: target_module_str
+    value: foo
+  result: true
+- name: test_module_contain_same_symbol_not_exist_class
+  short_name: _not_exist_class
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_data.service
+  - name: name
+    value: C
+  - name: is_class
+    value: true
+  - name: target_module_str
+    value: foo
+  result: false
+- name: test_module_contain_same_symbol_exist_class
+  short_name: _exist_class
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_data.service
+  - name: name
+    value: Service
+  - name: is_class
+    value: true
+  - name: target_module_str
+    value: foo
+  result: true
+- name: test_module_contain_same_symbol_symbol_not_exist
+  short_name: _symbol_not_exist
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_scribe.value_input
+  - name: name
+    value: foo
+  - name: is_class
+    value: false
+  - name: target_module_str
+    value: test_scribe.util
+  result: false
+- name: test_module_contain_same_symbol_import_same_symbol
+  short_name: _import_same_symbol
+  description: The same symbol is imported
+  target:
+    name: module_contain_same_symbol
+  parameters:
+  - name: module_str
+    value: test_scribe.value_input
+  - name: name
+    value: remove_trailing_numbers
+  - name: is_class
+    value: false
+  - name: target_module_str
+    value: test_scribe.util
+  result: false
+- name: test_search_tests_to_remove
+  short_name: _
+  target:
+    name: search_tests_to_remove
+  parameters:
+  - name: class_or_function_name
+    value: f
+  - name: target_is_class
+    value: false
+  - name: tests
+    value:
+    - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+    - !test_scribe/mock 'm_test_model_2'
+    - !test_scribe/mock 'm_test_model_3'
+  result: !!python/tuple
+  - - !test_scribe/mock 'm_test_model'
+    - !test_scribe/mock 'm_test_model_1'
+  - - !test_scribe/mock 'm_test_model_2'
+    - !test_scribe/mock 'm_test_model_3'
+  mocks:
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: a
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: b
+  - name: m_test_model_2
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+  - name: m_test_model_3
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+- name: test_should_skip_module_no_match
+  short_name: _no_match
+  target:
+    name: should_skip_module
+  parameters:
+  - name: module_str
+    value: test_data.service
+  - name: class_or_function_name
+    value: foo
+  - name: scribe_file
+    value: !test_scribe/expression 'pathlib.Path()'
+  - name: target_is_class
+    value: false
+  - name: target_module_str
+    value: a
+  result: false
+- name: test_should_skip_module_same_symbol
+  short_name: _same_symbol
+  target:
+    name: should_skip_module
+  parameters:
+  - name: module_str
+    value: test_data.service
+  - name: class_or_function_name
+    value: Service
+  - name: scribe_file
+    value: !test_scribe/expression 'pathlib.Path()'
+  - name: target_is_class
+    value: true
+  - name: target_module_str
+    value: a
+  result: true
+- name: test_should_skip_module_same_module
+  short_name: _same_module
+  target:
+    name: should_skip_module
+  parameters:
+  - name: module_str
+    value: a
+  - name: class_or_function_name
+    value: f
+  - name: scribe_file
+    value: !test_scribe/expression 'pathlib.Path()'
+  - name: target_is_class
+    value: false
+  - name: target_module_str
+    value: a
+  result: true

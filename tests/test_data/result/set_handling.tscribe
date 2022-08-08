@@ -1,0 +1,15 @@
+format_version: 1
+module: test_data.set_handling
+tests:
+- name: test_echo_set
+  short_name: _
+  target:
+    name: echo_set
+  parameters:
+  - name: s
+    value: !test_scribe/set
+    - 1
+    - 2
+  result: !test_scribe/set
+  - 1
+  - 2

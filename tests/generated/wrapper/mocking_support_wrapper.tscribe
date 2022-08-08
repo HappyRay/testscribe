@@ -1,0 +1,59 @@
+format_version: 1
+module: wrapper.mocking_support_wrapper
+tests:
+- name: test_get_direct_mock_calls_func
+  short_name: _
+  target:
+    name: get_direct_mock_calls_func
+  parameters: []
+  result:
+  - !!python/tuple
+    - ''
+    - !!python/tuple []
+    - {}
+- name: test_get_direct_mock_calls_method
+  short_name: _
+  target:
+    name: get_direct_mock_calls_method
+  parameters: []
+  result:
+  - !!python/tuple
+    - search_a_name
+    - !!python/tuple
+      - a
+    - {}
+  - !!python/tuple
+    - search_person
+    - !!python/tuple
+      - b
+    - {}
+- name: test_get_target_str_from_obj_mock_proxy
+  short_name: _
+  target:
+    name: get_target_str_from_obj_mock_proxy
+  parameters: []
+  result: test_data.simple.C
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
+- name: test_normalize_function_mock_call
+  short_name: _
+  target:
+    name: normalize_function_mock_call
+  parameters: []
+  result: !!python/tuple
+  - ''
+  - !!python/tuple []
+  - a: 1
+    b: 2
+- name: test_normalize_method_mock_call
+  short_name: _
+  target:
+    name: normalize_method_mock_call
+  parameters: []
+  result: !!python/tuple
+  - search_a_name
+  - !!python/tuple []
+  - keyword: a

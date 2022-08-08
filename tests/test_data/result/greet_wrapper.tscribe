@@ -1,0 +1,26 @@
+format_version: 1
+module: test_data.greet_wrapper
+tests:
+- name: test_greet_mock_greeter
+  short_name: _
+  target:
+    name: greet_mock_greeter
+  parameters:
+  - name: g
+    value: !test_scribe/mock 'm_greeter'
+  - name: to
+    value: a
+  - name: words
+    value: b
+  exception:
+    type: Exception
+    message: ''
+  mocks:
+  - name: m_greeter
+    spec: test_data.greet.Greeter
+    calls:
+    - name: greet
+      parameters:
+      - name: to
+        value: a
+      return: !test_scribe/expression 'throw()'

@@ -1,0 +1,20 @@
+format_version: 1
+module: wrapper.execution_util_wrapper
+tests:
+- name: test_get_all_scribe_files_wrapper
+  short_name: _
+  target:
+    name: get_all_scribe_files_wrapper
+  parameters:
+  - name: root_path
+    value: !test_scribe/expression 'fixture.helper.get_test_data_root_path() / "file_test_data"'
+  result:
+  - !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a.tscribe')
+  - !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('b.tscribe')
+  - !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('sub/sub_a.tscribe')

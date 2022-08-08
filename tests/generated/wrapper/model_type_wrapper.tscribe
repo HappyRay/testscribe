@@ -1,0 +1,89 @@
+format_version: 1
+module: wrapper.model_type_wrapper
+tests:
+- name: test_callable_model_repr_builtin_function
+  short_name: _builtin_function
+  target:
+    name: callable_model_repr
+  parameters:
+  - name: c
+    value: !test_scribe/expression 'len'
+  result: len
+- name: test_callable_model_repr_function
+  short_name: _function
+  target:
+    name: callable_model_repr
+  parameters:
+  - name: c
+    value: !test_scribe/expression 'test_data.simple.foo'
+  result: test_data.simple.foo
+- name: test_get_exception_model_str
+  short_name: _
+  target:
+    name: get_exception_model_str
+  parameters: []
+  result: 'Exception: type ( TypeError ), message ( wrong type )'
+- name: test_get_expression_model_repr
+  short_name: _
+  target:
+    name: get_expression_model_repr
+  parameters: []
+  result: a + 1
+- name: test_get_expression_model_str
+  short_name: _
+  target:
+    name: get_expression_model_str
+  parameters: []
+  result: Expression( a + 1 )
+- name: test_get_mockname_model_hash
+  short_name: _
+  target:
+    name: get_mockname_model_hash
+  parameters: []
+  result: 1715668806187408293
+- name: test_get_mockname_model_repr
+  short_name: _
+  target:
+    name: get_mockname_model_repr
+  parameters: []
+  result: a
+- name: test_get_mockname_model_str
+  short_name: _
+  target:
+    name: get_mockname_model_str
+  parameters: []
+  result: 'Mock( name: a )'
+- name: test_get_module_model_str
+  short_name: _
+  target:
+    name: get_module_model_str
+  parameters: []
+  result: Module( a.b )
+- name: test_get_object_model_hash
+  short_name: _
+  target:
+    name: get_object_model_hash
+  parameters: []
+  result: 1013608481905991709
+- name: test_get_object_model_repr
+  short_name: _
+  target:
+    name: get_object_model_repr
+  parameters:
+  - name: o
+    value: !test_scribe/expression 'test_data.value.object_model_d'
+  result: test_data.simple.ReadOnlyData(a=1)
+- name: test_get_object_model_repr_no_repr_object
+  short_name: _no_repr_object
+  target:
+    name: get_object_model_repr
+  parameters:
+  - name: o
+    value: !test_scribe/expression 'test_data.value.object_model_c'
+  result: 'Object(type (test_data.simple.C), members ({''a'': 1}))'
+- name: test_get_set_model_repr
+  short_name: _
+  target:
+    name: get_set_model_repr
+  parameters: []
+  result: set([1, 2])

@@ -1,0 +1,553 @@
+format_version: 1
+module: test_scribe.model_encoder
+tests:
+- name: test_encode_a_mock
+  short_name: _
+  target:
+    name: encode_a_mock
+  parameters:
+  - name: m
+    value: !test_scribe/mock 'm_1'
+  result:
+    name: m
+    spec: m1.m2
+    calls:
+    - name: c
+      parameters: []
+    attributes:
+      a: 2
+  mocks:
+  - name: m_1
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: m
+      spec_str: m1.m2
+      calls:
+      - !test_scribe/mock 'm_mock_call_model'
+      attributes:
+        a: 2
+  - name: m_mock_call_model
+    spec: test_scribe.model_type.MockCallModel
+    attributes:
+      name: c
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      return_value: null
+- name: test_encode_a_mock_no_call_no_attribute
+  short_name: _no_call_no_attribute
+  target:
+    name: encode_a_mock
+  parameters:
+  - name: m
+    value: !test_scribe/mock 'm_1'
+  result:
+    name: m
+    spec: m1.m2
+  mocks:
+  - name: m_1
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: m
+      spec_str: m1.m2
+      calls: []
+      attributes: {}
+- name: test_encode_mock_calls
+  short_name: _
+  target:
+    name: encode_mock_calls
+  parameters:
+  - name: m
+    value: !test_scribe/mock 'm_1'
+  result:
+  - parameters: []
+    return: 1
+  - name: p
+    parameters: []
+  mocks:
+  - name: m_1
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      calls:
+      - !test_scribe/mock 'm_mock_call_model'
+      - !test_scribe/mock 'm_mock_call_model_1'
+  - name: m_mock_call_model
+    spec: test_scribe.model_type.MockCallModel
+    attributes:
+      name: ''
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      return_value: 1
+  - name: m_mock_call_model_1
+    spec: test_scribe.model_type.MockCallModel
+    attributes:
+      name: p
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      return_value: null
+- name: test_encode_mocks
+  short_name: _
+  target:
+    name: encode_mocks
+  parameters:
+  - name: test
+    value: {}
+  - name: mocks
+    value:
+    - !test_scribe/mock 'm_mock_model'
+    - !test_scribe/mock 'm_mock_model_1'
+  result:
+    mocks:
+    - name: m1
+      spec: s1
+    - name: m2
+      spec: s2
+  mocks:
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: m1
+      spec_str: s1
+      calls: []
+      attributes: {}
+  - name: m_mock_model_1
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: m2
+      spec_str: s2
+      calls: []
+      attributes: {}
+- name: test_encode_mocks_no_mock
+  short_name: _no_mock
+  target:
+    name: encode_mocks
+  parameters:
+  - name: test
+    value: {}
+  - name: mocks
+    value: []
+  result: {}
+- name: test_encode_model
+  short_name: _
+  target:
+    name: encode_model
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result:
+    format_version: 1
+    module: a.b
+    tests:
+    - name: t1
+      short_name: _
+      target:
+        name: f
+      parameters: []
+      result: 1
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      module: a.b
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: t1
+      short_name: _
+      description: ''
+      target_func_name: f
+      target_class_name: ''
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      exception: null
+      result: 1
+      patches: []
+      mocks: []
+- name: test_encode_name_and_description_no_description
+  short_name: _no_description
+  target:
+    name: encode_name_and_description
+  parameters:
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    name: n
+    short_name: s
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: n
+      short_name: s
+      description: ''
+- name: test_encode_name_and_description
+  short_name: _
+  target:
+    name: encode_name_and_description
+  parameters:
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    name: n
+    short_name: s
+    description: d
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: n
+      short_name: s
+      description: d
+- name: test_encode_named_values
+  short_name: _
+  target:
+    name: encode_named_values
+  parameters:
+  - name: values
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([("", 1),
+      ("b", 2)])'
+  result:
+  - value: 1
+  - name: b
+    value: 2
+- name: test_encode_named_values_empty_value
+  short_name: _empty_value
+  target:
+    name: encode_named_values
+  parameters:
+  - name: values
+    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+  result: []
+- name: test_encode_one_mock_call_false_return_value_should_persist
+  short_name: _false_return_value_should_persist
+  target:
+    name: encode_one_mock_call
+  parameters:
+  - name: mock_call
+    value: !test_scribe/expression 'test_scribe.model_type.MockCallModel(name="",
+      parameters=test_scribe.namedvalues.NamedValues(), return_value=False)'
+  result:
+    parameters: []
+    return: false
+- name: test_encode_one_mock_call_no_name_none_return
+  short_name: _no_name_none_return
+  target:
+    name: encode_one_mock_call
+  parameters:
+  - name: mock_call
+    value: !test_scribe/expression 'test_scribe.model_type.MockCallModel(name="",
+      parameters=test_scribe.namedvalues.NamedValues(), return_value=None)'
+  result:
+    parameters: []
+- name: test_encode_one_mock_call
+  short_name: _
+  target:
+    name: encode_one_mock_call
+  parameters:
+  - name: mock_call
+    value: !test_scribe/expression 'test_scribe.model_type.MockCallModel(name="foo",
+      parameters=test_scribe.namedvalues.NamedValues([("a", 1), ("b", 2)]), return_value=3)'
+  result:
+    name: foo
+    parameters:
+    - name: a
+      value: 1
+    - name: b
+      value: 2
+    return: 3
+- name: test_encode_one_mock_call_name_no_name
+  short_name: _no_name
+  target:
+    name: encode_one_mock_call_name
+  parameters:
+  - name: name
+    value: ''
+  result: {}
+- name: test_encode_one_mock_call_name_has_name
+  short_name: _has_name
+  target:
+    name: encode_one_mock_call_name
+  parameters:
+  - name: name
+    value: a
+  result:
+    name: a
+- name: test_encode_one_test
+  short_name: _
+  target:
+    name: encode_one_test
+  parameters:
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    name: test1
+    short_name: short_name
+    description: description
+    target:
+      name: target_func
+      class_name: TargetClass
+    parameters: []
+    result: result
+    patches:
+    - target: target
+      replacement: 1
+    mocks:
+    - name: mock1
+      spec: spec
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: test1
+      short_name: short_name
+      description: description
+      target_func_name: target_func
+      target_class_name: TargetClass
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      exception: null
+      result: result
+      patches:
+      - !test_scribe/mock 'm_patch_model'
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+  - name: m_patch_model
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: target
+      replacement: 1
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: mock1
+      spec_str: spec
+      calls: []
+      attributes: {}
+- name: test_encode_parameters_no_parameter
+  short_name: _no_parameter
+  target:
+    name: encode_parameters
+  parameters:
+  - name: test
+    value:
+      foo: 1
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    foo: 1
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: null
+- name: test_encode_parameters_has_init_param
+  short_name: _has_init_param
+  target:
+    name: encode_parameters
+  parameters:
+  - name: test
+    value:
+      foo: 1
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    foo: 1
+    init_parameters:
+    - name: p
+      value: 1
+    parameters: []
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([("p",
+        1)])'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+- name: test_encode_parameters_no_init_param
+  short_name: _no_init_param
+  target:
+    name: encode_parameters
+  parameters:
+  - name: test
+    value:
+      foo: 1
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    foo: 1
+    parameters: []
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+- name: test_encode_patches
+  short_name: _
+  target:
+    name: encode_patches
+  parameters:
+  - name: test
+    value: {}
+  - name: patches
+    value:
+    - !test_scribe/mock 'm_patch_model'
+    - !test_scribe/mock 'm_patch_model_1'
+  result:
+    patches:
+    - target: t1
+      replacement: 1
+    - target: t2
+      replacement: 2
+  mocks:
+  - name: m_patch_model
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t1
+      replacement: 1
+  - name: m_patch_model_1
+    spec: test_scribe.model_type.PatchModel
+    attributes:
+      target: t2
+      replacement: 2
+- name: test_encode_patches_no_patch
+  short_name: _no_patch
+  target:
+    name: encode_patches
+  parameters:
+  - name: test
+    value: {}
+  - name: patches
+    value: []
+  result: {}
+- name: test_encode_result_no_exception
+  short_name: _no_exception
+  target:
+    name: encode_result
+  parameters:
+  - name: test
+    value: {}
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    result: 1
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: null
+      result: 1
+- name: test_encode_result_exception
+  short_name: _exception
+  target:
+    name: encode_result
+  parameters:
+  - name: test
+    value: {}
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    exception:
+      type: a.b.C
+      message: msg
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      exception: !test_scribe/expression 'test_scribe.model_type.ExceptionModel("a.b.C",
+        "msg")'
+- name: test_encode_target_no_target_class
+  short_name: _no_target_class
+  target:
+    name: encode_target
+  parameters:
+  - name: test
+    value:
+      foo: 1
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    foo: 1
+    target:
+      name: f
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+      target_class_name: ''
+- name: test_encode_target
+  short_name: _
+  target:
+    name: encode_target
+  parameters:
+  - name: test
+    value:
+      foo: 1
+  - name: test_model
+    value: !test_scribe/mock 'test_model'
+  result:
+    foo: 1
+    target:
+      name: f
+      class_name: c
+  mocks:
+  - name: test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+      target_class_name: c
+- name: test_encode_tests
+  short_name: _
+  target:
+    name: encode_tests
+  parameters:
+  - name: all_tests
+    value: !test_scribe/mock 'all_tests'
+  result:
+  - name: t1
+    short_name: _
+    target:
+      name: f1
+    parameters: []
+    result: 1
+  - name: t2
+    short_name: _
+    target:
+      name: f2
+    parameters: []
+    result: 2
+  mocks:
+  - name: all_tests
+    spec: test_scribe.model_type.AllTests
+    attributes:
+      tests:
+      - !test_scribe/mock 'm_test_model'
+      - !test_scribe/mock 'm_test_model_1'
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: t1
+      short_name: _
+      description: ''
+      target_func_name: f1
+      target_class_name: ''
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      exception: null
+      result: 1
+      patches: []
+      mocks: []
+  - name: m_test_model_1
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      name: t2
+      short_name: _
+      description: ''
+      target_func_name: f2
+      target_class_name: ''
+      init_parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      parameters: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+      exception: null
+      result: 2
+      patches: []
+      mocks: []

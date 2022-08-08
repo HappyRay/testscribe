@@ -1,0 +1,24 @@
+format_version: 1
+module: wrapper.transformer_wrapper
+tests:
+- name: test_tranform_module
+  short_name: _
+  target:
+    name: tranform_module
+  parameters: []
+  result: !test_scribe/object
+    type: test_scribe.model_type.ModuleModel
+    repr: ModuleModel(name='test_data.simple')
+- name: test_transform_mock_proxy
+  short_name: _
+  target:
+    name: transform_mock_proxy
+  parameters: []
+  result: !test_scribe/object
+    type: test_scribe.model_type.MockNameModel
+    repr: a
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}

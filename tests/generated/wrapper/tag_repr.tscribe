@@ -1,0 +1,15 @@
+format_version: 1
+module: wrapper.tag_repr
+tests:
+- name: test_representation_of_class_tag
+  short_name: _
+  target:
+    name: representation_of_class_tag
+  parameters: []
+  result: 'Object(type (test_data.simple.C), members ({''a'': 1}))'
+- name: test_representation_of_class_tag_list
+  short_name: _
+  target:
+    name: representation_of_class_tag_list
+  parameters: []
+  result: '[Object(type (test_data.simple.C), members ({''a'': 1}))]'

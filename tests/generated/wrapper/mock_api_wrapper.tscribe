@@ -1,0 +1,17 @@
+format_version: 1
+module: wrapper.mock_api_wrapper
+tests:
+- name: test_get_normalized_mock_calls_wrapper
+  short_name: _
+  target:
+    name: get_normalized_mock_calls_wrapper
+  parameters: []
+  result:
+  - !!python/tuple
+    - search_a_name
+    - !!python/tuple []
+    - keyword: a
+  - !!python/tuple
+    - search_person
+    - !!python/tuple []
+    - name: b

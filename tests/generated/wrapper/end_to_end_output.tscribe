@@ -1,0 +1,102 @@
+format_version: 1
+module: wrapper.end_to_end_output
+tests:
+- name: test_function_call_output
+  short_name: _
+  target:
+    name: function_call_output
+  parameters: []
+  result: "Source file to test: python/tests/test_data/service_call.py\nFunction to\
+    \ test: gen_name\nTarget module to test: test_data.service_call\nOutput root directory\
+    \ cmd line option: \nOutput root directory: \nThe target function: gen_name has\
+    \ the signature: (service: 'Service', keyword: 'str', start_number: 'int')\nThere\
+    \ is no existing test scribe file at /test_data/service_call.tscribe\nCalling\
+    \ the setup function setup.setup.\nsetup function is called.\nPrepare to call\
+    \ the target function.\nGetting parameters for the function (gen_name)\nPlease\
+    \ provide the value for the parameter (service) of type: (test_data.service.Service)\
+    \ []: m\nCreated a mock: Mock: name (m_service) spec (<class 'test_data.service.Service'>)\n\
+    Please provide the value for the parameter (keyword) of type: (str) []: a\nPlease\
+    \ provide the value for the parameter (start_number) of type: (int) []: 1\nCalling\
+    \ gen_name(service=Mock: name (m_service) spec (<class 'test_data.service.Service'>),\
+    \ keyword='a', start_number=1)\nm_service's search_a_name method is called\nwith:\
+    \ keyword='key: a'.\nCall stack:\n  File \"python/tests/test_data/service_call.py\"\
+    , line 10, in gen_name\n    name = service.search_a_name(\"key: \" + keyword)\n\
+    \nPlease provide the value for the return value of type: (str) []: b\nMock call\
+    \ return value: 'b'\nm_service's search_a_number method is called\nwith: seed_number=1.\n\
+    Call stack:\n  File \"python/tests/test_data/service_call.py\", line 11, in gen_name\n\
+    \    num = service.search_a_number(start_number)\n\nPlease provide the value for\
+    \ the return value of type: (int) []: 2\nMock call return value: 2\nm_service's\
+    \ search_a_number method is called\nwith: seed_number=2.\nCall stack:\n  File\
+    \ \"python/tests/test_data/service_call.py\", line 12, in gen_name\n    num2 =\
+    \ service.search_a_number(start_number + 1)\n\nPlease provide the value for the\
+    \ return value of type: (int) []: 3\nMock call return value: 3\n***** Result:\n\
+    type: <class 'str'>\nvalue:\n{\"name\": \"b\", \"number\": 5}\n***** Result end\n\
+    Test name help: 'test_' prefix will be added automatically. Use a leading '_'\
+    \ to include the target function name as part of the prefix.\nTest name: [_]:\
+    \ simple gen\nProvide a description of the test. []: integration test\nWrote the\
+    \ generated scribe file to: /test_data/service_call.tscribe\nWrote the generated\
+    \ test file to: /test_data/test_service_call_g.py\n"
+- name: test_method_call_output
+  short_name: _
+  target:
+    name: method_call_output
+  parameters: []
+  result: "Source file to test: python/tests/test_data/service.py\nFunction to test:\
+    \ search_a_name\nTarget module to test: test_data.service\nOutput root directory\
+    \ cmd line option: \nOutput root directory: \nThe target function: search_a_name\
+    \ has the signature: (self, keyword: str) -> str\nThe target class is: <class\
+    \ 'test_data.service.Service'>\nThere is no existing test scribe file at /test_data/service.tscribe\n\
+    Calling the setup function setup.setup.\nsetup function is called.\nPrepare to\
+    \ create an instance of the class: Service\nGetting parameters for the function\
+    \ (Service)\nPlease provide the value for the parameter (prefix) of type: (str)\
+    \ []: a\nCalling Service(prefix='a')\nPrepare to call the target function.\nGetting\
+    \ parameters for the function (Service.search_a_name)\nPlease provide the value\
+    \ for the parameter (keyword) of type: (str) []: b\nCalling Service.search_a_name(keyword='b')\n\
+    ***** Result:\ntype: <class 'str'>\nvalue:\nb: a Alice\n***** Result end\nTest\
+    \ name help: 'test_' prefix will be added automatically. Use a leading '_' to\
+    \ include the target function name as part of the prefix.\nTest name: [_]: \n\
+    Provide a description of the test. []: \nWrote the generated scribe file to: /test_data/service.tscribe\n\
+    Wrote the generated test file to: /test_data/test_service_g.py\n"
+- name: test_mock_property_output
+  short_name: _
+  target:
+    name: mock_property_output
+  parameters: []
+  result: "Source file to test: python/tests/test_data/property_access.py\nFunction\
+    \ to test: get_car_year\nTarget module to test: test_data.property_access\nOutput\
+    \ root directory cmd line option: \nOutput root directory: \nThe target function:\
+    \ get_car_year has the signature: (c: test_data.car.Car) -> int\nThere is no existing\
+    \ test scribe file at /test_data/property_access.tscribe\nCalling the setup function\
+    \ setup.setup.\nsetup function is called.\nPrepare to call the target function.\n\
+    Getting parameters for the function (get_car_year)\nPlease provide the value for\
+    \ the parameter (c) of type: (test_data.car.Car) []: m\nCreated a mock: Mock:\
+    \ name (m_car) spec (<class 'test_data.car.Car'>)\nCalling get_car_year(c=Mock:\
+    \ name (m_car) spec (<class 'test_data.car.Car'>))\nMock object m_car's ( year\
+    \ ) attribute is accessed for the first time.\nCall stack:\n  File \"python/tests/test_data/property_access.py\"\
+    , line 21, in get_car_year\n    return c.year\n\nPlease provide the value for\
+    \ the year attribute of type: (int) []: 1\nMock attribute value: 1\n***** Result:\n\
+    type: <class 'int'>\nvalue:\n1\n***** Result end\nTest name help: 'test_' prefix\
+    \ will be added automatically. Use a leading '_' to include the target function\
+    \ name as part of the prefix.\nTest name: [_]: \nProvide a description of the\
+    \ test. []: \nWrote the generated scribe file to: /test_data/property_access.tscribe\n\
+    Wrote the generated test file to: /test_data/test_property_access_g.py\n"
+- name: test_retry_invalid_input_output
+  short_name: _
+  target:
+    name: retry_invalid_input_output
+  parameters: []
+  result: "Source file to test: python/tests/test_data/echo.py\nFunction to test:\
+    \ echo\nTarget module to test: test_data.echo\nOutput root directory cmd line\
+    \ option: \nOutput root directory: \nThe target function: echo has the signature:\
+    \ (v: Any)\nThere is no existing test scribe file at /test_data/echo.tscribe\n\
+    Calling the setup function setup.setup.\nsetup function is called.\nPrepare to\
+    \ call the target function.\nGetting parameters for the function (echo)\nPlease\
+    \ provide the value for the parameter (v) of type: (any) []: a\nThe value is invalid.\
+    \ Please try again.\nError detail:\nname 'a' is not defined\nPlease provide the\
+    \ value for the parameter (v) of type: (any) []: test_data.simple.C(1)\nCalling\
+    \ echo(v=test_data.simple.C(1))\n***** Result:\ntype: test_data.simple.C\nvalue:\n\
+    Object(type (test_data.simple.C), members ({'a': 1}))\n***** Result end\nTest\
+    \ name help: 'test_' prefix will be added automatically. Use a leading '_' to\
+    \ include the target function name as part of the prefix.\nTest name: [_]: \n\
+    Provide a description of the test. []: \nWrote the generated scribe file to: /test_data/echo.tscribe\n\
+    Wrote the generated test file to: /test_data/test_echo_g.py\n"

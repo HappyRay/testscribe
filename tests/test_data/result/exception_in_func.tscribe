@@ -1,0 +1,11 @@
+format_version: 1
+module: test_data.exception_in_func
+tests:
+- name: test_exception_throwing_func
+  short_name: _
+  target:
+    name: exception_throwing_func
+  parameters: []
+  exception:
+    type: test_scribe.error.InputError
+    message: foo

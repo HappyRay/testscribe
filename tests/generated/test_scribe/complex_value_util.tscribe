@@ -1,0 +1,379 @@
+format_version: 1
+module: test_scribe.complex_value_util
+tests:
+- name: test_contain_complex_value_tuple
+  short_name: _tuple
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !!python/tuple
+    - 1
+    - 2
+  result: false
+- name: test_contain_complex_value_tag_in_nested_collections
+  short_name: _tag_in_nested_collections
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression '(1, [test_data.value.object_model_c])'
+  result: true
+- name: test_contain_complex_value_str
+  short_name: _str
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: a
+  result: false
+- name: test_contain_complex_value_set
+  short_name: _set
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !!set
+      1: null
+      2: null
+  result: false
+- name: test_contain_complex_value_object_tag_in_tuple
+  short_name: _object_tag_in_tuple
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression '(test_data.value.object_model_c, 1)'
+  result: true
+- name: test_contain_complex_value_object_tag_in_list
+  short_name: _object_tag_in_list
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression '[test_data.value.object_model_c]'
+  result: true
+- name: test_contain_complex_value_object_tag_in_dict
+  short_name: _object_tag_in_dict
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression '{''a'': test_data.value.object_model_c}'
+  result: true
+- name: test_contain_complex_value_object_tag
+  short_name: _object_tag
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.value.object_model_c'
+  result: true
+- name: test_contain_complex_value_list
+  short_name: _list
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value:
+    - 1
+    - 2
+  result: false
+- name: test_contain_complex_value_int
+  short_name: _int
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: 1
+  result: false
+- name: test_contain_complex_value_float
+  short_name: _float
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: 1.1
+  result: false
+- name: test_contain_complex_value_dict
+  short_name: _dict
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value:
+      a: 1
+  result: false
+- name: test_contain_complex_value_callable_type_in_list
+  short_name: _callable_type_in_list
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression '[test_data.value.callable_model_foo]'
+  result: false
+- name: test_contain_complex_value_callable_tag
+  short_name: _callable_tag
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.value.callable_model_foo'
+  result: false
+- name: test_contain_complex_value_bool
+  short_name: _bool
+  target:
+    name: contain_complex_value
+  parameters:
+  - name: value
+    value: true
+  result: false
+- name: test_generic_is_special_type_value_is_special
+  short_name: _value_is_special
+  target:
+    name: generic_is_special_type
+  parameters:
+  - name: value
+    value: 1
+  - name: is_special_type_func
+    value: !test_scribe/mock 'is_special_type_func'
+  result: true
+  mocks:
+  - name: is_special_type_func
+    spec: typing.Callable[[typing.Any], bool]
+    calls:
+    - parameters:
+      - value: 1
+      return: true
+- name: test_generic_is_special_type_simple_value_not_special_type
+  short_name: _simple_value_not_special_type
+  target:
+    name: generic_is_special_type
+  parameters:
+  - name: value
+    value: 1
+  - name: is_special_type_func
+    value: !test_scribe/mock 'is_special_type_func'
+  result: false
+  mocks:
+  - name: is_special_type_func
+    spec: typing.Callable[[typing.Any], bool]
+    calls:
+    - parameters:
+      - value: 1
+      return: false
+- name: test_generic_is_special_type_enumeralbe_false
+  short_name: _enumeralbe_false
+  target:
+    name: generic_is_special_type
+  parameters:
+  - name: value
+    value:
+    - 1
+  - name: is_special_type_func
+    value: !test_scribe/mock 'is_special_type_func'
+  result: false
+  mocks:
+  - name: is_special_type_func
+    spec: typing.Callable[[typing.Any], bool]
+    calls:
+    - parameters:
+      - value:
+        - 1
+      return: false
+    - parameters:
+      - value: 1
+      return: false
+- name: test_generic_is_special_type_enumberable_true
+  short_name: _enumberable_true
+  target:
+    name: generic_is_special_type
+  parameters:
+  - name: value
+    value:
+    - 1
+  - name: is_special_type_func
+    value: !test_scribe/mock 'is_special_type_func'
+  result: true
+  mocks:
+  - name: is_special_type_func
+    spec: typing.Callable[[typing.Any], bool]
+    calls:
+    - parameters:
+      - value:
+        - 1
+      return: false
+    - parameters:
+      - value: 1
+      return: true
+- name: test_generic_is_special_type_dict_true
+  short_name: _dict_true
+  target:
+    name: generic_is_special_type
+  parameters:
+  - name: value
+    value:
+      a: 1
+  - name: is_special_type_func
+    value: !test_scribe/mock 'is_special_type_func'
+  result: true
+  mocks:
+  - name: is_special_type_func
+    spec: typing.Callable[[typing.Any], bool]
+    calls:
+    - parameters:
+      - value:
+          a: 1
+      return: false
+    - parameters:
+      - value: 1
+      return: true
+- name: test_has_custom_repr_method_data_class_has_repr
+  short_name: _data_class_has_repr
+  target:
+    name: has_custom_repr_method
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'test_data.person.Person'
+  result: true
+- name: test_has_custom_repr_method_false_case
+  short_name: _false_case
+  target:
+    name: has_custom_repr_method
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'test_data.greet.Greeter'
+  result: false
+- name: test_has_custom_repr_method_path_has_repr_method
+  short_name: _path_has_repr_method
+  target:
+    name: has_custom_repr_method
+  parameters:
+  - name: t
+    value: !test_scribe/expression 'pathlib.Path'
+  result: true
+- name: test_has_unstable_repr_func_member_in_list
+  short_name: _func_member_in_list
+  target:
+    name: has_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression '[test_data.simple.FuncMember(test_data.simple.foo)]'
+  result: true
+- name: test_has_unstable_repr_repr_contains_objects_without_custom_repr
+  short_name: _repr_contains_objects_without_custom_repr
+  target:
+    name: has_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.DataClassWithSimpleObject(test_data.simple.Dummy())'
+  result: true
+- name: test_has_unstable_repr_class_with_custom_repr
+  short_name: _class_with_custom_repr
+  target:
+    name: has_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.SimpleDataClass(1)'
+  result: false
+- name: test_is_complex_value_object_model
+  short_name: _object_model
+  target:
+    name: is_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.value.object_model_c'
+  result: true
+- name: test_is_complex_value_module_model
+  short_name: _module_model
+  target:
+    name: is_complex_value
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("foo")'
+  result: true
+- name: test_is_complex_value_int
+  short_name: _int
+  target:
+    name: is_complex_value
+  parameters:
+  - name: value
+    value: 1
+  result: false
+- name: test_is_enumerable_type_list
+  short_name: _list
+  target:
+    name: is_enumerable_type
+  parameters:
+  - name: value
+    value:
+    - 1
+  result: true
+- name: test_is_enumerable_type_tuple
+  short_name: _tuple
+  target:
+    name: is_enumerable_type
+  parameters:
+  - name: value
+    value: !!python/tuple
+    - 1
+    - 2
+  result: true
+- name: test_is_enumerable_type_set
+  short_name: _set
+  target:
+    name: is_enumerable_type
+  parameters:
+  - name: value
+    value: !!set
+      1: null
+  result: true
+- name: test_is_enumerable_type_int
+  short_name: _int
+  target:
+    name: is_enumerable_type
+  parameters:
+  - name: value
+    value: 1
+  result: false
+- name: test_is_enumerable_type_dict
+  short_name: _dict
+  target:
+    name: is_enumerable_type
+  parameters:
+  - name: value
+    value:
+      a: 1
+  result: false
+- name: test_object_contains_unstable_repr_with_func
+  short_name: _with_func
+  target:
+    name: object_contains_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.FuncMember(test_data.simple.foo)'
+  result: true
+- name: test_object_contains_unstable_repr_module
+  short_name: _module
+  target:
+    name: object_contains_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.ModuleMember(test_data.simple)'
+  result: true
+- name: test_object_contains_unstable_repr_regular
+  short_name: _regular
+  target:
+    name: object_contains_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'test_data.simple.C(1)'
+  result: false
+- name: test_object_contains_unstable_repr_class_without_dict_members
+  short_name: _class_without_dict_members
+  target:
+    name: object_contains_unstable_repr
+  parameters:
+  - name: value
+    value: !test_scribe/expression 'pathlib.Path()'
+  result: false

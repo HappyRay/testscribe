@@ -1,0 +1,115 @@
+format_version: 1
+module: test_scribe.config
+tests:
+- name: test_get_output_root_path_default
+  short_name: _default
+  target:
+    name: get_output_root_path
+  parameters:
+  - name: data
+    value: {}
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('.')
+- name: test_get_output_root_path_key_exists
+  short_name: _key_exists
+  target:
+    name: get_output_root_path
+  parameters:
+  - name: data
+    value:
+      output-root-dir: a/b
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b')
+- name: test_get_setup_func_value_is_a_method
+  short_name: _value_is_a_method
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value:
+      setup-function: test_data.simple.C.bar
+  exception:
+    type: test_scribe.error.Error
+    message: |-
+      The setup function as specified by the setup-function key is:test_data.simple.C.bar. It should be a valid fully qualified function name. Can't load this symbol.
+      error detail:
+      No module named 'test_data.simple.C'; 'test_data.simple' is not a package
+- name: test_get_setup_func_invalid_symbol
+  short_name: _invalid_symbol
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value:
+      setup-function: invalid
+  exception:
+    type: test_scribe.error.Error
+    message: |-
+      The setup function as specified by the setup-function key is:invalid. It should be a valid fully qualified function name. Can't load this symbol.
+      error detail:
+      Empty module name
+- name: test_get_setup_func_value_not_a_string
+  short_name: _value_not_a_string
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value:
+      setup-function: 1
+  exception:
+    type: test_scribe.error.Error
+    message: The setup function as specified by the setup-function key is:1. It should
+      be a valid fully qualified function name. The value is not a string or is an
+      empty string.
+- name: test_get_setup_func_value_is_empty_string
+  short_name: _value_is_empty_string
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value:
+      setup-function: ''
+  exception:
+    type: test_scribe.error.Error
+    message: The setup function as specified by the setup-function key is:. It should
+      be a valid fully qualified function name. The value is not a string or is an
+      empty string.
+- name: test_get_setup_func_no_key
+  short_name: _no_key
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value: {}
+  result: null
+- name: test_get_setup_func
+  short_name: _
+  target:
+    name: get_setup_func
+  parameters:
+  - name: data
+    value:
+      setup-function: setup.setup
+  result: !test_scribe/callable
+    name: setup
+    module: setup
+- name: test_initialize_io_default
+  short_name: _default
+  target:
+    name: initialize_io
+  parameters:
+  - name: data
+    value: {}
+  result: !test_scribe/object
+    type: test_scribe.cli.CLI
+    members: {}
+- name: test_load_config_data_invalid_config_file_path
+  short_name: _invalid_config_file_path
+  target:
+    name: load_config_data
+  parameters:
+  - name: config_file_path
+    value: !test_scribe/expression 'pathlib.Path("not exist")'
+  result: {}

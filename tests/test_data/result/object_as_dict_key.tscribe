@@ -1,0 +1,13 @@
+format_version: 1
+module: test_data.object_as_dict_key
+tests:
+- name: test_get_dict_with_object_key
+  short_name: _
+  target:
+    name: get_dict_with_object_key
+  parameters: []
+  result:
+    ? !test_scribe/object
+      type: test_data.simple.ReadOnlyData
+      repr: ReadOnlyData(a=1)
+    : 2

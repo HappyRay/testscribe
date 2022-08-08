@@ -1,0 +1,11 @@
+format_version: 1
+module: wrapper.error_wrapper
+tests:
+- name: test_raise_custom_error
+  short_name: _
+  target:
+    name: raise_custom_error
+  parameters: []
+  exception:
+    type: test_scribe.error.Error
+    message: foo

@@ -1,0 +1,18 @@
+format_version: 1
+module: test_data.str_method
+tests:
+- name: test_get_str
+  short_name: _
+  target:
+    name: get_str
+  parameters:
+  - name: c
+    value: !test_scribe/mock 'm_c'
+  result: mock m_c
+  mocks:
+  - name: m_c
+    spec: test_data.simple.C
+    calls:
+    - name: __str__
+      parameters: []
+      return: mock m_c

@@ -1,0 +1,115 @@
+format_version: 1
+module: wrapper.save_scribe_file_wrapper
+tests:
+- name: test_save_multi_line_string_to_yaml
+  short_name: save_multi_line_string_to_yaml
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: |-
+      first
+      second line
+  result: |
+    |-
+      first
+      second line
+- name: test_save_one_line_string_to_yaml
+  short_name: save_one_line_string_to_yaml
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: short
+  result: |
+    short
+    ...
+- name: test_save_obj_to_yaml_preserve_the_key_order
+  short_name: _preserve_the_key_order
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value:
+      b: 1
+      a: 2
+      c: 3
+  result: |
+    b: 1
+    a: 2
+    c: 3
+- name: test_save_obj_to_yaml_set
+  short_name: _set
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: !test_scribe/expression 'test_scribe.model_type.SetModel([1, 2])'
+  result: |
+    !test_scribe/set
+    - 1
+    - 2
+- name: test_save_obj_to_yaml_module_model
+  short_name: _module_model
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("m")'
+  result: '!test_scribe/module ''m''
+
+    '
+- name: test_save_obj_to_yaml_callable_model
+  short_name: _callable_model
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: !test_scribe/expression 'test_data.value.callable_model_foo'
+  result: |
+    !test_scribe/callable
+    name: foo
+    module: test_data.simple
+- name: test_save_obj_to_yaml_expression_model
+  short_name: _expression_model
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: !test_scribe/expression 'test_scribe.model_type.ExpressionModel("a")'
+  result: '!test_scribe/expression ''a''
+
+    '
+- name: test_save_obj_to_yaml_mock_name_model
+  short_name: _mock_name_model
+  target:
+    name: save_obj_to_yaml
+  parameters:
+  - name: obj
+    value: !test_scribe/expression 'test_scribe.model_type.MockNameModel("a")'
+  result: '!test_scribe/mock ''a''
+
+    '
+- name: test_save_object_model_has_custom_repr
+  short_name: _has_custom_repr
+  target:
+    name: save_object_model
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.person.Person("a", 1)'
+  result: |
+    !test_scribe/object
+    type: test_data.person.Person
+    repr: Person(name='a', age=1)
+- name: test_save_object_model_no_custom_repr
+  short_name: _no_custom_repr
+  target:
+    name: save_object_model
+  parameters:
+  - name: v
+    value: !test_scribe/expression 'test_data.simple.C(a=1)'
+  result: |
+    !test_scribe/object
+    type: test_data.simple.C
+    members:
+      a: 1

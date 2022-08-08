@@ -1,0 +1,140 @@
+format_version: 1
+module: test_scribe.input_params
+tests:
+- name: test_create_input_params
+  short_name: _
+  target:
+    name: create_input_params
+  parameters:
+  - name: module
+    value: !test_scribe/expression 'test_scribe.module.Module(["test_data", "greet"])'
+  - name: function_name
+    value: greet
+  - name: output_root_dir
+    value: !test_scribe/expression 'pathlib.Path("out/root")'
+  - name: ask_for_test_name
+    value: false
+  - name: ask_for_description
+    value: true
+  result: !test_scribe/object
+    type: test_scribe.input_params.InputParams
+    members:
+      func: !test_scribe/callable
+        name: Greeter.greet
+        module: test_data.greet
+      output_root_dir: !test_scribe/object
+        type: pathlib.PosixPath
+        repr: PosixPath('out/root')
+      module: !test_scribe/object
+        type: test_scribe.module.Module
+        members:
+          names: !!python/tuple
+          - test_data
+          - greet
+      clazz: !test_scribe/callable
+        name: Greeter
+        module: test_data.greet
+      ask_for_test_name: false
+      ask_for_description: true
+- name: test_create_output_dir_for_module
+  short_name: _
+  target:
+    name: create_output_dir_for_module
+  parameters:
+  - name: output_root_dir
+    value: !test_scribe/mock 'output_root_dir'
+  - name: module
+    value: !test_scribe/expression 'test_scribe.module.Module(["foo", "bar", "m"])'
+  result: !test_scribe/mock 'm_path'
+  mocks:
+  - name: output_root_dir
+    spec: pathlib.Path
+    calls:
+    - name: joinpath
+      parameters:
+      - name: args
+        value: !!python/tuple
+        - foo
+        - bar
+      return: !test_scribe/mock 'm_path'
+  - name: m_path
+    spec: pathlib.Path
+    calls:
+    - name: mkdir
+      parameters:
+      - name: parents
+        value: true
+      - name: exist_ok
+        value: true
+      return: !test_scribe/expression 'ignore'
+- name: test_get_scribe_file_path
+  short_name: _
+  target:
+    name: get_scribe_file_path
+  parameters:
+  - name: output_root_dir
+    value: !test_scribe/expression 'pathlib.Path("test_root")'
+  - name: module
+    value: !test_scribe/expression 'test_scribe.module.Module(["a", "b"])'
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('test_root/a/b.tscribe')
+  patches:
+  - target: test_scribe.input_params.create_output_dir_for_module
+    replacement: !test_scribe/mock 'm_create_output_dir_for_module'
+  mocks:
+  - name: m_create_output_dir_for_module
+    spec: test_scribe.input_params.create_output_dir_for_module
+    calls:
+    - parameters:
+      - name: output_root_dir
+        value: !test_scribe/object
+          type: pathlib.PosixPath
+          repr: PosixPath('test_root')
+      - name: module
+        value: !test_scribe/object
+          type: test_scribe.module.Module
+          members:
+            names: !!python/tuple
+            - a
+            - b
+      return: !test_scribe/expression 'pathlib.Path("test_root/a")'
+- name: test_get_target_class_name_no_class
+  short_name: _no_class
+  target:
+    name: get_target_class_name
+  parameters:
+  - name: input_params
+    value: !test_scribe/mock 'input_params'
+  result: ''
+  mocks:
+  - name: input_params
+    spec: test_scribe.input_params.InputParams
+    attributes:
+      clazz: null
+- name: test_get_target_class_name_has_class
+  short_name: _has_class
+  target:
+    name: get_target_class_name
+  parameters:
+  - name: input_params
+    value: !test_scribe/mock 'input_params'
+  result: C
+  mocks:
+  - name: input_params
+    spec: test_scribe.input_params.InputParams
+    attributes:
+      clazz: !test_scribe/expression 'test_data.simple.C'
+- name: test_get_target_function_name
+  short_name: _
+  target:
+    name: get_target_function_name
+  parameters:
+  - name: input_params
+    value: !test_scribe/mock 'input_params'
+  result: foo
+  mocks:
+  - name: input_params
+    spec: test_scribe.input_params.InputParams
+    attributes:
+      func: !test_scribe/expression 'test_data.simple.foo'

@@ -1,0 +1,32 @@
+format_version: 1
+module: test_data.product
+tests:
+- name: test_get_a_product_total
+  short_name: _
+  target:
+    name: get_a_product_total
+  parameters:
+  - name: factory
+    value: !test_scribe/mock 'm_product_factory'
+  result: 3
+  mocks:
+  - name: m_product_factory
+    spec: test_data.product.ProductFactory
+    calls:
+    - name: create_sample_products
+      parameters:
+      - name: prefix
+        value: a
+      - name: num
+        value: 2
+      return:
+      - !test_scribe/mock 'm_product'
+      - !test_scribe/mock 'm_product_1'
+  - name: m_product
+    spec: test_data.product.Product
+    attributes:
+      price: 1
+  - name: m_product_1
+    spec: test_data.product.Product
+    attributes:
+      price: 2

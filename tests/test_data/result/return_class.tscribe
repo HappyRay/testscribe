@@ -1,0 +1,17 @@
+format_version: 1
+module: test_data.return_class
+tests:
+- name: test_create_fixed_product_owner
+  short_name: _
+  target:
+    name: create_fixed_product_owner
+  parameters: []
+  result: !test_scribe/object
+    type: test_data.product.ProductOwner
+    members:
+      owner: !test_scribe/object
+        type: test_data.person.Person
+        repr: Person(name='a', age=30)
+      product: !test_scribe/object
+        type: test_data.product.Product
+        repr: Product(name='p', price=1)

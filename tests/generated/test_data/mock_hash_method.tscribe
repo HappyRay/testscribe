@@ -1,0 +1,39 @@
+format_version: 1
+module: test_data.mock_hash_method
+tests:
+- name: test_get_dict
+  short_name: _
+  target:
+    name: get_dict
+  parameters:
+  - name: d
+    value: !test_scribe/mock 'd'
+  result:
+    !test_scribe/mock 'd': 1
+  mocks:
+  - name: d
+    spec: test_data.simple.ReadOnlyData
+- name: test_hash_mock_proxy
+  short_name: _
+  target:
+    name: hash_mock_proxy
+  parameters: []
+  result: 578569609205554811
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
+- name: test_use_not_hashable
+  short_name: _
+  target:
+    name: use_not_hashable
+  parameters: []
+  exception:
+    type: TypeError
+    message: The mock target <class 'test_data.simple.SimpleDataClass'> is not hashable.
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}

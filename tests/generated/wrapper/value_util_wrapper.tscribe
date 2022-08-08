@@ -1,0 +1,14 @@
+format_version: 1
+module: wrapper.value_util_wrapper
+tests:
+- name: test_get_value_repr_wrapper_mock_proxy
+  short_name: _
+  target:
+    name: get_value_repr_wrapper_mock_proxy
+  parameters: []
+  result: 'Mock: name (a) spec (<class ''test_data.simple.C''>)'
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}

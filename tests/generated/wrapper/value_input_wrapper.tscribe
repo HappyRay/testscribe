@@ -1,0 +1,13 @@
+format_version: 1
+module: wrapper.value_input_wrapper
+tests:
+- name: test_post_process_raw_input_wrapper_special_value
+  short_name: _
+  target:
+    name: post_process_raw_input_wrapper_special_value
+  parameters: []
+  result: !!python/tuple
+  - ignore
+  - !test_scribe/object
+    type: test_scribe.ignore.IgnoreReturnValue
+    repr: '''Ignored'''

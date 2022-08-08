@@ -1,0 +1,61 @@
+format_version: 1
+module: wrapper.mock_proxy_wrapper
+tests:
+- name: test_is_mock_proxy_wrapper
+  short_name: _
+  target:
+    name: is_mock_proxy_wrapper
+  parameters: []
+  result: true
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
+- name: test_magic_len_method_throw_exception
+  short_name: _
+  target:
+    name: magic_len_method_throw_exception
+  parameters: []
+  exception:
+    type: AttributeError
+    message: mocking the __len__ method is not supported.
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
+- name: test_mock_pass_is_instance
+  short_name: _
+  target:
+    name: mock_pass_is_instance
+  parameters:
+  - name: c
+    value: !test_scribe/mock 'c'
+  result: true
+  mocks:
+  - name: c
+    spec: test_data.simple.C
+- name: test_mock_proxy_method_call
+  short_name: _
+  target:
+    name: mock_proxy_method_call
+  parameters: []
+  result: !test_scribe/object
+    type: test_scribe.mock_call.MockCall
+    members:
+      method_name: bar
+      mock_name: m_c
+      spec: !test_scribe/callable
+        name: C
+        module: test_data.simple
+      previous_call_count: 0
+      args: !test_scribe/object
+        type: test_scribe.namedvalues.NamedValues
+        repr: NamedValues([])
+      return_value: null
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}

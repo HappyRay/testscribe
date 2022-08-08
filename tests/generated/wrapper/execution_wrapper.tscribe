@@ -1,0 +1,40 @@
+format_version: 1
+module: wrapper.execution_wrapper
+tests:
+- name: test_create_instance_wrapper
+  short_name: _
+  target:
+    name: create_instance_wrapper
+  parameters: []
+  result: !test_scribe/object
+    type: test_scribe.execution.CallResult
+    members:
+      arguments: !test_scribe/object
+        type: test_scribe.namedvalues.NamedValues
+        repr: NamedValues([('my_name', 'a')])
+      result: !test_scribe/object
+        type: test_data.greet.Greeter
+        members:
+          my_name: a
+      exception: null
+- name: test_get_args_and_call_wrapper_method
+  short_name: _method
+  target:
+    name: get_args_and_call_wrapper
+  parameters:
+  - name: func
+    value: !test_scribe/expression 'test_data.greet.Greeter("a").greet'
+  result: !test_scribe/object
+    type: test_scribe.execution.CallResult
+    repr: CallResult(arguments=NamedValues([('to', 'b')]), result='Hello b. My name
+      is a', exception=None)
+- name: test_get_args_and_call_wrapper_function
+  short_name: _function
+  target:
+    name: get_args_and_call_wrapper
+  parameters:
+  - name: func
+    value: !test_scribe/expression 'test_data.echo.echo'
+  result: !test_scribe/object
+    type: test_scribe.execution.CallResult
+    repr: CallResult(arguments=NamedValues([('v', 'b')]), result='b', exception=None)

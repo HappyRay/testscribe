@@ -1,0 +1,35 @@
+format_version: 1
+module: test_scribe.value_input
+tests:
+- name: test_get_one_value_none_type_1
+  short_name: _none_type
+  target:
+    name: get_one_value
+  parameters:
+  - name: prompt_name
+    value: p
+  - name: t
+    value: !test_scribe/expression 'type(None)'
+  - name: context
+    value: !test_scribe/expression 'test_scribe.context.Context("foo")'
+  - name: default
+    value: null
+  - name: name
+    value: n
+  result: null
+- name: test_get_one_value_none_type
+  short_name: _none_type
+  target:
+    name: get_one_value
+  parameters:
+  - name: prompt_name
+    value: p
+  - name: t
+    value: null
+  - name: context
+    value: !test_scribe/expression 'test_scribe.context.Context("foo")'
+  - name: default
+    value: null
+  - name: name
+    value: n
+  result: null
