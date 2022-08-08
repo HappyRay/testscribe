@@ -338,7 +338,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3ceb7c34c3325ec4850980eb92674e5a689e603d29000c193948b8b9d87f710f"
+content-hash = "fabd255c473d3729120c6ddbb619dcc5739d89faf0915db70bd1f218b712086e"
 
 [metadata.files]
 assertpy = [

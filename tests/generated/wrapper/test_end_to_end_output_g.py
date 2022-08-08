@@ -4,7 +4,7 @@ from wrapper.end_to_end_output import function_call_output, method_call_output, 
 def test_function_call_output():
     result = function_call_output()
     assert result == """\
-Source file to test: python/tests/test_data/service_call.py
+Source file to test: tests/test_data/service_call.py
 Function to test: gen_name
 Target module to test: test_data.service_call
 Output root directory cmd line option: 
@@ -23,7 +23,7 @@ Calling gen_name(service=Mock: name (m_service) spec (<class 'test_data.service.
 m_service's search_a_name method is called
 with: keyword='key: a'.
 Call stack:
-  File "python/tests/test_data/service_call.py", line 10, in gen_name
+  File "tests/test_data/service_call.py", line 10, in gen_name
     name = service.search_a_name("key: " + keyword)
 
 Please provide the value for the return value of type: (str) []: b
@@ -31,7 +31,7 @@ Mock call return value: 'b'
 m_service's search_a_number method is called
 with: seed_number=1.
 Call stack:
-  File "python/tests/test_data/service_call.py", line 11, in gen_name
+  File "tests/test_data/service_call.py", line 11, in gen_name
     num = service.search_a_number(start_number)
 
 Please provide the value for the return value of type: (int) []: 2
@@ -39,7 +39,7 @@ Mock call return value: 2
 m_service's search_a_number method is called
 with: seed_number=2.
 Call stack:
-  File "python/tests/test_data/service_call.py", line 12, in gen_name
+  File "tests/test_data/service_call.py", line 12, in gen_name
     num2 = service.search_a_number(start_number + 1)
 
 Please provide the value for the return value of type: (int) []: 3
@@ -60,7 +60,7 @@ Wrote the generated test file to: /test_data/test_service_call_g.py
 def test_method_call_output():
     result = method_call_output()
     assert result == """\
-Source file to test: python/tests/test_data/service.py
+Source file to test: tests/test_data/service.py
 Function to test: search_a_name
 Target module to test: test_data.service
 Output root directory cmd line option: 
@@ -94,7 +94,7 @@ Wrote the generated test file to: /test_data/test_service_g.py
 def test_mock_property_output():
     result = mock_property_output()
     assert result == """\
-Source file to test: python/tests/test_data/property_access.py
+Source file to test: tests/test_data/property_access.py
 Function to test: get_car_year
 Target module to test: test_data.property_access
 Output root directory cmd line option: 
@@ -110,7 +110,7 @@ Created a mock: Mock: name (m_car) spec (<class 'test_data.car.Car'>)
 Calling get_car_year(c=Mock: name (m_car) spec (<class 'test_data.car.Car'>))
 Mock object m_car's ( year ) attribute is accessed for the first time.
 Call stack:
-  File "python/tests/test_data/property_access.py", line 21, in get_car_year
+  File "tests/test_data/property_access.py", line 21, in get_car_year
     return c.year
 
 Please provide the value for the year attribute of type: (int) []: 1
@@ -131,7 +131,7 @@ Wrote the generated test file to: /test_data/test_property_access_g.py
 def test_retry_invalid_input_output():
     result = retry_invalid_input_output()
     assert result == """\
-Source file to test: python/tests/test_data/echo.py
+Source file to test: tests/test_data/echo.py
 Function to test: echo
 Target module to test: test_data.echo
 Output root directory cmd line option: 

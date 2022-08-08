@@ -13,5 +13,5 @@ def test_init_config_wrapper():
     result = init_config_wrapper()
     assert isinstance(result, test_scribe.config.Config)
     assert isinstance(result.output_root_path, pathlib.PosixPath)
-    assert repr(result.output_root_path) == "PosixPath('python/tests/generated')"
+    assert repr(result.output_root_path) == "PosixPath('tests/generated')"
     assert result.setup_function == setup.setup

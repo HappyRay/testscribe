@@ -8,18 +8,41 @@ tests:
   parameters:
   - name: cmd_name
     value: sync
-  result: |
-    Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH
-
-      Regenerate the unit test file.
-
-      :param scribe_file_path: :return:
-
-    Arguments:
-      SCRIBE_FILE_PATH  The test_scribe file to sync  [required]
-
-    Options:
-      --help  Show this message and exit.
+  result: "                                                                      \
+    \          \n Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH             \
+    \                \n                                                          \
+    \                      \n Regenerate the unit test file.                     \
+    \                            \n :param scribe_file_path: :return:            \
+    \                                  \n                                        \
+    \                                        \n\u256D\u2500 Arguments \u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 *    scribe_file_path      FILE  The test_scribe file to sync       \
+    \         \u2502\n\u2502                                  [default: None]    \
+    \                         \u2502\n\u2502                                  [required]\
+    \                                  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options \u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u256E\n\u2502 --help          Show this message and exit.       \
+    \                           \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_delete
   short_name: _delete
   target:
@@ -27,20 +50,43 @@ tests:
   parameters:
   - name: cmd_name
     value: delete
-  result: |
-    Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-
-      Delete a test. This will delete the test from both the test_scribe file and
-      the unit test file.
-
-      :param scribe_file_path: :param test_name: :return:
-
-    Arguments:
-      SCRIBE_FILE_PATH  The test_scribe file to modify  [required]
-      [TEST_NAME]       The name of the test to be removed
-
-    Options:
-      --help  Show this message and exit.
+  result: "                                                                      \
+    \          \n Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
+    \               \n                                                           \
+    \                     \n Delete a test. This will delete the test from both the\
+    \ test_scribe file and    \n the unit test file.                             \
+    \                               \n :param scribe_file_path: :param test_name:\
+    \ :return:                            \n                                     \
+    \                                           \n\u256D\u2500 Arguments \u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 *    scribe_file_path      FILE         The test_scribe file to modify\
+    \       \u2502\n\u2502                                         [default: None]\
+    \                      \u2502\n\u2502                                        \
+    \ [required]                           \u2502\n\u2502      test_name         \
+    \    [TEST_NAME]  The name of the test to be removed   \u2502\n\u2570\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\
+    \u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --help          Show this message\
+    \ and exit.                                  \u2502\n\u2570\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_update
   short_name: _update
   target:
@@ -48,19 +94,42 @@ tests:
   parameters:
   - name: cmd_name
     value: update
-  result: |
-    Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-
-      Update the selected test.
-
-      :param test_name: :param scribe_file_path: :return:
-
-    Arguments:
-      SCRIBE_FILE_PATH  The test_scribe file to update  [required]
-      [TEST_NAME]       The name of the test to update
-
-    Options:
-      --help  Show this message and exit.
+  result: "                                                                      \
+    \          \n Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
+    \               \n                                                           \
+    \                     \n Update the selected test.                           \
+    \                           \n :param test_name: :param scribe_file_path: :return:\
+    \                            \n                                              \
+    \                                  \n\u256D\u2500 Arguments \u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502\
+    \ *    scribe_file_path      FILE         The test_scribe file to update     \
+    \  \u2502\n\u2502                                         [default: None]    \
+    \                  \u2502\n\u2502                                         [required]\
+    \                           \u2502\n\u2502      test_name             [TEST_NAME]\
+    \  The name of the test to update       \u2502\n\u2570\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options\
+    \ \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u256E\n\u2502 --help          Show this message and exit. \
+    \                                 \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_create
   short_name: _create
   target:
@@ -68,28 +137,61 @@ tests:
   parameters:
   - name: cmd_name
     value: create
-  result: |
-    Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-
-      Generate a new test.
-
-      :param config_file: :param ask_for_description: :param ask_for_test_name:
-      :param source_file: :param function_name: :param output_root_dir: :return:
-
-    Arguments:
-      SOURCE_FILE    The source file to test  [required]
-      FUNCTION_NAME  The function to test  [required]
-
-    Options:
-      --output-root-dir DIRECTORY     The root directory of the output test files
-      --ask-for-test-name / --no-ask-for-test-name
-                                      Allow test names to be modified  [default:
-                                      ask-for-test-name]
-      --ask-for-description / --no-ask-for-description
-                                      Allow adding a test description  [default:
-                                      ask-for-description]
-      --config-file FILE              The config file
-      --help                          Show this message and exit.
+  result: "                                                                      \
+    \          \n Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME  \
+    \                \n                                                          \
+    \                      \n Generate a new test.                               \
+    \                            \n :param config_file: :param ask_for_description:\
+    \ :param ask_for_test_name:      \n :param source_file: :param function_name:\
+    \ :param output_root_dir: :return:     \n                                    \
+    \                                            \n\u256D\u2500 Arguments \u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 *    source_file        FILE  The source file to test [default: None]\
+    \        \u2502\n\u2502                               [required]             \
+    \                        \u2502\n\u2502 *    function_name      TEXT  The function\
+    \ to test [default: None]           \u2502\n\u2502                           \
+    \    [required]                                     \u2502\n\u2570\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\
+    \u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --output-root-dir               \
+    \             DIRECTORY  The root directory   \u2502\n\u2502                 \
+    \                                        of the output test   \u2502\n\u2502 \
+    \                                                        files               \
+    \ \u2502\n\u2502                                                         [default:\
+    \ None]      \u2502\n\u2502 --ask-for-test-name    --no-ask-for-test\u2026   \
+    \            Allow test names to  \u2502\n\u2502                             \
+    \                            be modified          \u2502\n\u2502             \
+    \                                            [default:            \u2502\n\u2502\
+    \                                                         ask-for-test-name] \
+    \  \u2502\n\u2502 --ask-for-descript\u2026    --no-ask-for-desc\u2026        \
+    \       Allow adding a test  \u2502\n\u2502                                  \
+    \                       description          \u2502\n\u2502                  \
+    \                                       [default:            \u2502\n\u2502  \
+    \                                                       ask-for-description] \u2502\
+    \n\u2502 --config-file                                FILE       The config file\
+    \      \u2502\n\u2502                                                        \
+    \ [default: None]      \u2502\n\u2502 --help                                 \
+    \                 Show this message    \u2502\n\u2502                        \
+    \                                 and exit.            \u2502\n\u2570\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_move
   short_name: _move
   target:
@@ -97,20 +199,50 @@ tests:
   parameters:
   - name: cmd_name
     value: move
-  result: |
-    Usage: test_scribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME
-
-      Move tests for a function to their new files corresponding to the new module
-      to which the function has moved.
-
-    Arguments:
-      SOURCE_FILE             The source file that contains the symbol  [required]
-      CLASS_OR_FUNCTION_NAME  The name of the function or class that has moved
-                              [required]
-
-    Options:
-      --output-root-dir DIRECTORY  The root directory of the output test files
-      --help                       Show this message and exit.
+  result: "                                                                      \
+    \          \n Usage: test_scribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME\
+    \           \n                                                               \
+    \                 \n Move tests for a function to their new files corresponding\
+    \ to the new module   \n to which the function has moved.                    \
+    \                           \n                                               \
+    \                                 \n\u256D\u2500 Arguments \u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 * \
+    \   source_file                 FILE  The source file that contains the     \u2502\
+    \n\u2502                                        symbol                       \
+    \         \u2502\n\u2502                                        [default: None]\
+    \                       \u2502\n\u2502                                       \
+    \ [required]                            \u2502\n\u2502 *    class_or_function_name\
+    \      TEXT  The name of the function or class     \u2502\n\u2502            \
+    \                            that has moved                        \u2502\n\u2502\
+    \                                        [default: None]                     \
+    \  \u2502\n\u2502                                        [required]          \
+    \                  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options \u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 --output-root-dir        DIRECTORY  The root directory of the output\
+    \ test    \u2502\n\u2502                                     files           \
+    \                         \u2502\n\u2502                                     [default:\
+    \ None]                          \u2502\n\u2502 --help                       \
+    \       Show this message and exit.              \u2502\n\u2570\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_cli_sync_cmd_with_missing_arguments_should_show_usage
   short_name: cli_sync_cmd_with_missing_arguments_should_show_usage
   target:
@@ -118,11 +250,21 @@ tests:
   parameters:
   - name: cmd
     value: sync
-  result: |
-    Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH
-    Try 'test_scribe sync --help' for help.
-
-    Error: Missing argument 'SCRIBE_FILE_PATH'.
+  result: "Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH\nTry 'test_scribe sync\
+    \ --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502\
+    \ Missing argument 'SCRIBE_FILE_PATH'.                                       \
+    \  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u256F\n"
 - name: test_cli_update_cmd_with_missing_argument_should_show_usage
   short_name: cli_update_cmd_with_missing_argument_should_show_usage
   target:
@@ -130,11 +272,21 @@ tests:
   parameters:
   - name: cmd
     value: update
-  result: |
-    Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-    Try 'test_scribe update --help' for help.
-
-    Error: Missing argument 'SCRIBE_FILE_PATH'.
+  result: "Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'test_scribe\
+    \ update --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 Missing argument 'SCRIBE_FILE_PATH'.                                \
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256F\n"
 - name: test_cli_delete_cmd_missing_arguments_should_show_usage
   short_name: cli_delete_cmd_missing_arguments_should_show_usage
   target:
@@ -142,11 +294,21 @@ tests:
   parameters:
   - name: cmd
     value: delete
-  result: |
-    Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-    Try 'test_scribe delete --help' for help.
-
-    Error: Missing argument 'SCRIBE_FILE_PATH'.
+  result: "Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'test_scribe\
+    \ delete --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 Missing argument 'SCRIBE_FILE_PATH'.                                \
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256F\n"
 - name: test_cli_incorrect_file_argument_should_show_usage
   short_name: cli_incorrect_file_argument_should_show_usage
   target:
@@ -155,11 +317,21 @@ tests:
   - name: additional_args
     value:
     - do_not_exist
-  result: |
-    Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-    Try 'test_scribe create --help' for help.
-
-    Error: Invalid value for 'SOURCE_FILE': File 'do_not_exist' does not exist.
+  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+    \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 Invalid value for 'SOURCE_FILE': File 'do_not_exist' does not exist.\
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256F\n"
 - name: test_cli_missing_file_name_should_show_usage
   short_name: cli_missing_file_name_should_show_usage
   target:
@@ -167,41 +339,91 @@ tests:
   parameters:
   - name: additional_args
     value: []
-  result: |
-    Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-    Try 'test_scribe create --help' for help.
-
-    Error: Missing argument 'SOURCE_FILE'.
+  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+    \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 Missing argument 'SOURCE_FILE'.                                     \
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256F\n"
 - name: test_cli_create_cmd_without_function_name_should_show_usage
   short_name: cli_create_cmd_without_function_name_should_show_usage
   target:
     name: run_create_cmd_with_file_name_only
   parameters: []
-  result: |
-    Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-    Try 'test_scribe create --help' for help.
-
-    Error: Missing argument 'FUNCTION_NAME'.
+  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+    \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 Missing argument 'FUNCTION_NAME'.                                   \
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256F\n"
 - name: test_run_help
   short_name: _
   target:
     name: run_help
   parameters: []
-  result: |
-    Usage: test_scribe [OPTIONS] COMMAND [ARGS]...
-
-    Options:
-      --install-completion [bash|zsh|fish|powershell|pwsh]
-                                      Install completion for the specified shell.
-      --show-completion [bash|zsh|fish|powershell|pwsh]
-                                      Show completion for the specified shell, to
-                                      copy it or customize the installation.
-      --help                          Show this message and exit.
-
-    Commands:
-      create    Generate a new test.
-      delete    Delete a test.
-      move      Move tests for a function to their new files corresponding to...
-      sync      Regenerate the unit test file.
-      sync-all  Regenerate all unit test files under the generated test root.
-      update    Update the selected test.
+  result: "                                                                      \
+    \          \n Usage: test_scribe [OPTIONS] COMMAND [ARGS]...                 \
+    \                \n                                                          \
+    \                      \n\u256D\u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --install-completion\
+    \        [bash|zsh|fish|powershe  Install completion for  \u2502\n\u2502     \
+    \                        ll|pwsh]                 the specified shell.    \u2502\
+    \n\u2502                                                      [default: None]\
+    \         \u2502\n\u2502 --show-completion           [bash|zsh|fish|powershe \
+    \ Show completion for the \u2502\n\u2502                             ll|pwsh]\
+    \                 specified shell, to     \u2502\n\u2502                     \
+    \                                 copy it or customize    \u2502\n\u2502     \
+    \                                                 the installation.       \u2502\
+    \n\u2502                                                      [default: None]\
+    \         \u2502\n\u2502 --help                                              \
+    \ Show this message and   \u2502\n\u2502                                     \
+    \                 exit.                   \u2502\n\u2570\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Commands\
+    \ \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u256E\n\u2502 create    Generate a new test.                    \
+    \                           \u2502\n\u2502 delete    Delete a test. This will\
+    \ delete the test from both the test_scribe \u2502\n\u2502           file and\
+    \ the unit test file.                                       \u2502\n\u2502 move\
+    \      Move tests for a function to their new files corresponding to the  \u2502\
+    \n\u2502           new module to which the function has moved.               \
+    \         \u2502\n\u2502 sync      Regenerate the unit test file.            \
+    \                         \u2502\n\u2502 sync-all  Regenerate all unit test files\
+    \ under the generated test root.      \u2502\n\u2502 update    Update the selected\
+    \ test.                                          \u2502\n\u2570\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"

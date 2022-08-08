@@ -17,7 +17,7 @@ tests:
     members:
       output_root_path: !test_scribe/object
         type: pathlib.PosixPath
-        repr: PosixPath('python/tests/generated')
+        repr: PosixPath('tests/generated')
       setup_function: !test_scribe/callable
         name: setup
         module: setup
