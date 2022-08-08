@@ -4,16 +4,14 @@ exclude =
     .git,
     # There's no value in checking cache directories
     __pycache__,
-    # proto buf auto generated files
-    python/src/test_scribe_rpc
     # generated tests
-    python/tests/generated
+    tests/generated
     # the files here are expected to be exact. Otherwise tests will fail
-    python/tests/test_data/result
-    python/tests/test_data/input
+    tests/test_data/result
+    tests/test_data/input
     # the test files here are expected to be exact.
     # They may be used as input. Otherwise tests will fail
-    python/tests/test_data/test_*.py
+    tests/test_data/test_*.py
 
 max-complexity = 10
 
@@ -21,4 +19,4 @@ max-complexity = 10
 # https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html
 max-line-length = 88
 select = C,E,F,W,B,B950
-extend-ignore = E203, E501
+extend-ignore = E203, E501, W503
