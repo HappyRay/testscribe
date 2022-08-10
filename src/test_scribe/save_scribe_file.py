@@ -26,6 +26,9 @@ def generate_scribe_file(scribe_file_path: Path, all_tests: AllTests) -> None:
 
 def save_to_yaml(data, stream):
     configure_yaml()
+    # Before pyyaml 5.1 the directory keys are sorted. Since 5.1 it is still the default,
+    # but the sort_keys parameter was added.
+    # It is desirable to control the order so that it is easier to read.
     dump(data=data, stream=stream, sort_keys=False)
 
 
