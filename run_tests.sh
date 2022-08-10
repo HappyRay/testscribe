@@ -10,7 +10,7 @@ export PYTHONPATH="$PYTHONPATH:src"
 if [ "$1" == "-c" ]; then
   # -c option to turn on code coverage
   # generate the output to a directory outside the source and test directories
-  COVERAGE_ARG="--cov-report html:../tmp/test-coverage --cov=../src/test_scribe"
+  COVERAGE_ARG="--cov-report html:../tmp/test-coverage --cov=../src/test_scribe --cov-config=../.coveragerc"
   shift
 else
   COVERAGE_ARG=""
