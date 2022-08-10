@@ -273,7 +273,7 @@ def test_patch_with_setup(run_create_test_and_verify):
     run_create_test_and_verify(
         file_name_only="patch_function_for_integration_test",
         function_name="foo",
-        config_file="test_data/test-patch-func-config.yml",
+        config_file=str(get_test_data_root_path().joinpath("test-patch-func-config.yml")),
     )
 
 
@@ -282,7 +282,7 @@ def test_patch_in_method(run_create_test_and_verify):
         file_name_only="patch_in_method",
         function_name="foo",
         test_input="1\n\n\n",
-        config_file="test_data/test-patch-config.yml",
+        config_file=str(get_test_data_root_path().joinpath("test-patch-config.yml")),
     )
 
 
