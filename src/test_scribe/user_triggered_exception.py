@@ -11,6 +11,7 @@ class UserTriggeredException:
     Used in an input expression to cause a mock call to throw the
     given exception.
     """
+
     exception: BaseException
 
     def __repr__(self):

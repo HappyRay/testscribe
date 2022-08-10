@@ -83,7 +83,9 @@ def gen_invocation_str_with_patch(test: TestModel) -> str:
 
 def gen_invocation_str_with_exception(test: TestModel) -> str:
     inner_statement = gen_create_invocation_str(test)
-    return wrap_exception_assertion(exception_model=test.exception, inner_statement=inner_statement)
+    return wrap_exception_assertion(
+        exception_model=test.exception, inner_statement=inner_statement
+    )
 
 
 def gen_create_invocation_str(test: TestModel) -> str:

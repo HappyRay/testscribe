@@ -171,9 +171,7 @@ def update(
     # The user defined setup function may call patch.
     # make sure the mode is set up before the setup function is called.
     global_var.g_test_generating_mode = True
-    return update_test_cmd(
-        scribe_file_path=scribe_file_path, test_name=test_name
-    )
+    return update_test_cmd(scribe_file_path=scribe_file_path, test_name=test_name)
 
 
 @app.command()

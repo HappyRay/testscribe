@@ -8,8 +8,11 @@ from click import prompt
 from test_scribe.eval_expression import eval_expression
 from test_scribe.log import log
 from test_scribe.reflection_util import get_type_name
-from test_scribe.value_input_util import transform_default_value, eval_special_value, \
-    get_string_value
+from test_scribe.value_input_util import (
+    transform_default_value,
+    eval_special_value,
+    get_string_value,
+)
 from test_scribe.value_util import InputValue
 
 

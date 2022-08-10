@@ -8,7 +8,9 @@ from test_scribe.namedvalues import NamedValues
 from test_scribe.value_input import get_one_value
 
 
-def get_parameter_value_cli(param_info_list: List[Parameter], defaults: list) -> NamedValues:
+def get_parameter_value_cli(
+    param_info_list: List[Parameter], defaults: list
+) -> NamedValues:
     params = []
     for param, default_value in zip(param_info_list, defaults):
         v = get_one_value(
