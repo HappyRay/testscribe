@@ -186,7 +186,7 @@ def test_mock_context_mgr(run_create_test_and_verify):
     run_create_test_and_verify(
         file_name_only="context_mgr",
         function_name="use_resource",
-        test_input="m\nm\nm\nt\n\n\n",
+        test_input="m\n1\nt\n\n\n",
     )
 
 

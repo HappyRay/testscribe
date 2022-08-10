@@ -1,26 +1,13 @@
-from __future__ import annotations
-
-
-class Resource:
-    def __init__(self, name: str):
-        self.name = name
-
-    def do_somthing(self) -> None:
-        print(f"Did something with {self.name}")
-
-
 class Gate:
-    def __init__(self, name: str):
-        self.name = name
-        self.resource = Resource(name)
 
-    def __enter__(self) -> Resource:
-        print(f"Enter {self.name}")
-        return self.resource
+    def __enter__(self) -> int:
+        print("Entering the context")
+        return 1
 
-    def __exit__(self, type, value, traceback) -> bool:
-        print(f"Exit {self.name}")
+    def __exit__(self, a_type, value, traceback) -> bool:
+        print("Leaving the context")
         return True
+
 
 # todo: create an example of how to handle a context manager implemented with
 #  @contextmanager
@@ -28,5 +15,5 @@ class Gate:
 
 
 def use_resource(g: Gate):
-    with g("a") as r:
-        r.do_somthing()
+    with g as r:
+        return r
