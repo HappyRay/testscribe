@@ -4,6 +4,7 @@ from pytest import fixture
 
 from test_scribe.generate_imports import generate_import_statement_str
 from test_scribe.model_type import MockModel, AllTests
+
 # Import TestModel as a different name without Test prefix to avoid
 # a pytest warning
 # PytestCollectionWarning:

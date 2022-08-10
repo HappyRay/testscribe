@@ -469,14 +469,14 @@ def test_update_cmd_patch_wrapper_not_create_duplicate_patches(
         test_input,
     )
     assert (
-               "Create patch with target "
-               "( test_data.patch_function_for_integration_test.func_with_side_effect )"
-               " replacement ( Mock( name: m_func_with_side_effect ) )? [True]:"
-           ) in out
+        "Create patch with target "
+        "( test_data.patch_function_for_integration_test.func_with_side_effect )"
+        " replacement ( Mock( name: m_func_with_side_effect ) )? [True]:"
+    ) in out
     assert (
-               "Remove previous patch of the same target "
-               "test_data.patch_function_for_integration_test.func_with_side_effect"
-           ) in out
+        "Remove previous patch of the same target "
+        "test_data.patch_function_for_integration_test.func_with_side_effect"
+    ) in out
 
 
 def test_use_last_test_for_default(
