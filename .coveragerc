@@ -2,3 +2,5 @@
     omit =
         # It's simple and is not worth covering.
         src/test_scribe/api/io_provider.py
+        # The specs are not executed.
+        src/test_scribe/api/custom_spec.py
