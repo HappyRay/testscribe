@@ -8,6 +8,8 @@ tests:
   parameters:
   - name: patch_model
     value: !test_scribe/mock 'patch_model'
+  - name: test
+    value: !test_scribe/mock 'm_test_model'
   result: false
   patches:
   - target: test_scribe.update_test_cmd.prompt
@@ -31,6 +33,8 @@ tests:
     attributes:
       target: a.b
       replacement: 1
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
 - name: test_create_patches_from_existing_test_recreate_all_patches
   short_name: _recreate_all_patches
   target:
@@ -49,11 +53,15 @@ tests:
     - parameters:
       - name: patch_model
         value: !test_scribe/mock 'm_patch_model'
-      return: false
+      - name: test
+        value: !test_scribe/mock 'test'
+      return: !test_scribe/expression 'ignore'
     - parameters:
       - name: patch_model
         value: !test_scribe/mock 'm_patch_model_1'
-      return: true
+      - name: test
+        value: !test_scribe/mock 'test'
+      return: !test_scribe/expression 'ignore'
   - name: test
     spec: test_scribe.model_type.TestModel
     attributes:
@@ -112,6 +120,8 @@ tests:
   parameters:
   - name: patch_model
     value: !test_scribe/mock 'patch_model'
+  - name: test
+    value: !test_scribe/mock 'm_test_model'
   result: null
   patches:
   - target: test_scribe.update_test_cmd.patch_with_mock_internal
@@ -126,12 +136,24 @@ tests:
       - name: mock_name
         value: a
       - name: spec
-        value: null
+        value: !test_scribe/callable
+          name: C
+          module: test_data.simple
   - name: patch_model
     spec: test_scribe.model_type.PatchModel
     attributes:
       replacement: !test_scribe/expression 'test_scribe.model_type.MockNameModel("a_2")'
       target: a.b
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !test_scribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: test_scribe.model_type.MockModel
+    attributes:
+      name: a_2
+      spec_str: test_data.simple.C
 - name: test_really_create_patcher_from_model_expression
   short_name: _expression
   target:
@@ -139,6 +161,8 @@ tests:
   parameters:
   - name: patch_model
     value: !test_scribe/mock 'patch_model'
+  - name: test
+    value: !test_scribe/mock 'm_test_model'
   result: null
   patches:
   - target: test_scribe.update_test_cmd.patch_with_expression_internal
@@ -157,6 +181,8 @@ tests:
     attributes:
       replacement: 1
       target: a.b
+  - name: m_test_model
+    spec: test_scribe.model_type.TestModel
 - name: test_update_test_cmd_no_such_test
   short_name: _no_such_test
   target:

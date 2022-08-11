@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, Union, Callable
 
 from typer import prompt
 
@@ -12,6 +12,7 @@ from test_scribe.execution_util import ERROR_RETURN_CODE, init
 from test_scribe.input_params import create_input_params
 from test_scribe.load_scribe_file import load_scribe_file
 from test_scribe.log import log
+from test_scribe.mock_proxy import MockProxy
 from test_scribe.mocking_support import (
     patch_with_mock_internal,
     patch_with_expression_internal,
@@ -22,8 +23,10 @@ from test_scribe.model_type import (
     PatchModel,
     MockNameModel,
     ExpressionModel,
+    get_mock_by_name,
 )
 from test_scribe.module import get_module_from_str, Module
+from test_scribe.reflection_util import get_symbol
 from test_scribe.util import remove_trailing_numbers
 
 logger = logging.getLogger(__name__)
@@ -103,12 +106,12 @@ def create_patches_from_existing_test(test: TestModel):
     if test.patches:
         log("Recreating patches from the existing test.")
         for p in test.patches:
-            create_patcher_from_model(p)
+            create_patcher_from_model(patch_model=p, test=test)
 
 
-def create_patcher_from_model(patch_model: PatchModel) -> bool:
+def create_patcher_from_model(patch_model: PatchModel, test: TestModel) -> bool:
     if should_recreate_patch(patch_model):
-        really_create_patcher_from_model(patch_model)
+        really_create_patcher_from_model(patch_model=patch_model, test=test)
         return True
     else:
         log(f"Skipped the patch for {patch_model.target}.")
@@ -125,22 +128,25 @@ def should_recreate_patch(patch_model: PatchModel) -> bool:
     return prompt(prompt_str, default=True, type=bool)
 
 
-def really_create_patcher_from_model(patch_model: PatchModel) -> None:
+def really_create_patcher_from_model(patch_model: PatchModel, test: TestModel) -> None:
     value = patch_model.replacement
     if isinstance(value, MockNameModel):
-        name = value.name
-        normalized_name = remove_trailing_numbers(name)
-        # todo: handle the case when the mock object has to be created with
-        #  an expression instead of relying on the type of the target
-        # Currently, this case has to be hanled by either using a wrapper function
-        # or a setup function
-        patch_with_mock_internal(
-            target=patch_model.target, mock_name=normalized_name, spec=None
+        create_mock_patcher_from_model(
+            mock_name=value.name, target=patch_model.target, test=test
         )
     else:
         patch_with_expression_internal(
             target_str=patch_model.target, expression=get_expression_str(value)
         )
+
+
+def create_mock_patcher_from_model(
+    mock_name: str, target: Union[str, type, Callable, MockProxy], test: TestModel
+):
+    mock = get_mock_by_name(mocks=test.mocks, name=mock_name)
+    spec = get_symbol(mock.spec_str)
+    normalized_name = remove_trailing_numbers(mock_name)
+    patch_with_mock_internal(target=target, mock_name=normalized_name, spec=spec)
 
 
 def get_expression_str(value: Any) -> str:
