@@ -1,0 +1,12 @@
+format_version: 1
+module: wrapper.config_wrapper
+tests:
+- name: test_initialize_io_wrapper
+  short_name: _
+  target:
+    name: initialize_io_wrapper
+  parameters: []
+  result: null
+  patches:
+  - target: test_scribe.global_var.g_io
+    replacement: null
