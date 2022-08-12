@@ -15,3 +15,37 @@ tests:
     - search_person
     - !!python/tuple []
     - name: b
+- name: test_m_wrapper_default_no_name
+  short_name: _default_no_name
+  target:
+    name: m_wrapper
+  parameters:
+  - name: name
+    value: ''
+  result: !!python/tuple
+  - !test_scribe/callable
+    name: C
+    module: test_data.simple
+  - m_c
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
+- name: test_m_wrapper
+  short_name: _
+  target:
+    name: m_wrapper
+  parameters:
+  - name: name
+    value: a
+  result: !!python/tuple
+  - !test_scribe/callable
+    name: C
+    module: test_data.simple
+  - a
+  patches:
+  - target: test_scribe.global_var.g_mock_name_counter
+    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: test_scribe.global_var.g_name_mock_dict
+    replacement: {}
