@@ -162,7 +162,7 @@ def create_instance_and_run(
             test_to_infer_default_inputs=test_to_infer_default_inputs,
         )
         call_result = run_target_function(
-            exception=function_instance.exception,
+            constructor_exception=function_instance.exception,
             func=function_instance.func,
             test_to_infer_default_inputs=test_to_infer_default_inputs,
         )
@@ -212,12 +212,12 @@ def stop_patches(patchers: Dict[str, Patcher]) -> None:
 
 
 def run_target_function(
-    exception: Optional[Exception],
+    constructor_exception: Optional[Exception],
     func: Callable,
     test_to_infer_default_inputs: Optional[TestModel],
 ) -> CallResult:
-    if exception:
-        return CallResult(arguments=None, result=None, exception=exception)
+    if constructor_exception:
+        return CallResult(arguments=None, result=None, exception=constructor_exception)
     else:
         log("Prepare to call the target function.")
         default = (

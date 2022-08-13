@@ -7,7 +7,7 @@ import test_scribe.patcher
 import unittest.mock
 from test_scribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
-from test_scribe.execution import create_instance, get_default_init_parameters, get_test_to_infer_default_inputs, show_result, show_result_internal, stop_patches, transform_named_values
+from test_scribe.execution import create_instance, get_default_init_parameters, get_test_to_infer_default_inputs, run_target_function, show_result, show_result_internal, stop_patches, transform_named_values
 
 
 def test_create_instance():
@@ -63,6 +63,12 @@ def test_get_test_to_infer_default_inputs_match_function_name_class_name():
     assert result is t2
     t1.assert_not_called()
     t2.assert_not_called()
+
+
+def test_run_target_function_exception_in_class_constructor():
+    result = run_target_function(constructor_exception=Exception("foo"), func=test_data.simple.foo, test_to_infer_default_inputs=None)
+    assert isinstance(result, test_scribe.execution.CallResult)
+    assert repr(result) == "CallResult(arguments=None, result=None, exception=Exception('foo'))"
 
 
 def test_show_result():

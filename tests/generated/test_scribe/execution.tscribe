@@ -113,6 +113,20 @@ tests:
       target_func_name: f
       target_class_name: c
       name: t2
+- name: test_run_target_function_exception_in_class_constructor
+  short_name: _exception_in_class_constructor
+  target:
+    name: run_target_function
+  parameters:
+  - name: constructor_exception
+    value: !test_scribe/expression 'Exception("foo")'
+  - name: func
+    value: !test_scribe/expression 'test_data.simple.foo'
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !test_scribe/object
+    type: test_scribe.execution.CallResult
+    repr: CallResult(arguments=None, result=None, exception=Exception('foo'))
 - name: test_show_result
   short_name: _
   target:
