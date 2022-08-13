@@ -308,6 +308,14 @@ def test_exception_throwing_func(run_create_test_and_verify):
     )
 
 
+def test_exception_in_init(run_create_test_and_verify):
+    run_create_test_and_verify(
+        file_name_only="exception_in_init",
+        function_name="f",
+        test_input="",
+    )
+
+
 def test_object_as_dict_key(run_create_test_and_verify):
     run_create_test_and_verify(
         file_name_only="object_as_dict_key",

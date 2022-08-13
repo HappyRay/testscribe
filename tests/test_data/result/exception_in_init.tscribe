@@ -1,0 +1,11 @@
+format_version: 1
+module: test_data.exception_in_init
+tests:
+- name: test_f
+  short_name: _
+  target:
+    name: f
+    class_name: BadInit
+  exception:
+    type: Exception
+    message: bad init
