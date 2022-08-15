@@ -249,6 +249,22 @@ tests:
     - name: stop
       parameters: []
       return: !test_scribe/expression 'ignore'
+- name: test_transform_and_show_result_unsupported_data
+  short_name: _unsupported_data
+  target:
+    name: transform_and_show_result
+  parameters:
+  - name: call_result
+    value: !test_scribe/mock 'm_call_result'
+  exception:
+    type: test_scribe.error.UnsupportedDataError
+    message: Sets that contain complex objects are not supported.
+  mocks:
+  - name: m_call_result
+    spec: test_scribe.execution.CallResult
+    attributes:
+      exception: null
+      result: !test_scribe/expression '[1, {test_data.value.object_model_c, 2}]'
 - name: test_transform_named_values
   short_name: _
   target:

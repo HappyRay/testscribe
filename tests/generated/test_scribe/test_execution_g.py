@@ -1,13 +1,19 @@
+import unittest.mock
+from unittest.mock import call, create_autospec
+
+import pytest
+
 import test_data.simple
 import test_data.value
+import test_scribe.error
 import test_scribe.execution
 import test_scribe.model_type
 import test_scribe.namedvalues
 import test_scribe.patcher
-import unittest.mock
 from test_scribe.api.mock_api import get_normalized_mock_calls
-from unittest.mock import ANY, call, create_autospec
-from test_scribe.execution import create_instance, get_default_init_parameters, get_test_to_infer_default_inputs, run_target_function, show_result, show_result_internal, stop_patches, transform_named_values
+from test_scribe.execution import create_instance, get_default_init_parameters, get_test_to_infer_default_inputs, \
+    run_target_function, show_result, show_result_internal, stop_patches, transform_and_show_result, \
+    transform_named_values
 
 
 def test_create_instance():
@@ -156,6 +162,16 @@ def test_stop_patches():
     assert m__patch_1_mock_calls == [
         call.stop(),
     ]
+
+
+def test_transform_and_show_result_unsupported_data():
+    m_call_result: test_scribe.execution.CallResult = create_autospec(spec=test_scribe.execution.CallResult)
+    m_call_result.exception = None
+    m_call_result.result = [1, {test_data.value.object_model_c, 2}]
+    with pytest.raises(test_scribe.error.UnsupportedDataError) as exception_info:
+        transform_and_show_result(call_result=m_call_result)
+    assert 'Sets that contain complex objects are not supported.' == str(exception_info.value)
+    m_call_result.assert_not_called()
 
 
 def test_transform_named_values():
