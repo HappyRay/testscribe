@@ -132,10 +132,10 @@ def get_type_origin(t: type):
     # https://docs.python.org/3/library/typing.html#typing.get_origin
     if hasattr(typing, "get_origin"):
         return typing.get_origin(t)
-    elif hasattr(t, "__origin__"):
+    elif hasattr(t, "__origin__"):  # pragma: no cover
         # https://www.python.org/dev/peps/pep-0585/
         return t.__origin__
-    else:
+    else:  # pragma: no cover
         return None
 
 
@@ -143,7 +143,7 @@ def get_type_args(t: type):
     # https://docs.python.org/3/library/typing.html#typing.get_origin
     if hasattr(typing, "get_args"):
         return typing.get_args(t)
-    else:
+    else:  # pragma: no cover
         # todo: work around for versions before python 3.8
         return None
 
