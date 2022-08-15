@@ -116,6 +116,38 @@ tests:
     spec: test_scribe.model_type.TestModel
     attributes:
       target_func_name: f
+- name: test_get_output_root_path_via_config
+  short_name: _via_config
+  target:
+    name: get_output_root_path
+  parameters:
+  - name: config
+    value: !test_scribe/mock 'm_config'
+  - name: cmd_line_root_path
+    value: null
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b')
+  mocks:
+  - name: m_config
+    spec: test_scribe.config.Config
+    attributes:
+      output_root_path: !test_scribe/expression 'pathlib.Path("a/b")'
+- name: test_get_output_root_path_via_cmd_line
+  short_name: _via_cmd_line
+  target:
+    name: get_output_root_path
+  parameters:
+  - name: config
+    value: !test_scribe/mock 'm_config'
+  - name: cmd_line_root_path
+    value: !test_scribe/expression 'pathlib.Path("a/b")'
+  result: !test_scribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b')
+  mocks:
+  - name: m_config
+    spec: test_scribe.config.Config
 - name: test_get_tests_to_move_from_one_file_no_matching_test
   short_name: _no_matching_test
   target:

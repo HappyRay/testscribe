@@ -1,12 +1,13 @@
 import fixture.helper
 import pathlib
+import test_scribe.config
 import test_scribe.error
 import test_scribe.model_type
 import test_scribe.module
 from test_scribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 import pytest
-from test_scribe.move_cmd import add_one_test, do_move, does_test_match_target_name, get_name_to_compare_with, get_tests_to_move_from_one_file, is_class_name, module_contain_same_symbol, search_tests_to_remove, should_skip_module
+from test_scribe.move_cmd import add_one_test, do_move, does_test_match_target_name, get_name_to_compare_with, get_output_root_path, get_tests_to_move_from_one_file, is_class_name, module_contain_same_symbol, search_tests_to_remove, should_skip_module
 
 
 def test_add_one_test():
@@ -67,6 +68,23 @@ def test_get_name_to_compare_with_func():
     result = get_name_to_compare_with(target_is_class=False, test=test)
     assert result == 'f'
     test.assert_not_called()
+
+
+def test_get_output_root_path_via_config():
+    m_config: test_scribe.config.Config = create_autospec(spec=test_scribe.config.Config)
+    m_config.output_root_path = pathlib.Path("a/b")
+    result = get_output_root_path(config=m_config, cmd_line_root_path=None)
+    assert isinstance(result, pathlib.PosixPath)
+    assert repr(result) == "PosixPath('a/b')"
+    m_config.assert_not_called()
+
+
+def test_get_output_root_path_via_cmd_line():
+    m_config: test_scribe.config.Config = create_autospec(spec=test_scribe.config.Config)
+    result = get_output_root_path(config=m_config, cmd_line_root_path=pathlib.Path("a/b"))
+    assert isinstance(result, pathlib.PosixPath)
+    assert repr(result) == "PosixPath('a/b')"
+    m_config.assert_not_called()
 
 
 def test_get_tests_to_move_from_one_file_no_matching_test():
