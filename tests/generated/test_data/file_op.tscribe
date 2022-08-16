@@ -16,7 +16,7 @@ tests:
     replacement: !test_scribe/mock 'm_text_open_spec'
   mocks:
   - name: m_text_open_spec
-    spec: test_scribe.api.custom_spec.text_open_spec
+    spec: test_data.custom_spec.text_open_spec
     calls:
     - parameters:
       - name: file
@@ -25,7 +25,7 @@ tests:
         value: w
       return: !test_scribe/mock 'm_text_file_context_mgr_spec'
   - name: m_text_file_context_mgr_spec
-    spec: test_scribe.api.custom_spec.TextFileContextMgrSpec
+    spec: test_data.custom_spec.TextFileContextMgrSpec
     calls:
     - name: __enter__
       parameters: []
@@ -40,7 +40,7 @@ tests:
         value: null
       return: true
   - name: m_text_file_spec
-    spec: test_scribe.api.custom_spec.TextFileSpec
+    spec: test_data.custom_spec.TextFileSpec
     calls:
     - name: write
       parameters:
