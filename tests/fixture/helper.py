@@ -6,10 +6,10 @@ from unittest.mock import patch
 from typer.testing import CliRunner
 
 from test_scribe import global_var
+from test_scribe.__main__ import app
 from test_scribe.api.mock_api import patch_with_expression
 from test_scribe.custom_type import Spec
 from test_scribe.global_var import get_initial_mock_name_counter
-from test_scribe.main import app
 from test_scribe.mock_proxy import MockProxy
 
 TEST_DATA_MODULE_NAME = "test_data"

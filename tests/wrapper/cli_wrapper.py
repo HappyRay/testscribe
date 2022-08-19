@@ -2,7 +2,7 @@ from typing import List
 
 from typer.testing import CliRunner
 
-from test_scribe.main import app
+from test_scribe.__main__ import app
 
 
 def run(args: List[str]):
