@@ -5,6 +5,7 @@ description = "Unit test automation tool"
 authors = ["Ray Yang <ruiguo@gmail.com>"]
 
 [tool.poetry.dependencies]
+# typing.get_args is introduced in python 3.8
 python = "^3.8"
 typer = "*"
 # Before pyyaml 5.1 the directory keys are sorted, it is desirable to
