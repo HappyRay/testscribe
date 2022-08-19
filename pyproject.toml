@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "test-scribe"
+name = "testscribe"
 version = "0.1.0"
 description = "Unit test automation tool"
 authors = ["Ray Yang <ruiguo@gmail.com>"]
