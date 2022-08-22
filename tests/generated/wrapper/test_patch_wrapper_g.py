@@ -4,7 +4,7 @@ from wrapper.patch_wrapper import patch_common_code_gen
 
 
 def test_patch_common_code_gen_dict():
-    with patch('test_scribe.global_var.g_mock_name_counter', collections.Counter()):
+    with patch('testscribe.global_var.g_mock_name_counter', collections.Counter()):
         result = patch_common_code_gen(value={'a': 1})
     assert result == """\
 
@@ -12,7 +12,7 @@ def test_patch_common_code_gen_dict():
 
 
 def test_patch_common_code_gen_list():
-    with patch('test_scribe.global_var.g_mock_name_counter', collections.Counter()):
+    with patch('testscribe.global_var.g_mock_name_counter', collections.Counter()):
         result = patch_common_code_gen(value=[1, 2])
     assert result == """\
 
@@ -20,7 +20,7 @@ def test_patch_common_code_gen_list():
 
 
 def test_patch_common_code_gen_str():
-    with patch('test_scribe.global_var.g_mock_name_counter', collections.Counter()):
+    with patch('testscribe.global_var.g_mock_name_counter', collections.Counter()):
         result = patch_common_code_gen(value='a')
     assert result == """\
 
@@ -28,7 +28,7 @@ def test_patch_common_code_gen_str():
 
 
 def test_patch_common_code_gen_int():
-    with patch('test_scribe.global_var.g_mock_name_counter', collections.Counter()):
+    with patch('testscribe.global_var.g_mock_name_counter', collections.Counter()):
         result = patch_common_code_gen(value=1)
     assert result == """\
 

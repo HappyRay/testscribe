@@ -7,7 +7,7 @@ tests:
     name: get_a_product_total
   parameters:
   - name: factory
-    value: !test_scribe/mock 'm_product_factory'
+    value: !testscribe/mock 'm_product_factory'
   result: 3
   mocks:
   - name: m_product_factory
@@ -20,8 +20,8 @@ tests:
       - name: num
         value: 2
       return:
-      - !test_scribe/mock 'm_product'
-      - !test_scribe/mock 'm_product_1'
+      - !testscribe/mock 'm_product'
+      - !testscribe/mock 'm_product_1'
   - name: m_product
     spec: test_data.product.Product
     attributes:

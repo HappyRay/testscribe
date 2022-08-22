@@ -10,6 +10,6 @@ tests:
     value: a
   - name: age
     value: 1
-  result: !test_scribe/object
+  result: !testscribe/object
     type: test_data.person.Person
     repr: Person(name='a', age=1)

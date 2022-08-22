@@ -1,0 +1,533 @@
+format_version: 1
+module: testscribe.reflection_util
+tests:
+- name: test_get_bound_arguments
+  short_name: _
+  target:
+    name: get_bound_arguments
+  parameters:
+  - name: sig
+    value: !testscribe/expression 'inspect.signature(test_data.calculator.add)'
+  - name: args
+    value:
+    - 1
+  - name: kwargs
+    value:
+      b: 2
+  result:
+    a: 1
+    b: 2
+- name: test_get_full_spec_name_function
+  short_name: _function
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'test_data.simple.foo'
+  result: test_data.simple.foo
+- name: test_get_full_spec_name_callable
+  short_name: _callable
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Callable'
+  result: typing.Callable
+- name: test_get_full_spec_name_builtin_type
+  short_name: _builtin_type
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'Exception'
+  result: Exception
+- name: test_get_full_spec_name_class
+  short_name: _class
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'test_data.person.Person'
+  result: test_data.person.Person
+- name: test_get_method_non_method_member
+  short_name: _non_method_member
+  target:
+    name: get_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.C'
+  - name: method_name
+    value: a
+  result: null
+- name: test_get_method_invalid_method_name
+  short_name: _invalid_method_name
+  target:
+    name: get_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.C'
+  - name: method_name
+    value: invalid
+  result: null
+- name: test_get_method_valid_method
+  short_name: _valid_method
+  target:
+    name: get_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.C'
+  - name: method_name
+    value: bar
+  result: !testscribe/callable
+    name: C.bar
+    module: test_data.simple
+- name: test_get_method_signature_for_caller_invalid_method_name
+  short_name: _invalid_method_name
+  target:
+    name: get_method_signature_for_caller
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.service.Service'
+  - name: name
+    value: invalid
+  exception:
+    type: testscribe.error.Error
+    message: invalid is not a method of the class <class 'test_data.service.Service'>
+- name: test_get_method_signature_for_caller_static_method
+  short_name: _static_method
+  target:
+    name: get_method_signature_for_caller
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.static_method.StaticService'
+  - name: name
+    value: do
+  result: !testscribe/object
+    type: inspect.Signature
+    repr: <Signature () -> int>
+- name: test_get_method_signature_for_caller_instance_method
+  short_name: _instance_method
+  target:
+    name: get_method_signature_for_caller
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.service.Service'
+  - name: name
+    value: search_a_name
+  result: !testscribe/object
+    type: inspect.Signature
+    repr: '<Signature (keyword: str) -> str>'
+- name: test_get_module_and_symbol_callable_with_component_types
+  short_name: _callable_with_component_types
+  target:
+    name: get_module_and_symbol
+  parameters:
+  - name: full_name
+    value: typing.Callable[[typing.Any], bool]
+  result: !!python/tuple
+  - typing
+  - Callable
+- name: test_get_module_and_symbol_default_module
+  short_name: _default_module
+  target:
+    name: get_module_and_symbol
+  parameters:
+  - name: full_name
+    value: c
+  result: !!python/tuple
+  - ''
+  - c
+- name: test_get_module_and_symbol
+  short_name: _
+  target:
+    name: get_module_and_symbol
+  parameters:
+  - name: full_name
+    value: a.b.c
+  result: !!python/tuple
+  - a.b
+  - c
+- name: test_get_module_str_empty_module_name
+  short_name: _empty_module_name
+  target:
+    name: get_module_str
+  parameters:
+  - name: full_name
+    value: a
+  result: ''
+- name: test_get_module_str
+  short_name: _
+  target:
+    name: get_module_str
+  parameters:
+  - name: full_name
+    value: a.b.c
+  result: a.b
+- name: test_get_module_str_from_object_has_module
+  short_name: _has_module
+  target:
+    name: get_module_str_from_object
+  parameters:
+  - name: obj
+    value: !testscribe/expression 'test_data.simple.C'
+  result: test_data.simple
+- name: test_get_module_str_from_object_no_module_attribute
+  short_name: _no_module_attribute
+  target:
+    name: get_module_str_from_object
+  parameters:
+  - name: obj
+    value: 1
+  result: ''
+- name: test_get_param_list_constructor_with_future_annotation_import
+  short_name: _constructor_with_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.with_future_annotation_import.C2'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+- name: test_get_param_list_constructor_without_future_annotation_import
+  short_name: _constructor_without_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.without_future_annotation_import.C1'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+- name: test_get_param_list_method_with_future_annotation_import
+  short_name: _method_with_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.with_future_annotation_import.C2(1).m2'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "b: str">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "c: test_data.without_future_annotation_import.C0">'
+- name: test_get_param_list_func_with_future_annotation_import
+  short_name: _func_with_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.with_future_annotation_import.f2'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "b: str">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "c: test_data.without_future_annotation_import.C0">'
+- name: test_get_param_list_method_without_future_annotation_import
+  short_name: _method_without_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.without_future_annotation_import.C1(1).m1'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "b: str">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "c: test_data.without_future_annotation_import.C0">'
+- name: test_get_param_list_func_without_future_annotation_import
+  short_name: _func_without_future_annotation_import
+  target:
+    name: get_param_list
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.without_future_annotation_import.f1'
+  result:
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "a: int">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "b: str">'
+  - !testscribe/object
+    type: inspect.Parameter
+    repr: '<Parameter "c: test_data.without_future_annotation_import.C0">'
+- name: test_get_return_type_no_return_annotation
+  short_name: _no_return_annotation
+  target:
+    name: get_return_type
+  parameters:
+  - name: func
+    value: !testscribe/expression 'test_data.with_future_annotation_import.no_return_annotation_f'
+  result: !testscribe/callable
+    name: _empty
+    module: inspect
+- name: test_get_symbol_invalid
+  short_name: _invalid
+  target:
+    name: get_symbol
+  parameters:
+  - name: full_name
+    value: test_data.simple.invalid
+  exception:
+    type: testscribe.error.Error
+    message: test_data.simple.invalid is not a valid identifier.
+- name: test_get_symbol_valid_symbol
+  short_name: _valid_symbol
+  target:
+    name: get_symbol
+  parameters:
+  - name: full_name
+    value: test_data.simple.foo
+  result: !testscribe/callable
+    name: foo
+    module: test_data.simple
+- name: test_get_type_name_none_type
+  short_name: _none_type
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'type(None)'
+  result: NoneType
+- name: test_get_type_name_dict
+  short_name: _dict
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: dict
+      module: builtins
+  result: dict
+- name: test_get_type_name_set
+  short_name: _set
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: set
+      module: builtins
+  result: set
+- name: test_get_type_name_tuple
+  short_name: _tuple
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: tuple
+      module: builtins
+  result: tuple
+- name: test_get_type_name_list
+  short_name: _list
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: list
+      module: builtins
+  result: list
+- name: test_get_type_name_class
+  short_name: _class
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'test_data.person.Person'
+  result: test_data.person.Person
+- name: test_get_type_name_any
+  short_name: _any
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Any'
+  result: any
+- name: test_get_type_name_float
+  short_name: _float
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: float
+      module: builtins
+  result: float
+- name: test_get_type_name_bool
+  short_name: _bool
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: bool
+      module: builtins
+  result: bool
+- name: test_get_type_name_int
+  short_name: _int
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: int
+      module: builtins
+  result: int
+- name: test_get_type_name_str
+  short_name: _str
+  target:
+    name: get_type_name
+  parameters:
+  - name: t
+    value: !testscribe/callable
+      name: str
+      module: builtins
+  result: str
+- name: test_get_typing_callable_return_type_no_return_type
+  short_name: _no_return_type
+  target:
+    name: get_typing_callable_return_type
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Callable'
+  result: !testscribe/callable
+    name: _empty
+    module: inspect
+- name: test_get_typing_callable_return_type_has_type_annotation
+  short_name: _has_type_annotation
+  target:
+    name: get_typing_callable_return_type
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Callable[[str] ,int]'
+  result: !testscribe/callable
+    name: int
+    module: builtins
+- name: test_has_param_names_negative_1
+  short_name: _negative
+  target:
+    name: has_param_names
+  parameters:
+  - name: spec
+    value: !testscribe/expression 'typing.Callable[[int], int]'
+  result: false
+- name: test_has_param_names_negative
+  short_name: _negative
+  target:
+    name: has_param_names
+  parameters:
+  - name: spec
+    value: !testscribe/expression 'typing.Callable'
+  result: false
+- name: test_has_param_names_positive_func
+  short_name: _positive_func
+  target:
+    name: has_param_names
+  parameters:
+  - name: spec
+    value: !testscribe/expression 'test_data.simple.foo'
+  result: true
+- name: test_has_param_names_positive
+  short_name: _positive
+  target:
+    name: has_param_names
+  parameters:
+  - name: spec
+    value: !testscribe/expression 'test_data.simple.C'
+  result: true
+- name: test_is_instance_method_invalid_method_name
+  short_name: _invalid_method_name
+  target:
+    name: is_instance_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.foo'
+  - name: method_name
+    value: ''
+  result: false
+- name: test_is_instance_method_instance
+  short_name: _instance
+  target:
+    name: is_instance_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.service.Service'
+  - name: method_name
+    value: search_a_name
+  result: true
+- name: test_is_instance_method_static
+  short_name: _static
+  target:
+    name: is_instance_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.static_method.StaticService'
+  - name: method_name
+    value: do
+  result: false
+- name: test_is_instance_method_class
+  short_name: _class
+  target:
+    name: is_instance_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.class_method.ClassService'
+  - name: method_name
+    value: do
+  result: false
+- name: test_is_method_positive
+  short_name: _positive
+  target:
+    name: is_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.C'
+  - name: name
+    value: bar
+  result: true
+- name: test_is_method_negative
+  short_name: _negative
+  target:
+    name: is_method
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.C'
+  - name: name
+    value: a
+  result: false
+- name: test_remove_brackets_no_bracket
+  short_name: _no_bracket
+  target:
+    name: remove_brackets
+  parameters:
+  - name: full_name
+    value: str
+  result: str
+- name: test_remove_brackets_has_bracket
+  short_name: _has_bracket
+  target:
+    name: remove_brackets
+  parameters:
+  - name: full_name
+    value: typing.Callable[[typing.Any], bool]
+  result: typing.Callable

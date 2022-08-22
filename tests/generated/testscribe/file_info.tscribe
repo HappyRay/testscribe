@@ -1,0 +1,70 @@
+format_version: 1
+module: testscribe.file_info
+tests:
+- name: test_get_function_method
+  short_name: _method
+  target:
+    name: get_function
+  parameters:
+  - name: module_name
+    value: test_data.greet
+  - name: func_name
+    value: greet
+  result: !!python/tuple
+  - !testscribe/callable
+    name: Greeter.greet
+    module: test_data.greet
+  - !testscribe/callable
+    name: Greeter
+    module: test_data.greet
+- name: test_get_function_valid_function
+  short_name: _valid_function
+  target:
+    name: get_function
+  parameters:
+  - name: module_name
+    value: test_data.calculator
+  - name: func_name
+    value: add
+  result: !!python/tuple
+  - !testscribe/callable
+    name: add
+    module: test_data.calculator
+  - null
+- name: test_get_function_throws_exception_non_existing_function
+  short_name: _throws_exception_non_existing_function
+  target:
+    name: get_function
+  parameters:
+  - name: module_name
+    value: test_data.calculator
+  - name: func_name
+    value: foo
+  exception:
+    type: testscribe.error.Error
+    message: Can't find the function or method with the name foo in module test_data.calculator.
+- name: test_get_function_throws_exception_non_function
+  short_name: _throws_exception_non_function
+  target:
+    name: get_function
+  parameters:
+  - name: module_name
+    value: test_data.calculator
+  - name: func_name
+    value: dummy
+  exception:
+    type: testscribe.error.Error
+    message: Can't find the function or method with the name dummy in module test_data.calculator.
+- name: test_get_module
+  short_name: _
+  target:
+    name: get_module
+  parameters:
+  - name: target_file
+    value: !testscribe/expression 'fixture.helper.get_absolute_path("test_data/calculator.py")'
+  result: !testscribe/object
+    type: testscribe.module.Module
+    members:
+      names: !!python/tuple
+      - test_data
+      - calculator

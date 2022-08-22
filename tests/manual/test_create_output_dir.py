@@ -1,5 +1,5 @@
-from test_scribe.input_params import create_output_dir_for_module
-from test_scribe.module import Module
+from testscribe.input_params import create_output_dir_for_module
+from testscribe.module import Module
 
 
 def test_create_output_dir_for_module(tmp_path):

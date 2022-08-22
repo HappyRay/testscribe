@@ -1,8 +1,8 @@
 from typing import Any
 
-from test_scribe.gen_patch_code import generate_patch_str
-from test_scribe.model import create_patch_model
-from test_scribe.patcher import create_patcher
+from testscribe.gen_patch_code import generate_patch_str
+from testscribe.model import create_patch_model
+from testscribe.patcher import create_patcher
 
 
 def patch_common_code_gen(value: Any):

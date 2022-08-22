@@ -1,0 +1,55 @@
+format_version: 1
+module: testscribe.mocking_support
+tests:
+- name: test_check_target_can_be_used_as_spec_func_can_be_a_spec
+  short_name: _func_can_be_a_spec
+  target:
+    name: check_target_can_be_used_as_spec
+  parameters:
+  - name: obj
+    value: !testscribe/expression 'test_data.simple.foo'
+  result: null
+- name: test_check_target_can_be_used_as_spec_int_not_a_spec
+  short_name: _int_not_a_spec
+  target:
+    name: check_target_can_be_used_as_spec
+  parameters:
+  - name: obj
+    value: 1
+  exception:
+    type: testscribe.error.Error
+    message: 1 is not a type or Callable. It can't be used as a spec for a mock object.
+- name: test_get_mock_target_str_class
+  short_name: _class
+  target:
+    name: get_mock_target_str
+  parameters:
+  - name: target
+    value: !testscribe/expression 'test_data.simple.C'
+  result: test_data.simple.C
+- name: test_get_mock_target_str_str
+  short_name: _str
+  target:
+    name: get_mock_target_str
+  parameters:
+  - name: target
+    value: a
+  result: a
+- name: test_get_target_str_from_obj_invalid_object_for_spec
+  short_name: _invalid_object_for_spec
+  target:
+    name: get_target_str_from_obj
+  parameters:
+  - name: obj
+    value: 1
+  exception:
+    type: testscribe.error.Error
+    message: 1 is not a type or Callable. It can't be used as a spec for a mock object.
+- name: test_get_target_str_from_obj_class
+  short_name: _class
+  target:
+    name: get_target_str_from_obj
+  parameters:
+  - name: obj
+    value: !testscribe/expression 'test_data.simple.C'
+  result: test_data.simple.C

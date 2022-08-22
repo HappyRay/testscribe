@@ -1,4 +1,4 @@
-from test_scribe.api.mock_api import patch_with_expression
+from testscribe.api.mock_api import patch_with_expression
 
 a_dict = {"a": 1}
 

@@ -8,5 +8,5 @@ tests:
   parameters: []
   result: null
   patches:
-  - target: test_scribe.global_var.g_io
+  - target: testscribe.global_var.g_io
     replacement: null

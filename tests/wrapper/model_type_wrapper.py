@@ -1,9 +1,9 @@
 from typing import Callable
 
 from test_data.value import object_model_c
-from test_scribe.model_type import ObjectModel, MockNameModel, ExpressionModel, ModuleModel, \
+from testscribe.model_type import ObjectModel, MockNameModel, ExpressionModel, ModuleModel, \
     SetModel, ExceptionModel
-from test_scribe.transformer import transform_value
+from testscribe.transformer import transform_value
 
 
 def callable_model_repr(c: Callable) -> str:

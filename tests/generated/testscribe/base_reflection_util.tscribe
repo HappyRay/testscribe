@@ -1,0 +1,35 @@
+format_version: 1
+module: testscribe.base_reflection_util
+tests:
+- name: test_get_class_instance_repr_with_full_name_has_module_name
+  short_name: _has_module_name
+  target:
+    name: get_class_instance_repr_with_full_name
+  parameters:
+  - name: instance
+    value: !testscribe/expression 'test_data.simple.SimpleDataClass(1)'
+  result: test_data.simple.SimpleDataClass(a=1, s=None)
+- name: test_get_class_instance_repr_with_full_name_no_module_name
+  short_name: _no_module_name
+  target:
+    name: get_class_instance_repr_with_full_name
+  parameters:
+  - name: instance
+    value: !testscribe/expression 'Exception("foo")'
+  result: Exception('foo')
+- name: test_get_full_module_name_no_module_name
+  short_name: _no_module_name
+  target:
+    name: get_full_module_name
+  parameters:
+  - name: symbol
+    value: !testscribe/expression 'Exception("foo")'
+  result: ''
+- name: test_get_full_module_name_has_module_name
+  short_name: _has_module_name
+  target:
+    name: get_full_module_name
+  parameters:
+  - name: symbol
+    value: !testscribe/expression 'test_data.simple.C'
+  result: test_data.simple

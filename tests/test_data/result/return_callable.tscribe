@@ -7,7 +7,7 @@ tests:
     name: echo_func
   parameters:
   - name: f
-    value: !test_scribe/expression 'test_data.simple.foo'
-  result: !test_scribe/callable
+    value: !testscribe/expression 'test_data.simple.foo'
+  result: !testscribe/callable
     name: foo
     module: test_data.simple

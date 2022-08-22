@@ -4,10 +4,10 @@ from pytest import mark
 
 from test_data.with_future_annotation_import import f2, C2
 from test_data.without_future_annotation_import import f1, C1
-from test_scribe.reflection_util import (
+from testscribe.reflection_util import (
     get_return_type,
 )
-from test_scribe.type_util import get_type_args
+from testscribe.type_util import get_type_args
 
 
 def test_get_type_args_tuple_with_ellipsis():

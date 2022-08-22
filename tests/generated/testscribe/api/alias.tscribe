@@ -1,0 +1,19 @@
+format_version: 1
+module: testscribe.api.alias
+tests:
+- name: test_define_alias
+  short_name: _
+  target:
+    name: define_alias
+  parameters:
+  - name: alias
+    value: foo
+  - name: full_str
+    value: bar
+  result:
+    A: '2'
+    foo: bar
+  patches:
+  - target: testscribe.api.alias.g_aliases
+    replacement:
+      A: '2'

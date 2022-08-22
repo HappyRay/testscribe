@@ -9,7 +9,7 @@ tests:
   result: null
   patches:
   - target: test_data.patch_function_for_integration_test.func_with_side_effect
-    replacement: !test_scribe/mock 'm_func_with_side_effect'
+    replacement: !testscribe/mock 'm_func_with_side_effect'
   mocks:
   - name: m_func_with_side_effect
     spec: test_data.patch_function_for_integration_test.func_with_side_effect

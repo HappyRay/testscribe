@@ -10,7 +10,7 @@ tests:
   - name: test_file_name
     value: /a/b.py
   exception:
-    type: test_scribe.error.Error
+    type: testscribe.error.Error
     message: The file (/a/b.py) can't be loaded as a python module.
 - name: test_get_module_wrapper_success
   short_name: _success
@@ -21,8 +21,8 @@ tests:
   parameters:
   - name: test_file_name
     value: a/b/c.py
-  result: !test_scribe/object
-    type: test_scribe.module.Module
+  result: !testscribe/object
+    type: testscribe.module.Module
     members:
       names: !!python/tuple
       - a

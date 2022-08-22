@@ -7,7 +7,7 @@ tests:
     name: call_mock_service_with_object
   parameters:
   - name: s
-    value: !test_scribe/mock 'm_service'
+    value: !testscribe/mock 'm_service'
   result: null
   mocks:
   - name: m_service
@@ -16,6 +16,6 @@ tests:
     - name: f
       parameters:
       - name: p
-        value: !test_scribe/object
+        value: !testscribe/object
           type: pathlib.PosixPath
           repr: PosixPath('foo')

@@ -1,6 +1,6 @@
 from test_data.simple import C, foo, ReadOnlyData
 import test_data.simple
-from test_scribe.transformer import transform_class, create_callable_model
+from testscribe.transformer import transform_class, create_callable_model
 
 callable_model_foo = create_callable_model(foo)
 

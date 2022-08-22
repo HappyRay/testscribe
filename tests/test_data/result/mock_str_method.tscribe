@@ -7,7 +7,7 @@ tests:
     name: print_simple_data_class
   parameters:
   - name: s
-    value: !test_scribe/mock 'm_simple_data_class'
+    value: !testscribe/mock 'm_simple_data_class'
   result: mock m_simple_data_class
   mocks:
   - name: m_simple_data_class

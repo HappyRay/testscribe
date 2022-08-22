@@ -8,8 +8,8 @@ tests:
     name: echo
   parameters:
   - name: v
-    value: !test_scribe/expression 'test_data.simple.C(1)'
-  result: !test_scribe/object
+    value: !testscribe/expression 'test_data.simple.C(1)'
+  result: !testscribe/object
     type: test_data.simple.C
     members:
       a: 1
@@ -19,8 +19,8 @@ tests:
     name: echo
   parameters:
   - name: v
-    value: !test_scribe/expression 'test_data.simple.C(1)'
-  result: !test_scribe/object
+    value: !testscribe/expression 'test_data.simple.C(1)'
+  result: !testscribe/object
     type: test_data.simple.C
     members:
       a: 1

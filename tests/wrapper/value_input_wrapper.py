@@ -1,5 +1,5 @@
-from test_scribe.value_input_cli import post_process_raw_input
-from test_scribe.value_util import InputValue
+from testscribe.value_input_cli import post_process_raw_input
+from testscribe.value_util import InputValue
 
 
 def post_process_raw_input_wrapper_special_value():

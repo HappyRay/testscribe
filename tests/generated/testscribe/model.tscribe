@@ -1,0 +1,113 @@
+format_version: 1
+module: testscribe.model
+tests:
+- name: test_create_new_all_tests_update_test
+  short_name: _update_test
+  target:
+    name: create_new_all_tests
+  parameters:
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: 0
+  - name: new_test
+    value: !testscribe/mock 'new_test'
+  result: !testscribe/object
+    type: testscribe.model_type.AllTests
+    members:
+      module: m
+      tests:
+      - !testscribe/mock 'new_test'
+      name_to_index:
+        t: 0
+  mocks:
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests:
+      - !testscribe/mock 'm_test_model'
+      module: m
+  - name: new_test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_class_name: c
+      target_func_name: f
+      name: t
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+- name: test_create_new_all_tests_add_test
+  short_name: _add_test
+  target:
+    name: create_new_all_tests
+  parameters:
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  - name: index_of_test_to_update
+    value: -1
+  - name: new_test
+    value: !testscribe/mock 'new_test'
+  result: !testscribe/object
+    type: testscribe.model_type.AllTests
+    members:
+      module: m
+      tests:
+      - !testscribe/mock 'new_test'
+      name_to_index:
+        t: 0
+  mocks:
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests: []
+      module: m
+  - name: new_test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      name: t
+      target_class_name: c
+      target_func_name: f
+- name: test_get_exception_model_no_exception
+  short_name: _no_exception
+  target:
+    name: get_exception_model
+  parameters:
+  - name: exception
+    value: null
+  result: null
+- name: test_get_exception_model_has_exception
+  short_name: _has_exception
+  target:
+    name: get_exception_model
+  parameters:
+  - name: exception
+    value: !testscribe/expression 'TypeError("a")'
+  result: !testscribe/object
+    type: testscribe.model_type.ExceptionModel
+    repr: ExceptionModel(type='TypeError', message='a')
+- name: test_get_patch_models
+  short_name: _
+  target:
+    name: get_patch_models
+  parameters:
+  - name: patches
+    value:
+    - !testscribe/mock 'm_patcher'
+    - !testscribe/mock 'm_patcher_1'
+  result:
+  - !testscribe/object
+    type: testscribe.model_type.PatchModel
+    repr: PatchModel(target='t1', replacement=1)
+  - !testscribe/object
+    type: testscribe.model_type.PatchModel
+    repr: PatchModel(target='t2', replacement=2)
+  mocks:
+  - name: m_patcher
+    spec: testscribe.patcher.Patcher
+    attributes:
+      target: t1
+      replacement_spec: 1
+  - name: m_patcher_1
+    spec: testscribe.patcher.Patcher
+    attributes:
+      target: t2
+      replacement_spec: 2

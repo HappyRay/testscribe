@@ -5,14 +5,13 @@ def test_run_cmd_help_sync():
     result = run_cmd_help(cmd_name='sync')
     assert result == """\
                                                                                 
- Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH                             
+ Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH                              
                                                                                 
  Regenerate the unit test file.                                                 
  :param scribe_file_path: :return:                                              
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The test_scribe file to sync                │
-│                                  [default: None]                             │
+│ *    scribe_file_path      FILE  The testscribe file to sync [default: None] │
 │                                  [required]                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -26,14 +25,14 @@ def test_run_cmd_help_delete():
     result = run_cmd_help(cmd_name='delete')
     assert result == """\
                                                                                 
- Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]               
+ Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]                
                                                                                 
- Delete a test. This will delete the test from both the test_scribe file and    
- the unit test file.                                                            
+ Delete a test. This will delete the test from both the testscribe file and the 
+ unit test file.                                                                
  :param scribe_file_path: :param test_name: :return:                            
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE         The test_scribe file to modify       │
+│ *    scribe_file_path      FILE         The testscribe file to modify        │
 │                                         [default: None]                      │
 │                                         [required]                           │
 │      test_name             [TEST_NAME]  The name of the test to be removed   │
@@ -49,13 +48,13 @@ def test_run_cmd_help_update():
     result = run_cmd_help(cmd_name='update')
     assert result == """\
                                                                                 
- Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]               
+ Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]                
                                                                                 
  Update the selected test.                                                      
  :param test_name: :param scribe_file_path: :return:                            
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE         The test_scribe file to update       │
+│ *    scribe_file_path      FILE         The testscribe file to update        │
 │                                         [default: None]                      │
 │                                         [required]                           │
 │      test_name             [TEST_NAME]  The name of the test to update       │
@@ -71,7 +70,7 @@ def test_run_cmd_help_create():
     result = run_cmd_help(cmd_name='create')
     assert result == """\
                                                                                 
- Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME                  
+ Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME                   
                                                                                 
  Generate a new test.                                                           
  :param config_file: :param ask_for_description: :param ask_for_test_name:      
@@ -109,7 +108,7 @@ def test_run_cmd_help_move():
     result = run_cmd_help(cmd_name='move')
     assert result == """\
                                                                                 
- Usage: test_scribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME           
+ Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME            
                                                                                 
  Move tests for a function to their new files corresponding to the new module   
  to which the function has moved.                                               
@@ -137,8 +136,8 @@ def test_run_cmd_help_move():
 def test_cli_sync_cmd_with_missing_arguments_should_show_usage():
     result = run_cmd_without_args(cmd='sync')
     assert result == """\
-Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH
-Try 'test_scribe sync --help' for help.
+Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
+Try 'testscribe sync --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'SCRIBE_FILE_PATH'.                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -148,8 +147,8 @@ Try 'test_scribe sync --help' for help.
 def test_cli_update_cmd_with_missing_argument_should_show_usage():
     result = run_cmd_without_args(cmd='update')
     assert result == """\
-Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-Try 'test_scribe update --help' for help.
+Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
+Try 'testscribe update --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'SCRIBE_FILE_PATH'.                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -159,8 +158,8 @@ Try 'test_scribe update --help' for help.
 def test_cli_delete_cmd_missing_arguments_should_show_usage():
     result = run_cmd_without_args(cmd='delete')
     assert result == """\
-Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
-Try 'test_scribe delete --help' for help.
+Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
+Try 'testscribe delete --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'SCRIBE_FILE_PATH'.                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -170,8 +169,8 @@ Try 'test_scribe delete --help' for help.
 def test_cli_incorrect_file_argument_should_show_usage():
     result = run_create_cmd(additional_args=['do_not_exist'])
     assert result == """\
-Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-Try 'test_scribe create --help' for help.
+Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
+Try 'testscribe create --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Invalid value for 'SOURCE_FILE': File 'do_not_exist' does not exist.         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -181,8 +180,8 @@ Try 'test_scribe create --help' for help.
 def test_cli_missing_file_name_should_show_usage():
     result = run_create_cmd(additional_args=[])
     assert result == """\
-Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-Try 'test_scribe create --help' for help.
+Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
+Try 'testscribe create --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'SOURCE_FILE'.                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -192,8 +191,8 @@ Try 'test_scribe create --help' for help.
 def test_cli_create_cmd_without_function_name_should_show_usage():
     result = run_create_cmd_with_file_name_only()
     assert result == """\
-Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
-Try 'test_scribe create --help' for help.
+Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
+Try 'testscribe create --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'FUNCTION_NAME'.                                            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -204,7 +203,7 @@ def test_run_help():
     result = run_help()
     assert result == """\
                                                                                 
- Usage: test_scribe [OPTIONS] COMMAND [ARGS]...                                 
+ Usage: testscribe [OPTIONS] COMMAND [ARGS]...                                  
                                                                                 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --install-completion        [bash|zsh|fish|powershe  Install completion for  │
@@ -220,7 +219,7 @@ def test_run_help():
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
 │ create    Generate a new test.                                               │
-│ delete    Delete a test. This will delete the test from both the test_scribe │
+│ delete    Delete a test. This will delete the test from both the testscribe  │
 │           file and the unit test file.                                       │
 │ move      Move tests for a function to their new files corresponding to the  │
 │           new module to which the function has moved.                        │

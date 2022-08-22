@@ -7,7 +7,7 @@ tests:
     name: print_car_year_twice
   parameters:
   - name: c
-    value: !test_scribe/mock 'm_car'
+    value: !testscribe/mock 'm_car'
   result: 1, 1
   mocks:
   - name: m_car

@@ -1,8 +1,8 @@
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data import simple
 from test_data.simple import C
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.transformer import transform_value
+from testscribe.mock_proxy import MockProxy
+from testscribe.transformer import transform_value
 
 
 def tranform_module():

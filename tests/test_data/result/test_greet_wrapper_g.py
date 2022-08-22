@@ -1,5 +1,5 @@
 import test_data.greet
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 import pytest
 from test_data.greet_wrapper import greet_mock_greeter

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from conftest import assert_same
 from fixture.helper import get_project_root_path
-from test_scribe.config import init_config, add_additional_python_paths
+from testscribe.config import init_config, add_additional_python_paths
 
 
 def convert_to_absolute_path_str(s: str) -> str:

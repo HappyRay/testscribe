@@ -1,5 +1,5 @@
 import typing
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from test_data.function_as_param import calc
 

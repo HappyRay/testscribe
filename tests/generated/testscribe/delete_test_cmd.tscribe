@@ -1,0 +1,24 @@
+format_version: 1
+module: testscribe.delete_test_cmd
+tests:
+- name: test_delete_test_internal_test_not_exist
+  short_name: _test_not_exist
+  target:
+    name: delete_test_internal
+  parameters:
+  - name: scribe_file_path
+    value: !testscribe/expression 'pathlib.Path("foo")'
+  - name: test_name
+    value: not_exist
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  result: null
+  mocks:
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    calls:
+    - name: does_test_exist
+      parameters:
+      - name: test_name
+        value: not_exist
+      return: false

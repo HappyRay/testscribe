@@ -8,17 +8,17 @@ tests:
   parameters: []
   result: !!python/tuple
   - 2
-  - !test_scribe/object
-    type: test_scribe.mock_call.MockCall
+  - !testscribe/object
+    type: testscribe.mock_call.MockCall
     members:
       method_name: bar
       mock_name: mock_name
-      spec: !test_scribe/callable
+      spec: !testscribe/callable
         name: C
         module: test_data.simple
       previous_call_count: 0
-      args: !test_scribe/object
-        type: test_scribe.namedvalues.NamedValues
+      args: !testscribe/object
+        type: testscribe.namedvalues.NamedValues
         repr: NamedValues([('a', 1)])
       return_value: 2
 - name: test_get_call_description_wrapper
@@ -27,15 +27,14 @@ tests:
     name: get_call_description_wrapper
   parameters:
   - name: mock_call
-    value: !test_scribe/mock 'mock_call'
+    value: !testscribe/mock 'mock_call'
   result: |-
     f's foo method is called
     with: a=1.
   mocks:
   - name: mock_call
-    spec: test_scribe.mock_call.MockCall
+    spec: testscribe.mock_call.MockCall
     attributes:
-      args: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'',
-        1)])'
+      args: !testscribe/expression 'testscribe.namedvalues.NamedValues([(''a'', 1)])'
       mock_name: f
       method_name: foo

@@ -7,7 +7,7 @@ tests:
     name: call_class_method
   parameters:
   - name: s
-    value: !test_scribe/mock 'm_class_service'
+    value: !testscribe/mock 'm_class_service'
   result: 2
   mocks:
   - name: m_class_service

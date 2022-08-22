@@ -1,0 +1,67 @@
+format_version: 1
+module: testscribe.module
+tests:
+- name: test_get_module_name_only
+  short_name: _
+  target:
+    name: get_module_name_only
+    class_name: Module
+  init_parameters:
+  - name: module_names
+    value:
+    - a
+    - b
+  parameters: []
+  result: b
+- name: test_get_module_str
+  short_name: _
+  target:
+    name: get_module_str
+    class_name: Module
+  init_parameters:
+  - name: module_names
+    value:
+    - a
+    - b
+  parameters: []
+  result: a.b
+- name: test_get_package_name_list_builtin_name
+  short_name: _builtin_name
+  target:
+    name: get_package_name_list
+    class_name: Module
+  init_parameters:
+  - name: module_names
+    value:
+    - int
+  parameters: []
+  result: []
+- name: test_get_package_name_list
+  short_name: _
+  target:
+    name: get_package_name_list
+    class_name: Module
+  init_parameters:
+  - name: module_names
+    value:
+    - a
+    - b
+    - c
+  parameters: []
+  result:
+  - a
+  - b
+- name: test_get_module_from_str
+  short_name: _
+  target:
+    name: get_module_from_str
+  parameters:
+  - name: name
+    value: a.b.c
+  result: !testscribe/object
+    type: testscribe.module.Module
+    members:
+      names: !!python/tuple
+      - a
+      - b
+      - c

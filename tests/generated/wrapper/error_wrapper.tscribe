@@ -7,5 +7,5 @@ tests:
     name: raise_custom_error
   parameters: []
   exception:
-    type: test_scribe.error.Error
+    type: testscribe.error.Error
     message: foo

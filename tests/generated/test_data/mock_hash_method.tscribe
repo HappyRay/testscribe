@@ -7,9 +7,9 @@ tests:
     name: get_dict
   parameters:
   - name: d
-    value: !test_scribe/mock 'd'
+    value: !testscribe/mock 'd'
   result:
-    !test_scribe/mock 'd': 1
+    !testscribe/mock 'd': 1
   mocks:
   - name: d
     spec: test_data.simple.ReadOnlyData
@@ -20,9 +20,9 @@ tests:
   parameters: []
   result: 578569609205554811
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_use_not_hashable
   short_name: _
@@ -33,7 +33,7 @@ tests:
     type: TypeError
     message: The mock target <class 'test_data.simple.SimpleDataClass'> is not hashable.
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}

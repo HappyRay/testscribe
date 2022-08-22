@@ -8,7 +8,7 @@ tests:
     name: gen_name
   parameters:
   - name: service
-    value: !test_scribe/mock 'm_service'
+    value: !testscribe/mock 'm_service'
   - name: keyword
     value: a
   - name: start_number

@@ -13,8 +13,8 @@ tests:
 
         with patch('t', {'a': 1}):
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter()'
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter()'
 - name: test_patch_common_code_gen_list
   short_name: _list
   target:
@@ -28,8 +28,8 @@ tests:
 
         with patch('t', [1, 2]):
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter()'
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter()'
 - name: test_patch_common_code_gen_str
   short_name: _str
   target:
@@ -41,8 +41,8 @@ tests:
 
         with patch('t', 'a'):
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter()'
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter()'
 - name: test_patch_common_code_gen_int
   short_name: _int
   target:
@@ -54,5 +54,5 @@ tests:
 
         with patch('t', 1):
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter()'
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter()'

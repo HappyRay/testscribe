@@ -1,0 +1,384 @@
+format_version: 1
+module: testscribe.value_input_util
+tests:
+- name: test_eval_special_value_ignore
+  short_name: _ignore
+  target:
+    name: eval_special_value
+  parameters:
+  - name: value_str
+    value: ignore
+  result: !testscribe/object
+    type: testscribe.ignore.IgnoreReturnValue
+    repr: '''Ignored'''
+- name: test_eval_special_value_default_exception
+  short_name: _default_exception
+  target:
+    name: eval_special_value
+  parameters:
+  - name: value_str
+    value: throw()
+  result: !testscribe/object
+    type: testscribe.user_triggered_exception.UserTriggeredException
+    repr: Exception()
+- name: test_eval_special_value_throw_custom_exception
+  short_name: _throw_custom_exception
+  target:
+    name: eval_special_value
+  parameters:
+  - name: value_str
+    value: throw(Exception('foo'))
+  result: !testscribe/object
+    type: testscribe.user_triggered_exception.UserTriggeredException
+    repr: Exception('foo')
+- name: test_eval_special_value_non_special_value
+  short_name: _non_special_value
+  target:
+    name: eval_special_value
+  parameters:
+  - name: value_str
+    value: '1'
+  result: null
+- name: test_eval_special_value_invalid_input
+  short_name: _invalid_input
+  target:
+    name: eval_special_value
+  parameters:
+  - name: value_str
+    value: a
+  result: null
+- name: test_get_possible_fully_qualified_names_has_class_name
+  short_name: _has_class_name
+  target:
+    name: get_possible_fully_qualified_names
+  parameters:
+  - name: expression
+    value: a.b.C(a=d.E, b=1)
+  result:
+  - a.b.C
+  - d.E
+- name: test_get_possible_fully_qualified_names_no_class_name
+  short_name: _no_class_name
+  target:
+    name: get_possible_fully_qualified_names
+  parameters:
+  - name: expression
+    value: 1 + 2
+  result: []
+- name: test_get_possible_fully_qualified_names_name_without_dot
+  short_name: _name_without_dot
+  target:
+    name: get_possible_fully_qualified_names
+  parameters:
+  - name: expression
+    value: foo
+  result: []
+- name: test_get_string_value_escape_leading_single_quote
+  short_name: _escape_leading_single_quote
+  target:
+    name: get_string_value
+  parameters:
+  - name: value
+    value: \'a
+  result: '''a'
+- name: test_get_string_value_escape_leading_double_quote
+  short_name: _escape_leading_double_quote
+  target:
+    name: get_string_value
+  parameters:
+  - name: value
+    value: \"a
+  result: '"a'
+- name: test_get_string_value_multi_line_single_quote
+  short_name: _multi_line_single_quote
+  target:
+    name: get_string_value
+  parameters:
+  - name: value
+    value: '''a\nb'''
+  result: |-
+    a
+    b
+- name: test_get_string_value_multi_line_double_quote
+  short_name: _multi_line_double_quote
+  target:
+    name: get_string_value
+  parameters:
+  - name: value
+    value: '"a\nb"'
+  result: |-
+    a
+    b
+- name: test_get_string_value
+  short_name: _
+  target:
+    name: get_string_value
+  parameters:
+  - name: value
+    value: a
+  result: a
+- name: test_import_module
+  short_name: _
+  target:
+    name: import_module
+  parameters:
+  - name: module_name
+    value: test_data.simple
+  result: !testscribe/module 'test_data'
+- name: test_import_module_incorrect_module_name
+  short_name: _incorrect_module_name
+  target:
+    name: import_module
+  parameters:
+  - name: module_name
+    value: foo
+  result: null
+- name: test_import_modules_from_expression
+  short_name: _
+  target:
+    name: import_modules_from_expression
+  parameters:
+  - name: user_input
+    value: test_data.simple.C
+  result: !!python/tuple
+  - test_data: !testscribe/module 'test_data'
+  - - test_data.simple
+- name: test_import_modules_from_expression_float_input
+  short_name: _float_input
+  description: A float input should not be interpreted as a module although it may
+    have a .
+  target:
+    name: import_modules_from_expression
+  parameters:
+  - name: user_input
+    value: '1.1'
+  result: !!python/tuple
+  - {}
+  - []
+- name: test_is_simple_value_none
+  short_name: _none
+  target:
+    name: is_simple_value
+  parameters:
+  - name: v
+    value: null
+  result: true
+- name: test_is_simple_value_dict
+  short_name: _dict
+  target:
+    name: is_simple_value
+  parameters:
+  - name: v
+    value:
+      a: 1
+  result: true
+- name: test_is_simple_value_tuple_with_object
+  short_name: _tuple_with_object
+  target:
+    name: is_simple_value
+  parameters:
+  - name: v
+    value: !testscribe/expression '(1, test_data.value.object_model_c)'
+  result: false
+- name: test_is_simple_value_dict_with_object
+  short_name: _dict_with_object
+  target:
+    name: is_simple_value
+  parameters:
+  - name: v
+    value: !testscribe/expression '{''a'': test_data.value.object_model_c}'
+  result: false
+- name: test_transform_default_value_has_default
+  short_name: _has_default
+  target:
+    name: transform_default_value
+  parameters:
+  - name: default
+    value: 1
+  - name: t
+    value: !testscribe/expression 'typing.Any'
+  result: '1'
+- name: test_transform_default_value_no_default
+  short_name: _no_default
+  target:
+    name: transform_default_value
+  parameters:
+  - name: default
+    value: !testscribe/expression 'testscribe.special_type.NoDefault'
+  - name: t
+    value: !testscribe/expression 'str'
+  result: ''
+- name: test_transform_mock_names_to_mock_expression_mock_name_in_a_tuple
+  short_name: _mock_name_in_a_tuple
+  target:
+    name: transform_mock_names_to_mock_expression
+  parameters:
+  - name: v
+    value: !testscribe/expression '(1, testscribe.model_type.MockNameModel("m1_2"))'
+  - name: test_to_infer_default_inputs
+    value: !testscribe/mock 'm_test_model'
+  result: (1, m(spec, 'm1'))
+  mocks:
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !testscribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: testscribe.model_type.MockModel
+    attributes:
+      name: m1_2
+      spec_str: spec
+- name: test_transform_mock_names_to_mock_expression_simple_mock_name
+  short_name: _simple_mock_name
+  target:
+    name: transform_mock_names_to_mock_expression
+  parameters:
+  - name: v
+    value: !testscribe/expression 'testscribe.model_type.MockNameModel("m1_2")'
+  - name: test_to_infer_default_inputs
+    value: !testscribe/mock 'm_test_model'
+  result: m(spec, 'm1')
+  mocks:
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      mocks:
+      - !testscribe/mock 'm_mock_model'
+  - name: m_mock_model
+    spec: testscribe.model_type.MockModel
+    attributes:
+      name: m1_2
+      spec_str: spec
+- name: test_transform_mock_names_to_mock_expression_no_test
+  short_name: _no_test
+  target:
+    name: transform_mock_names_to_mock_expression
+  parameters:
+  - name: v
+    value: 1
+  - name: test_to_infer_default_inputs
+    value: null
+  result: '1'
+- name: test_transform_mock_names_to_mock_expression_no_test_to_infer_default
+  short_name: _no_test_to_infer_default
+  target:
+    name: transform_mock_names_to_mock_expression
+  parameters:
+  - name: v
+    value: 1
+  - name: test_to_infer_default_inputs
+    value: null
+  result: '1'
+- name: test_transform_no_default_value_non_bool
+  short_name: _non_bool
+  target:
+    name: transform_no_default_value
+  parameters:
+  - name: t
+    value: !testscribe/expression 'int'
+  result: ''
+- name: test_transform_no_default_value_bool
+  short_name: _bool
+  target:
+    name: transform_no_default_value
+  parameters:
+  - name: t
+    value: !testscribe/expression 'bool'
+  result: 'False'
+- name: test_transform_real_default_value_none
+  short_name: _none
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: null
+  result: None
+- name: test_transform_real_default_value_str
+  short_name: _str
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: a
+  result: a
+- name: test_transform_real_default_value_float
+  short_name: _float
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: 1.1
+  result: '1.1'
+- name: test_transform_real_default_value_bool
+  short_name: _bool
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: true
+  result: 'True'
+- name: test_transform_real_default_value_int
+  short_name: _int
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: 1
+  result: '1'
+- name: test_transform_real_default_value_expression
+  short_name: _expression
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("e")'
+  result: e
+- name: test_transform_real_default_value_set
+  short_name: _set
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: !testscribe/expression 'testscribe.model_type.SetModel([1, 2])'
+  result: set([1, 2])
+- name: test_transform_real_default_value_tuple
+  short_name: _tuple
+  target:
+    name: transform_real_default_value
+  parameters:
+  - name: default
+    value: !!python/tuple
+    - 1
+    - 2
+  result: (1, 2)
+- name: test_try_import_module_invalid_module
+  short_name: _invalid_module
+  target:
+    name: try_import_module
+  parameters:
+  - name: name
+    value: a.b
+  result: !!python/tuple
+  - null
+  - null
+- name: test_try_import_module
+  short_name: _
+  target:
+    name: try_import_module
+  parameters:
+  - name: name
+    value: test_data.simple.C
+  result: !!python/tuple
+  - !testscribe/module 'test_data'
+  - test_data.simple
+- name: test_try_import_module_object_has_more_than_one_part
+  short_name: _object_has_more_than_one_part
+  target:
+    name: try_import_module
+  parameters:
+  - name: name
+    value: inspect.Parameter.empty
+  result: !!python/tuple
+  - !testscribe/module 'inspect'
+  - inspect

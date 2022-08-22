@@ -1,4 +1,4 @@
-from test_scribe.namedvalues import NamedValues
+from testscribe.namedvalues import NamedValues
 
 
 def get_repr_of_named_values(nv: NamedValues) -> str:

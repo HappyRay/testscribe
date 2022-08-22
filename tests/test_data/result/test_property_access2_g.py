@@ -1,5 +1,5 @@
 import test_data.car
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from test_data.property_access2 import print_car_year_twice
 

@@ -1,0 +1,24 @@
+format_version: 1
+module: testscribe.create_test_cmd
+tests:
+- name: test_get_output_root_dir_from_config
+  short_name: _from_config
+  target:
+    name: get_output_root_dir
+  parameters:
+  - name: output_root_dir
+    value: null
+  - name: config
+    value: !testscribe/mock 'config'
+  result: 1
+  mocks:
+  - name: config
+    spec: testscribe.config.Config
+    attributes:
+      output_root_path: !testscribe/mock 'm_path'
+  - name: m_path
+    spec: pathlib.Path
+    calls:
+    - name: resolve
+      parameters: []
+      return: 1

@@ -34,9 +34,9 @@ tests:
   parameters: []
   result: test_data.simple.C
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_normalize_function_mock_call
   short_name: _

@@ -1,8 +1,8 @@
 from io import StringIO
 from typing import Any
 
-from test_scribe.save_scribe_file import save_to_yaml
-from test_scribe.transformer import transform_class
+from testscribe.save_scribe_file import save_to_yaml
+from testscribe.transformer import transform_class
 
 
 def save_object_model(v):

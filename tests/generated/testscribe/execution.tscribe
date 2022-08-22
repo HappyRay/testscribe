@@ -1,0 +1,276 @@
+format_version: 1
+module: testscribe.execution
+tests:
+- name: test_create_instance
+  short_name: _
+  target:
+    name: create_instance
+  parameters:
+  - name: clazz
+    value: !testscribe/expression 'test_data.simple.Dummy'
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !testscribe/object
+    type: testscribe.execution.CallResult
+    members:
+      arguments: !testscribe/object
+        type: testscribe.namedvalues.NamedValues
+        repr: NamedValues([])
+      result: !testscribe/object
+        type: test_data.simple.Dummy
+        members: {}
+      exception: null
+- name: test_get_default_init_parameters
+  short_name: _
+  target:
+    name: get_default_init_parameters
+  parameters:
+  - name: test_to_infer_default_inputs
+    value: !testscribe/mock 'm_test_model'
+  result: !testscribe/mock 'm_named_values'
+  mocks:
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      init_parameters: !testscribe/mock 'm_named_values'
+  - name: m_named_values
+    spec: testscribe.namedvalues.NamedValues
+- name: test_get_default_init_parameters_no_default_test
+  short_name: _no_default_test
+  target:
+    name: get_default_init_parameters
+  parameters:
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !testscribe/object
+    type: testscribe.namedvalues.NamedValues
+    repr: NamedValues([])
+- name: test_get_test_to_infer_default_inputs_index_provided
+  short_name: _index_provided
+  target:
+    name: get_test_to_infer_default_inputs
+  parameters:
+  - name: tests
+    value:
+    - !testscribe/mock 'm_test_model'
+  - name: index_of_test_to_update
+    value: 0
+  - name: function_name
+    value: f
+  - name: class_name
+    value: c
+  result: !testscribe/mock 'm_test_model'
+  mocks:
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      name: t1
+- name: test_get_test_to_infer_default_inputs_no_match
+  short_name: _no_match
+  target:
+    name: get_test_to_infer_default_inputs
+  parameters:
+  - name: tests
+    value:
+    - !testscribe/mock 'm_test_model'
+  - name: index_of_test_to_update
+    value: -1
+  - name: function_name
+    value: f
+  - name: class_name
+    value: c
+  result: null
+  mocks:
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_func_name: g
+- name: test_get_test_to_infer_default_inputs_match_function_name_class_name
+  short_name: _match_function_name_class_name
+  target:
+    name: get_test_to_infer_default_inputs
+  parameters:
+  - name: tests
+    value:
+    - !testscribe/mock 't1'
+    - !testscribe/mock 't2'
+  - name: index_of_test_to_update
+    value: -1
+  - name: function_name
+    value: f
+  - name: class_name
+    value: c
+  result: !testscribe/mock 't2'
+  mocks:
+  - name: t1
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+      target_class_name: ''
+  - name: t2
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_func_name: f
+      target_class_name: c
+      name: t2
+- name: test_run_target_function_exception_in_class_constructor
+  short_name: _exception_in_class_constructor
+  target:
+    name: run_target_function
+  parameters:
+  - name: constructor_exception
+    value: !testscribe/expression 'Exception("foo")'
+  - name: func
+    value: !testscribe/expression 'test_data.simple.foo'
+  - name: test_to_infer_default_inputs
+    value: null
+  result: !testscribe/object
+    type: testscribe.execution.CallResult
+    repr: CallResult(arguments=None, result=None, exception=Exception('foo'))
+- name: test_show_result
+  short_name: _
+  target:
+    name: show_result
+  parameters:
+  - name: result
+    value: a
+  result: |-
+    ***** Result:
+    type: <class 'str'>
+    value:
+    a
+    ***** Result end
+- name: test_show_result_internal_exception_model
+  short_name: _exception_model
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.ExceptionModel("a.b.C", "msg")'
+  result: |-
+    type: Exception
+    value:
+    Exception: type ( a.b.C ), message ( msg )
+- name: test_show_result_internal_set
+  short_name: _set
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.SetModel([1, 2])'
+  result: |-
+    type: Set
+    value:
+    set([1, 2])
+- name: test_show_result_internal_module
+  short_name: _module
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.ModuleModel("m")'
+  result: |-
+    type: Module
+    value:
+    Module( m )
+- name: test_show_result_internal_expression_model
+  short_name: _expression_model
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("a + 1")'
+  result: |-
+    type: Expression
+    value:
+    Expression( a + 1 )
+- name: test_show_result_internal_callable_model
+  short_name: _callable_model
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.CallableModel("foo", "call_mod")'
+  result: |-
+    type: Callable
+    value:
+    call_mod.foo
+- name: test_show_result_internal_mock_name_model
+  short_name: _mock_name_model
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'testscribe.model_type.MockNameModel("a")'
+  result: |-
+    type: Mock
+    value:
+    Mock( name: a )
+- name: test_show_result_internal_object
+  short_name: _object
+  target:
+    name: show_result_internal
+  parameters:
+  - name: result
+    value: !testscribe/expression 'test_data.value.object_model_c'
+  result: |-
+    type: test_data.simple.C
+    value:
+    Object(type (test_data.simple.C), members ({'a': 1}))
+- name: test_stop_patches
+  short_name: _
+  target:
+    name: stop_patches
+  parameters:
+  - name: patchers
+    value:
+      a: !testscribe/mock 'm_patcher'
+      b: !testscribe/mock 'm_patcher_1'
+  result: null
+  mocks:
+  - name: m_patcher
+    spec: testscribe.patcher.Patcher
+    attributes:
+      instance: !testscribe/mock 'm__patch'
+  - name: m_patcher_1
+    spec: testscribe.patcher.Patcher
+    attributes:
+      instance: !testscribe/mock 'm__patch_1'
+  - name: m__patch
+    spec: unittest.mock._patch
+    calls:
+    - name: stop
+      parameters: []
+      return: !testscribe/expression 'ignore'
+  - name: m__patch_1
+    spec: unittest.mock._patch
+    calls:
+    - name: stop
+      parameters: []
+      return: !testscribe/expression 'ignore'
+- name: test_transform_and_show_result_unsupported_data
+  short_name: _unsupported_data
+  target:
+    name: transform_and_show_result
+  parameters:
+  - name: call_result
+    value: !testscribe/mock 'm_call_result'
+  exception:
+    type: testscribe.error.UnsupportedDataError
+    message: Sets that contain complex objects are not supported.
+  mocks:
+  - name: m_call_result
+    spec: testscribe.execution.CallResult
+    attributes:
+      exception: null
+      result: !testscribe/expression '[1, {test_data.value.object_model_c, 2}]'
+- name: test_transform_named_values
+  short_name: _
+  target:
+    name: transform_named_values
+  parameters:
+  - name: named_values
+    value: !testscribe/expression 'testscribe.namedvalues.NamedValues([("a", test_data.simple.foo)])'
+  result: !testscribe/object
+    type: testscribe.namedvalues.NamedValues
+    repr: NamedValues([('a', test_data.simple.foo)])

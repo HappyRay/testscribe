@@ -1,7 +1,7 @@
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data.simple import ReadOnlyData, SimpleDataClass
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.model_type import MockNameModel
+from testscribe.mock_proxy import MockProxy
+from testscribe.model_type import MockNameModel
 
 
 def get_dict(d: ReadOnlyData):

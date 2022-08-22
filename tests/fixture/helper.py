@@ -5,12 +5,12 @@ from unittest.mock import patch
 
 from typer.testing import CliRunner
 
-from test_scribe import global_var
-from test_scribe.__main__ import app
-from test_scribe.api.mock_api import patch_with_expression
-from test_scribe.custom_type import Spec
-from test_scribe.global_var import get_initial_mock_name_counter
-from test_scribe.mock_proxy import MockProxy
+from testscribe import global_var
+from testscribe.__main__ import app
+from testscribe.api.mock_api import patch_with_expression
+from testscribe.custom_type import Spec
+from testscribe.global_var import get_initial_mock_name_counter
+from testscribe.mock_proxy import MockProxy
 
 TEST_DATA_MODULE_NAME = "test_data"
 
@@ -41,14 +41,14 @@ def get_project_root_path():
 
 def patch_g_mock_name_counter():
     patch_with_expression(
-        target_str="test_scribe.global_var.g_mock_name_counter",
-        expression="collections.Counter(test_scribe.global_var.g_mock_name_counter)",
+        target_str="testscribe.global_var.g_mock_name_counter",
+        expression="collections.Counter(testscribe.global_var.g_mock_name_counter)",
     )
 
 
 def patch_g_name_mock_dict():
     patch_with_expression(
-        target_str="test_scribe.global_var.g_name_mock_dict",
+        target_str="testscribe.global_var.g_name_mock_dict",
         expression="{}",
     )
 
@@ -71,9 +71,9 @@ def create_mock_proxy(spec: Spec, name: str = "") -> MockProxy:
     It means the callers need to make sure the names are unique.
     """
     with patch(
-        target="test_scribe.global_var.g_mock_name_counter",
+        target="testscribe.global_var.g_mock_name_counter",
         new=Counter(global_var.g_mock_name_counter),
-    ), patch(target="test_scribe.global_var.g_name_mock_dict", new={}):
+    ), patch(target="testscribe.global_var.g_name_mock_dict", new={}):
         return MockProxy(spec=spec, name=name)
 
 

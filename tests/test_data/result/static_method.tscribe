@@ -7,7 +7,7 @@ tests:
     name: call_static_method
   parameters:
   - name: s
-    value: !test_scribe/mock 'm_static_service'
+    value: !testscribe/mock 'm_static_service'
   result: 2
   mocks:
   - name: m_static_service

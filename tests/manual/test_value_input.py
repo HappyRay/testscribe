@@ -1,6 +1,6 @@
 import test_data.simple
 from fixture.helper import create_mock_proxy
-from test_scribe.value_input_util import is_simple_value
+from testscribe.value_input_util import is_simple_value
 
 
 def test_is_simple_value_mock():

@@ -10,8 +10,8 @@ tests:
   - a
   - a_1
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
 - name: test_get_mock_attribute_value_wrapper
   short_name: _
   target:

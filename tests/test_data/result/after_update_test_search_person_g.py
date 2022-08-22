@@ -1,6 +1,6 @@
 import test_data.person
 import test_data.service
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from test_data.search_person import search_person_age
 

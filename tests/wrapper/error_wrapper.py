@@ -1,4 +1,4 @@
-from test_scribe.error import Error
+from testscribe.error import Error
 
 
 def raise_custom_error():

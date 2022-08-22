@@ -2,15 +2,14 @@ from unittest.mock import Mock
 
 from pytest import fixture
 
-from test_scribe.generate_imports import generate_import_statement_str
-from test_scribe.model_type import MockModel, AllTests
-
+from testscribe.generate_imports import generate_import_statement_str
+from testscribe.model_type import MockModel, AllTests
 # Import TestModel as a different name without Test prefix to avoid
 # a pytest warning
 # PytestCollectionWarning:
 # cannot collect test class 'TestModel' because it has a __init__ constructor
-from test_scribe.model_type import TestModel as TModel
-from test_scribe.namedvalues import NamedValues
+from testscribe.model_type import TestModel as TModel
+from testscribe.namedvalues import NamedValues
 
 
 def create_mock_test_model() -> TModel:
@@ -78,7 +77,7 @@ def mock2():
 def test_generate_import_statements_target_function(all_tests, t1):
     """
     Kept here for comparison with the generated test
-    generated.test_scribe.test_generate_imports_g.test_generate_import_statements
+    generated.testscribe.test_generate_imports_g.test_generate_import_statements
     only.
 
     The generated test has better coverage for the combine statemets aspect of the

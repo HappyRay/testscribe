@@ -7,9 +7,9 @@ tests:
     name: create_person_list
   parameters: []
   result:
-  - !test_scribe/object
+  - !testscribe/object
     type: test_data.person.Person
     repr: Person(name='a', age=1)
-  - !test_scribe/object
+  - !testscribe/object
     type: test_data.person.Person
     repr: Person(name='b', age=2)

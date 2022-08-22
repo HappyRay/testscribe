@@ -1,0 +1,47 @@
+format_version: 1
+module: testscribe.save_scribe_file
+tests:
+- name: test_generate_scribe_file_no_test_calls_remove_file
+  short_name: _no_test_calls_remove_file
+  target:
+    name: generate_scribe_file
+  parameters:
+  - name: scribe_file_path
+    value: !testscribe/expression 'pathlib.Path("foo")'
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  result: null
+  patches:
+  - target: testscribe.save_scribe_file.remove_file_if_no_test
+    replacement: !testscribe/mock 'm_remove_file_if_no_test'
+  mocks:
+  - name: m_remove_file_if_no_test
+    spec: testscribe.execution_util.remove_file_if_no_test
+    calls:
+    - parameters:
+      - name: file_path
+        value: !testscribe/object
+          type: pathlib.PosixPath
+          repr: PosixPath('foo')
+      - name: tests
+        value: []
+      return: true
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests: []
+- name: test_generate_scribe_file_no_test
+  short_name: _no_test
+  target:
+    name: generate_scribe_file
+  parameters:
+  - name: scribe_file_path
+    value: !testscribe/expression 'pathlib.Path("foo")'
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  result: null
+  mocks:
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests: []

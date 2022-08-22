@@ -1,17 +1,17 @@
 from unittest.mock import patch, Mock, call
 
 from test_data.simple import foo, C
-from test_scribe.context import Context
-from test_scribe.mock_call import MockCall
-from test_scribe.special_type import NoDefault
+from testscribe.context import Context
+from testscribe.mock_call import MockCall
+from testscribe.special_type import NoDefault
 
 
 # The MockCall function is used by the tool itself
 # Patching these calls using the tool will result in recursive calls.
 # Thus, these tests have to be written manually.
-@patch("test_scribe.mock_call.log", autospec=True)
-@patch("test_scribe.mock_call.show_user_call_stack", autospec=True)
-@patch("test_scribe.value_input.get_one_value", autospec=True)
+@patch("testscribe.mock_call.log", autospec=True)
+@patch("testscribe.mock_call.show_user_call_stack", autospec=True)
+@patch("testscribe.value_input.get_one_value", autospec=True)
 def test_call_mock_function(
     mock_get_one_value: Mock, mock_show_user_call_stack: Mock, mock_log: Mock
 ):
@@ -35,9 +35,9 @@ def test_call_mock_function(
     assert m.return_value == 0
 
 
-@patch("test_scribe.mock_call.log", autospec=True)
-@patch("test_scribe.mock_call.show_user_call_stack", autospec=True)
-@patch("test_scribe.value_input.get_one_value", autospec=True)
+@patch("testscribe.mock_call.log", autospec=True)
+@patch("testscribe.mock_call.show_user_call_stack", autospec=True)
+@patch("testscribe.value_input.get_one_value", autospec=True)
 def test_call_mock_method_with_class(
     mock_get_one_value: Mock, mock_show_user_call_stack: Mock, mock_log: Mock
 ):
@@ -58,9 +58,9 @@ def test_call_mock_method_with_class(
     assert m.return_value == 2
 
 
-@patch("test_scribe.mock_call.log", autospec=True)
-@patch("test_scribe.mock_call.show_user_call_stack", autospec=True)
-@patch("test_scribe.value_input.get_one_value", autospec=True)
+@patch("testscribe.mock_call.log", autospec=True)
+@patch("testscribe.mock_call.show_user_call_stack", autospec=True)
+@patch("testscribe.value_input.get_one_value", autospec=True)
 def test_call_mock_method(
     mock_get_one_value: Mock, mock_show_user_call_stack: Mock, mock_log: Mock
 ):

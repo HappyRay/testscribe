@@ -12,7 +12,7 @@ from fixture.helper import (
     generate_create_cmd_args,
     run_cli,
 )
-from test_scribe.execution_util import create_unit_test_file_name
+from testscribe.execution_util import create_unit_test_file_name
 
 COPY_TEST_RESULT_ENV_VAR = "copy_test_result"
 

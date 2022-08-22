@@ -8,9 +8,9 @@ tests:
   parameters: []
   result: true
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_magic_len_method_throw_exception
   short_name: _
@@ -21,9 +21,9 @@ tests:
     type: AttributeError
     message: mocking the __len__ method is not supported.
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_mock_pass_is_instance
   short_name: _
@@ -31,7 +31,7 @@ tests:
     name: mock_pass_is_instance
   parameters:
   - name: c
-    value: !test_scribe/mock 'c'
+    value: !testscribe/mock 'c'
   result: true
   mocks:
   - name: c
@@ -41,21 +41,21 @@ tests:
   target:
     name: mock_proxy_method_call
   parameters: []
-  result: !test_scribe/object
-    type: test_scribe.mock_call.MockCall
+  result: !testscribe/object
+    type: testscribe.mock_call.MockCall
     members:
       method_name: bar
       mock_name: m_c
-      spec: !test_scribe/callable
+      spec: !testscribe/callable
         name: C
         module: test_data.simple
       previous_call_count: 0
-      args: !test_scribe/object
-        type: test_scribe.namedvalues.NamedValues
+      args: !testscribe/object
+        type: testscribe.namedvalues.NamedValues
         repr: NamedValues([])
       return_value: null
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}

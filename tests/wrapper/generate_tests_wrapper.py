@@ -1,7 +1,7 @@
 from test_data.person import Person
 from test_data.product import ProductOwner, Product
-from test_scribe.gather_referenced_modules import get_module_names_from_value
-from test_scribe.transformer import transform_value
+from testscribe.gather_referenced_modules import get_module_names_from_value
+from testscribe.transformer import transform_value
 
 
 def add_module_names_from_class_tag_complex_class():

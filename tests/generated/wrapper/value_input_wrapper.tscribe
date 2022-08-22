@@ -8,6 +8,6 @@ tests:
   parameters: []
   result: !!python/tuple
   - ignore
-  - !test_scribe/object
-    type: test_scribe.ignore.IgnoreReturnValue
+  - !testscribe/object
+    type: testscribe.ignore.IgnoreReturnValue
     repr: '''Ignored'''

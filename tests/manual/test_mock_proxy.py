@@ -3,11 +3,11 @@ from unittest.mock import patch, Mock, MagicMock
 
 from pytest import fixture
 
-import test_scribe
+import testscribe
 from test_data.simple import C, foo
-from test_scribe.mock_call import MockCall
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.model_type import MockNameModel
+from testscribe.mock_call import MockCall
+from testscribe.mock_proxy import MockProxy
+from testscribe.model_type import MockNameModel
 
 
 # Mocking out the functions such as prompt will distrupt the functions of
@@ -17,14 +17,14 @@ from test_scribe.model_type import MockNameModel
 @fixture(autouse=True)
 def clear_mock_proxy_modified_globals():
     with patch(
-        "test_scribe.global_var.g_mock_name_counter",
-        Counter(test_scribe.global_var.g_mock_name_counter),
-    ), patch("test_scribe.global_var.g_name_mock_dict", {}):
+        "testscribe.global_var.g_mock_name_counter",
+        Counter(testscribe.global_var.g_mock_name_counter),
+    ), patch("testscribe.global_var.g_name_mock_dict", {}):
         yield
 
 
-@patch("test_scribe.mock_call.show_user_call_stack", autospec=True)
-@patch("test_scribe.value_input_cli.prompt", autospec=True)
+@patch("testscribe.mock_call.show_user_call_stack", autospec=True)
+@patch("testscribe.value_input_cli.prompt", autospec=True)
 def test_mock_proxy_class_construction(mock_prompt, mock_show_user_call_stack: Mock):
     mock_prompt.return_value = "m"
     m = MockProxy(spec=C, name="m_c")
@@ -35,8 +35,8 @@ def test_mock_proxy_class_construction(mock_prompt, mock_show_user_call_stack: M
     mock_show_user_call_stack.assert_called_once()
 
 
-@patch("test_scribe.mock_call.show_user_call_stack", autospec=True)
-@patch("test_scribe.value_input_cli.prompt", autospec=True)
+@patch("testscribe.mock_call.show_user_call_stack", autospec=True)
+@patch("testscribe.value_input_cli.prompt", autospec=True)
 def test_mock_proxy_multiple_class_construction(
     mock_prompt, mock_show_user_call_stack: Mock
 ):
@@ -71,7 +71,7 @@ def test_mock_proxy_multiple_class_construction(
     assert i1.return_value == MockNameModel("m_c_2")
 
 
-@patch("test_scribe.mock_proxy_support.MockCall", autospec=True)
+@patch("testscribe.mock_proxy_support.MockCall", autospec=True)
 def test_mock_proxy_mock_function(mock_mock_call: Mock):
     m_call = MagicMock()
     mock_mock_call.return_value = m_call

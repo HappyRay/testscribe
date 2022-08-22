@@ -1,0 +1,408 @@
+format_version: 1
+module: testscribe.generate_tests
+tests:
+- name: test_gen_create_invocation_str
+  short_name: _
+  target:
+    name: gen_create_invocation_str
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: |-
+    instance = C()
+    result = instance.f()
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_class_name: C
+      init_parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      exception: null
+      target_func_name: f
+- name: test_gen_invocation_str_with_exception
+  short_name: _
+  target:
+    name: gen_invocation_str_with_exception
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: |-
+    with pytest.raises(a.b.C) as exception_info:
+        f()
+    assert 'msg' == str(exception_info.value)
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      target_class_name: ''
+      init_parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      exception: !testscribe/expression 'testscribe.model_type.ExceptionModel("a.b.C",
+        "msg")'
+      target_func_name: f
+- name: test_gen_invocation_str_with_patch
+  short_name: _
+  target:
+    name: gen_invocation_str_with_patch
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: |2-
+
+        with patch('t', 1):
+            with pytest.raises(a.b.C) as exception_info:
+                instance = C()
+                instance.f()
+            assert 'msg' == str(exception_info.value)
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      patches:
+      - !testscribe/mock 'm_patch_model'
+      target_class_name: C
+      init_parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      exception: !testscribe/expression 'testscribe.model_type.ExceptionModel("a.b.C",
+        "msg")'
+      target_func_name: f
+  - name: m_patch_model
+    spec: testscribe.model_type.PatchModel
+    attributes:
+      target: t
+      replacement: 1
+- name: test_generate_create_instance_statement_no_class
+  short_name: _no_class
+  target:
+    name: generate_create_instance_statement
+  parameters:
+  - name: target_class_name
+    value: ''
+  - name: init_parameters
+    value: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+  result: ''
+- name: test_generate_create_instance_statement
+  short_name: _
+  target:
+    name: generate_create_instance_statement
+  parameters:
+  - name: target_class_name
+    value: Foo
+  - name: init_parameters
+    value: !testscribe/expression 'testscribe.namedvalues.NamedValues([("a", 1), ("b",
+      2)])'
+  result: 'instance = Foo(a=1, b=2)
+
+    '
+- name: test_generate_docstring_has_doc
+  short_name: _has_doc
+  target:
+    name: generate_docstring
+  parameters:
+  - name: description
+    value: a b
+  result: |2-
+
+        """
+        a b
+        """
+- name: test_generate_docstring_no_doc
+  short_name: _no_doc
+  target:
+    name: generate_docstring
+  parameters:
+  - name: description
+    value: ''
+  result: ''
+- name: test_generate_invocation_statement_exception_in_constructor
+  short_name: _exception_in_constructor
+  target:
+    name: generate_invocation_statement
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: ''
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      parameters: null
+- name: test_generate_invocation_statement_method
+  short_name: _method
+  target:
+    name: generate_invocation_statement
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: result = instance.f(a=1)
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues([("a",
+        1)])'
+      target_class_name: C
+      exception: null
+      target_func_name: f
+- name: test_generate_mocks_single_mock_without_attributes_and_calls
+  short_name: generate_mocks_single_mock_without_attributes_and_calls
+  target:
+    name: generate_mocks_str
+  parameters:
+  - name: mocks
+    value:
+    - !testscribe/mock 'input_mock'
+  result: |2-
+
+        m: spec = create_autospec(spec=spec)
+  mocks:
+  - name: input_mock
+    spec: testscribe.model.MockModel
+    attributes:
+      spec_str: spec
+      name: m
+      attributes: {}
+      calls: []
+- name: test_generate_one_test_function
+  short_name: _
+  target:
+    name: generate_one_test_function
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: |
+    def test1():
+        m: a.Spec = create_autospec(spec=a.Spec)
+        m.foo.return_value = 2
+        result = f()
+        assert result == 1
+        m_mock_calls = get_normalized_mock_calls(m, a.Spec)
+        assert m_mock_calls == [
+            call.foo(),
+        ]
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      description: ''
+      mocks:
+      - !testscribe/mock 'm_mock_model'
+      patches: []
+      target_class_name: ''
+      init_parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      exception: null
+      target_func_name: f
+      result: 1
+      name: test1
+  - name: m_mock_model
+    spec: testscribe.model_type.MockModel
+    attributes:
+      spec_str: a.Spec
+      name: m
+      attributes: {}
+      calls:
+      - !testscribe/mock 'm_mock_call_model'
+  - name: m_mock_call_model
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: foo
+      return_value: 2
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+- name: test_generate_result_assertion_str
+  short_name: _
+  target:
+    name: generate_result_assertion_str
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: |2-
+
+        assert result == 1
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      exception: null
+      result: 1
+- name: test_generate_result_assertion_str_exception
+  short_name: _exception
+  target:
+    name: generate_result_assertion_str
+  parameters:
+  - name: test
+    value: !testscribe/mock 'test'
+  result: ''
+  mocks:
+  - name: test
+    spec: testscribe.model_type.TestModel
+    attributes:
+      exception: !testscribe/expression 'testscribe.model_type.ExceptionModel("a.b.C",
+        "msg")'
+- name: test_generate_result_assignment_str_has_exception
+  short_name: _has_exception
+  target:
+    name: generate_result_assignment_str
+  parameters:
+  - name: has_exception
+    value: true
+  result: ''
+- name: test_generate_result_assignment_str_no_exception
+  short_name: _no_exception
+  target:
+    name: generate_result_assignment_str
+  parameters:
+  - name: has_exception
+    value: false
+  result: 'result = '
+- name: test_generate_target_instance_str_class
+  short_name: _class
+  target:
+    name: generate_target_instance_str
+  parameters:
+  - name: target_class_name
+    value: A
+  result: instance.
+- name: test_generate_target_instance_str_no_class
+  short_name: _no_class
+  target:
+    name: generate_target_instance_str
+  parameters:
+  - name: target_class_name
+    value: ''
+  result: ''
+- name: test_generate_test_str
+  short_name: generate_test_str
+  target:
+    name: generate_tests_output_string
+  parameters:
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  result: |
+    from m1.m2 import f, f2
+
+
+    def t1():
+        result = f()
+        assert result == 1
+
+
+    def t2():
+        result = f2()
+        assert result == 2
+  mocks:
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests:
+      - !testscribe/mock 'm_test_model'
+      - !testscribe/mock 'm_test_model_1'
+      module: m1.m2
+  - name: m_test_model
+    spec: testscribe.model_type.TestModel
+    attributes:
+      mocks: []
+      exception: null
+      result: 1
+      init_parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      patches: []
+      target_class_name: ''
+      target_func_name: f
+      description: ''
+      name: t1
+  - name: m_test_model_1
+    spec: testscribe.model_type.TestModel
+    attributes:
+      mocks: []
+      exception: null
+      result: 2
+      init_parameters: null
+      parameters: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
+      patches: []
+      target_class_name: ''
+      target_func_name: f2
+      description: ''
+      name: t2
+- name: test_generate_unit_test_file_no_test
+  short_name: _no_test
+  target:
+    name: generate_unit_test_file
+  parameters:
+  - name: test_file_path
+    value: !testscribe/mock 'test_file_path'
+  - name: all_tests
+    value: !testscribe/mock 'all_tests'
+  result: null
+  patches:
+  - target: testscribe.generate_tests.remove_file_if_no_test
+    replacement: !testscribe/mock 'm_remove_file_if_no_test'
+  mocks:
+  - name: m_remove_file_if_no_test
+    spec: testscribe.execution_util.remove_file_if_no_test
+    calls:
+    - parameters:
+      - name: file_path
+        value: !testscribe/mock 'test_file_path'
+      - name: tests
+        value: []
+      return: true
+  - name: test_file_path
+    spec: pathlib.Path
+  - name: all_tests
+    spec: testscribe.model_type.AllTests
+    attributes:
+      tests: []
+- name: test_get_invocation_indent_level_no_patch
+  short_name: _no_patch
+  target:
+    name: get_invocation_indent_level
+  parameters:
+  - name: patch_str
+    value: ''
+  result: 1
+- name: test_get_invocation_indent_level_has_patch
+  short_name: _has_patch
+  target:
+    name: get_invocation_indent_level
+  parameters:
+  - name: patch_str
+    value: fake
+  result: 2
+- name: test_wrap_exception_assertion_no_exception
+  short_name: _no_exception
+  target:
+    name: wrap_exception_assertion
+  parameters:
+  - name: exception_model
+    value: null
+  - name: inner_statement
+    value: |-
+      a
+      b
+  result: |-
+    a
+    b
+- name: test_wrap_exception_assertion
+  short_name: _
+  target:
+    name: wrap_exception_assertion
+  parameters:
+  - name: exception_model
+    value: !testscribe/mock 'exception_model'
+  - name: inner_statement
+    value: |-
+      a
+      b
+  result: |-
+    with pytest.raises(m.c) as exception_info:
+        a
+        b
+    assert 'message' == str(exception_info.value)
+  mocks:
+  - name: exception_model
+    spec: testscribe.model_type.ExceptionModel
+    attributes:
+      type: m.c
+      message: message

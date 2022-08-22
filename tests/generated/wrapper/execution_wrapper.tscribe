@@ -6,13 +6,13 @@ tests:
   target:
     name: create_instance_wrapper
   parameters: []
-  result: !test_scribe/object
-    type: test_scribe.execution.CallResult
+  result: !testscribe/object
+    type: testscribe.execution.CallResult
     members:
-      arguments: !test_scribe/object
-        type: test_scribe.namedvalues.NamedValues
+      arguments: !testscribe/object
+        type: testscribe.namedvalues.NamedValues
         repr: NamedValues([('my_name', 'a')])
-      result: !test_scribe/object
+      result: !testscribe/object
         type: test_data.greet.Greeter
         members:
           my_name: a
@@ -23,9 +23,9 @@ tests:
     name: get_args_and_call_wrapper
   parameters:
   - name: func
-    value: !test_scribe/expression 'test_data.greet.Greeter("a").greet'
-  result: !test_scribe/object
-    type: test_scribe.execution.CallResult
+    value: !testscribe/expression 'test_data.greet.Greeter("a").greet'
+  result: !testscribe/object
+    type: testscribe.execution.CallResult
     repr: CallResult(arguments=NamedValues([('to', 'b')]), result='Hello b. My name
       is a', exception=None)
 - name: test_get_args_and_call_wrapper_function
@@ -34,7 +34,7 @@ tests:
     name: get_args_and_call_wrapper
   parameters:
   - name: func
-    value: !test_scribe/expression 'test_data.echo.echo'
-  result: !test_scribe/object
-    type: test_scribe.execution.CallResult
+    value: !testscribe/expression 'test_data.echo.echo'
+  result: !testscribe/object
+    type: testscribe.execution.CallResult
     repr: CallResult(arguments=NamedValues([('v', 'b')]), result='b', exception=None)

@@ -1,10 +1,10 @@
-import test_scribe.error
+import testscribe.error
 from wrapper.user_triggered_exception_wrapper import get_user_triggered_exception_repr
 
 
 def test_get_user_triggered_exception_repr_custom_exception():
-    result = get_user_triggered_exception_repr(e=test_scribe.error.InputError("foo"))
-    assert result == "test_scribe.error.InputError('foo')"
+    result = get_user_triggered_exception_repr(e=testscribe.error.InputError("foo"))
+    assert result == "testscribe.error.InputError('foo')"
 
 
 def test_get_user_triggered_exception_repr_builtin_exception():

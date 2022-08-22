@@ -10,9 +10,9 @@ tests:
   - a: c
   - a: 1
   patches:
-  - target: test_scribe.patcher.global_var.g_name_mock_dict
+  - target: testscribe.patcher.global_var.g_name_mock_dict
     replacement:
       a: c
       a_1: d
-  - target: test_scribe.patcher.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter({''a'': 2})'
+  - target: testscribe.patcher.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter({''a'': 2})'

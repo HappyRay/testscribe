@@ -1,7 +1,7 @@
 from unittest.mock import patch, create_autospec
 
-from test_scribe.model_type import MockNameModel, TestModel, MockModel
-from test_scribe.value_input_util import transform_real_default_value
+from testscribe.model_type import MockNameModel, TestModel, MockModel
+from testscribe.value_input_util import transform_real_default_value
 
 
 def transform_real_default_value_wrapper():
@@ -15,7 +15,7 @@ def transform_real_default_value_wrapper():
     # after the setup function is called so using the setup function to patch
     # doesn't work.
     with patch(
-        "test_scribe.value_input_util.global_var.g_test_to_infer_default_inputs",
+        "testscribe.value_input_util.global_var.g_test_to_infer_default_inputs",
         m_test_model,
     ):
         return transform_real_default_value(MockNameModel("a"))

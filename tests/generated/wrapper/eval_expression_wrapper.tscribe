@@ -8,23 +8,23 @@ tests:
   parameters: []
   result: true
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_process_complex_value_wrapper_mixed_m_function_complex_obj
   short_name: _
   target:
     name: process_complex_value_wrapper_mixed_m_function_complex_obj
   parameters: []
-  result: !test_scribe/object
+  result: !testscribe/object
     type: test_data.simple.C
     members:
       a: 1
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_process_mock_marker_wrapper_callable_with_parameter_types
   short_name: _callable_with_parameter_types
@@ -32,33 +32,33 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.Callable[[int], int]'
+    value: !testscribe/expression 'typing.Callable[[int], int]'
   - name: v
-    value: !test_scribe/expression 'test_scribe.api.mock_api.m'
+    value: !testscribe/expression 'testscribe.api.mock_api.m'
   result: 1
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/object
+        value: !testscribe/object
           type: typing._GenericAlias
           members:
             _inst: true
             _special: false
             _name: Callable
-            __origin__: !test_scribe/callable
+            __origin__: !testscribe/callable
               name: Callable
               module: collections.abc
             __args__: !!python/tuple
-            - !test_scribe/callable
+            - !testscribe/callable
               name: int
               module: builtins
-            - !test_scribe/callable
+            - !testscribe/callable
               name: int
               module: builtins
             __parameters__: !!python/tuple []
@@ -70,26 +70,26 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.Callable'
+    value: !testscribe/expression 'typing.Callable'
   - name: v
-    value: !test_scribe/expression 'test_scribe.api.mock_api.m'
+    value: !testscribe/expression 'testscribe.api.mock_api.m'
   result: 1
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/object
+        value: !testscribe/object
           type: typing._VariadicGenericAlias
           members:
             _inst: true
             _special: true
             _name: Callable
-            __origin__: !test_scribe/callable
+            __origin__: !testscribe/callable
               name: Callable
               module: collections.abc
             __args__: !!python/tuple []
@@ -109,28 +109,28 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.List[test_data.simple.C]'
+    value: !testscribe/expression 'typing.List[test_data.simple.C]'
   - name: v
-    value: !test_scribe/expression '[test_scribe.api.mock_api.m, test_scribe.api.mock_api.m]'
+    value: !testscribe/expression '[testscribe.api.mock_api.m, testscribe.api.mock_api.m]'
   result:
   - 1
   - 2
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 1
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 2
@@ -140,22 +140,22 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.Tuple[int, test_data.simple.C]'
+    value: !testscribe/expression 'typing.Tuple[int, test_data.simple.C]'
   - name: v
-    value: !test_scribe/expression '(1, test_scribe.api.mock_api.m)'
+    value: !testscribe/expression '(1, testscribe.api.mock_api.m)'
   result: !!python/tuple
   - 1
   - 2
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 2
@@ -165,28 +165,28 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.Tuple[test_data.simple.C, ...]'
+    value: !testscribe/expression 'typing.Tuple[test_data.simple.C, ...]'
   - name: v
-    value: !test_scribe/expression '(test_scribe.api.mock_api.m, test_scribe.api.mock_api.m)'
+    value: !testscribe/expression '(testscribe.api.mock_api.m, testscribe.api.mock_api.m)'
   result: !!python/tuple
   - 1
   - 2
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 1
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 2
@@ -196,28 +196,28 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.Dict[str, test_data.simple.C]'
+    value: !testscribe/expression 'typing.Dict[str, test_data.simple.C]'
   - name: v
-    value: !test_scribe/expression '{''a'': test_scribe.api.mock_api.m, ''b'': test_scribe.api.mock_api.m}'
+    value: !testscribe/expression '{''a'': testscribe.api.mock_api.m, ''b'': testscribe.api.mock_api.m}'
   result:
     a: 1
     b: 2
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 1
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 2
@@ -229,21 +229,21 @@ tests:
     name: process_mock_marker_wrapper
   parameters:
   - name: t
-    value: !test_scribe/expression 'typing.List[typing.Optional[test_data.simple.C]]'
+    value: !testscribe/expression 'typing.List[typing.Optional[test_data.simple.C]]'
   - name: v
-    value: !test_scribe/expression '[test_scribe.api.mock_api.m]'
+    value: !testscribe/expression '[testscribe.api.mock_api.m]'
   result:
   - 1
   patches:
-  - target: test_scribe.eval_expression.MockProxy
-    replacement: !test_scribe/mock 'm_mock_proxy'
+  - target: testscribe.eval_expression.MockProxy
+    replacement: !testscribe/mock 'm_mock_proxy'
   mocks:
   - name: m_mock_proxy
-    spec: test_scribe.mock_proxy.MockProxy
+    spec: testscribe.mock_proxy.MockProxy
     calls:
     - parameters:
       - name: spec
-        value: !test_scribe/callable
+        value: !testscribe/callable
           name: C
           module: test_data.simple
       return: 1
@@ -253,8 +253,8 @@ tests:
     name: wrap_input_value_wrapper_complex_value
   parameters:
   - name: value
-    value: !test_scribe/expression 'test_data.simple.C(1)'
-  result: !test_scribe/object
+    value: !testscribe/expression 'test_data.simple.C(1)'
+  result: !testscribe/object
     type: test_data.simple.C
     members:
       a: 1

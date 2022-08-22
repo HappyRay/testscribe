@@ -44,9 +44,9 @@ tests:
     name: save_obj_to_yaml
   parameters:
   - name: obj
-    value: !test_scribe/expression 'test_scribe.model_type.SetModel([1, 2])'
+    value: !testscribe/expression 'testscribe.model_type.SetModel([1, 2])'
   result: |
-    !test_scribe/set
+    !testscribe/set
     - 1
     - 2
 - name: test_save_obj_to_yaml_module_model
@@ -55,8 +55,8 @@ tests:
     name: save_obj_to_yaml
   parameters:
   - name: obj
-    value: !test_scribe/expression 'test_scribe.model_type.ModuleModel("m")'
-  result: '!test_scribe/module ''m''
+    value: !testscribe/expression 'testscribe.model_type.ModuleModel("m")'
+  result: '!testscribe/module ''m''
 
     '
 - name: test_save_obj_to_yaml_callable_model
@@ -65,9 +65,9 @@ tests:
     name: save_obj_to_yaml
   parameters:
   - name: obj
-    value: !test_scribe/expression 'test_data.value.callable_model_foo'
+    value: !testscribe/expression 'test_data.value.callable_model_foo'
   result: |
-    !test_scribe/callable
+    !testscribe/callable
     name: foo
     module: test_data.simple
 - name: test_save_obj_to_yaml_expression_model
@@ -76,8 +76,8 @@ tests:
     name: save_obj_to_yaml
   parameters:
   - name: obj
-    value: !test_scribe/expression 'test_scribe.model_type.ExpressionModel("a")'
-  result: '!test_scribe/expression ''a''
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("a")'
+  result: '!testscribe/expression ''a''
 
     '
 - name: test_save_obj_to_yaml_mock_name_model
@@ -86,8 +86,8 @@ tests:
     name: save_obj_to_yaml
   parameters:
   - name: obj
-    value: !test_scribe/expression 'test_scribe.model_type.MockNameModel("a")'
-  result: '!test_scribe/mock ''a''
+    value: !testscribe/expression 'testscribe.model_type.MockNameModel("a")'
+  result: '!testscribe/mock ''a''
 
     '
 - name: test_save_object_model_has_custom_repr
@@ -96,9 +96,9 @@ tests:
     name: save_object_model
   parameters:
   - name: v
-    value: !test_scribe/expression 'test_data.person.Person("a", 1)'
+    value: !testscribe/expression 'test_data.person.Person("a", 1)'
   result: |
-    !test_scribe/object
+    !testscribe/object
     type: test_data.person.Person
     repr: Person(name='a', age=1)
 - name: test_save_object_model_no_custom_repr
@@ -107,9 +107,9 @@ tests:
     name: save_object_model
   parameters:
   - name: v
-    value: !test_scribe/expression 'test_data.simple.C(a=1)'
+    value: !testscribe/expression 'test_data.simple.C(a=1)'
   result: |
-    !test_scribe/object
+    !testscribe/object
     type: test_data.simple.C
     members:
       a: 1

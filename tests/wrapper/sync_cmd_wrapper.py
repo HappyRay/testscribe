@@ -1,5 +1,5 @@
-from test_scribe.model_type import AllTests
-from test_scribe.sync_cmd import regenerate_test_names
+from testscribe.model_type import AllTests
+from testscribe.sync_cmd import regenerate_test_names
 
 
 def get_regenerated_test_names(all_tests: AllTests):

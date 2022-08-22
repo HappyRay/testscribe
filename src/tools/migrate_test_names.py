@@ -5,11 +5,11 @@ from typing import Optional
 import typer
 from typer import Argument, Option
 
-from test_scribe.execution_util import init, get_all_scribe_files
-from test_scribe.load_scribe_file import load_scribe_file
-from test_scribe.model_type import TestModel
-from test_scribe.save_scribe_file import generate_scribe_file
-from test_scribe.util import remove_trailing_numbers
+from testscribe.execution_util import init, get_all_scribe_files
+from testscribe.load_scribe_file import load_scribe_file
+from testscribe.model_type import TestModel
+from testscribe.save_scribe_file import generate_scribe_file
+from testscribe.util import remove_trailing_numbers
 
 app = typer.Typer(name="migrate_test_names")
 logger = logging.getLogger(__name__)

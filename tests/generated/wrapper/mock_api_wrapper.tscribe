@@ -23,14 +23,14 @@ tests:
   - name: name
     value: ''
   result: !!python/tuple
-  - !test_scribe/callable
+  - !testscribe/callable
     name: C
     module: test_data.simple
   - m_c
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}
 - name: test_m_wrapper
   short_name: _
@@ -40,12 +40,12 @@ tests:
   - name: name
     value: a
   result: !!python/tuple
-  - !test_scribe/callable
+  - !testscribe/callable
     name: C
     module: test_data.simple
   - a
   patches:
-  - target: test_scribe.global_var.g_mock_name_counter
-    replacement: !test_scribe/expression 'collections.Counter(test_scribe.global_var.g_mock_name_counter)'
-  - target: test_scribe.global_var.g_name_mock_dict
+  - target: testscribe.global_var.g_mock_name_counter
+    replacement: !testscribe/expression 'collections.Counter(testscribe.global_var.g_mock_name_counter)'
+  - target: testscribe.global_var.g_name_mock_dict
     replacement: {}

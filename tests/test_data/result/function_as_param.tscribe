@@ -9,7 +9,7 @@ tests:
   - name: seed
     value: 1
   - name: f
-    value: !test_scribe/mock 'm_callable'
+    value: !testscribe/mock 'm_callable'
   result: '{"result": 4}'
   mocks:
   - name: m_callable

@@ -13,7 +13,7 @@ tests:
   result: null
   patches:
   - target: test_data.file_op.open
-    replacement: !test_scribe/mock 'm_text_open_spec'
+    replacement: !testscribe/mock 'm_text_open_spec'
   mocks:
   - name: m_text_open_spec
     spec: test_data.custom_spec.text_open_spec
@@ -23,13 +23,13 @@ tests:
         value: f
       - name: mode
         value: w
-      return: !test_scribe/mock 'm_text_file_context_mgr_spec'
+      return: !testscribe/mock 'm_text_file_context_mgr_spec'
   - name: m_text_file_context_mgr_spec
     spec: test_data.custom_spec.TextFileContextMgrSpec
     calls:
     - name: __enter__
       parameters: []
-      return: !test_scribe/mock 'm_text_file_spec'
+      return: !testscribe/mock 'm_text_file_spec'
     - name: __exit__
       parameters:
       - name: exc_type

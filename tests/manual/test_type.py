@@ -17,7 +17,7 @@ from typing import (
 from pytest import mark
 
 from test_data.simple import foo
-from test_scribe.type_util import is_class_type, is_container_type
+from testscribe.type_util import is_class_type, is_container_type
 
 """
 These tests can also be generated.

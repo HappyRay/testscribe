@@ -7,7 +7,7 @@ tests:
     name: greet_mock_greeter
   parameters:
   - name: g
-    value: !test_scribe/mock 'm_greeter'
+    value: !testscribe/mock 'm_greeter'
   - name: to
     value: a
   - name: words
@@ -23,4 +23,4 @@ tests:
       parameters:
       - name: to
         value: a
-      return: !test_scribe/expression 'throw()'
+      return: !testscribe/expression 'throw()'

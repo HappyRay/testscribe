@@ -15,7 +15,7 @@ tests:
     name: get_repr_of_named_values
   parameters:
   - name: nv
-    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues()'
+    value: !testscribe/expression 'testscribe.namedvalues.NamedValues()'
   result: NamedValues([])
 - name: test_get_repr_of_named_values
   short_name: _
@@ -23,5 +23,5 @@ tests:
     name: get_repr_of_named_values
   parameters:
   - name: nv
-    value: !test_scribe/expression 'test_scribe.namedvalues.NamedValues([(''a'', 1)])'
+    value: !testscribe/expression 'testscribe.namedvalues.NamedValues([(''a'', 1)])'
   result: NamedValues([('a', 1)])

@@ -2,15 +2,15 @@ from typing import Any
 
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data.simple import C
-from test_scribe.api.mock_api import patch_with_mock
-from test_scribe.eval_expression import (
+from testscribe.api.mock_api import patch_with_mock
+from testscribe.eval_expression import (
     contain_mock_proxy,
     process_mock_marker,
     wrap_input_value,
     process_complex_value,
 )
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.value_util import InputValue
+from testscribe.mock_proxy import MockProxy
+from testscribe.value_util import InputValue
 
 
 def contain_mock_proxy_wrapper():
@@ -62,5 +62,5 @@ def process_mock_marker_wrapper(t: type, v: Any):
     # Use the setup function to mock MockProxy interferes with the tool itself
     # since the setup function is called before the tool references MockProxy.
     #
-    patch_with_mock(target="test_scribe.eval_expression.MockProxy")
+    patch_with_mock(target="testscribe.eval_expression.MockProxy")
     return process_mock_marker(t=t, v=v)

@@ -7,7 +7,7 @@ tests:
     name: ignore_return
   parameters:
   - name: s
-    value: !test_scribe/mock 'm_s'
+    value: !testscribe/mock 'm_s'
   result: null
   mocks:
   - name: m_s
@@ -15,4 +15,4 @@ tests:
     calls:
     - name: do
       parameters: []
-      return: !test_scribe/expression 'ignore'
+      return: !testscribe/expression 'ignore'

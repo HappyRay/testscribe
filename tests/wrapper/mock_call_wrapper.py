@@ -4,17 +4,17 @@ from unittest.mock import patch, create_autospec
 from typer import prompt
 
 from test_data.simple import C
-from test_scribe.execution_util import show_user_call_stack
-from test_scribe.mock_call import MockCall, get_call_description
+from testscribe.execution_util import show_user_call_stack
+from testscribe.mock_call import MockCall, get_call_description
 
 
 def call_mock_call() -> Any:
     m_prompt = create_autospec(spec=prompt)
     m_prompt.return_value = 2
     m_show_user_call_stack = create_autospec(spec=show_user_call_stack)
-    with patch("test_scribe.value_input_cli.prompt", m_prompt), patch(
-        "test_scribe.mock_call.show_user_call_stack", m_show_user_call_stack
-    ), patch("test_scribe.mock_call.global_var.g_test_to_infer_default_inputs", None):
+    with patch("testscribe.value_input_cli.prompt", m_prompt), patch(
+        "testscribe.mock_call.show_user_call_stack", m_show_user_call_stack
+    ), patch("testscribe.mock_call.global_var.g_test_to_infer_default_inputs", None):
         m_c = MockCall(
             method_name="bar",
             mock_name="mock_name",
@@ -40,7 +40,7 @@ def get_call_description_wrapper(mock_call: MockCall) -> str:
     :return:
     """
     m_show_user_call_stack = create_autospec(spec=show_user_call_stack)
-    with patch("test_scribe.mock_call.show_user_call_stack", m_show_user_call_stack):
+    with patch("testscribe.mock_call.show_user_call_stack", m_show_user_call_stack):
         result = get_call_description(mock_call)
     m_show_user_call_stack.assert_called_once()
     return result

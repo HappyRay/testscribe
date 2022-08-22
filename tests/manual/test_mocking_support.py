@@ -1,6 +1,6 @@
 from unittest.mock import Mock, call
 
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 
 
 def foo(a, b):

@@ -1,7 +1,7 @@
 import test_data
 from test_data.simple import C
-from test_scribe import global_var
-from test_scribe.api.mock_api import patch_with_mock, patch_with_expression
+from testscribe import global_var
+from testscribe.api.mock_api import patch_with_mock, patch_with_expression
 
 
 def test_patch_with_mock_no_effect_when_not_in_test_session():

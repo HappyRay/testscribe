@@ -1,7 +1,7 @@
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data.simple import C
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.value_util import get_value_repr
+from testscribe.mock_proxy import MockProxy
+from testscribe.value_util import get_value_repr
 
 
 def get_value_repr_wrapper_mock_proxy():

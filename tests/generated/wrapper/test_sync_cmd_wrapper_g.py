@@ -1,13 +1,13 @@
-import test_scribe.model_type
-from test_scribe.api.mock_api import get_normalized_mock_calls
+import testscribe.model_type
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from wrapper.sync_cmd_wrapper import get_regenerated_test_names
 
 
 def test_get_regenerated_test_names():
-    all_tests: test_scribe.model_type.AllTests = create_autospec(spec=test_scribe.model_type.AllTests)
-    m_test_model: test_scribe.model_type.TestModel = create_autospec(spec=test_scribe.model_type.TestModel)
-    m_test_model_1: test_scribe.model_type.TestModel = create_autospec(spec=test_scribe.model_type.TestModel)
+    all_tests: testscribe.model_type.AllTests = create_autospec(spec=testscribe.model_type.AllTests)
+    m_test_model: testscribe.model_type.TestModel = create_autospec(spec=testscribe.model_type.TestModel)
+    m_test_model_1: testscribe.model_type.TestModel = create_autospec(spec=testscribe.model_type.TestModel)
     all_tests.tests = [m_test_model, m_test_model_1]
     m_test_model.name = 'old_name'
     m_test_model.short_name = '_'

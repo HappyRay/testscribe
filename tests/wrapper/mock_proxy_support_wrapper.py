@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 from fixture.helper import patch_g_mock_name_counter
 from test_data.simple import D
-from test_scribe.mock_proxy_support import (
+from testscribe.mock_proxy_support import (
     create_unique_mock_name,
     get_mock_attribute_value,
 )
@@ -16,10 +16,10 @@ def create_mock_name_twice():
 
 
 def get_mock_attribute_value_wrapper():
-    with patch("test_scribe.value_input_cli.prompt", autospec=True) as mock_prompt, patch(
-        "test_scribe.mock_proxy_support.show_user_call_stack", autospec=True
+    with patch("testscribe.value_input_cli.prompt", autospec=True) as mock_prompt, patch(
+        "testscribe.mock_proxy_support.show_user_call_stack", autospec=True
     ) as mock_show_user_call_stack, patch(
-        "test_scribe.mock_proxy_support.global_var.g_test_to_infer_default_inputs", None
+        "testscribe.mock_proxy_support.global_var.g_test_to_infer_default_inputs", None
     ):
         mock_prompt.return_value = "1"
         r = get_mock_attribute_value(attribute_name="a", mock_name="m", spec=D)

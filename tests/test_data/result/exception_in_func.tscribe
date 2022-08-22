@@ -7,5 +7,5 @@ tests:
     name: exception_throwing_func
   parameters: []
   exception:
-    type: test_scribe.error.InputError
+    type: testscribe.error.InputError
     message: foo

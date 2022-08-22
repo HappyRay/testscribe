@@ -5,8 +5,8 @@ from test_data.calculator import add
 from test_data.return_callable import return_fixed_func
 from test_data.service import Service
 from test_data.simple import C
-from test_scribe.mock_proxy import MockProxy
-from test_scribe.mocking_support import normalize_mock_call, get_direct_mock_calls, \
+from testscribe.mock_proxy import MockProxy
+from testscribe.mocking_support import normalize_mock_call, get_direct_mock_calls, \
     get_target_str_from_obj
 
 

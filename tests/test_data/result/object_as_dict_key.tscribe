@@ -7,7 +7,7 @@ tests:
     name: get_dict_with_object_key
   parameters: []
   result:
-    ? !test_scribe/object
+    ? !testscribe/object
       type: test_data.simple.ReadOnlyData
       repr: ReadOnlyData(a=1)
     : 2

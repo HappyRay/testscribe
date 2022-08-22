@@ -1,5 +1,5 @@
 import test_data.custom_spec
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from unittest.mock import patch
 from test_data.file_op import write_to_file

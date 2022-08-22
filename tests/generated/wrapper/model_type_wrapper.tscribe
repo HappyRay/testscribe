@@ -7,7 +7,7 @@ tests:
     name: callable_model_repr
   parameters:
   - name: c
-    value: !test_scribe/expression 'len'
+    value: !testscribe/expression 'len'
   result: len
 - name: test_callable_model_repr_function
   short_name: _function
@@ -15,7 +15,7 @@ tests:
     name: callable_model_repr
   parameters:
   - name: c
-    value: !test_scribe/expression 'test_data.simple.foo'
+    value: !testscribe/expression 'test_data.simple.foo'
   result: test_data.simple.foo
 - name: test_get_exception_model_str
   short_name: _
@@ -71,7 +71,7 @@ tests:
     name: get_object_model_repr
   parameters:
   - name: o
-    value: !test_scribe/expression 'test_data.value.object_model_d'
+    value: !testscribe/expression 'test_data.value.object_model_d'
   result: test_data.simple.ReadOnlyData(a=1)
 - name: test_get_object_model_repr_no_repr_object
   short_name: _no_repr_object
@@ -79,7 +79,7 @@ tests:
     name: get_object_model_repr
   parameters:
   - name: o
-    value: !test_scribe/expression 'test_data.value.object_model_c'
+    value: !testscribe/expression 'test_data.value.object_model_c'
   result: 'Object(type (test_data.simple.C), members ({''a'': 1}))'
 - name: test_get_set_model_repr
   short_name: _

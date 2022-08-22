@@ -1,5 +1,5 @@
 import test_data.static_method
-from test_scribe.api.mock_api import get_normalized_mock_calls
+from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from test_data.static_method import call_static_method
 

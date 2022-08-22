@@ -1,5 +1,5 @@
 from typer import Typer
-from test_scribe.exception_decorator import exception_handler
+from testscribe.exception_decorator import exception_handler
 
 app = Typer(name="dummy")
 

@@ -1,0 +1,392 @@
+format_version: 1
+module: testscribe.code_gen_util
+tests:
+- name: test_add_indentation
+  short_name: _
+  target:
+    name: add_indentation
+  parameters:
+  - name: s
+    value: |-
+      ab
+      c
+      d
+  - name: level
+    value: 2
+  result: |2-
+            ab
+            c
+            d
+- name: test_add_indentation_to_str_list_no_indent
+  short_name: _no_indent
+  target:
+    name: add_indentation_to_str_list
+  parameters:
+  - name: lines
+    value:
+    - a
+    - bc
+  - name: level
+    value: 0
+  result:
+  - a
+  - bc
+- name: test_add_indentation_to_str_list_indent
+  short_name: _indent
+  target:
+    name: add_indentation_to_str_list
+  parameters:
+  - name: lines
+    value:
+    - a
+    - bc
+  - name: level
+    value: 2
+  result:
+  - '        a'
+  - '        bc'
+- name: test_collect_return_values
+  short_name: _
+  target:
+    name: collect_return_values
+  parameters:
+  - name: mock_calls
+    value:
+    - !testscribe/mock 'm_mock_call_model'
+    - !testscribe/mock 'm_mock_call_model_1'
+  result:
+  - 1
+  - !testscribe/object
+    type: testscribe.ignore.IgnoreReturnValue
+    repr: '''Ignored'''
+  mocks:
+  - name: m_mock_call_model
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      return_value: 1
+  - name: m_mock_call_model_1
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      return_value: !testscribe/expression 'testscribe.model_type.ExpressionModel("ignore")'
+- name: test_collect_return_values_none_is_preserved
+  short_name: _none_is_preserved
+  target:
+    name: collect_return_values
+  parameters:
+  - name: mock_calls
+    value:
+    - !testscribe/mock 'm_mock_call_model'
+  result:
+  - null
+  mocks:
+  - name: m_mock_call_model
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      return_value: null
+- name: test_get_module_name_builtin_class
+  short_name: _builtin_class
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: !testscribe/expression 'dict'
+  result: ''
+- name: test_get_module_name_class
+  short_name: _class
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: !testscribe/expression 'test_data.simple.C(1)'
+  result: test_data.simple
+- name: test_get_module_name_4
+  short_name: _
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: 1.1
+  result: ''
+- name: test_get_module_name_3
+  short_name: _
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: null
+  result: ''
+- name: test_get_module_name_2
+  short_name: _
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: true
+  result: ''
+- name: test_get_module_name_1
+  short_name: _
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: s
+  result: ''
+- name: test_get_module_name
+  short_name: _
+  target:
+    name: get_module_name
+  parameters:
+  - name: v
+    value: 1
+  result: ''
+- name: test_is_same_value_not_same
+  short_name: _not_same
+  target:
+    name: is_same_value
+  parameters:
+  - name: values
+    value:
+    - 1
+    - 2
+  result: false
+- name: test_is_same_value_same
+  short_name: _same
+  target:
+    name: is_same_value
+  parameters:
+  - name: values
+    value:
+    - 1
+    - 1
+    - 1
+  result: true
+- name: test_join_lines_indent
+  short_name: _indent
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value:
+    - a
+    - bc
+  - name: prepend_new_line
+    value: false
+  - name: indentation_level
+    value: 1
+  result: |2-
+        a
+        bc
+- name: test_join_lines_empty_lines
+  short_name: _empty_lines
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value:
+    - ''
+    - ''
+  - name: prepend_new_line
+    value: false
+  - name: indentation_level
+    value: 1
+  result: ''
+- name: test_join_lines_filter_out_empty_strings
+  short_name: _filter_out_empty_strings
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value:
+    - ''
+    - ''
+  - name: prepend_new_line
+    value: true
+  result: ''
+- name: test_join_lines_empty_with_prepend_new_line
+  short_name: _empty_with_prepend_new_line
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value: []
+  - name: prepend_new_line
+    value: true
+  result: ''
+- name: test_join_lines_prepend_new_line
+  short_name: _prepend_new_line
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value:
+    - a
+    - bc
+  - name: prepend_new_line
+    value: true
+  result: |2-
+
+    a
+    bc
+- name: test_join_lines_no_prepend_new_line
+  short_name: _no_prepend_new_line
+  target:
+    name: join_lines
+  parameters:
+  - name: lines
+    value:
+    - a
+    - bc
+  - name: prepend_new_line
+    value: false
+  result: |-
+    a
+    bc
+- name: test_pretty_format_repr_string_single_line
+  short_name: _single_line
+  target:
+    name: pretty_format_repr_string
+  parameters:
+  - name: s
+    value: a
+  result: '''a'''
+- name: test_pretty_format_repr_string_multi_line
+  short_name: _multi_line
+  target:
+    name: pretty_format_repr_string
+  parameters:
+  - name: s
+    value: |-
+      a
+      b
+  result: |-
+    """\
+    a
+    b"""
+- name: test_pretty_format_repr_string_one_line_plus_one_empty_line
+  short_name: _one_line_plus_one_empty_line
+  target:
+    name: pretty_format_repr_string
+  parameters:
+  - name: s
+    value: 'ab
+
+      '
+  result: '''ab\n'''
+- name: test_pretty_format_repr_string_with_trailing_double_quote
+  short_name: _with_trailing_double_quote
+  description: The trailing double quote should be escaped.
+  target:
+    name: pretty_format_repr_string
+  parameters:
+  - name: s
+    value: |-
+      a
+      b"
+  result: |-
+    """\
+    a
+    b\""""
+- name: test_pretty_format_repr_string_multi_line_with_triple_double_quotes
+  short_name: _multi_line_with_triple_double_quotes
+  description: Don't use triple quotes format when the input contains triple double
+    quotes itself.
+  target:
+    name: pretty_format_repr_string
+  parameters:
+  - name: s
+    value: |-
+      a
+      """
+  result: '''a\n"""'''
+- name: test_remove_empty
+  short_name: _
+  target:
+    name: remove_empty
+  parameters:
+  - name: a_list
+    value:
+    - a
+    - ''
+    - b
+    - ''
+  result:
+  - a
+  - b
+- name: test_spec_contain_param_name_info_collections_callable
+  short_name: _collections_callable
+  target:
+    name: spec_contain_param_name_info
+  parameters:
+  - name: spec_str
+    value: collections.Callable
+  result: false
+- name: test_spec_contain_param_name_info_collections_abc_callable
+  short_name: _collections_abc_callable
+  target:
+    name: spec_contain_param_name_info
+  parameters:
+  - name: spec_str
+    value: collections.abc.Callable
+  result: false
+- name: test_spec_contain_param_name_info_callable
+  short_name: _callable
+  target:
+    name: spec_contain_param_name_info
+  parameters:
+  - name: spec_str
+    value: typing.Callable
+  result: false
+- name: test_spec_contain_param_name_info_positive
+  short_name: _positive
+  target:
+    name: spec_contain_param_name_info
+  parameters:
+  - name: spec_str
+    value: test_data.simple.C
+  result: true
+- name: test_translate_special_mock_return_value_ignore
+  short_name: _ignore
+  target:
+    name: translate_special_mock_return_value
+  parameters:
+  - name: value
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("ignore")'
+  result: !testscribe/object
+    type: testscribe.ignore.IgnoreReturnValue
+    repr: '''Ignored'''
+- name: test_translate_special_mock_return_value_user_triggered_exception
+  short_name: _user_triggered_exception
+  target:
+    name: translate_special_mock_return_value
+  parameters:
+  - name: value
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("throw(Exception())")'
+  result: !testscribe/object
+    type: testscribe.user_triggered_exception.UserTriggeredException
+    repr: Exception()
+- name: test_translate_special_mock_return_value_expression
+  short_name: _expression
+  target:
+    name: translate_special_mock_return_value
+  parameters:
+  - name: value
+    value: !testscribe/expression 'testscribe.model_type.ExpressionModel("1 + 2")'
+  result: !testscribe/object
+    type: testscribe.model_type.ExpressionModel
+    repr: 1 + 2
+- name: test_translate_special_mock_return_value_none
+  short_name: _none
+  target:
+    name: translate_special_mock_return_value
+  parameters:
+  - name: value
+    value: null
+  result: null
+- name: test_translate_special_mock_return_value_regular
+  short_name: _regular
+  target:
+    name: translate_special_mock_return_value
+  parameters:
+  - name: value
+    value: 1
+  result: 1

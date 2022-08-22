@@ -1,6 +1,6 @@
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data.simple import C
-from test_scribe.mock_proxy import MockProxy, is_mock_proxy
+from testscribe.mock_proxy import MockProxy, is_mock_proxy
 
 
 def mock_proxy_method_call():

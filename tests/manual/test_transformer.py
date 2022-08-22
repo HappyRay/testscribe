@@ -1,4 +1,4 @@
-from test_scribe.transformer import transform_value
+from testscribe.transformer import transform_value
 
 
 def test_trasform_value_makes_a_copy():

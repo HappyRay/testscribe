@@ -1,4 +1,4 @@
-from test_scribe.error import InputError
+from testscribe.error import InputError
 
 
 def exception_throwing_func():

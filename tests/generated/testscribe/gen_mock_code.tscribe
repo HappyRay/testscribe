@@ -1,0 +1,319 @@
+format_version: 1
+module: testscribe.gen_mock_code
+tests:
+- name: test_create_call_dict_indexed_by_method_name
+  short_name: _
+  target:
+    name: create_call_dict_indexed_by_method_name
+  parameters:
+  - name: mock_calls
+    value:
+    - !testscribe/mock 'input_mock'
+    - !testscribe/mock 'input_mock_1'
+    - !testscribe/mock 'input_mock_2'
+  result:
+    a:
+    - !testscribe/mock 'input_mock'
+    - !testscribe/mock 'input_mock_2'
+    b:
+    - !testscribe/mock 'input_mock_1'
+  mocks:
+  - name: input_mock
+    spec: testscribe.model.MockCallModel
+    attributes:
+      name: a
+  - name: input_mock_1
+    spec: testscribe.model.MockCallModel
+    attributes:
+      name: b
+  - name: input_mock_2
+    spec: testscribe.model.MockCallModel
+    attributes:
+      name: a
+- name: test_gen_mock_return_values_for_one_method_with_return_values_single_user_triggered_exception
+  short_name: _single_user_triggered_exception
+  target:
+    name: gen_mock_return_values_for_one_method_with_return_values
+  parameters:
+  - name: mock_object_name
+    value: m
+  - name: method_name
+    value: ''
+  - name: return_values
+    value: !testscribe/expression '[testscribe.user_triggered_exception.UserTriggeredException(Exception())]'
+  result: m.side_effect = [Exception()]
+- name: test_gen_mock_return_values_for_one_method_with_return_values_different_real_values
+  short_name: _different_real_values
+  target:
+    name: gen_mock_return_values_for_one_method_with_return_values
+  parameters:
+  - name: mock_object_name
+    value: m
+  - name: method_name
+    value: foo
+  - name: return_values
+    value:
+    - 1
+    - 2
+  result: m.foo.side_effect = [1, 2]
+- name: test_gen_mock_return_values_for_one_method_with_return_values_only_ignored
+  short_name: _only_ignored
+  target:
+    name: gen_mock_return_values_for_one_method_with_return_values
+  parameters:
+  - name: mock_object_name
+    value: m
+  - name: method_name
+    value: foo
+  - name: return_values
+    value: !testscribe/expression '[testscribe.ignore.IGNORED]'
+  result: ''
+- name: test_gen_mock_return_values_for_one_method_with_return_values_same_single_value
+  short_name: _same_single_value
+  target:
+    name: gen_mock_return_values_for_one_method_with_return_values
+  parameters:
+  - name: mock_object_name
+    value: m
+  - name: method_name
+    value: foo
+  - name: return_values
+    value:
+    - 1
+    - 1
+  result: m.foo.return_value = 1
+- name: test_gen_mock_return_values_for_one_method_with_return_values_no_return_value
+  short_name: _no_return_value
+  target:
+    name: gen_mock_return_values_for_one_method_with_return_values
+  parameters:
+  - name: mock_object_name
+    value: m
+  - name: method_name
+    value: foo
+  - name: return_values
+    value: []
+  result: ''
+- name: test_generate_behavior_statements_for_one_mock
+  short_name: _
+  target:
+    name: generate_behavior_statements_for_one_mock
+  parameters:
+  - name: mock
+    value: !testscribe/mock 'mock'
+  result:
+  - m.a = 1
+  - m.foo.return_value = 2
+  mocks:
+  - name: mock
+    spec: testscribe.model_type.MockModel
+    attributes:
+      attributes:
+        a: 1
+      name: m
+      calls:
+      - !testscribe/mock 'm_mock_call_model'
+  - name: m_mock_call_model
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: foo
+      return_value: 2
+- name: test_generate_mock_behavior_statements
+  short_name: _
+  target:
+    name: generate_mock_behavior_statements
+  parameters:
+  - name: mocks
+    value:
+    - !testscribe/mock 'm_mock_model'
+    - !testscribe/mock 'm_mock_model_1'
+  result:
+  - m.a = 1
+  - m1.foo.return_value = 2
+  mocks:
+  - name: m_mock_model
+    spec: testscribe.model_type.MockModel
+    attributes:
+      attributes:
+        a: 1
+      name: m
+      calls: []
+  - name: m_mock_model_1
+    spec: testscribe.model_type.MockModel
+    attributes:
+      attributes: {}
+      calls:
+      - !testscribe/mock 'm_mock_call_model'
+      name: m1
+  - name: m_mock_call_model
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: foo
+      return_value: 2
+- name: test_generate_mock_return_values_one_method_different_return_values
+  short_name: _one_method_different_return_values
+  target:
+    name: generate_mock_return_values
+  parameters:
+  - name: mock
+    value: !testscribe/mock 'mock'
+  result:
+  - m.m1.side_effect = [1, 2]
+  mocks:
+  - name: mock
+    spec: testscribe.model_type.MockModel
+    attributes:
+      calls:
+      - !testscribe/mock 'input_mock'
+      - !testscribe/mock 'input_mock_1'
+      name: m
+  - name: input_mock
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: m1
+      return_value: 1
+  - name: input_mock_1
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: m1
+      return_value: 2
+- name: test_generate_mock_return_values_two_methods
+  short_name: _two_methods
+  target:
+    name: generate_mock_return_values
+  parameters:
+  - name: mock
+    value: !testscribe/mock 'mock'
+  result:
+  - m.m1.return_value = 1
+  - m.m2.return_value = 'a'
+  mocks:
+  - name: mock
+    spec: testscribe.model_type.MockModel
+    attributes:
+      calls:
+      - !testscribe/mock 'input_mock'
+      - !testscribe/mock 'input_mock_1'
+      name: m
+  - name: input_mock
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: m1
+      return_value: 1
+  - name: input_mock_1
+    spec: testscribe.model_type.MockCallModel
+    attributes:
+      name: m2
+      return_value: a
+- name: test_generate_one_mock_creation_statement
+  short_name: _
+  target:
+    name: generate_one_mock_creation_statement
+  parameters:
+  - name: mock
+    value: !testscribe/mock 'mock'
+  result: 'm: a.B = create_autospec(spec=a.B)'
+  mocks:
+  - name: mock
+    spec: testscribe.model_type.MockModel
+    attributes:
+      spec_str: a.B
+      name: m
+- name: test_generate_property_init_statements
+  short_name: _
+  target:
+    name: generate_property_init_statements
+  parameters:
+  - name: mock
+    value: !testscribe/mock 'mock'
+  result:
+  - m.a = 1
+  - m.b = 'foo'
+  mocks:
+  - name: mock
+    spec: testscribe.model_type.MockModel
+    attributes:
+      attributes:
+        a: 1
+        b: foo
+      name: m
+- name: test_get_full_mock_method_name_call_a_method_on_the_mock
+  short_name: _call_a_method_on_the_mock
+  target:
+    name: get_full_mock_method_name
+  parameters:
+  - name: method_name
+    value: foo
+  - name: mock_object_name
+    value: m
+  result: m.foo
+- name: test_get_full_mock_method_name_direct_call_on_the_mock
+  short_name: _direct_call_on_the_mock
+  target:
+    name: get_full_mock_method_name
+  parameters:
+  - name: method_name
+    value: ''
+  - name: mock_object_name
+    value: m
+  result: m
+- name: test_has_not_ignored_return_value_has_exception
+  short_name: _has_exception
+  target:
+    name: has_not_ignored_return_value
+  parameters:
+  - name: values
+    value: !testscribe/expression '[testscribe.user_triggered_exception.UserTriggeredException(Exception())]'
+  result: true
+- name: test_has_not_ignored_return_value_only_ignored
+  short_name: _only_ignored
+  target:
+    name: has_not_ignored_return_value
+  parameters:
+  - name: values
+    value: !testscribe/expression '[testscribe.ignore.IGNORED, testscribe.ignore.IGNORED]'
+  result: false
+- name: test_has_not_ignored_return_value_has_real_value
+  short_name: _has_real_value
+  target:
+    name: has_not_ignored_return_value
+  parameters:
+  - name: values
+    value: !testscribe/expression '[1, testscribe.ignore.IGNORED]'
+  result: true
+- name: test_is_single_real_return_value_only_ignored
+  short_name: _only_ignored
+  target:
+    name: is_single_real_return_value
+  parameters:
+  - name: return_values
+    value: !testscribe/expression '[testscribe.ignore.IGNORED]'
+  result: false
+- name: test_is_single_real_return_value_only_user_triggered_exception
+  short_name: _only_user_triggered_exception
+  target:
+    name: is_single_real_return_value
+  parameters:
+  - name: return_values
+    value: !testscribe/expression '[testscribe.user_triggered_exception.UserTriggeredException(Exception())]'
+  result: false
+- name: test_is_single_real_return_value_same_real_value
+  short_name: _same_real_value
+  target:
+    name: is_single_real_return_value
+  parameters:
+  - name: return_values
+    value:
+    - 1
+    - 1
+  result: true
+- name: test_is_single_real_return_value_not_same_real_value
+  short_name: _not_same_real_value
+  target:
+    name: is_single_real_return_value
+  parameters:
+  - name: return_values
+    value:
+    - 1
+    - 2
+  result: false

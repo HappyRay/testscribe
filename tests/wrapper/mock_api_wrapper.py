@@ -3,8 +3,8 @@ from unittest.mock import Mock
 from fixture.helper import patch_globals_modified_by_mock_proxy
 from test_data.service import Service
 from test_data.simple import C
-from test_scribe.api.mock_api import get_normalized_mock_calls, m
-from test_scribe.mock_proxy import MockProxy
+from testscribe.api.mock_api import get_normalized_mock_calls, m
+from testscribe.mock_proxy import MockProxy
 
 
 def get_normalized_mock_calls_wrapper():

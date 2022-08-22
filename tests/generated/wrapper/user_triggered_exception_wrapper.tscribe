@@ -7,13 +7,13 @@ tests:
     name: get_user_triggered_exception_repr
   parameters:
   - name: e
-    value: !test_scribe/expression 'test_scribe.error.InputError("foo")'
-  result: test_scribe.error.InputError('foo')
+    value: !testscribe/expression 'testscribe.error.InputError("foo")'
+  result: testscribe.error.InputError('foo')
 - name: test_get_user_triggered_exception_repr_builtin_exception
   short_name: _builtin_exception
   target:
     name: get_user_triggered_exception_repr
   parameters:
   - name: e
-    value: !test_scribe/expression 'Exception("foo")'
+    value: !testscribe/expression 'Exception("foo")'
   result: Exception('foo')

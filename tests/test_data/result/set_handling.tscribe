@@ -7,9 +7,9 @@ tests:
     name: echo_set
   parameters:
   - name: s
-    value: !test_scribe/set
+    value: !testscribe/set
     - 1
     - 2
-  result: !test_scribe/set
+  result: !testscribe/set
   - 1
   - 2

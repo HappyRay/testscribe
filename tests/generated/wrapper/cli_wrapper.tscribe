@@ -9,7 +9,7 @@ tests:
   - name: cmd_name
     value: sync
   result: "                                                                      \
-    \          \n Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH             \
+    \          \n Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH              \
     \                \n                                                          \
     \                      \n Regenerate the unit test file.                     \
     \                            \n :param scribe_file_path: :return:            \
@@ -20,29 +20,28 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
-    \n\u2502 *    scribe_file_path      FILE  The test_scribe file to sync       \
-    \         \u2502\n\u2502                                  [default: None]    \
-    \                         \u2502\n\u2502                                  [required]\
-    \                                  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\
+    \n\u2502 *    scribe_file_path      FILE  The testscribe file to sync [default:\
+    \ None] \u2502\n\u2502                                  [required]           \
+    \                       \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options \u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options \u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u256E\n\u2502 --help          Show this message and exit.       \
-    \                           \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u256E\n\u2502 --help          Show this message and exit.                   \
+    \               \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
+    \u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_delete
   short_name: _delete
   target:
@@ -51,10 +50,10 @@ tests:
   - name: cmd_name
     value: delete
   result: "                                                                      \
-    \          \n Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
-    \               \n                                                           \
-    \                     \n Delete a test. This will delete the test from both the\
-    \ test_scribe file and    \n the unit test file.                             \
+    \          \n Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
+    \                \n                                                          \
+    \                      \n Delete a test. This will delete the test from both the\
+    \ testscribe file and the \n unit test file.                                 \
     \                               \n :param scribe_file_path: :param test_name:\
     \ :return:                            \n                                     \
     \                                           \n\u256D\u2500 Arguments \u2500\u2500\
@@ -63,8 +62,8 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
-    \n\u2502 *    scribe_file_path      FILE         The test_scribe file to modify\
-    \       \u2502\n\u2502                                         [default: None]\
+    \n\u2502 *    scribe_file_path      FILE         The testscribe file to modify\
+    \        \u2502\n\u2502                                         [default: None]\
     \                      \u2502\n\u2502                                        \
     \ [required]                           \u2502\n\u2502      test_name         \
     \    [TEST_NAME]  The name of the test to be removed   \u2502\n\u2570\u2500\u2500\
@@ -95,10 +94,10 @@ tests:
   - name: cmd_name
     value: update
   result: "                                                                      \
-    \          \n Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
-    \               \n                                                           \
-    \                     \n Update the selected test.                           \
-    \                           \n :param test_name: :param scribe_file_path: :return:\
+    \          \n Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
+    \                \n                                                          \
+    \                      \n Update the selected test.                          \
+    \                            \n :param test_name: :param scribe_file_path: :return:\
     \                            \n                                              \
     \                                  \n\u256D\u2500 Arguments \u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -106,7 +105,7 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502\
-    \ *    scribe_file_path      FILE         The test_scribe file to update     \
+    \ *    scribe_file_path      FILE         The testscribe file to update      \
     \  \u2502\n\u2502                                         [default: None]    \
     \                  \u2502\n\u2502                                         [required]\
     \                           \u2502\n\u2502      test_name             [TEST_NAME]\
@@ -138,7 +137,7 @@ tests:
   - name: cmd_name
     value: create
   result: "                                                                      \
-    \          \n Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME  \
+    \          \n Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME   \
     \                \n                                                          \
     \                      \n Generate a new test.                               \
     \                            \n :param config_file: :param ask_for_description:\
@@ -200,9 +199,9 @@ tests:
   - name: cmd_name
     value: move
   result: "                                                                      \
-    \          \n Usage: test_scribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME\
-    \           \n                                                               \
-    \                 \n Move tests for a function to their new files corresponding\
+    \          \n Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME\
+    \            \n                                                              \
+    \                  \n Move tests for a function to their new files corresponding\
     \ to the new module   \n to which the function has moved.                    \
     \                           \n                                               \
     \                                 \n\u256D\u2500 Arguments \u2500\u2500\u2500\u2500\
@@ -250,7 +249,7 @@ tests:
   parameters:
   - name: cmd
     value: sync
-  result: "Usage: test_scribe sync [OPTIONS] SCRIBE_FILE_PATH\nTry 'test_scribe sync\
+  result: "Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH\nTry 'testscribe sync\
     \ --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -272,7 +271,7 @@ tests:
   parameters:
   - name: cmd
     value: update
-  result: "Usage: test_scribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'test_scribe\
+  result: "Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'testscribe\
     \ update --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -294,7 +293,7 @@ tests:
   parameters:
   - name: cmd
     value: delete
-  result: "Usage: test_scribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'test_scribe\
+  result: "Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'testscribe\
     \ delete --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -317,7 +316,7 @@ tests:
   - name: additional_args
     value:
     - do_not_exist
-  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+  result: "Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'testscribe\
     \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -339,7 +338,7 @@ tests:
   parameters:
   - name: additional_args
     value: []
-  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+  result: "Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'testscribe\
     \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -359,7 +358,7 @@ tests:
   target:
     name: run_create_cmd_with_file_name_only
   parameters: []
-  result: "Usage: test_scribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'test_scribe\
+  result: "Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME\nTry 'testscribe\
     \ create --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -380,7 +379,7 @@ tests:
     name: run_help
   parameters: []
   result: "                                                                      \
-    \          \n Usage: test_scribe [OPTIONS] COMMAND [ARGS]...                 \
+    \          \n Usage: testscribe [OPTIONS] COMMAND [ARGS]...                  \
     \                \n                                                          \
     \                      \n\u256D\u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -413,7 +412,7 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u256E\n\u2502 create    Generate a new test.                    \
     \                           \u2502\n\u2502 delete    Delete a test. This will\
-    \ delete the test from both the test_scribe \u2502\n\u2502           file and\
+    \ delete the test from both the testscribe  \u2502\n\u2502           file and\
     \ the unit test file.                                       \u2502\n\u2502 move\
     \      Move tests for a function to their new files corresponding to the  \u2502\
     \n\u2502           new module to which the function has moved.               \

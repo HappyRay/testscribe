@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from test_scribe.execution_util import get_all_scribe_files
+from testscribe.execution_util import get_all_scribe_files
 
 
 def get_all_scribe_files_wrapper(root_path: Path):

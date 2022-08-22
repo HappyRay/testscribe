@@ -1,6 +1,6 @@
 from io import StringIO
 
-from test_scribe.load_scribe_file import load_from_yaml
+from testscribe.load_scribe_file import load_from_yaml
 
 
 def load_object_model(yaml_str: str):

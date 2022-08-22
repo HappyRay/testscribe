@@ -1,0 +1,37 @@
+format_version: 1
+module: testscribe.sync_cmd
+tests:
+- name: test_regenerate_all_tests_internal
+  short_name: _
+  target:
+    name: regenerate_all_tests_internal
+  parameters:
+  - name: output_root_path
+    value: !testscribe/expression 'pathlib.Path("a")'
+  result: 2
+  patches:
+  - target: testscribe.sync_cmd.regenerate_tests
+    replacement: !testscribe/mock 'm_regenerate_tests'
+  - target: testscribe.sync_cmd.get_all_scribe_files
+    replacement: !testscribe/mock 'm_get_all_scribe_files'
+  mocks:
+  - name: m_regenerate_tests
+    spec: testscribe.sync_cmd.regenerate_tests
+    calls:
+    - parameters:
+      - name: scribe_file_path
+        value: 1
+    - parameters:
+      - name: scribe_file_path
+        value: 2
+  - name: m_get_all_scribe_files
+    spec: testscribe.execution_util.get_all_scribe_files
+    calls:
+    - parameters:
+      - name: root_path
+        value: !testscribe/object
+          type: pathlib.PosixPath
+          repr: PosixPath('a')
+      return:
+      - 1
+      - 2

@@ -5,8 +5,8 @@ to the input directory.
 from shutil import copy2
 
 from fixture.helper import get_test_result_path, get_test_input_path
-from test_scribe.load_scribe_file import load_scribe_file
-from test_scribe.save_scribe_file import generate_scribe_file
+from testscribe.load_scribe_file import load_scribe_file
+from testscribe.save_scribe_file import generate_scribe_file
 
 
 def main():

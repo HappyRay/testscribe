@@ -7,9 +7,9 @@ tests:
     name: load_object_model
   parameters:
   - name: yaml_str
-    value: "!test_scribe/set \n  - 1 \n  - 2"
-  result: !test_scribe/object
-    type: test_scribe.model_type.SetModel
+    value: "!testscribe/set \n  - 1 \n  - 2"
+  result: !testscribe/object
+    type: testscribe.model_type.SetModel
     repr: set([1, 2])
 - name: test_load_object_model_module_model
   short_name: _module_model
@@ -17,9 +17,9 @@ tests:
     name: load_object_model
   parameters:
   - name: yaml_str
-    value: '!test_scribe/module ''m'''
-  result: !test_scribe/object
-    type: test_scribe.model_type.ModuleModel
+    value: '!testscribe/module ''m'''
+  result: !testscribe/object
+    type: testscribe.model_type.ModuleModel
     repr: ModuleModel(name='m')
 - name: test_load_object_model_expression_model
   short_name: _expression_model
@@ -27,9 +27,9 @@ tests:
     name: load_object_model
   parameters:
   - name: yaml_str
-    value: '!test_scribe/expression ''a'''
-  result: !test_scribe/object
-    type: test_scribe.model_type.ExpressionModel
+    value: '!testscribe/expression ''a'''
+  result: !testscribe/object
+    type: testscribe.model_type.ExpressionModel
     repr: a
 - name: test_load_object_model_callable_model
   short_name: _callable_model
@@ -38,11 +38,11 @@ tests:
   parameters:
   - name: yaml_str
     value: |-
-      !test_scribe/callable
+      !testscribe/callable
           name: foo
           module: test_data.simple
-  result: !test_scribe/object
-    type: test_scribe.model_type.CallableModel
+  result: !testscribe/object
+    type: testscribe.model_type.CallableModel
     repr: test_data.simple.foo
 - name: test_load_object_model_mock_name_model
   short_name: _mock_name_model
@@ -50,9 +50,9 @@ tests:
     name: load_object_model
   parameters:
   - name: yaml_str
-    value: '!test_scribe/mock ''a'''
-  result: !test_scribe/object
-    type: test_scribe.model_type.MockNameModel
+    value: '!testscribe/mock ''a'''
+  result: !testscribe/object
+    type: testscribe.model_type.MockNameModel
     repr: a
 - name: test_load_object_model_without_custom_repr
   short_name: _without_custom_repr
@@ -61,12 +61,12 @@ tests:
   parameters:
   - name: yaml_str
     value: |-
-      !test_scribe/object
+      !testscribe/object
            type: test_data.simple.C
            members:
              a: 1
-  result: !test_scribe/object
-    type: test_scribe.model_type.ObjectModel
+  result: !testscribe/object
+    type: testscribe.model_type.ObjectModel
     repr: 'Object(type (test_data.simple.C), members ({''a'': 1}))'
 - name: test_load_object_model_with_custom_repr
   short_name: _with_custom_repr
@@ -75,9 +75,9 @@ tests:
   parameters:
   - name: yaml_str
     value: |-
-      !test_scribe/object
+      !testscribe/object
           type: test_data.person.Person
           repr: Person(name='a', age=1)
-  result: !test_scribe/object
-    type: test_scribe.model_type.ObjectModel
+  result: !testscribe/object
+    type: testscribe.model_type.ObjectModel
     repr: test_data.person.Person(name='a', age=1)

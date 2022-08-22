@@ -7,7 +7,7 @@ tests:
     name: use_resource
   parameters:
   - name: g
-    value: !test_scribe/mock 'm_gate'
+    value: !testscribe/mock 'm_gate'
   result: 1
   mocks:
   - name: m_gate
