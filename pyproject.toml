@@ -17,7 +17,7 @@ PyYAML = ">=5.2"
 pytest = "*"
 # There is a problem with dependency resolution with Six when pytest-clarity
 # is at lower version.
-pytest-clarity = "^1"
+pytest-clarity = ">=1"
 assertpy = "*"
 flake8 = "*"
 black = "*"
