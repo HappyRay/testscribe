@@ -22,6 +22,7 @@ assertpy = "*"
 flake8 = "*"
 black = "*"
 pytest-cov = "*"
+twine = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
