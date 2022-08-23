@@ -3,6 +3,7 @@ name = "testscribe"
 version = "0.0.1"
 description = "Unit test automation tool"
 authors = ["Ray Yang <ruiguo@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 # typing.get_args is introduced in python 3.8
