@@ -1,3 +1,3 @@
-# Test Scribe
+# TestScribe
 
 A tool to make unit testing easier by automating the boring and repetitive parts.
