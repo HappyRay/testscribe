@@ -20,3 +20,17 @@ unit test code as follows:
     value:
     False
     ***** Result end
+
+You can run it multiple times with different inputs.
+
+TestScribe automatically creates fully functional unit test files. You can use them to debug a test run or save
+them as regression tests or simply discard them. 
+
+The example above generates the following test file test_prime_g.py
+    
+    from prime import is_prime
+    def test_is_prime():
+        result = is_prime(n=8)
+        assert result is False
+
+This is the code you would likely have to write to unit test the same without TestScribe's help.
