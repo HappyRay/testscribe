@@ -1,3 +1,6 @@
-# TestScribe
+# TestScribe for Python
 
-A tool to make unit testing easier by automating the boring and repetitive parts.
+Unit test made easy
+
+A tool to make python unit testing easier by automating the boring and repetitive parts.
+
