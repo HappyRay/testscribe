@@ -4,7 +4,7 @@ from distutils.util import strtobool
 from typing import Any
 
 from click import prompt
-
+from click.exceptions import Abort
 from testscribe.eval_expression import eval_expression
 from testscribe.log import log
 from testscribe.reflection_util import get_type_name
@@ -23,7 +23,11 @@ def get_one_value_cli(prompt_name: str, t: type, default: Any):
             return get_one_value_cli_internal(
                 prompt_name=prompt_name, t=t, default=default_str
             )
+        except Abort as e:
+            # Ctrl-C abort. allow the exception to pass through
+            raise e
         except Exception as e:
+            # todo: don't catch exceptions that are not related to the user input errors.
             msg = f"The value is invalid. Please try again.\nError detail:\n{str(e)}"
             log(msg)
             continue

@@ -1,0 +1,11 @@
+format_version: 1
+module: wrapper.value_input_cli_wrapper
+tests:
+- name: test_get_one_value_cli_wrapper_abort
+  short_name: _
+  target:
+    name: get_one_value_cli_wrapper_abort
+  parameters: []
+  exception:
+    type: click.exceptions.Abort
+    message: ''
