@@ -34,3 +34,16 @@ The example above generates the following test file test_prime_g.py
         assert result is False
 
 This is the code you would likely have to write to unit test the same without TestScribe's help.
+
+# Easy to get started and setup
+Adding testscribe to your development dependencies is all you need to start using the basic features.
+Additional features such as launching the tool more easily only require simple setups. 
+
+# Low risk to try
+The tool doesn't modify the code you test in any way.
+It doesn't introduce any dependency to your production code.
+At any time, removing the tool won't break your existing production code or tests.
+
+# Documentation
+It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
+Please see the full documentation here.
