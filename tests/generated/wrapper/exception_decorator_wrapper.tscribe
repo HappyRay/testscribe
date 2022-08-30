@@ -11,7 +11,7 @@ tests:
   - |
     Aborted due to an exception:
     Traceback (most recent call last):
-      File "src/testscribe/exception_decorator.py", line 27, in wrapper_decorator
+      File "src/testscribe/exception_decorator.py", line 42, in wrapper_decorator
         return func(*args, **kwargs)
       File "tests/test_data/dummy_app.py", line 10, in raise_exception
         raise Exception("Test exception")
