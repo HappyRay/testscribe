@@ -4,6 +4,7 @@ version = "0.0.1-alpha-2"
 description = "Unit test automation tool"
 authors = ["Ray Yang <ruiguo@gmail.com>"]
 readme = "README.md"
+license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 # typing.get_args is introduced in python 3.8
