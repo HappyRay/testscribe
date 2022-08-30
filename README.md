@@ -37,6 +37,7 @@ This is the code you would likely have to write to unit test the same without Te
 
 # Easy to get started and setup
 Adding testscribe to your development dependencies is all you need to start using the basic features.
+Most of the features should be self-explanatory to developers.
 Additional features such as launching the tool more easily only require simple setups. 
 
 # Low risk to try
