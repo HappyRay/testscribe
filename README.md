@@ -40,9 +40,10 @@ Adding testscribe to your development dependencies is all you need to start usin
 Additional features such as launching the tool more easily only require simple setups. 
 
 # Low risk to try
-The tool doesn't modify the code you test in any way.
-It doesn't introduce any dependency to your production code.
-At any time, removing the tool won't break your existing production code or tests.
+* The tool doesn't modify the code you test in any way.
+* It doesn't introduce any dependency to your production code.
+* At any time, removing the tool won't break your existing production code or tests.
+* It's open source with the Apache 2.0 license.
 
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
