@@ -50,7 +50,7 @@ Additional features such as launching the tool more easily only require simple s
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
 Please see the full documentation here.
 
-# License
+# Copyright and license
 
 Copyright 2022 Ruiguo (Ray) Yang
 
