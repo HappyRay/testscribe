@@ -22,6 +22,11 @@ The machine-readable format will enable additional functionalities such as maint
 regression tests.
 
 # Quick start
+Follow the following steps to quickly try out the tool. 
+
+It doesn't modify your existing files.
+You can easily restore your original state, especially when you are using a version control system.
+
 1. Add [testscribe](https://pypi.org/project/testscribe/) to your development python library dependencies.
     ```commandline
     pip install testscribe
