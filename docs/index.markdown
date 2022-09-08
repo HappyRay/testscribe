@@ -84,5 +84,28 @@ By default, it looks for a configuration file named test-scribe-config.yml in th
 of a test run. The config file's path can be overwritten with command line options.
 [Here](https://github.com/HappyRay/testscribe/blob/main/test-scribe-config.yml) is a sample config file.
 
-See the config file section for more details.
+See [the config file](#configuration-file-format) section for more details.
 
+# Configuration File Format
+It's a [YAML](https://en.wikipedia.org/wiki/YAML) file.
+
+## Add additional directories to the Python path for a test run 
+example:
+
+    python-paths:
+    - src
+    - tests
+
+## Output files root directory
+The value has to be an existing directory. 
+
+example:
+
+    output-root-dir: tests/generated
+
+## A python function to run before a test run
+The value has to be a fully qualified Python function name.
+
+example:
+
+    setup-function: setup.setup
