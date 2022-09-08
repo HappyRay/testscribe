@@ -40,3 +40,26 @@ You can easily restore your original state, especially when you are using a vers
 
 4. [Optional] Use the generated test files for debugging, regression tests, etc.
 The file locations can be found in the output.
+
+# Setup
+
+## Required setup
+Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
+library dependencies. Note that it is not needed as a production dependency.
+
+## Optional setup
+To take full advantage of the tool, some optional setups are needed.
+
+### Add config files
+Config files allow you to
+* add additional directories to your python path during a test run
+* customize the generated tests' root directory
+* a python function to run before a test run to
+  * configure aliases for frequently used inputs such as a full package name
+  * patch dependencies of your test target
+
+By default, it looks for a configuration file named test-scribe-config.yml in the working directory 
+of a test run. The config file's path can be overwritten with command line options.
+[Here](https://github.com/HappyRay/testscribe/blob/main/test-scribe-config.yml) is a sample config file.
+
+See the config file section for more details.
