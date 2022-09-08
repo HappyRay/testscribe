@@ -109,3 +109,7 @@ The value has to be a fully qualified Python function name.
 example:
 
     setup-function: setup.setup
+
+setup is a function defined in the module named setup.
+[Here](https://github.com/HappyRay/testscribe/blob/main/tests/setup.py) 
+is an example of such a function.
