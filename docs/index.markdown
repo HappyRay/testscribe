@@ -20,3 +20,18 @@ Additionally, the test runs are recorded both as traditional unit tests
 and a structured machine-readable format by the tool automatically. 
 The machine-readable format will enable additional functionalities such as maintaining 
 regression tests.
+
+# Quick start
+1. Add [testscribe](https://pypi.org/project/testscribe/) to your development python library dependencies.
+    ```commandline
+    pip install testscribe
+    ```
+2. In your activated python environment, run 
+    ```commandline
+    testscribe create "the path to your python file under test" "the name of the function under test"
+    ```
+
+3. Follow the prompts to provide inputs and inspect the outputs
+
+4. [Optional] Use the generated test files for debugging, regression tests, etc.
+The file locations can be found in the output.
