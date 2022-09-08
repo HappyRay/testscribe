@@ -41,25 +41,48 @@ You can easily restore your original state, especially when you are using a vers
 4. [Optional] Use the generated test files for debugging, regression tests, etc.
 The file locations can be found in the output.
 
-# Setup
 
-## Required setup
+# Required setup
 Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
 library dependencies. Note that it is not needed as a production dependency.
 
-## Optional setup
+# Optional setup
 To take full advantage of the tool, some optional setups are needed.
 
-### Add config files
+## Quick launch for the Intellij/Pycharm IDE
+Intellij and Pycharm IDEs support external tools and keyboard shortcuts.
+You can leverage this support to launch the tool more easily and quickly.
+
+### An example intellij external tool configuration for the create command 
+Program: $ModuleSdkPath$
+
+Arguments: -m testscribe create $FilePath$ $SelectedText$
+
+To test a function, open the target file, highlight the function to test, invoke the configured external tool.
+It's helpful to configure a keyboard shortcut to launch the external tool.
+
+Other commands can be configured in a similar way.
+
+### References
+[Intellij external tools instructions](https://www.jetbrains.com/help/idea/settings-tools-external-tools.html)
+
+[Intellij configure keyboard shortcut](https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.html)
+
+[Pycharm external tools instructions](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html#pylint-configure)
+
+[Pycharm configure keyboard shortcut](https://www.jetbrains.com/help/pycharm/configuring-keyboard-and-mouse-shortcuts.html)
+
+## Add config files
 Config files allow you to
 * add additional directories to your python path during a test run
 * customize the generated tests' root directory
 * a python function to run before a test run to
-  * configure aliases for frequently used inputs such as a full package name
-  * patch dependencies of your test target
+    * configure aliases for frequently used inputs such as a full package name
+    * patch dependencies of your test target
 
-By default, it looks for a configuration file named test-scribe-config.yml in the working directory 
+By default, it looks for a configuration file named test-scribe-config.yml in the working directory
 of a test run. The config file's path can be overwritten with command line options.
 [Here](https://github.com/HappyRay/testscribe/blob/main/test-scribe-config.yml) is a sample config file.
 
 See the config file section for more details.
+
