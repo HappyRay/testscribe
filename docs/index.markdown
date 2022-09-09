@@ -41,6 +41,21 @@ You can easily restore your original state, especially when you are using a vers
 4. [Optional] Use the generated test files for debugging, regression tests, etc.
 The file locations can be found in the output.
 
+# Command line help
+Use the --help option to display help information from a command line.
+
+    testscribe --help
+
+output:
+
+    Usage: testscribe [OPTIONS] COMMAND [ARGS]...
+
+Use the --help option after a command name to display help information
+for that command.
+
+For example:
+
+    testscribe create --help
 
 # Required setup
 Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
