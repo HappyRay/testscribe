@@ -50,7 +50,7 @@ tests:
   - name: cmd_name
     value: delete
   result: "                                                                      \
-    \          \n Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\
+    \          \n Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME  \
     \                \n                                                          \
     \                      \n Delete a test. This will delete the test from both the\
     \ testscribe file and the \n unit test file.                                 \
@@ -62,30 +62,34 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
-    \n\u2502 *    scribe_file_path      FILE         The testscribe file to modify\
-    \        \u2502\n\u2502                                         [default: None]\
-    \                      \u2502\n\u2502                                        \
-    \ [required]                           \u2502\n\u2502      test_name         \
-    \    [TEST_NAME]  The name of the test to be removed   \u2502\n\u2570\u2500\u2500\
+    \n\u2502 *    scribe_file_path      FILE  The testscribe file that contains the\
+    \ test  \u2502\n\u2502                                  to delete            \
+    \                       \u2502\n\u2502                                  [default:\
+    \ None]                             \u2502\n\u2502                           \
+    \       [required]                                  \u2502\n\u2502 *    test_name\
+    \             TEXT  The name of the test to delete              \u2502\n\u2502\
+    \                                  [default: None]                           \
+    \  \u2502\n\u2502                                  [required]                \
+    \                  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\
-    \u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u256F\n\u256D\u2500 Options \u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --help          Show this message\
-    \ and exit.                                  \u2502\n\u2570\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
+    \n\u2502 --help          Show this message and exit.                         \
+    \         \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
+    \u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_run_cmd_help_update
   short_name: _update
   target:
@@ -293,7 +297,7 @@ tests:
   parameters:
   - name: cmd
     value: delete
-  result: "Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]\nTry 'testscribe\
+  result: "Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME\nTry 'testscribe\
     \ delete --help' for help.\n\u256D\u2500 Error \u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\

@@ -97,7 +97,7 @@ def create(
 def delete(
     scribe_file_path: Path = Argument(
         ...,
-        help="The testscribe file to modify",
+        help="The testscribe file that contains the test to delete",
         exists=True,
         file_okay=True,
         dir_okay=False,
@@ -105,7 +105,7 @@ def delete(
         readable=True,
         resolve_path=True,
     ),
-    test_name: str = Argument("", help="The name of the test to be removed"),
+    test_name: str = Argument(..., help="The name of the test to delete"),
 ):
     """
     Delete a test. This will delete the test from both the testscribe file
