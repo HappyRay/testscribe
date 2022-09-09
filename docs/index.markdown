@@ -128,3 +128,40 @@ example:
 setup is a function defined in the module named setup.
 [Here](https://github.com/HappyRay/testscribe/blob/main/tests/setup.py) 
 is an example of such a function.
+
+# Commands
+
+## Create a test run
+
+```text
+Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME                   
+                                                                                
+ Generate a new test.                                                           
+ :param config_file: :param ask_for_description: :param ask_for_test_name:      
+ :param source_file: :param function_name: :param output_root_dir: :return:     
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    source_file        FILE  The source file to test [default: None]        │
+│                               [required]                                     │
+│ *    function_name      TEXT  The function to test [default: None]           │
+│                               [required]                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --output-root-dir                            DIRECTORY  The root directory   │
+│                                                         of the output test   │
+│                                                         files                │
+│                                                         [default: None]      │
+│ --ask-for-test-name    --no-ask-for-test…               Allow test names to  │
+│                                                         be modified          │
+│                                                         [default:            │
+│                                                         ask-for-test-name]   │
+│ --ask-for-descript…    --no-ask-for-desc…               Allow adding a test  │
+│                                                         description          │
+│                                                         [default:            │
+│                                                         ask-for-description] │
+│ --config-file                                FILE       The config file      │
+│                                                         [default: None]      │
+│ --help                                                  Show this message    │
+│                                                         and exit.            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
