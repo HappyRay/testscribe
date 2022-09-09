@@ -25,7 +25,6 @@ from testscribe.execution import save_file
 from testscribe.execution_util import (
     init,
     get_all_scribe_files,
-    compute_output_root_path,
 )
 from testscribe.file_info import get_module
 from testscribe.input_params import (
@@ -42,32 +41,28 @@ logger = logging.getLogger(__name__)
 
 
 def move_tests(
-    source_file: Path, class_or_function_name: str, output_root_path: Optional[Path]
+    source_file: Path, class_or_function_name: str, config_file_path: Optional[Path]
 ):
     """
 
     :param source_file: the source file that the symbol currently is defined
     :param class_or_function_name: the class or function to move
-    :param output_root_path: the root directory of the scribe files to search
-    if it is None, use the root path in the config file.
+    :param config_file_path:
     :return:
     """
-    config = init()
+    config = init(config_file_path=config_file_path)
     log(f"Move tests that target {class_or_function_name} of {source_file}.")
-    output_root_path = compute_output_root_path(
-        config=config, output_root_path=output_root_path
-    )
     module = get_module(target_file=source_file)
     module_str = module.get_module_str()
     log(f"Target module: {module_str}")
     tests_to_move = get_tests_to_move(
         class_or_function_name=class_or_function_name,
-        output_root_path=output_root_path,
+        output_root_path=config.output_root_path,
         module_str=module_str,
     )
     do_move(
         module=module,
-        output_root_path=output_root_path,
+        output_root_path=config.output_root_path,
         tests_to_move=tests_to_move,
     )
 

@@ -237,18 +237,15 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u256E\n\u2502 --output-root-dir        DIRECTORY  The\
-    \ root directory of the output test    \u2502\n\u2502                        \
-    \             files                                    \u2502\n\u2502        \
-    \                             [default: None]                          \u2502\n\
-    \u2502 --help                              Show this message and exit.       \
-    \       \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u256E\n\u2502 --config-file        FILE  The config file\
+    \ [default: None]                   \u2502\n\u2502 --help                    \
+    \ Show this message and exit.                       \u2502\n\u2570\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u256F\n\n"
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\n\n"
 - name: test_cli_sync_cmd_with_missing_arguments_should_show_usage
   short_name: cli_sync_cmd_with_missing_arguments_should_show_usage
   target:

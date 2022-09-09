@@ -372,18 +372,33 @@ def test_move_cmd(
     copy_input_file(file_name="service.tscribe")
     copy_input_file(file_name="test_service_g.py")
     source_file_path = get_test_data_root_path().joinpath("calculator.py")
+    test_config_file_path = get_integration_test_config_file_path(tmp_path)
     test_arguments = [
         "move",
         str(source_file_path),
         "add",
-        "--output-root-dir",
-        str(tmp_path),
+        "--config-file",
+        str(test_config_file_path),
     ]
     run_cli(test_arguments=test_arguments, test_input="")
     verify_output_files(file_name_only="calculator", do_not_copy_result=True)
     verify_output_files(file_name_only="service", do_not_copy_result=True)
     assert not generated_data_path.joinpath(simple_test_file).exists()
     assert not generated_data_path.joinpath(simple_scribe_file).exists()
+
+
+def get_integration_test_config_file_path(tmp_path: Path):
+    """
+    Create a temporary config file in the given temporary path.
+    Use the same temporary path as the output root directory.
+
+    :param tmp_path:
+    :return:
+    """
+    file_path = tmp_path.joinpath("test-config.yml")
+    with open(file_path, "w") as f:
+        f.write(f"output-root-dir: {str(tmp_path)}")
+    return file_path
 
 
 def test_sync_cmd(

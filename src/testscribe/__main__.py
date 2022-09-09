@@ -33,6 +33,17 @@ from testscribe.update_test_cmd import update_test_cmd
 app = typer.Typer(name="testscribe")
 logger = logging.getLogger(__name__)
 
+config_file_option = Option(
+    None,
+    help="The config file",
+    exists=True,
+    file_okay=True,
+    dir_okay=False,
+    writable=False,
+    readable=True,
+    resolve_path=False,
+)
+
 
 @app.command()
 @exception_handler
@@ -60,16 +71,7 @@ def create(
     ),  # useful for a quick test without creating or modifying a config file
     ask_for_test_name: bool = Option(True, help="Allow test names to be modified"),
     ask_for_description: bool = Option(True, help="Allow adding a test description"),
-    config_file: Optional[Path] = Option(
-        None,
-        help="The config file",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
-        writable=False,
-        readable=True,
-        resolve_path=False,
-    ),
+    config_file: Optional[Path] = config_file_option,
 ):
     """
     Generate a new test.
@@ -207,16 +209,7 @@ def move(
         help="The name of the function or class that has moved."
         " To move tests for methods, use the class name of the methods.",
     ),
-    output_root_dir: Optional[Path] = Option(
-        None,
-        help="The root directory of the output test files",
-        exists=True,
-        file_okay=False,
-        dir_okay=True,
-        writable=True,
-        readable=True,
-        resolve_path=True,
-    ),
+    config_file: Optional[Path] = config_file_option,
 ):
     """
     Move tests for a function to their new files corresponding to the new module
@@ -225,7 +218,7 @@ def move(
     return move_tests(
         source_file=source_file,
         class_or_function_name=class_or_function_name,
-        output_root_path=output_root_dir,
+        config_file_path=config_file,
     )
 
 

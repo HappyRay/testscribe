@@ -129,10 +129,8 @@ def test_run_cmd_help_move():
 │                                        [required]                            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --output-root-dir        DIRECTORY  The root directory of the output test    │
-│                                     files                                    │
-│                                     [default: None]                          │
-│ --help                              Show this message and exit.              │
+│ --config-file        FILE  The config file [default: None]                   │
+│ --help                     Show this message and exit.                       │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 """

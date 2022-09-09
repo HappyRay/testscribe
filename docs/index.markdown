@@ -192,9 +192,10 @@ Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME
 The generated test files are organized the same way as the module hierarchy.
 When target functions' modules are changed, this command makes it easier to move the 
 corresponding tests.
+
 ```text
-Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME            
-                                                                                                                                                                
+ Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME            
+                                                                                
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
 │ *    source_file                 FILE  The source file that contains the     │
 │                                        symbol                                │
@@ -208,9 +209,7 @@ Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME
 │                                        [required]                            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --output-root-dir        DIRECTORY  The root directory of the output test    │
-│                                     files                                    │
-│                                     [default: None]                          │
-│ --help                              Show this message and exit.              │
+│ --config-file        FILE  The config file [default: None]                   │
+│ --help                     Show this message and exit.                       │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
