@@ -204,7 +204,8 @@ def move(
     ),
     class_or_function_name: str = Argument(
         ...,
-        help="The name of the function or class that has moved",
+        help="The name of the function or class that has moved."
+        " To move tests for methods, use the class name of the methods.",
     ),
     output_root_dir: Optional[Path] = Option(
         None,

@@ -122,7 +122,9 @@ def test_run_cmd_help_move():
 │                                        [default: None]                       │
 │                                        [required]                            │
 │ *    class_or_function_name      TEXT  The name of the function or class     │
-│                                        that has moved                        │
+│                                        that has moved. To move tests for     │
+│                                        methods, use the class name of the    │
+│                                        methods.                              │
 │                                        [default: None]                       │
 │                                        [required]                            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
