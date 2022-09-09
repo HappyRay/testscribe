@@ -57,7 +57,7 @@ def create(
         writable=True,
         readable=True,
         resolve_path=True,
-    ),
+    ),  # useful for a quick test without creating or modifying a config file
     ask_for_test_name: bool = Option(True, help="Allow test names to be modified"),
     ask_for_description: bool = Option(True, help="Allow adding a test description"),
     config_file: Optional[Path] = Option(
