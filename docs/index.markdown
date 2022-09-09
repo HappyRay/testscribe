@@ -165,3 +165,52 @@ Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
 │                                                         and exit.            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+# Delete a test 
+```text
+Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
+                                                                                
+ Delete a test. This will delete the test from both the testscribe file and the 
+ unit test file.                                                                
+ :param scribe_file_path: :param test_name: :return:                            
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    scribe_file_path      FILE  The testscribe file that contains the test  │
+│                                  to delete                                   │
+│                                  [default: None]                             │
+│                                  [required]                                  │
+│ *    test_name             TEXT  The name of the test to delete              │
+│                                  [default: None]                             │
+│                                  [required]                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+```
+# Move tests
+The generated test files are organized the same way as the module hierarchy.
+When target functions' modules are changed, this command makes it easier to move the 
+corresponding tests.
+```text
+Usage: testscribe move [OPTIONS] SOURCE_FILE CLASS_OR_FUNCTION_NAME            
+                                                                                                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    source_file                 FILE  The source file that contains the     │
+│                                        symbol                                │
+│                                        [default: None]                       │
+│                                        [required]                            │
+│ *    class_or_function_name      TEXT  The name of the function or class     │
+│                                        that has moved. To move tests for     │
+│                                        methods, use the class name of the    │
+│                                        methods.                              │
+│                                        [default: None]                       │
+│                                        [required]                            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --output-root-dir        DIRECTORY  The root directory of the output test    │
+│                                     files                                    │
+│                                     [default: None]                          │
+│ --help                              Show this message and exit.              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
