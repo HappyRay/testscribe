@@ -359,10 +359,16 @@ def test_move_cmd(
     verify_output_files,
     generated_data_path,
 ):
+    # The input file simple.tscribe contains the add function
+    # simulating the state when the add function has been moved from the simple module
+    # to the calculator module.
+    # see tool.create_input_files.create_simple_tscribe_file
     simple_scribe_file = "simple.tscribe"
     simple_test_file = "test_simple_g.py"
     copy_input_file(file_name=simple_scribe_file)
     copy_input_file(file_name=simple_test_file)
+    # These files are copied to make sure the move function doesn't modify
+    # unrelated tests.
     copy_input_file(file_name="service.tscribe")
     copy_input_file(file_name="test_service_g.py")
     source_file_path = get_test_data_root_path().joinpath("calculator.py")
