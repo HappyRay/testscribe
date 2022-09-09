@@ -144,6 +144,20 @@ def copy_input_file(generated_data_path):
     return _copy_input_file
 
 
+def get_integration_test_config_file_path(tmp_path: Path):
+    """
+    Create a temporary config file in the given temporary path.
+    Use the same temporary path as the output root directory.
+
+    :param tmp_path:
+    :return:
+    """
+    file_path = tmp_path.joinpath("test-config.yml")
+    with open(file_path, "w") as f:
+        f.write(f"output-root-dir: {str(tmp_path)}")
+    return file_path
+
+
 def test_simple_calculator_func(run_create_test_and_verify):
     """
     A simple end-to-end test.
@@ -287,7 +301,9 @@ def test_patch_with_setup(run_create_test_and_verify):
     run_create_test_and_verify(
         file_name_only="patch_function_for_integration_test",
         function_name="foo",
-        config_file=str(get_test_data_root_path().joinpath("test-patch-func-config.yml")),
+        config_file=str(
+            get_test_data_root_path().joinpath("test-patch-func-config.yml")
+        ),
     )
 
 
@@ -387,20 +403,6 @@ def test_move_cmd(
     assert not generated_data_path.joinpath(simple_scribe_file).exists()
 
 
-def get_integration_test_config_file_path(tmp_path: Path):
-    """
-    Create a temporary config file in the given temporary path.
-    Use the same temporary path as the output root directory.
-
-    :param tmp_path:
-    :return:
-    """
-    file_path = tmp_path.joinpath("test-config.yml")
-    with open(file_path, "w") as f:
-        f.write(f"output-root-dir: {str(tmp_path)}")
-    return file_path
-
-
 def test_sync_cmd(
     copy_input_scribe_file,
     verify_output_files,
@@ -432,16 +434,14 @@ def test_sync_test_names(
     )
 
 
-def test_sync_all_cmd(
-    tmp_path, generated_data_path, copy_input_scribe_file, verify_output_files
-):
+def test_sync_all_cmd(generated_data_path, copy_input_scribe_file, verify_output_files):
     file_name_only = "calculator"
     copy_input_scribe_file(file_name_only=file_name_only)
-
+    test_config_file_path = get_integration_test_config_file_path(generated_data_path)
     test_arguments = [
         "sync-all",
-        "--output-root-dir",
-        str(generated_data_path),
+        "--config-file",
+        str(test_config_file_path),
     ]
     run_cli(test_arguments=test_arguments, test_input="")
     verify_output_files(file_name_only=file_name_only, do_not_copy_result=True)

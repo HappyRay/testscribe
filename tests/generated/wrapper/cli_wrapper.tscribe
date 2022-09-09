@@ -422,7 +422,7 @@ tests:
     \n\u2502           new module to which the function has moved.               \
     \         \u2502\n\u2502 sync      Regenerate the unit test file.            \
     \                         \u2502\n\u2502 sync-all  Regenerate all unit test files\
-    \ under the generated test root.      \u2502\n\u2502 update    Update the selected\
+    \ under the configured test root.     \u2502\n\u2502 update    Update the selected\
     \ test.                                          \u2502\n\u2570\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\

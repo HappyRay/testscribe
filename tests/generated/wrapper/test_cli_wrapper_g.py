@@ -227,7 +227,7 @@ def test_run_help():
 │ move      Move tests for a function to their new files corresponding to the  │
 │           new module to which the function has moved.                        │
 │ sync      Regenerate the unit test file.                                     │
-│ sync-all  Regenerate all unit test files under the generated test root.      │
+│ sync-all  Regenerate all unit test files under the configured test root.     │
 │ update    Update the selected test.                                          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 

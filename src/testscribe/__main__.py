@@ -146,21 +146,12 @@ def sync(
 @app.command()
 @exception_handler
 def sync_all(
-    output_root_dir: Optional[Path] = Option(
-        None,
-        help="The root directory of the output test files",
-        exists=True,
-        file_okay=False,
-        dir_okay=True,
-        writable=True,
-        readable=True,
-        resolve_path=True,
-    ),
+        config_file: Optional[Path] = config_file_option,
 ):
     """
-    Regenerate all unit test files under the generated test root.
+    Regenerate all unit test files under the configured test root.
     """
-    return regenerate_all_tests(output_root_dir)
+    return regenerate_all_tests(config_file)
 
 
 @app.command()

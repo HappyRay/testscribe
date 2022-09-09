@@ -1,38 +1,6 @@
 format_version: 1
 module: testscribe.execution_util
 tests:
-- name: test_compute_output_root_path_from_config
-  short_name: _from_config
-  target:
-    name: compute_output_root_path
-  parameters:
-  - name: config
-    value: !testscribe/mock 'config'
-  - name: output_root_path
-    value: null
-  result: !testscribe/object
-    type: pathlib.PosixPath
-    repr: PosixPath('c/d')
-  mocks:
-  - name: config
-    spec: testscribe.config.Config
-    attributes:
-      output_root_path: !testscribe/expression 'pathlib.Path("c/d")'
-- name: test_compute_output_root_path_has_path_cmd_line_option
-  short_name: _has_path_cmd_line_option
-  target:
-    name: compute_output_root_path
-  parameters:
-  - name: config
-    value: !testscribe/mock 'config'
-  - name: output_root_path
-    value: !testscribe/expression 'pathlib.Path("a/b")'
-  result: !testscribe/object
-    type: pathlib.PosixPath
-    repr: PosixPath('a/b')
-  mocks:
-  - name: config
-    spec: testscribe.config.Config
 - name: test_config_logging_no_config_file
   short_name: _no_config_file
   target:

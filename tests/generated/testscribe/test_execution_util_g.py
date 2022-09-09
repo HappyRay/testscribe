@@ -1,30 +1,12 @@
 import logging
 import logging.config
 import pathlib
-import testscribe.config
 import testscribe.execution_util
 import testscribe.model_type
 from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from unittest.mock import patch
-from testscribe.execution_util import compute_output_root_path, config_logging, create_unit_test_file_name, infer_unit_test_file_path_from_scribe_file, remove_file_if_no_test
-
-
-def test_compute_output_root_path_from_config():
-    config: testscribe.config.Config = create_autospec(spec=testscribe.config.Config)
-    config.output_root_path = pathlib.Path("c/d")
-    result = compute_output_root_path(config=config, output_root_path=None)
-    assert isinstance(result, pathlib.PosixPath)
-    assert repr(result) == "PosixPath('c/d')"
-    config.assert_not_called()
-
-
-def test_compute_output_root_path_has_path_cmd_line_option():
-    config: testscribe.config.Config = create_autospec(spec=testscribe.config.Config)
-    result = compute_output_root_path(config=config, output_root_path=pathlib.Path("a/b"))
-    assert isinstance(result, pathlib.PosixPath)
-    assert repr(result) == "PosixPath('a/b')"
-    config.assert_not_called()
+from testscribe.execution_util import config_logging, create_unit_test_file_name, infer_unit_test_file_path_from_scribe_file, remove_file_if_no_test
 
 
 def test_config_logging_no_config_file():

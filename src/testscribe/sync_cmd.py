@@ -21,7 +21,6 @@ from testscribe.execution import save_file
 from testscribe.execution_util import (
     init,
     get_all_scribe_files,
-    compute_output_root_path,
 )
 from testscribe.load_scribe_file import load_scribe_file
 from testscribe.log import log
@@ -31,12 +30,9 @@ from testscribe.test_name import create_test_name
 logger = logging.getLogger(__name__)
 
 
-def regenerate_all_tests(output_root_path: Optional[Path]):
-    config = init()
-    output_root_path = compute_output_root_path(
-        config=config, output_root_path=output_root_path
-    )
-    regenerate_all_tests_internal(output_root_path)
+def regenerate_all_tests(config_file_path: Optional[Path]):
+    config = init(config_file_path=config_file_path)
+    regenerate_all_tests_internal(config.output_root_path)
 
 
 def regenerate_all_tests_internal(output_root_path: Path):

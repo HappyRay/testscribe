@@ -133,10 +133,3 @@ def show_user_call_stack(additional_num_system_frame: int) -> None:
 
 def get_all_scribe_files(root_path: Path):
     return sorted(root_path.glob("**/*.tscribe"))
-
-
-def compute_output_root_path(config: Config, output_root_path: Optional[Path]) -> Path:
-    if output_root_path:
-        return output_root_path
-    else:
-        return config.output_root_path
