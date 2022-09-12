@@ -45,18 +45,25 @@ config_file_option = Option(
 )
 
 
-@app.command()
-@exception_handler
-def create(
-    source_file: Path = Argument(
+def create_file_argument(help_str: str, writable) -> Argument:
+    return Argument(
         ...,
-        help="The source file to test",
+        help=help_str,
         exists=True,
         file_okay=True,
         dir_okay=False,
-        writable=False,
+        writable=writable,
         readable=True,
         resolve_path=True,
+    )
+
+
+@app.command()
+@exception_handler
+def create(
+    source_file: Path = create_file_argument(
+        help_str="The source file to test",
+        writable=False,
     ),
     function_name: str = Argument(..., help="The function to test"),
     output_root_dir: Optional[Path] = Option(
@@ -97,15 +104,9 @@ def create(
 @app.command()
 @exception_handler
 def delete(
-    scribe_file_path: Path = Argument(
-        ...,
-        help="The testscribe file that contains the test to delete",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
+    scribe_file_path: Path = create_file_argument(
+        help_str="The testscribe file that contains the test to delete",
         writable=True,
-        readable=True,
-        resolve_path=True,
     ),
     test_name: str = Argument(..., help="The name of the test to delete"),
 ):
@@ -123,15 +124,9 @@ def delete(
 @app.command()
 @exception_handler
 def sync(
-    scribe_file_path: Path = Argument(
-        ...,
-        help="The testscribe file to sync",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
+    scribe_file_path: Path = create_file_argument(
+        help_str="The testscribe file to sync",
         writable=True,
-        readable=True,
-        resolve_path=True,
     ),
 ):
     """
@@ -146,7 +141,7 @@ def sync(
 @app.command()
 @exception_handler
 def sync_all(
-        config_file: Optional[Path] = config_file_option,
+    config_file: Optional[Path] = config_file_option,
 ):
     """
     Regenerate all unit test files under the configured test root.
@@ -157,15 +152,9 @@ def sync_all(
 @app.command()
 @exception_handler
 def update(
-    scribe_file_path: Path = Argument(
-        ...,
-        help="The testscribe file to update",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
+    scribe_file_path: Path = create_file_argument(
+        help_str="The testscribe file to update",
         writable=True,
-        readable=True,
-        resolve_path=True,
     ),
     test_name: str = Argument("", help="The name of the test to update"),
 ) -> int:
@@ -185,15 +174,9 @@ def update(
 @app.command()
 @exception_handler
 def move(
-    source_file: Path = Argument(
-        ...,
-        help="The source file that contains the symbol",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
+    source_file: Path = create_file_argument(
+        help_str="The source file that contains the symbol",
         writable=False,
-        readable=True,
-        resolve_path=True,
     ),
     class_or_function_name: str = Argument(
         ...,
