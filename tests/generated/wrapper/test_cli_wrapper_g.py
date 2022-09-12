@@ -51,16 +51,18 @@ def test_run_cmd_help_update():
     result = run_cmd_help(cmd_name='update')
     assert result == """\
                                                                                 
- Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]                
+ Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
                                                                                 
  Update the selected test.                                                      
  :param test_name: :param scribe_file_path: :return:                            
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE         The testscribe file to update        │
-│                                         [default: None]                      │
-│                                         [required]                           │
-│      test_name             [TEST_NAME]  The name of the test to update       │
+│ *    scribe_file_path      FILE  The testscribe file to update               │
+│                                  [default: None]                             │
+│                                  [required]                                  │
+│ *    test_name             TEXT  The name of the test to update              │
+│                                  [default: None]                             │
+│                                  [required]                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
@@ -150,7 +152,7 @@ Try 'testscribe sync --help' for help.
 def test_cli_update_cmd_with_missing_argument_should_show_usage():
     result = run_cmd_without_args(cmd='update')
     assert result == """\
-Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH [TEST_NAME]
+Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH TEST_NAME
 Try 'testscribe update --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
 │ Missing argument 'SCRIBE_FILE_PATH'.                                         │

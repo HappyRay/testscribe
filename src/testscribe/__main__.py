@@ -156,7 +156,7 @@ def update(
         help_str="The testscribe file to update",
         writable=True,
     ),
-    test_name: str = Argument("", help="The name of the test to update"),
+    test_name: str = Argument(..., help="The name of the test to update"),
 ) -> int:
     """
     Update the selected test.
