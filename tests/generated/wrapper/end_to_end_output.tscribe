@@ -20,14 +20,14 @@ tests:
     \ gen_name(service=Mock: name (m_service) spec (<class 'test_data.service.Service'>),\
     \ keyword='a', start_number=1)\nm_service's search_a_name method is called\nwith:\
     \ keyword='key: a'.\nCall stack:\n  File \"tests/test_data/service_call.py\",\
-    \ line 10, in gen_name\n    name = service.search_a_name(\"key: \" + keyword)\n\
+    \ line 9, in gen_name\n    name = service.search_a_name(\"key: \" + keyword)\n\
     \nPlease provide the value for the return value of type: (str) []: b\nMock call\
     \ return value: 'b'\nm_service's search_a_number method is called\nwith: seed_number=1.\n\
-    Call stack:\n  File \"tests/test_data/service_call.py\", line 11, in gen_name\n\
+    Call stack:\n  File \"tests/test_data/service_call.py\", line 10, in gen_name\n\
     \    num = service.search_a_number(start_number)\n\nPlease provide the value for\
     \ the return value of type: (int) []: 2\nMock call return value: 2\nm_service's\
     \ search_a_number method is called\nwith: seed_number=2.\nCall stack:\n  File\
-    \ \"tests/test_data/service_call.py\", line 12, in gen_name\n    num2 = service.search_a_number(start_number\
+    \ \"tests/test_data/service_call.py\", line 11, in gen_name\n    num2 = service.search_a_number(start_number\
     \ + 1)\n\nPlease provide the value for the return value of type: (int) []: 3\n\
     Mock call return value: 3\n***** Result:\ntype: <class 'str'>\nvalue:\n{\"name\"\
     : \"b\", \"number\": 5}\n***** Result end\nTest name help: 'test_' prefix will\

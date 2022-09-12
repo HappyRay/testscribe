@@ -23,7 +23,7 @@ Calling gen_name(service=Mock: name (m_service) spec (<class 'test_data.service.
 m_service's search_a_name method is called
 with: keyword='key: a'.
 Call stack:
-  File "tests/test_data/service_call.py", line 10, in gen_name
+  File "tests/test_data/service_call.py", line 9, in gen_name
     name = service.search_a_name("key: " + keyword)
 
 Please provide the value for the return value of type: (str) []: b
@@ -31,7 +31,7 @@ Mock call return value: 'b'
 m_service's search_a_number method is called
 with: seed_number=1.
 Call stack:
-  File "tests/test_data/service_call.py", line 11, in gen_name
+  File "tests/test_data/service_call.py", line 10, in gen_name
     num = service.search_a_number(start_number)
 
 Please provide the value for the return value of type: (int) []: 2
@@ -39,7 +39,7 @@ Mock call return value: 2
 m_service's search_a_number method is called
 with: seed_number=2.
 Call stack:
-  File "tests/test_data/service_call.py", line 12, in gen_name
+  File "tests/test_data/service_call.py", line 11, in gen_name
     num2 = service.search_a_number(start_number + 1)
 
 Please provide the value for the return value of type: (int) []: 3
