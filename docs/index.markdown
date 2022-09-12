@@ -213,3 +213,33 @@ corresponding tests.
 │ --help                     Show this message and exit.                       │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+# Sync tests
+Regenerate the unit test file to match the given TestScribe file.
+
+```text
+Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
+
+:param scribe_file_path: :return:
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    scribe_file_path      FILE  The testscribe file to sync [default: None] │
+│                                  [required]                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+```
+
+# Sync All
+Sync all tests under the configured output root directory
+```text
+ Usage: testscribe sync-all [OPTIONS]                                           
+                                                                                                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --config-file        FILE  The config file [default: None]                   │
+│ --help                     Show this message and exit.                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+```
