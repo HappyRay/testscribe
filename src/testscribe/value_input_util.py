@@ -20,7 +20,6 @@ import re
 from typing import Any, List, Tuple, Optional
 
 from testscribe import global_var
-from testscribe.api.mock_api import throw
 from testscribe.ignore import IGNORED
 from testscribe.mock_proxy import MockProxy
 from testscribe.model_type import (
@@ -76,6 +75,9 @@ def eval_special_value(
     if so return it otherwise return None.
     It doesn't raise an exception.
     """
+    # avoid circular references
+    from testscribe.api.mock_api import throw
+
     global_dict = {throw.__name__: throw, "ignore": IGNORED}
     # noinspection PyBroadException
     try:
