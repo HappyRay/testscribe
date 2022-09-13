@@ -33,11 +33,12 @@ def init_config_wrapper():
     # The sys.path may contain absolute paths and paths that depend on
     # the environment in which it runs. So it doesn't work to return
     # the new sys.path to have the assertions generated.
-    assert_same(actual=sys.path, expected=old_sys_path + ["src", "tests"])
+    assert_same(actual=sys.path, expected=old_sys_path + ["tests"])
     return config
 
 
 def add_additional_python_paths_no_key() -> None:
-    old_sys_path = list(sys.path)
+    old_sys_path = sorted(sys.path)
     add_additional_python_paths({})
-    assert_same(actual=sys.path, expected=old_sys_path)
+    current = sorted(sys.path)
+    assert_same(actual=current, expected=old_sys_path)
