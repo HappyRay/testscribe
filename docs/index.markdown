@@ -129,6 +129,49 @@ setup is a function defined in the module named setup.
 [Here](https://github.com/HappyRay/testscribe/blob/main/tests/setup.py) 
 is an example of such a function.
 
+# Input Support
+Valid Python expressions are supported as inputs.
+Use fully qualified type names where a type is expected. 
+For example: 
+If you want to use a helper function called "get_test_val" in the module "tests.helper" to generate an input value,
+you should use "tests.helper.get_test_val()" expression when prompted.
+
+Tip:
+
+Use the alias support to reduce the need to type long names.
+
+## Create a real class instance
+You can use the normal constructor expression to create an instance of a class for inputs.
+For example: data.Person(name="Alice", age=23)
+
+If the input is a class instance and is properly annotated, 
+the class name can be replaced by a builtin alias named "c".
+For example:
+Given the following target
+```python
+from data import Person
+def foo(p: Person):
+  ...
+```
+You can simply use c(name="Alice", age=23) when prompted for the value of the parameter p.
+
+## Create a mock
+You can also use the m function to create a mock object as an input.
+If the type information is available to the tool, a builtin alias "m" may be used instead to
+create a mock object of the given type with the default name.
+
+Given the same foo function above, you can create a mock object of the type Person when prompted
+for the p parameter by typing "m(data.Person)". Because the type information is available, you may
+simply type "m" to create the same mock object.
+
+See [the "m" function definition](https://github.com/HappyRay/testscribe/blob/main/src/testscribe/api/mock_api.py) 
+for more information.
+
+When a mock object's attributes are accessed for the first time, you will be prompted for their values.
+When a mock object's method is called, the tool will show the parameters and the call stack. It will prompt
+you for the return value.
+
+Here is a demo of a mock object in action.
 # Commands
 
 ## Create a test run
