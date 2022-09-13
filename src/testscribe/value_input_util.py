@@ -72,7 +72,7 @@ def eval_special_value(
     value_str: str,
 ):
     """
-    Check if the expression evalutes to UserTriggeredException or ignored
+    Check if the expression evaluates to UserTriggeredException or ignored
     if so return it otherwise return None.
     It doesn't raise an exception.
     """
