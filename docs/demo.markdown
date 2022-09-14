@@ -2,11 +2,10 @@
 layout: my-home
 title: demo
 ---
-# Mock a class instance passed as a parameter
-The function search_name takes a service object as a parameter.
+# <a name="mock-class-instance"></a>Mock a class instance
+The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
 The service may involve a database or a network call.
 It's easier to test by mocking it.
-[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) is the function definition.
 
 An example test run output:
 

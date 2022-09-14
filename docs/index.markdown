@@ -174,7 +174,7 @@ When a mock object's attributes are accessed for the first time, you will be pro
 When a mock object's method is called, the tool will show the parameters and the call stack. It will prompt
 you for the return value.
 
-Here is a demo of a mock object in action.
+[Here](demo.markdown#mock-class-instance) is a demo.
 # Commands
 
 ## Create a test run
