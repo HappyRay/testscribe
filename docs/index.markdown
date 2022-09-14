@@ -12,7 +12,10 @@ A tool to make python unit testing easier by automating the boring and repetitiv
 # The idea
 Unit tests should be as intuitive as testing a web page. 
 Developers should be able to test a function by providing inputs interactively and 
-verify outputs visually. Note that 
+verify outputs visually without having to write boilerplate code in most cases. 
+The process is similar to a debugging session which answers
+"what happens when I pass this input". 
+Note that 
 * mock objects' attributes and mock methods' return values are inputs
 * parameter values to mock method calls are outputs
 
