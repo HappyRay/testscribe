@@ -33,3 +33,23 @@ value:
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py) 
 is the generated unit test code.
+
+# <a name="create-class-instance"></a>Create a class instance
+The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a 
+[Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
+
+An example test run output:
+
+```text
+...
+Please provide the value for the parameter (p) of type: (tsdemo.person.Person) []: c("Bob", 10)
+Calling get_person_age(p=tsdemo.person.Person("Bob", 10))
+***** Result:
+type: <class 'int'>
+value:
+10
+***** Result end...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
+is the generated unit test code.
