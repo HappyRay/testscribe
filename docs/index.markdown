@@ -160,6 +160,8 @@ You can simply use c(name="Alice", age=23) when prompted for the value of the pa
 
 [Here](demo.markdown#create-class-instance) is a demo.
 
+[here](demo.markdown#create-class-instance-in-list) is a demo of objects in a list.
+
 ## Create a mock
 You can also use the m function to create a mock object as an input.
 If the type information is available to the tool, a builtin alias "m" may be used instead to
