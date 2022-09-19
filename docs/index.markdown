@@ -160,7 +160,7 @@ You can simply use c(name="Alice", age=23) when prompted for the value of the pa
 
 [Here](demo.markdown#create-class-instance) is a demo.
 
-[here](demo.markdown#create-class-instance-in-list) is a demo of objects in a list.
+[here](demo.markdown#objects-in-list) is a demo of creating objects in a list.
 
 ## Create a mock
 You can also use the m function to create a mock object as an input.
@@ -179,6 +179,9 @@ When a mock object's method is called, the tool will show the parameters and the
 you for the return value.
 
 [Here](demo.markdown#mock-class-instance) is a demo.
+
+[here](demo.markdown#objects-in-list) is a demo of mocking multiple objects in a list.
+
 # Commands
 
 ## Create a test run

@@ -54,11 +54,11 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
 is the generated unit test code.
 
-# <a name="create-class-instance-in-list"></a>Create multiple class instances in a list
+# <a name="objects-in-list"></a>multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a
 list of [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
 
-An example test run output:
+An example test run with real instances:
 
 ```text
 ...
@@ -70,6 +70,33 @@ value:
 2
 ***** Result end
 ...
+```
+
+An example test run with mocked instances:
+```text
+Please provide the value for the parameter (person_list) of type: (typing.List[tsdemo.person.Person]) [[tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)]]: [m, m]
+Created a mock: Mock: name (m_person) spec (<class 'tsdemo.person.Person'>)
+Created a mock: Mock: name (m_person_1) spec (<class 'tsdemo.person.Person'>)
+Calling get_average_age(person_list=[<testscribe.mock_proxy.MockProxy object at 0x7f43dd744af0>, <testscribe.mock_proxy.MockProxy object at 0x7f43dd744e50>])
+Mock object m_person's ( age ) attribute is accessed for the first time.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/objects_in_list.py", line 12, in get_average_age
+    total += p.age
+
+Please provide the value for the age attribute of type: (int) []: 2
+Mock attribute value: 2
+Mock object m_person_1's ( age ) attribute is accessed for the first time.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/objects_in_list.py", line 12, in get_average_age
+    total += p.age
+
+Please provide the value for the age attribute of type: (int) []: 3
+Mock attribute value: 3
+***** Result:
+type: <class 'int'>
+value:
+2
+***** Result end
 ```
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_objects_in_list_g.py)
