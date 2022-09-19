@@ -133,6 +133,7 @@ setup is a function defined in the module named setup.
 is an example of such a function.
 
 # Input Support
+## Expression
 Valid Python expressions are supported as inputs.
 Use fully qualified type names where a type is expected. 
 For example: 
