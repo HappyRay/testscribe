@@ -199,6 +199,30 @@ you for the return value.
 
 [here](demo.markdown#objects-in-list) is a demo of mocking multiple objects in a list.
 
+# Test name
+You can provide a test name or take the default.
+
+The default test name is the target function name.
+
+Upper cases will be converted to lower cases.
+The spaces in the name will be converted to _.
+Camel cases will be converted to snake cases.
+
+For example, an input of ***NegativeInput Should fail*** will be translated to 
+***negative_input_should_fail***.
+
+The tool will ensure each test in the same file has a unique name
+ by appending a number with a leading _ when necessary.
+
+Don't add ***test_*** prefix. It will be added automatically for the generated unit tests.
+
+Use a leading '_' to include the target function name as part of the prefix.
+
+For example, an input of ***_Positive input*** for a function foo will be translated to 
+test_foo_positive_input in the generated unit tests. In the scribe files the test name will
+ be _positive_input. This way when the target function name is changed, the tool can 
+automatically regenerate the correct unit test names the next time the unit test file is generated.
+
 # Commands
 
 ## Create a test run
