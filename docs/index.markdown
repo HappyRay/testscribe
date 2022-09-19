@@ -133,6 +133,22 @@ setup is a function defined in the module named setup.
 is an example of such a function.
 
 # Input Support
+## string
+If the tool can infer from the type annotation that the input is a string,
+the input doesn't need to be quoted. 
+The inferred type information is displayed when prompting for inputs.
+For example:
+<pre>Please provide the value for the parameter (keyword) of type: <strong>(str)</strong> []: Bob</pre>
+It indicates the inferred type is "str".
+
+The quoted form is also accepted. 
+In the example above the input ***"Bob"*** will provide the same string value Bob to the parameter.
+
+The quoted form is needed when the string value contain special values that need to 
+be quoted. For example: 
+* to input multiline string use ***"a\nb"*** or ***'a\nb'***.
+* to input " use ***'"'***.
+
 ## Expression
 Valid Python expressions are supported as inputs.
 Use fully qualified type names where a type is expected. 
