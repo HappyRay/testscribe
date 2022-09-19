@@ -175,13 +175,6 @@ def get_string_value(value: str) -> str:
         # i.e. enclose the input with "" or ''
         # to use escape characters.
         return eval(value)
-    elif value.startswith(r"\"") or value.startswith(r"\'") or value.startswith(r"\\"):
-        # The downside is that users have to remember to escape the
-        # leading " or ' with \" or \'
-        # if they want to use the input string that starts with " or '
-        # as it is without escape characters
-        # To input a string that starts with \, escape it with \\
-        return value[1:]
     else:
         return value
 

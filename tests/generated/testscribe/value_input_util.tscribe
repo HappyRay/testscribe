@@ -73,22 +73,14 @@ tests:
   - name: expression
     value: foo
   result: []
-- name: test_get_string_value_escape_leading_single_quote
-  short_name: _escape_leading_single_quote
+- name: test_get_string_value_escape_double_quote
+  short_name: _escape_double_quote
   target:
     name: get_string_value
   parameters:
   - name: value
-    value: \'a
-  result: '''a'
-- name: test_get_string_value_escape_leading_double_quote
-  short_name: _escape_leading_double_quote
-  target:
-    name: get_string_value
-  parameters:
-  - name: value
-    value: \"a
-  result: '"a'
+    value: '"\""'
+  result: '"'
 - name: test_get_string_value_multi_line_single_quote
   short_name: _multi_line_single_quote
   target:

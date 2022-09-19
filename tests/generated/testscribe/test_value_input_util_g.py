@@ -52,14 +52,9 @@ def test_get_possible_fully_qualified_names_name_without_dot():
     assert result == []
 
 
-def test_get_string_value_escape_leading_single_quote():
-    result = get_string_value(value="\\'a")
-    assert result == "'a"
-
-
-def test_get_string_value_escape_leading_double_quote():
-    result = get_string_value(value='\\"a')
-    assert result == '"a'
+def test_get_string_value_escape_double_quote():
+    result = get_string_value(value='"\\""')
+    assert result == '"'
 
 
 def test_get_string_value_multi_line_single_quote():
