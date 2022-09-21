@@ -27,18 +27,20 @@ def convert_to_absolute_path_str(s: str) -> str:
 def init_config_wrapper():
     # make a copy
     old_sys_path = list(sys.path)
+    project_root_path = get_project_root_path()
     config = init_config(
-        config_file_path=get_project_root_path() / "test-scribe-config.yml"
+        config_file_path=project_root_path / "test-scribe-config.yml"
     )
     # The sys.path may contain absolute paths and paths that depend on
     # the environment in which it runs. So it doesn't work to return
     # the new sys.path to have the assertions generated.
-    assert_same(actual=sys.path, expected=old_sys_path + ["tests"])
+    expected_additional_path_str = str(project_root_path / "tests")
+    assert_same(actual=sys.path, expected=old_sys_path + [expected_additional_path_str])
     return config
 
 
 def add_additional_python_paths_no_key() -> None:
     old_sys_path = sorted(sys.path)
-    add_additional_python_paths({})
+    add_additional_python_paths(config_file_path=Path(), data={})
     current = sorted(sys.path)
     assert_same(actual=current, expected=old_sys_path)

@@ -68,9 +68,14 @@ def get_setup_func(data: dict) -> Union[Callable, None]:
     return func
 
 
-def add_additional_python_paths(data: dict):
+def add_additional_python_paths(config_file_path: Path, data: dict):
     path_strings = data.get(ADDITIONAL_PYTHON_PATH_KEY, [])
-    sys.path.extend(path_strings)
+    config_file_dir_path = config_file_path.parent
+    # The path is relative to the location of the config file where it is defined.
+    resolved_path_strings = [
+        str(config_file_dir_path.joinpath(p)) for p in path_strings
+    ]
+    sys.path.extend(resolved_path_strings)
 
 
 def get_output_root_path(data: dict) -> Path:
@@ -92,7 +97,7 @@ def initialize_io(data: dict) -> IOProvider:
 def init_config(config_file_path: Path) -> Config:
     # todo: make io provider configurable
     data = load_config_data(config_file_path)
-    add_additional_python_paths(data)
+    add_additional_python_paths(config_file_path=config_file_path, data=data)
     initialize_io(data)
     output_root_path = get_output_root_path(data)
     func = get_setup_func(data)
