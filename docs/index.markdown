@@ -199,6 +199,13 @@ you for the return value.
 
 [here](demo.markdown#objects-in-list) is a demo of mocking multiple objects in a list.
 
+## Raise an exception for a mock call
+To raise an exception for a mock call, use the builtin [throw](https://github.com/HappyRay/testscribe/blob/09f1e110dc03b357400226e3ac8f88153113d5a7/src/testscribe/api/mock_api.py#L25) 
+function. 
+For example: use ***throw(Exception("failed"))*** when prompted for a mock call return value.
+
+[Here](demo.markdown#raise-exception) is a demo.
+
 # Test name
 You can provide a test name or take the default.
 

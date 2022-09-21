@@ -101,3 +101,35 @@ value:
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_objects_in_list_g.py)
 is the generated unit test code.
+
+# <a name="raise-exception"></a>Raise an exception in a mock call
+The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
+The search_a_name method on that Service object is called.
+An example test run output to test the behavior when the call throws an exception:
+
+```text
+...
+Please provide the value for the parameter (service) of type: (tsdemo.service.Service) [m(tsdemo.service.Service, 'm_service')]: 
+Created a mock: Mock: name (m_service) spec (<class 'tsdemo.service.Service'>)
+Please provide the value for the parameter (keyword) of type: (str) [Bob]: 
+Calling search_name(service=Mock: name (m_service) spec (<class 'tsdemo.service.Service'>), keyword='Bob')
+m_service's search_a_name method is called
+with: keyword='key: Bob'.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/simple_mock.py", line 11, in search_name
+    name = service.search_a_name("key: " + keyword)
+
+Please provide the value for the return value of type: (str) [real Bob]: throw(Exception("search failed"))
+Mock call return value: InputValue(expression='throw(Exception("search failed"))', value=Exception('search failed'))
+The function search_name throws an exception.
+...
+Exception: search failed
+
+Test name help: 'test_' prefix will be added automatically. Use a leading '_' to include the target function name as part of the prefix.
+Test name: [_]: _exception is propagated
+...
+```
+Notice that this test run use an earlier test run's input as default input.
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py)
+is the generated unit test code.
