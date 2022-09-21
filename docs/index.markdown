@@ -133,7 +133,19 @@ setup is a function defined in the module named setup.
 is an example of such a function.
 
 # Input Support
-## string
+## Default value
+When prompted for an input, the default input is displayed. It's the string enclosed in [ ].
+Press the return key will select the default input.
+
+For example:
+
+    Please provide the value for the parameter (a) of type: (int) [1]:
+
+The default value above is 1.
+
+[ ] means the default is an empty string.
+
+## String
 If the tool can infer from the type annotation that the input is a string,
 the input doesn't need to be quoted. 
 The inferred type information is displayed when prompting for inputs.
