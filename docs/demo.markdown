@@ -133,3 +133,33 @@ Notice that this test run use an earlier test run's input as default input.
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py)
 is the generated unit test code.
+
+# <a name="ignore-return-value"></a>Ignore the return value of a mock call
+The function [show](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/ignore_mock_return.py) takes a 
+Printer object as a parameter.
+The display method on that Printer object is called.
+The returned string is not used by this function.
+It's easier to ignore this return value when the object is mocked during a test.
+And the generated test is simpler.
+
+An example test run output to ignore the mocked display call:
+
+```text
+...
+Please provide the value for the parameter (text) of type: (str) []: a
+Please provide the value for the parameter (printer) of type: (tsdemo.ignore_mock_return.Printer) []: m
+Created a mock: Mock: name (m_printer) spec (<class 'tsdemo.ignore_mock_return.Printer'>)
+Calling show(text='a', printer=Mock: name (m_printer) spec (<class 'tsdemo.ignore_mock_return.Printer'>))
+m_printer's display method is called
+with: text='a'.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/ignore_mock_return.py", line 17, in show
+    printer.display(text)
+
+Please provide the value for the return value of type: (str) []: ignore
+Mock call return value: InputValue(expression='ignore', value='Ignored')
+...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_ignore_mock_return_g.py)
+is the generated unit test code.

@@ -222,6 +222,13 @@ For example: use ***throw(Exception("failed"))*** when prompted for a mock call 
 
 [Here](demo.markdown#raise-exception) is a demo.
 
+## Ignore the return value for a mock call
+If a mocked method call's return value is not used, it is sometimes simpler to just ignore it.
+
+Use the special input string ***ignore*** when prompted for such a return value.
+
+[Here](demo.markdown#ignore-return-value) is a demo.
+
 # Test name
 You can provide a test name or take the default.
 
