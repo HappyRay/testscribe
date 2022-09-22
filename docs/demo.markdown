@@ -163,3 +163,48 @@ Mock call return value: InputValue(expression='ignore', value='Ignored')
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_ignore_mock_return_g.py)
 is the generated unit test code.
+
+# <a name="patch-function"></a>Patch a function
+The function [call_fixed_func](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/patch_function.py) has a 
+fixed dependency on the calculate function. 
+
+To replace the calculate function with a mock object for a test, add the following code to the setup function
+
+    patch_with_mock(calculate)
+
+The setup function definition is [here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/setup.py).
+Uncomment the line before starting a test run which specifies this setup function. The configuration file is
+[here](https://github.com/HappyRay/testscribe-demo/blob/main/test-scribe-config.yml) 
+
+The setup function is called before the target function is called. The
+[patch_with_mock](https://github.com/HappyRay/testscribe/blob/main/src/testscribe/api/mock_api.py) function
+replaces the target function with a mock object of the same type as the target function. 
+
+```text
+...
+Calling the setup function setup.setup.
+setup function in tests is called.
+Created a mock: Mock: name (m_calculate) spec (<function calculate at 0x7fe62436eb80>)
+Patch tsdemo.patch_function.calculate with Mock: name (m_calculate) spec (<function calculate at 0x7fe62436eb80>)
+Prepare to call the target function.
+Getting parameters for the function (call_fixed_func)
+Please provide the value for the parameter (num) of type: (int) []: 2
+Calling call_fixed_func(num=2)
+m_calculate is called
+with: seed=2.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/patch_function.py", line 12, in call_fixed_func
+    return calculate(num)
+
+Please provide the value for the return value of type: (int) []: 1
+Mock call return value: 1
+***** Result:
+type: <class 'int'>
+value:
+1
+***** Result end
+...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_patch_function_g.py)
+is the generated unit test code.
