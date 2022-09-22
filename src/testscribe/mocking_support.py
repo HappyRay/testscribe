@@ -112,17 +112,7 @@ def patch_with_mock_internal(
     target: Union[str, type, Callable, MockProxy], mock_name: str, spec: Optional[Spec]
 ) -> None:
     """
-    A convenience function to make patching with a mock object easier.
-
-    :param spec: If None, infer the spec from the target
-    :param mock_name:
-    :param target: If it is not a string, it should be the symbol that can to be
-    patched with a mock object. In this case, the spec for the mock object
-    and the target have to match. If they don't e.g. a function mod_a.foo is imported
-    into mod_b as foo and invoked as foo, to mock the invocation, use the string
-    "mod_b.foo" as the value for the target parameter.
-    It's possible that the target has been patched, in this case the target is an
-    instance of MockProxy.
+    See patch_with_mock
     """
     if not global_var.g_test_generating_mode:
         logger.debug("This is not a test generation session. Ignore patch.")
@@ -140,9 +130,13 @@ def patch_with_mock_internal(
 
 
 def patch_with_expression_internal(target_str: str, expression: str) -> None:
-    # It's possible to derive the type so that the m and c convenience symbols
-    # can be used without specifying spec types.
-    # However, it may not be necessary given the patch_with_mock function.
+    """
+    See patch_with_expression
+
+    It's possible to derive the type so that the m and c convenience symbols
+    can be used without specifying spec types.
+    However, it may not be necessary given the patch_with_mock function.
+    """
     if not global_var.g_test_generating_mode:
         logger.debug("This is not a test generation session. Ignore patch.")
         return

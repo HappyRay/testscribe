@@ -35,12 +35,39 @@ def throw(e: BaseException = Exception()):
 def patch_with_mock(
     target: Union[str, type, Callable], mock_name: str = "", spec: Optional[Spec] = None
 ) -> None:
+    """
+    Patch an object with a mock.
+
+    patch_with_expression can do the same. This function is easier to use
+    for common use cases of mocking a function.
+
+    :param target:
+    If it is not a string, it should be the symbol that can to be
+    patched with a mock object. e.g. if a function module_a.foo calls a function module_b.bar
+    and the bar function is called with the form module_b.bar, bar can be mocked simply with patch_with_mock(bar).
+    If they don't e.g. module_b.bar is imported
+    into module_a as from module_b import bar and invoked as bar, to mock the invocation,
+    use patch_with_mock("module_a.bar")
+    This is the same "where to patch" rule as Python's patch function. See
+    https://realpython.com/python-mock-library/#where-to-patch for more details.
+    :param mock_name: customize the mock object name
+    :param spec: If None the default, infer the spec from the target
+    """
+
     mocking_support.patch_with_mock_internal(
         target=target, mock_name=mock_name, spec=spec
     )
 
 
 def patch_with_expression(target_str: str, expression: str) -> None:
+    """
+    Patch an object with the value of an expression.
+
+    :param target_str: Take the same value as the target parameter of the patch function.
+    See https://docs.python.org/3/library/unittest.mock.html#patch and
+        https://realpython.com/python-mock-library/#where-to-patch
+    :param expression:
+    """
     mocking_support.patch_with_expression_internal(
         target_str=target_str, expression=expression
     )
