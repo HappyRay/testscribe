@@ -119,7 +119,7 @@ def patch_with_mock_internal(
         return
     target_str = get_mock_target_str(target)
     # has to remove duplicate patches first before creating a mock
-    # to avoid interferance of the mock name creation.
+    # to avoid interference of the mock name creation.
     remove_duplicate_patch(target_str)
     if spec is None:
         obj = get_symbol(target_str)
