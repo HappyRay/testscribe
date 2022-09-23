@@ -25,6 +25,6 @@ def setup():
     # patch_with_mock("testscribe.sync_cmd.get_all_scribe_files")
 
     # patch_with_mock(target="test_data.file_op.open", spec=text_open_spec)
-    # an altertive way to patch a mock with a different spec
+    # an alternative way to patch a mock with a different spec
     # patch_with_expression(target_str="test_data.file_op.open", expression="m(testscribe.api.mock_api.text_open_spec)")
     # patch_with_expression(target_str="testscribe.eval_expression.g_aliases", expression='{"a": "hello", "b": "World"}')
