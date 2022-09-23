@@ -15,7 +15,7 @@ def setup():
     # define_alias(alias="tms", full_str="testscribe.mocking_support")
     # patch_with_mock(target=func_with_side_effect)
     # patch_with_mock(target=MockProxy)
-    # Use the inital state of the g_mock_name_counter variable.
+    # Use the initial state of the g_mock_name_counter variable.
     # patch_with_expression(
     #     target_str="testscribe.global_var.g_mock_name_counter",
     #     expression="collections.Counter(testscribe.global_var.g_mock_name_counter)",
