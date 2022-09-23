@@ -72,7 +72,8 @@ def patch_with_expression(target_str: str, expression: str) -> None:
     :param target_str: Take the same value as the target parameter of the patch function.
     See https://docs.python.org/3/library/unittest.mock.html#patch and
         https://realpython.com/python-mock-library/#where-to-patch
-    :param expression:
+    :param expression: a valid Python expression. If the expression is a string, it has to be
+    quoted. e.g. use "'abc'" to replace the target with a string value of abc
     """
     mocking_support.patch_with_expression_internal(
         target_str=target_str, expression=expression
