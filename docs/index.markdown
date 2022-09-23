@@ -125,7 +125,7 @@ example:
 
     output-root-dir: tests/generated
 
-## A python function to run before a test run
+##<a name="setup-function"></a>A python function to run before a test run
 The value has to be a fully qualified Python function name.
 
 example:
@@ -252,6 +252,25 @@ For example, an input of ***_Positive input*** for a function foo will be transl
 test_foo_positive_input in the generated unit tests. In the scribe files the test name will
  be _positive_input. This way when the target function name is changed, the tool can 
 automatically regenerate the correct unit test names the next time the unit test file is generated.
+
+# Patch
+When a dependency is hard coded in the target function, you may need to patch it.
+See the Python mock library documentation and [the realpython site](https://realpython.com/python-mock-library/) 
+for more background information.
+
+Use the 
+[patch_with_mock or patch_with_expression functions](https://github.com/HappyRay/testscribe/blob/main/src/testscribe/api/mock_api.py) 
+to instruct the tool to patch before the target function is executed. 
+
+One way is to 
+use [the setup function feature](#setup-function). Invoke these functions in a setup function you define for a test 
+run. Remember to comment out or remove these calls for test runs to which these patches don't apply.
+
+Alternatively you may create a wrapper function to call these functions before calling the target function.
+
+[Here](demo.markdown#patch-function) is a demo for patching with a mock.
+
+[Here](demo.markdown#patch-string) is a demo for patching with an expression.
 
 # Commands
 
