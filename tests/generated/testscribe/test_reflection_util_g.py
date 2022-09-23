@@ -3,6 +3,7 @@ import test_data.calculator
 import test_data.class_method
 import test_data.person
 import test_data.service
+import test_data.service_call
 import test_data.simple
 import test_data.static_method
 import test_data.with_future_annotation_import
@@ -16,6 +17,14 @@ from testscribe.reflection_util import get_bound_arguments, get_full_spec_name, 
 def test_get_bound_arguments():
     result = get_bound_arguments(sig=inspect.signature(test_data.calculator.add), args=[1], kwargs={'b': 2})
     assert result == {'a': 1, 'b': 2}
+
+
+def test_get_full_spec_name_imported_name():
+    """
+    return the name where it is defined given an imported name
+    """
+    result = get_full_spec_name(t=test_data.service_call.Service)
+    assert result == 'test_data.service.Service'
 
 
 def test_get_full_spec_name_function():

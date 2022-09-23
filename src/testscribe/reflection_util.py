@@ -49,6 +49,11 @@ def get_type_name(t: type) -> str:
 
 def get_full_spec_name(t: Spec) -> str:
     """
+    Return the fully qualified name of an object based on where it is defined
+    not how it is imported.
+    e.g. if t is a function foo defined in module mod_a and imported into module mod_b
+    using "from mod_a import foo as f2" calling this function with mod_b.f2 will return
+    mod_a.foo
 
     :param t:
     :return: full name including module

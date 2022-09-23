@@ -50,6 +50,9 @@ def patch_with_mock(
     use patch_with_mock("module_a.bar")
     This is the same "where to patch" rule as Python's patch function. See
     https://realpython.com/python-mock-library/#where-to-patch for more details.
+
+    If bar is imported in mod_b with "from mod_a import foo as bar", given bar as the target, there is no way
+    I can find to get "mod_b.bar" string. Thus,this API has to support the string form.
     :param mock_name: customize the mock object name
     :param spec: If None the default, infer the spec from the target
     """

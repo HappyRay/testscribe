@@ -17,6 +17,15 @@ tests:
   result:
     a: 1
     b: 2
+- name: test_get_full_spec_name_imported_name
+  short_name: _imported_name
+  description: return the name where it is defined given an imported name
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'test_data.service_call.Service'
+  result: test_data.service.Service
 - name: test_get_full_spec_name_function
   short_name: _function
   target:
