@@ -55,6 +55,9 @@ def patch_with_mock(
     I can find to get "mod_b.bar" string. Thus,this API has to support the string form.
     :param mock_name: customize the mock object name
     :param spec: If None, which is the default, infer the spec from the target
+    This parameter is useful when the target's signature is not available, e.g. the open function
+    supply a spec object in this case to have a stronger signature check.
+    See an example in the test for test_data.file_op.write_to_file
     """
 
     mocking_support.patch_with_mock_internal(
