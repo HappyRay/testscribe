@@ -2,9 +2,7 @@
 layout: my-home
 title: home
 ---
-# TestScribe: Unit test made easier
-
-A tool to make python unit testing easier by automating the boring and repetitive parts.
+TestScribe, a tool to make python unit testing easier by automating the boring and repetitive parts.
 
 # Table of Contents
 * [The idea](#the-idea)
