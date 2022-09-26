@@ -246,7 +246,7 @@ To raise an exception for a mock call, use the builtin [throw](https://github.co
 function. 
 For example: use ***throw(Exception("failed"))*** when prompted for a mock call return value.
 
-[Here](demo.markdown#raise-exception) is a demo.
+[Here](demo.markdown#raise-an-exception-in-a-mock-call) is a demo.
 
 ## Ignore the return value for a mock call
 If a mocked method call's return value is not used, it is sometimes simpler to just ignore it.

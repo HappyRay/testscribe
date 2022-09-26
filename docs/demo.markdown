@@ -116,7 +116,6 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_objects_in_list_g.py)
 is the generated unit test code.
 
-<a name="raise-exception"></a>
 # Raise an exception in a mock call
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
 The search_a_name method on that Service object is called.
