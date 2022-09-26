@@ -1,13 +1,41 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: my-home
 title: home
 ---
-# TestScribe: Unit test made easy
+# TestScribe: Unit test made easier
 
 A tool to make python unit testing easier by automating the boring and repetitive parts.
+
+# Table of Contents
+* [The idea](#the-idea)
+* [Quick start](#quick-start)
+* [Command line help](#command-line-help)
+* [Required setup](#required-setup)
+* [Optional setup](#optional-setup)
+    * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
+        * [An example intellij external tool configuration for the create command](#an-example-intellij-external-tool-configuration-for-the-create-command)
+        * [References](#references)
+    * [Add config files](#add-config-files)
+* [Configuration File Format](#configuration-file-format)
+    * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
+    * [Output files root directory](#output-files-root-directory)
+* [Input Support](#input-support)
+    * [Default value](#default-value)
+    * [String](#string)
+    * [Expression](#expression)
+    * [Create a real class instance](#create-a-real-class-instance)
+    * [Create a mock](#create-a-mock)
+    * [Raise an exception for a mock call](#raise-an-exception-for-a-mock-call)
+    * [Ignore the return value for a mock call](#ignore-the-return-value-for-a-mock-call)
+* [Test name](#test-name)
+* [Patch](#patch)
+* [Commands](#commands)
+    * [Create a test run](#create-a-test-run)
+    * [Update test](#update-test)
+    * [Delete a test](#delete-a-test)
+    * [Move tests](#move-tests)
+    * [Sync tests](#sync-tests)
+    * [Sync All](#sync-all)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -309,7 +337,7 @@ Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
 │                                                         and exit.            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
-# Update test
+## Update test
 ```text
 Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
                                                                                 
@@ -329,7 +357,7 @@ Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH TEST_NAME
 
 ```
 
-# Delete a test 
+## Delete a test 
 ```text
 Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
                                                                                 
@@ -351,7 +379,7 @@ Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
-# Move tests
+## Move tests
 The generated test files are organized the same way as the module hierarchy.
 When target functions' modules are changed, this command makes it easier to move the 
 corresponding tests.
@@ -377,7 +405,7 @@ corresponding tests.
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-# Sync tests
+## Sync tests
 Regenerate the unit test file to match the given TestScribe file.
 
 ```text
@@ -395,7 +423,7 @@ Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
 
 ```
 
-# Sync All
+## Sync All
 Sync all tests under the configured output root directory
 ```text
  Usage: testscribe sync-all [OPTIONS]                                           
