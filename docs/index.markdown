@@ -17,6 +17,8 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
 * [Configuration File Format](#configuration-file-format)
     * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
+    * [Setup function](#setup-function)
+
 * [Input Support](#input-support)
     * [Default value](#default-value)
     * [String](#string)
@@ -151,7 +153,8 @@ example:
 
     output-root-dir: tests/generated
 
-##<a name="setup-function"></a>A python function to run before a test run
+## Setup function
+Specifies a python function to run before a test run
 The value has to be a fully qualified Python function name.
 
 example:
@@ -289,7 +292,7 @@ Use the
 to instruct the tool to patch before the target function is executed. 
 
 One way is to 
-use [the setup function feature](#setup-function). Invoke these functions in a setup function you define for a test 
+use [the setup function feature](#). Invoke these functions in a setup function you define for a test 
 run. Remember to comment out or remove these calls for test runs to which these patches don't apply.
 
 Alternatively you may create a wrapper function to call these functions before calling the target function.
