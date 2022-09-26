@@ -68,7 +68,6 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
 is the generated unit test code.
 
-<a name="objects-in-list"></a>
 # multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a
 list of [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.

@@ -219,7 +219,7 @@ You can simply use c(name="Alice", age=23) when prompted for the value of the pa
 
 [Here](demo.markdown#create-a-class-instance) is a demo.
 
-[here](demo.markdown#objects-in-list) is a demo of creating objects in a list.
+[here](demo.markdown#multiple-class-instances-in-a-list) is a demo of creating objects in a list.
 
 ## Create a mock
 You can also use the m function to create a mock object as an input.
