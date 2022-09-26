@@ -222,7 +222,6 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_patch_function_g.py)
 is the generated unit test code.
 
-<a name="patch-string"></a>
 # Patch a string
 The function [get_db_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/patch_string.py) has a
 fixed dependency on the DB_NAME variable.

@@ -297,7 +297,7 @@ And then use the tool to test the wrapper function.
 
 [Here](demo.markdown#patch-a-function) is a demo for patching with a mock.
 
-[Here](demo.markdown#patch-string) is a demo for patching with an expression.
+[Here](demo.markdown#patch-a-string) is a demo for patching with an expression.
 
 # Commands
 
