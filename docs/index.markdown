@@ -267,6 +267,7 @@ use [the setup function feature](#setup-function). Invoke these functions in a s
 run. Remember to comment out or remove these calls for test runs to which these patches don't apply.
 
 Alternatively you may create a wrapper function to call these functions before calling the target function.
+And then use the tool to test the wrapper function.
 
 [Here](demo.markdown#patch-function) is a demo for patching with a mock.
 
