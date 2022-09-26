@@ -177,7 +177,6 @@ Mock call return value: InputValue(expression='ignore', value='Ignored')
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_ignore_mock_return_g.py)
 is the generated unit test code.
 
-<a name="patch-function"></a>
 # Patch a function
 The function [call_fixed_func](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/patch_function.py) has a 
 fixed dependency on the calculate function. 

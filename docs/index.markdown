@@ -295,7 +295,7 @@ run. Remember to comment out or remove these calls for test runs to which these 
 Alternatively you may create a wrapper function to call these functions before calling the target function.
 And then use the tool to test the wrapper function.
 
-[Here](demo.markdown#patch-function) is a demo for patching with a mock.
+[Here](demo.markdown#patch-a-function) is a demo for patching with a mock.
 
 [Here](demo.markdown#patch-string) is a demo for patching with an expression.
 
