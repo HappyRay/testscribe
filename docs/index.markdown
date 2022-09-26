@@ -253,7 +253,7 @@ If a mocked method call's return value is not used, it is sometimes simpler to j
 
 Use the special input string ***ignore*** when prompted for such a return value.
 
-[Here](demo.markdown#ignore-return-value) is a demo.
+[Here](demo.markdown#ignore-the-return-value-of-a-mock-call) is a demo.
 
 # Test name
 You can provide a test name or take the default.

@@ -147,7 +147,6 @@ Notice that this test run use an earlier test run's input as default input.
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py)
 is the generated unit test code.
 
-<a name="ignore-return-value"></a>
 # Ignore the return value of a mock call
 The function [show](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/ignore_mock_return.py) takes a 
 Printer object as a parameter.
