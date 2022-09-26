@@ -2,7 +2,21 @@
 layout: my-home
 title: demo
 ---
-# <a name="mock-class-instance"></a>Mock a class instance
+Demonstrations of select features
+
+Table of Contents
+=================
+
+* [Mock a class instance](#mock-a-class-instance)
+* [Create a class instance](#create-a-class-instance)
+* [multiple class instances in a list](#multiple-class-instances-in-a-list)
+* [Raise an exception in a mock call](#raise-an-exception-in-a-mock-call)
+* [Ignore the return value of a mock call](#ignore-the-return-value-of-a-mock-call)
+* [Patch a function](#patch-a-function)
+* [Patch a string](#patch-a-string)
+* [Ignore the return value of a mock call](#ignore-the-return-value-of-a-mock-call-1)
+
+# Mock a class instance
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
 The service may involve a database or a network call.
 It's easier to test by mocking it.
@@ -34,7 +48,7 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py) 
 is the generated unit test code.
 
-# <a name="create-class-instance"></a>Create a class instance
+# Create a class instance
 The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a 
 [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
 
@@ -54,7 +68,8 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
 is the generated unit test code.
 
-# <a name="objects-in-list"></a>multiple class instances in a list
+<a name="objects-in-list"></a>
+# multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a
 list of [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
 
@@ -102,7 +117,8 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_objects_in_list_g.py)
 is the generated unit test code.
 
-# <a name="raise-exception"></a>Raise an exception in a mock call
+<a name="raise-exception"></a>
+# Raise an exception in a mock call
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
 The search_a_name method on that Service object is called.
 An example test run output to test the behavior when the call throws an exception:
@@ -134,7 +150,8 @@ Notice that this test run use an earlier test run's input as default input.
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py)
 is the generated unit test code.
 
-# <a name="ignore-return-value"></a>Ignore the return value of a mock call
+<a name="ignore-return-value"></a>
+# Ignore the return value of a mock call
 The function [show](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/ignore_mock_return.py) takes a 
 Printer object as a parameter.
 The display method on that Printer object is called.
@@ -164,7 +181,8 @@ Mock call return value: InputValue(expression='ignore', value='Ignored')
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_ignore_mock_return_g.py)
 is the generated unit test code.
 
-# <a name="patch-function"></a>Patch a function
+<a name="patch-function"></a>
+# Patch a function
 The function [call_fixed_func](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/patch_function.py) has a 
 fixed dependency on the calculate function. 
 
@@ -209,7 +227,8 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_patch_function_g.py)
 is the generated unit test code.
 
-# <a name="patch-string"></a>Patch a string
+<a name="patch-string"></a>
+# Patch a string
 The function [get_db_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/patch_string.py) has a
 fixed dependency on the DB_NAME variable.
 
@@ -242,7 +261,8 @@ test
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_patch_string_g.py)
 is the generated unit test code.
 
-# <a name="ignore-return-value"></a>Ignore the return value of a mock call
+<a name="ignore-return-value"></a>
+# Ignore the return value of a mock call
 The function [show](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/ignore_mock_return.py) takes a
 Printer object as a parameter.
 The display method on that Printer object is called.

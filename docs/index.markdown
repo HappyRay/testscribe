@@ -217,7 +217,7 @@ def foo(p: Person):
 ```
 You can simply use c(name="Alice", age=23) when prompted for the value of the parameter p.
 
-[Here](demo.markdown#create-class-instance) is a demo.
+[Here](demo.markdown#create-a-class-instance) is a demo.
 
 [here](demo.markdown#objects-in-list) is a demo of creating objects in a list.
 
@@ -237,7 +237,7 @@ When a mock object's attributes are accessed for the first time, you will be pro
 When a mock object's method is called, the tool will show the parameters and the call stack. It will prompt
 you for the return value.
 
-[Here](demo.markdown#mock-class-instance) is a demo.
+[Here](demo.markdown#mock-a-class-instance) is a demo.
 
 [here](demo.markdown#objects-in-list) is a demo of mocking multiple objects in a list.
 
