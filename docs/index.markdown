@@ -239,7 +239,7 @@ you for the return value.
 
 [Here](demo.markdown#mock-a-class-instance) is a demo.
 
-[here](demo.markdown#objects-in-list) is a demo of mocking multiple objects in a list.
+[here](demo.markdown#multiple-class-instances-in-a-list) is a demo of mocking multiple objects in a list.
 
 ## Raise an exception for a mock call
 To raise an exception for a mock call, use the builtin [throw](https://github.com/HappyRay/testscribe/blob/09f1e110dc03b357400226e3ac8f88153113d5a7/src/testscribe/api/mock_api.py#L25) 
