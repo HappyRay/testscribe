@@ -210,7 +210,7 @@ If the input is a class instance and is properly annotated,
 the class name can be replaced by a builtin alias named "c".
 For example:
 Given the following target
-```python
+```
 from data import Person
 def foo(p: Person):
   ...
