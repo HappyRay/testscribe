@@ -192,7 +192,7 @@ In the example above the input ***"Bob"*** will provide the same string value Bo
 The quoted form is needed when the string value contain special values that need to 
 be quoted. For example: 
 * to input multiline string use ***"a\nb"*** or ***'a\nb'***.
-* to input " use ***'"'***.
+* to input **"** use **'"'**.
 
 ## Expression
 Valid Python expressions are supported as inputs.
