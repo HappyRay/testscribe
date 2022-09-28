@@ -86,7 +86,7 @@ def expand_one_string_alias(expression: str, alias: str, full_str: str) -> str:
     )
     if replacement_count:
         log(f"Expanded alias: {alias} {replacement_count} times.")
-        log(f"Result after the expantion: {replaced}")
+        log(f"Result after the expansion: {replaced}")
     return replaced
 
 
