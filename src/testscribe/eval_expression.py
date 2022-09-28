@@ -239,7 +239,7 @@ def wrap_input_value(expression: str, v: Any) -> Any:
     back to a proper constructor.
     e.g.
     If the expression evaluates to a class instance, it's easier to inspect/assert
-    the class memembers than choosing the right constructor.
+    the class members than choosing the right constructor.
     Thus, is_simple_value only returns True for cases when constructing the value
     is reliable.
     :param expression: user input string after expanding aliases and mock markers.
