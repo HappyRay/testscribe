@@ -25,6 +25,8 @@ flake8 = "*"
 black = "*"
 pytest-cov = "*"
 twine = "*"
+# Get color output
+rich = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
