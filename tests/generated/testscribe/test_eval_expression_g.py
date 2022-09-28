@@ -4,7 +4,7 @@ import testscribe.error
 import typing
 from unittest.mock import patch
 import pytest
-from testscribe.eval_expression import contain_mock_proxy, eval_with_injected_names, expand_class_alias, expand_one_string_alias, expand_string_aliases, get_normaized_item_types, is_m_function_in_expression, process_mock_marker, process_mock_marker_dict, process_mock_marker_list, process_mock_marker_tuple, wrap_input_value
+from testscribe.eval_expression import contain_mock_proxy, eval_with_injected_names, expand_class_alias, expand_one_string_alias, expand_string_aliases, get_normalized_item_types, is_m_function_in_expression, process_mock_marker, process_mock_marker_dict, process_mock_marker_list, process_mock_marker_tuple, wrap_input_value
 
 
 def test_contain_mock_proxy_false():
@@ -69,8 +69,8 @@ def test_expand_string_aliases():
     assert result == 'hello-World'
 
 
-def test_get_normaized_item_types_tuple_with_ellipsis():
-    result = get_normaized_item_types(t=typing.Tuple[int, ...], v=(1, 2))
+def test_get_normalized_item_types_tuple_with_ellipsis():
+    result = get_normalized_item_types(t=typing.Tuple[int, ...], v=(1, 2))
     assert result == (int, int)
 
 

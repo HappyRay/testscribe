@@ -143,10 +143,10 @@ tests:
     replacement:
       a: hello
       b: World
-- name: test_get_normaized_item_types_tuple_with_ellipsis
+- name: test_get_normalized_item_types_tuple_with_ellipsis
   short_name: _tuple_with_ellipsis
   target:
-    name: get_normaized_item_types
+    name: get_normalized_item_types
   parameters:
   - name: t
     value: !testscribe/expression 'typing.Tuple[int, ...]'
