@@ -275,7 +275,7 @@ def process_complex_value(value: Any, expression: str):
 def contain_mock_proxy(value: Any) -> bool:
     """
     This method can't detect all cases. e.g.
-    if a mockproxy object is used in the constructor of another object such as
+    if a MockProxy object is used in the constructor of another object such as
     NamedValues.
     :param value:
     :return:
