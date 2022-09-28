@@ -9,11 +9,14 @@ Table of Contents
 
 * [Mock a class instance](#mock-a-class-instance)
 * [Create a class instance](#create-a-class-instance)
-* [multiple class instances in a list](#multiple-class-instances-in-a-list)
+* [Multiple class instances in a list](#multiple-class-instances-in-a-list)
+    * [Create multiple real instances in a list](#create-multiple-real-instances-in-a-list)
+    * [Create multiple mocks in a list](#create-multiple-mocks-in-a-list)
 * [Raise an exception in a mock call](#raise-an-exception-in-a-mock-call)
 * [Ignore the return value of a mock call](#ignore-the-return-value-of-a-mock-call)
 * [Patch a function](#patch-a-function)
 * [Patch a string](#patch-a-string)
+* [Input alias](#input-alias)
 
 # Mock a class instance
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
@@ -67,11 +70,12 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
 is the generated unit test code.
 
-# multiple class instances in a list
+# Multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a
 list of [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
 
-An example test run with real instances:
+## Create multiple real instances in a list
+An example test run:
 
 ```text
 ...
@@ -85,7 +89,9 @@ value:
 ...
 ```
 
-An example test run with mocked instances:
+## Create multiple mocks in a list
+
+An example test run:
 ```text
 Please provide the value for the parameter (person_list) of type: (typing.List[tsdemo.person.Person]) [[tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)]]: [m, m]
 Created a mock: Mock: name (m_person) spec (<class 'tsdemo.person.Person'>)
@@ -254,3 +260,21 @@ test
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_patch_string_g.py)
 is the generated unit test code.
+
+# Input alias
+To make inputs easier, you can define aliases.
+
+In the example [create real instances in a list](#create-multiple-real-instances-in-a-list), instead of 
+typing the fully qualified class name, you can create an alias for the class name by adding the following
+to the setup function.
+
+>define_alias(alias="ps", full_str="tsdemo.person.Person")
+
+Here is a test run which produces the same result as the example referenced above.
+
+```text
+Please provide the value for the parameter (person_list) of type: (typing.List[tsdemo.person.Person]) []: [ps("a", 2), ps("b", 3)]
+Expanded alias: ps 2 times.
+Result after the expansion: [tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)]
+Calling get_average_age(person_list=[tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)])
+```
