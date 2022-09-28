@@ -6,6 +6,7 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
 
 # Table of Contents
 * [The idea](#the-idea)
+* [The idea](#the-idea)
 * [Quick start](#quick-start)
 * [Command line help](#command-line-help)
 * [Required setup](#required-setup)
@@ -18,7 +19,6 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
     * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
     * [Setup function](#setup-function)
-
 * [Input Support](#input-support)
     * [Default value](#default-value)
     * [String](#string)
@@ -27,6 +27,7 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
     * [Create a mock](#create-a-mock)
     * [Raise an exception for a mock call](#raise-an-exception-for-a-mock-call)
     * [Ignore the return value for a mock call](#ignore-the-return-value-for-a-mock-call)
+    * [Input alias](#input-alias)
 * [Test name](#test-name)
 * [Patch](#patch)
 * [Commands](#commands)
@@ -257,6 +258,26 @@ If a mocked method call's return value is not used, it is sometimes simpler to j
 Use the special input string ***ignore*** when prompted for such a return value.
 
 [Here](demo.markdown#ignore-the-return-value-of-a-mock-call) is a demo.
+
+## Input alias
+To reduce the amount of typing, aliases can be defined per test run.
+They will be expanded to the full string before the input expression is evaluated.
+
+Use the [define_alias](https://github.com/HappyRay/testscribe/blob/main/src/testscribe/api/alias.py)
+function in a [setup function](#setup-function).
+
+For example, you can define an alias for a frequently used package like this
+> define_alias(alias="p2", full_str="tsdemo.package1.package2")
+
+You can then use **p2** instead of the full package name for the test runs that use this setup function. 
+
+For example:
+> p2.Person
+
+Multiple aliases can be defined and used in one expression. They are expanded in the order 
+in which they are defined.
+
+[Here](demo.markdown#input-alias) is a demo.
 
 # Test name
 You can provide a test name or take the default.
