@@ -4,8 +4,9 @@ title: home
 ---
 TestScribe, a tool to make python unit testing easier by automating the boring and repetitive parts.
 
-# Table of Contents
-* [The idea](#the-idea)
+Table of Contents
+=================
+
 * [The idea](#the-idea)
 * [Quick start](#quick-start)
 * [Command line help](#command-line-help)
@@ -37,6 +38,8 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
     * [Move tests](#move-tests)
     * [Sync tests](#sync-tests)
     * [Sync All](#sync-all)
+* [Tips](#tips)
+    * [Better output format in color](#better-output-format-in-color)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -456,3 +459,11 @@ Sync all tests under the configured output root directory
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
+
+# Tips
+
+## Better output format in color
+
+Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
+
+
