@@ -20,6 +20,7 @@ Table of Contents
     * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
     * [Setup function](#setup-function)
+* [Test a method](#test-a-method)
 * [Input Support](#input-support)
     * [Default value](#default-value)
     * [String](#string)
@@ -168,6 +169,16 @@ example:
 setup is a function defined in the module named setup.
 [Here](https://github.com/HappyRay/testscribe/blob/main/tests/setup.py) 
 is an example of such a function.
+
+# Test a method
+When the target function is a method of a class, the tool will automatically call the constructor
+to create an instance first and invoke the method on that instance.
+
+[Here](demo.markdown#test-a-method) is a demo
+
+In the rare case when there is at least another function or method in the same module with the same name,
+you may create a wrapper function which creates an instance and invoke the method. You can then test
+the wrapper function as usual.
 
 # Input Support
 ## Default value

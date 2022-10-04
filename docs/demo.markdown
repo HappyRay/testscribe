@@ -7,6 +7,7 @@ Demonstrations of select features
 Table of Contents
 =================
 
+* [Test a method](#test-a-method)
 * [Mock a class instance](#mock-a-class-instance)
 * [Create a class instance](#create-a-class-instance)
 * [Multiple class instances in a list](#multiple-class-instances-in-a-list)
@@ -17,6 +18,35 @@ Table of Contents
 * [Patch a function](#patch-a-function)
 * [Patch a string](#patch-a-string)
 * [Input alias](#input-alias)
+
+# Test a method
+When the target function is a method of a class, the tool will automatically call the constructor
+to create an instance first and invoke the method on that instance.
+
+This method [greet](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/greet.py) is the target.
+
+An example test run output:
+
+```text
+...
+Prepare to create an instance of the class: Greeter
+Getting parameters for the function (Greeter)
+Please provide the value for the parameter (my_name) of type: (str) []: Bob
+Calling Greeter(my_name='Bob')
+Prepare to call the target function.
+Getting parameters for the function (Greeter.greet)
+Please provide the value for the parameter (to) of type: (str) []: Alice
+Calling Greeter.greet(to='Alice')
+***** Result:
+type: <class 'str'>
+value:
+Hello Alice. My name is Bob
+***** Result end
+...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_greet_g.py)
+is the generated unit test code.
 
 # Mock a class instance
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
