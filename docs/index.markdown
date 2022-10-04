@@ -218,7 +218,7 @@ you should use "tests.helper.get_test_val()" expression when prompted.
 
 Tip:
 
-Use the alias support to reduce the need to type long names.
+Use the [alias support](#input-alias) to reduce the need to type long names.
 
 ## Create a real class instance
 You can use the normal constructor expression to create an instance of a class for inputs.
