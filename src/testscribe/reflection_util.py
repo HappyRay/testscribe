@@ -98,6 +98,7 @@ def is_method(clazz: type, name: str):
     """
     if name in dir(clazz):
         attrib = getattr(clazz, name)
+        # todo: make it work with a callable class variable
         return callable(attrib)
     return False
 
