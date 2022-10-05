@@ -42,6 +42,7 @@ Table of Contents
 * [Wrapper function](#wrapper-function)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
+    * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
 * [FAQ](#faq)
     * [Do you have real world examples?](#do-you-have-real-world-examples)
 
@@ -494,6 +495,12 @@ test folder if you have one.
 ## Better output format in color
 
 Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
+
+## Better string readability in the tscribe file
+Prefer double quotes over single quotes to quote strings in inputs when needed.
+Since YAML quotes strings with single quotes, it results in
+a more readable YAML representation of strings in the tscribe files.
+
 
 # FAQ
 
