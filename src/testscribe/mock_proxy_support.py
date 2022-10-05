@@ -108,7 +108,7 @@ def get_attribute_type(spec: Spec, name: str) -> type:
 
 def get_type_from_type_hints(spec: Spec, attribute_name: str) -> Optional[type]:
     """
-    Get type information from attribute's type annotaiton.
+    Get type information from attribute's type annotation.
 
     dataclass for example doesn't seem to have a way to define class variables
     for the purpose of providing type information for a field.
