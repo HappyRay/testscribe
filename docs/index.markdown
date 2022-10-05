@@ -42,6 +42,8 @@ Table of Contents
 * [Wrapper function](#wrapper-function)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
+* [FAQ](#faq)
+    * [Do you have real world examples?](#do-you-have-real-world-examples)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -492,3 +494,9 @@ test folder if you have one.
 ## Better output format in color
 
 Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
+
+# FAQ
+
+## Do you have real world examples?
+The tool uses itself to test. You can see the many examples 
+[here](https://github.com/HappyRay/testscribe/tree/main/tests)
