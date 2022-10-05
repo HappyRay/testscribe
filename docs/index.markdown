@@ -43,6 +43,7 @@ Table of Contents
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
     * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
+    * [Annotate instance member variables with type information](#annotate-instance-member-variables-with-type-information)
 * [Debug logging](#debug-logging)
 * [FAQ](#faq)
     * [Do you have real world examples?](#do-you-have-real-world-examples)
@@ -503,6 +504,25 @@ Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
 Prefer double quotes over single quotes to quote strings in inputs when needed.
 Since YAML quotes strings with single quotes, it results in
 a more readable YAML representation of strings in the tscribe files.
+
+## Annotate instance member variables with type information
+Proper type information makes input easier in some cases. 
+Since instance member variables are created dynamically, it requires special techniques to
+annotate them with type information.
+To annotate, create a class variable with the type annotation.
+
+For example:
+
+```python
+class Car:
+    model: str
+
+    def __init__(self, model: str):
+        self.owner = owner
+```
+
+[Here](demo.markdown#annotate-a-class-instance-member-variable-with-type-information) 
+is an example with a test run result.
 
 # Debug logging
 To gather additional debug information, put a file named test_scribe_logging.conf in

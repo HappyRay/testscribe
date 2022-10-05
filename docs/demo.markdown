@@ -19,6 +19,7 @@ Table of Contents
 * [Patch a string](#patch-a-string)
 * [Input alias](#input-alias)
 * [Wrapper function](#wrapper-function)
+* [Annotate a class instance member variable with type information](#annotate-a-class-instance-member-variable-with-type-information)
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
 It's intentionally made as simple as possible to make it easier to understand.  
@@ -323,3 +324,39 @@ a wrapper function is used.
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_string_method_g.py)
 is the generated test code.
+
+# Annotate a class instance member variable with type information
+Proper type information makes input easier in some cases.
+
+In [this class](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/annotate_field_type.py)
+the model field is annotated with type information, the owner field is not for comparison.
+
+As the result, the model field input doesn't need to be quoted, the owner field input does.
+
+Here is an example test run:
+
+```text
+Please provide the value for the parameter (car) of type: (tsdemo.annotate_field_type.Car) []: m
+Created a mock: Mock: name (m_car) spec (<class 'tsdemo.annotate_field_type.Car'>)
+Calling get_car_info(car=Mock: name (m_car) spec (<class 'tsdemo.annotate_field_type.Car'>))
+Mock object m_car's ( model ) attribute is accessed for the first time.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/annotate_field_type.py", line 15, in get_car_info
+    return f"Car model: {car.model}, owner: {car.owner}"
+
+Please provide the value for the model attribute of type: (str) []: camery
+Mock attribute value: 'camery'
+Mock object m_car's ( owner ) attribute is accessed for the first time.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/annotate_field_type.py", line 15, in get_car_info
+    return f"Car model: {car.model}, owner: {car.owner}"
+
+Please provide the value for the owner attribute of type: (any) []: "Bob"
+Mock attribute value: 'Bob'
+***** Result:
+type: <class 'str'>
+value:
+Car model: camery, owner: Bob
+***** Result end
+
+```
