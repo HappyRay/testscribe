@@ -46,6 +46,10 @@ Additional features such as launching the tool more easily only require simple s
 * At any time, removing the tool won't break your existing production code or tests.
 * It's open source with the Apache 2.0 license.
 
+# Demo
+You can find demos here.
+Feel free to download the demo project and try for yourself.
+
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
 Please see the full documentation here.
