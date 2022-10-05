@@ -43,6 +43,7 @@ Table of Contents
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
     * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
+* [Debug logging](#debug-logging)
 * [FAQ](#faq)
     * [Do you have real world examples?](#do-you-have-real-world-examples)
 
@@ -503,6 +504,15 @@ Prefer double quotes over single quotes to quote strings in inputs when needed.
 Since YAML quotes strings with single quotes, it results in
 a more readable YAML representation of strings in the tscribe files.
 
+# Debug logging
+To gather additional debug information, put a file named test_scribe_logging.conf in
+the working directory.
+This is useful when reporting an issue for example.
+
+[Here](https://github.com/HappyRay/testscribe/blob/main/test_scribe_logging.conf) is a sample config file.
+
+See [the Python documentation](https://docs.python.org/3/library/logging.config.html#logging-config-fileformat)
+for how to customize this file.
 
 # FAQ
 
