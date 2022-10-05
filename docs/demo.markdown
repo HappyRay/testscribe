@@ -18,6 +18,7 @@ Table of Contents
 * [Patch a function](#patch-a-function)
 * [Patch a string](#patch-a-string)
 * [Input alias](#input-alias)
+* [Wrapper function](#wrapper-function)
 
 # Test a method
 When the target function is a method of a class, the tool will automatically call the constructor
@@ -308,3 +309,10 @@ Expanded alias: ps 2 times.
 Result after the expansion: [tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)]
 Calling get_average_age(person_list=[tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)])
 ```
+
+# Wrapper function
+To test a magic string method [here](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/string_method.py),
+a wrapper function is used.
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_string_method_g.py)
+is the generated test code.

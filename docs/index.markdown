@@ -39,6 +39,7 @@ Table of Contents
     * [Move tests](#move-tests)
     * [Sync tests](#sync-tests)
     * [Sync All](#sync-all)
+* [Wrapper function](#wrapper-function)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
 
@@ -471,10 +472,23 @@ Sync all tests under the configured output root directory
 
 ```
 
+# Wrapper function
+For more flexibility, you can create wrapper functions which call the target function.
+Use the tool to test the wrapper functions.
+
+Example scenarios when a wrapper function may be useful:
+* Test a magic method such as __str__. [Here](demo.markdown#wrapper-function) is a demo.
+* Use code to set up the preconditions before invoking the target function
+* Additional verification of the output. For example, check if a file is indeed created.
+
+[Here](https://github.com/HappyRay/testscribe/tree/main/tests/wrapper) are some example wrapper
+functions used by the TestScribe project to test itself.
+
+Since these wrapper functions are typically used for testing only, you may put them in a
+test folder if you have one.
+
 # Tips
 
 ## Better output format in color
 
 Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
-
-
