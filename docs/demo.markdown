@@ -20,6 +20,10 @@ Table of Contents
 * [Input alias](#input-alias)
 * [Wrapper function](#wrapper-function)
 
+[Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
+It's intentionally made as simple as possible. 
+Feel free to download it and play.
+
 # Test a method
 When the target function is a method of a class, the tool will automatically call the constructor
 to create an instance first and invoke the method on that instance.
