@@ -118,6 +118,8 @@ It's helpful to configure a keyboard shortcut to launch the external tool.
 
 Other commands can be configured in a similar way.
 
+Notice that the program can't be testscribe. The wrapper script is not available to the external program system.
+
 ### References
 [Intellij external tools instructions](https://www.jetbrains.com/help/idea/settings-tools-external-tools.html)
 
