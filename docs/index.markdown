@@ -10,6 +10,8 @@ Table of Contents
 * [The idea](#the-idea)
 * [Minimum requirement](#minimum-requirement)
 * [Quick start](#quick-start)
+  * [If you just want to take a look first without installing anything](#if-you-just-want-to-take-a-look-first-without-installing-anything)
+  * [If you are ready to try it yourself quickly](#if-you-are-ready-to-try-it-yourself-quickly)
 * [Command line help](#command-line-help)
 * [Required setup](#required-setup)
 * [Optional setup](#optional-setup)
@@ -74,8 +76,11 @@ regression tests.
 * Python version >= 3.8.
 
 # Quick start
-Follow the following steps to quickly try out the tool. 
 
+## If you just want to take a look first without installing anything 
+Check out the [demos](demo.markdown)
+
+## If you are ready to try it yourself quickly
 It doesn't modify your existing files.
 You can easily restore your original state, especially when you are using a version control system.
 
