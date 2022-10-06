@@ -92,6 +92,7 @@ You can easily restore your original state, especially when you are using a vers
 
 4. [Optional] Use the generated test files for debugging, regression tests, etc.
 The file locations can be found in the output.
+The tests are based on the [pytest](https://docs.pytest.org/) test framework.
 
 # Command line help
 Use the --help option to display help information from a command line.
@@ -112,6 +113,9 @@ For example:
 # Required setup
 Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
 library dependencies. Note that it is not needed as a production dependency.
+
+If you would like to take advantage of the generated tests, add [pytest](https://docs.pytest.org/) to 
+your development python library dependencies too.
 
 # Optional setup
 To take full advantage of the tool, some optional setups are needed.
