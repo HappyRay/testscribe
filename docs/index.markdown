@@ -53,6 +53,7 @@ Table of Contents
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
   * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
   * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
+  * [Can I still use it if I practice test-driven development](#can-i-still-use-it-if-i-practice-test-driven-development)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -574,3 +575,21 @@ test file and test function while leaving the bulk of the work to the wrapper fu
 
 ## Does the tool support programming languages other than Python?
 Not currently. However, the same technique can be applied to other languages.
+
+## Can I still use it if I practice test-driven development
+If you are willing to adjust your workflow a little, the tool can still help you. 
+
+Here is one possible workflow:
+1. Write the minium production code to satisfy the contract.
+2. Use the tool to generate a test which would be the same test you would have to write manually before.
+3. Continue with your workflow as before.
+
+An example minium production code for a contract like "given an integer customer id return a customer name":
+```python
+def get_customer_name(customer_id: int):
+    return "Bob"
+```
+
+Use the tool to generate a test with the customer Bob's id. 
+Now progress towards the real implementation. The first test for Bob should still pass. 
+Test again using the tool with a different customer's id to generate additional tests.
