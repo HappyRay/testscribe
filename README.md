@@ -44,7 +44,9 @@ Additional features such as launching the tool more easily only require simple s
 * The tool doesn't modify the code you test in any way.
 * It doesn't introduce any dependency to your production code.
 * At any time, removing the tool won't break your existing production code or tests.
-* It's open source with the Apache 2.0 license.
+* It's free and open source with the Apache 2.0 license.
+* You can always fall back to the traditional ways of testing for use cases the tool doesn't support yet. 
+The tool won't get in your way.
 
 # Demo
 You can find demos here.
