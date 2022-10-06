@@ -8,6 +8,7 @@ Table of Contents
 =================
 
 * [The idea](#the-idea)
+* [Minimum requirement](#minimum-requirement)
 * [Quick start](#quick-start)
 * [Command line help](#command-line-help)
 * [Required setup](#required-setup)
@@ -67,6 +68,9 @@ Additionally, the test runs are recorded both as traditional unit tests
 and a structured machine-readable format by the tool automatically. 
 The machine-readable format will enable additional functionalities such as maintaining 
 regression tests.
+
+# Minimum requirement
+* Python version >= 3.8.
 
 # Quick start
 Follow the following steps to quickly try out the tool. 
