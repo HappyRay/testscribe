@@ -45,6 +45,8 @@ Table of Contents
     * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
     * [Annotate instance member variables with type information](#annotate-instance-member-variables-with-type-information)
 * [Debug logging](#debug-logging)
+* [Limitations and possible workaround](#limitations-and-possible-workaround)
+  * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
 * [FAQ](#faq)
     * [Do you have real world examples?](#do-you-have-real-world-examples)
 
@@ -533,6 +535,19 @@ This is useful when reporting an issue for example.
 
 See [the Python documentation](https://docs.python.org/3/library/logging.config.html#logging-config-fileformat)
 for how to customize this file.
+
+# Limitations and possible workaround
+
+## Expression with both mocks and objects
+For example 
+> ((m(test_data.simple.C), test_data.simple.C())
+
+The generated test won't be correct. The displayed output is still correct however.
+
+An alternative is to create a wrapper function. For example:
+foo_wrapper(o: test_data.simple.C)
+And use (o,  test_data.simple.C()) as input.
+
 
 # FAQ
 
