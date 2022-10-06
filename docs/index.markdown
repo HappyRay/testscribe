@@ -48,7 +48,10 @@ Table of Contents
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
 * [FAQ](#faq)
-    * [Do you have real world examples?](#do-you-have-real-world-examples)
+  * [Do you have real world examples?](#do-you-have-real-world-examples)
+  * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
+  * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
+  * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -554,3 +557,16 @@ And use (o,  test_data.simple.C()) as input.
 ## Do you have real world examples?
 The tool uses itself to test. You can see the many examples 
 [here](https://github.com/HappyRay/testscribe/tree/main/tests)
+
+## Can I modify the generated tests?
+Your changes will be overwritten if you update the same test using the tool.
+You may copy the generated test and use it as you see fit.
+
+## What to do if the tool doesn't support my use case?
+You can always fall back to the traditional ways of testing. The tool won't get in your way.
+It may however provide examples, tests for further customization etc.
+A wrapper function may be used to provide partial help. For example help with generating the 
+test file and test function while leaving the bulk of the work to the wrapper function.
+
+## Does the tool support programming languages other than Python?
+Not currently. However, the same technique can be applied to other languages.
