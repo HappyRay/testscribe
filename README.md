@@ -21,7 +21,8 @@ unit test code as follows:
     False
     ***** Result end
 
-You can run it multiple times with different inputs.
+You can run it multiple times with different inputs and inspect the displayed output.
+If the output is not correct, fix the production code and test again.
 
 TestScribe automatically creates fully functional unit test files. You can use them to debug a test run or save
 them as regression tests or simply discard them. 
