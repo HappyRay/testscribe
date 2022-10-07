@@ -56,6 +56,7 @@ Table of Contents
   * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
   * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
   * [Can I still use it if I practice test-driven development](#can-i-still-use-it-if-i-practice-test-driven-development)
+  * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -602,3 +603,16 @@ def get_customer_name(customer_id: int):
 Use the tool to generate a test with the customer Bob's id. 
 Now progress towards the real implementation. The first test for Bob should still pass. 
 Test again using the tool with a different customer's id to generate additional tests.
+
+## Will it increase the maintenance cost of tests
+You can choose which generated tests to keep. And the tool can help manage the generated tests you keep.
+
+For example:
+* [Move tests](#move-tests) after the target functions are moved.
+* [Update tests](#update-test) is often easier than creating a new test since it can use the existing input as default.
+
+It's true that the generated tests are strict. If you prefer, you can make a copy of the generated test and 
+change it as you see fit. It's often easier than creating the same test manually.
+Given how easy it is to update tests if only the output has changed,
+it is often easier to update a test than relaxing assertions.
+And it serves as an additional safeguard.
