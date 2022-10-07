@@ -57,6 +57,7 @@ Table of Contents
   * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
   * [Can I still use it if I practice test-driven development](#can-i-still-use-it-if-i-practice-test-driven-development)
   * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
+  * [Does it support test parametrization in generated tests?](#does-it-support-test-parametrization-in-generated-tests)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -616,3 +617,28 @@ change it as you see fit. It's often easier than creating the same test manually
 Given how easy it is to update tests if only the output has changed,
 it is often easier to update a test than relaxing assertions.
 And it serves as an additional safeguard.
+
+## Does it support test parametrization in generated tests?
+pytest supports [test parametrization](https://docs.pytest.org/how-to/parametrize.html#parametrize-basics)
+to allow one test to take different set of inputs.
+
+This tool only generates tests that test one set of input each. The amount of work you have to 
+do is similar or less, in part thanks to the intelligent selection of default input values. 
+After all, you will need to input all the input data either way. 
+With the tool, you can focus on the input data itself 
+without having to remember the syntax and type in the extra code to make pytest parametrization work 
+,not to mention creating a test file, importing modules and writing other boilerplate code.
+As a bonus, since the production code has the proper type annotation, you don't even need to quote the
+input string.
+
+The approach has the following additional benefits:
+* The generated test is easier to read when one would like to focus on one set of input. 
+When the input becomes more complex, nested lists for example, the parameterized tests become harder to read.
+* It's easier to test/debug a single set of input.
+* You have the ability to give each test for each input set its own descriptive name and description.
+
+Test parametrization makes more sense when tests are written manually to reduce code duplication.
+With this tool, some code duplication is ok since the duplicated part is handled by the tool without requiring extra 
+effort from you.
+
+[Here](demo.markdown#test-multiple-input-sets) is an example that you can see/try for yourself.

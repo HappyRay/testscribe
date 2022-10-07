@@ -7,12 +7,14 @@ Demonstrations of select features
 Table of Contents
 =================
 
+* [Table of Contents](#table-of-contents)
 * [Test a method](#test-a-method)
+* [Test multiple input sets](#test-multiple-input-sets)
 * [Mock a class instance](#mock-a-class-instance)
 * [Create a class instance](#create-a-class-instance)
 * [Multiple class instances in a list](#multiple-class-instances-in-a-list)
-    * [Create multiple real instances in a list](#create-multiple-real-instances-in-a-list)
-    * [Create multiple mocks in a list](#create-multiple-mocks-in-a-list)
+  * [Create multiple real instances in a list](#create-multiple-real-instances-in-a-list)
+  * [Create multiple mocks in a list](#create-multiple-mocks-in-a-list)
 * [Raise an exception in a mock call](#raise-an-exception-in-a-mock-call)
 * [Ignore the return value of a mock call](#ignore-the-return-value-of-a-mock-call)
 * [Patch a function](#patch-a-function)
@@ -56,6 +58,64 @@ Hello Alice. My name is Bob
 
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_greet_g.py)
 is the generated unit test code.
+
+# Test multiple input sets
+See [this FAQ](index.markdown#does-it-support-test-parametrization-in-generated-tests) for the background information.
+
+The [eval_expression](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/parametrization.py) function
+takes an expression as a string and returns its evaluation result. We will test different expressions
+with multiple test runs. Here are the test runs:
+
+```text
+...
+Please provide the value for the parameter (expr) of type: (str) []: 3 + 5
+Calling eval_expression(expr='3 + 5')
+***** Result:
+type: <class 'int'>
+value:
+8
+***** Result end
+Test name: [_]: _addition
+...
+```
+
+```text
+...
+Please provide the value for the parameter (expr) of type: (str) [3 + 5]: 2 + 4
+Calling eval_expression(expr='2 + 4')
+***** Result:
+type: <class 'int'>
+value:
+6
+***** Result end
+Test name: [_]: _addition
+...
+```
+
+```text
+...
+Please provide the value for the parameter (expr) of type: (str) [2 + 4]: 6 * 9
+Calling eval_expression(expr='6 * 9')
+***** Result:
+type: <class 'int'>
+value:
+54
+***** Result end
+Test name help: 'test_' prefix will be added automatically. Use a leading '_' to include the target function name as part of the prefix.
+Test name: [_]: _multiplication
+...
+```
+
+You only need to type in the expressions (3+5, 2+4, 6 * 9) and the test names (_addition, _multiplication).
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_parametrization_g.py) 
+is the generated tests.
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/manual/test_parametrization.py) 
+is the manually written test for comparison.
+
+Try for yourself to see which method (manual vs using the tool) makes you and people who read your tests
+more productive for this test.
 
 # Mock a class instance
 The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
