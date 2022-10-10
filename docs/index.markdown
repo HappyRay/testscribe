@@ -171,14 +171,15 @@ It's a [YAML](https://en.wikipedia.org/wiki/YAML) file.
 
 ## Add additional directories to the Python path for a test run 
 The directories are relative to the configuration file location where they are defined. 
-example:
+
+For example:
 
     python-paths:
     - src
     - tests
 
 The directories (config directory)/src and (config directory)/tests are added to the Python path 
-for a test run.
+for a test run that uses this configuration file.
 
 ## Output files root directory
 The value has to be an existing directory. 
