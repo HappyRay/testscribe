@@ -15,11 +15,10 @@ Table of Contents
 * [Command line help](#command-line-help)
 * [Required setup](#required-setup)
 * [Optional setup](#optional-setup)
-    * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
-        * [An example intellij external tool configuration for the create command](#an-example-intellij-external-tool-configuration-for-the-create-command)
-        * [References](#references)
-    * [Add config files](#add-config-files)
-* [Configuration File Format](#configuration-file-format)
+  * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
+    * [An example intellij external tool configuration for the create command](#an-example-intellij-external-tool-configuration-for-the-create-command)
+    * [References](#references)
+  * [Add config files](#add-config-files)
     * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
     * [Setup function](#setup-function)
@@ -153,24 +152,21 @@ Notice that the program can't be testscribe. The wrapper script is not available
 [Pycharm configure keyboard shortcut](https://www.jetbrains.com/help/pycharm/configuring-keyboard-and-mouse-shortcuts.html)
 
 ## Add config files
-Config files allow you to
-* add additional directories to your python path during a test run
-* customize the generated tests' root directory
-* a python function to run before a test run to
-    * configure aliases for frequently used inputs such as a full package name
-    * patch dependencies of your test target
+
+It's a [YAML](https://en.wikipedia.org/wiki/YAML) file.
 
 By default, it looks for a configuration file named test-scribe-config.yml in the working directory
 of a test run. The config file's path can be overwritten with command line options.
+
 [Here](https://github.com/HappyRay/testscribe/blob/main/test-scribe-config.yml) is a sample config file.
 
-See [the config file](#configuration-file-format) section for more details.
+The directory values in the configuration file are relative to the configuration file location
+where they are defined.
 
-# Configuration File Format
-It's a [YAML](https://en.wikipedia.org/wiki/YAML) file.
+The configuration file support the following configurations.
 
-## Add additional directories to the Python path for a test run 
-The directories are relative to the configuration file location where they are defined. 
+### Add additional directories to the Python path for a test run 
+Default: no additional directories are added.
 
 For example:
 
@@ -181,14 +177,16 @@ For example:
 The directories (config directory)/src and (config directory)/tests are added to the Python path 
 for a test run that uses this configuration file.
 
-## Output files root directory
+### Output files root directory
 The value has to be an existing directory. 
+
+Default: the current working directory
 
 example:
 
     output-root-dir: tests/generated
 
-## Setup function
+### Setup function
 Specifies a python function to run before a test run
 The value has to be a fully qualified Python function name.
 
@@ -197,8 +195,16 @@ example:
     setup-function: setup.setup
 
 setup is a function defined in the module named setup.
+
+Use the setup function to:
+
+* configure [aliases](#input-alias) for frequently used inputs such as a full package name
+* [patch](#patch) dependencies of your test target
+
 [Here](https://github.com/HappyRay/testscribe/blob/main/tests/setup.py) 
 is an example of such a function.
+
+
 
 # Test a method
 When the target function is a method of a class, the tool will automatically call the constructor
@@ -562,7 +568,7 @@ for how to customize this file.
 For example 
 > ((m(test_data.simple.C), test_data.simple.C())
 
-The generated test won't be correct. The displayed output is still correct however.
+The generated test won't be correct. The displayed output is still correct, however.
 
 An alternative is to create a wrapper function. For example:
 foo_wrapper(o: test_data.simple.C)
