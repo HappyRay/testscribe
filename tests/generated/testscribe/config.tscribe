@@ -6,6 +6,8 @@ tests:
   target:
     name: get_output_root_path
   parameters:
+  - name: config_file_path
+    value: !testscribe/expression 'pathlib.Path("a/b/c.yaml")'
   - name: data
     value: {}
   result: !testscribe/object
@@ -16,12 +18,14 @@ tests:
   target:
     name: get_output_root_path
   parameters:
+  - name: config_file_path
+    value: !testscribe/expression 'pathlib.Path("a/b/c.yaml")'
   - name: data
     value:
-      output-root-dir: a/b
+      output-root-dir: d/e
   result: !testscribe/object
     type: pathlib.PosixPath
-    repr: PosixPath('a/b')
+    repr: PosixPath('a/b/d/e')
 - name: test_get_setup_func_value_is_a_method
   short_name: _value_is_a_method
   target:
@@ -113,3 +117,15 @@ tests:
   - name: config_file_path
     value: !testscribe/expression 'pathlib.Path("not exist")'
   result: {}
+- name: test_resolve_path
+  short_name: _
+  target:
+    name: resolve_path
+  parameters:
+  - name: config_file_path
+    value: !testscribe/expression 'pathlib.Path("a/b/c.yaml")'
+  - name: path_str
+    value: d/e
+  result: !testscribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b/d/e')

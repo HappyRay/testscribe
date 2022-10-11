@@ -12,12 +12,6 @@ tests:
   target:
     name: init_config_wrapper
   parameters: []
-  result: !testscribe/object
-    type: testscribe.config.Config
-    members:
-      output_root_path: !testscribe/object
-        type: pathlib.PosixPath
-        repr: PosixPath('tests/generated')
-      setup_function: !testscribe/callable
-        name: setup
-        module: setup
+  result: !testscribe/callable
+    name: setup
+    module: setup

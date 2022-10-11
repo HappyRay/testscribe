@@ -3,19 +3,19 @@ import setup
 import testscribe.cli
 import testscribe.error
 import pytest
-from testscribe.config import get_output_root_path, get_setup_func, initialize_io, load_config_data
+from testscribe.config import get_output_root_path, get_setup_func, initialize_io, load_config_data, resolve_path
 
 
 def test_get_output_root_path_default():
-    result = get_output_root_path(data={})
+    result = get_output_root_path(config_file_path=pathlib.Path("a/b/c.yaml"), data={})
     assert isinstance(result, pathlib.PosixPath)
     assert repr(result) == "PosixPath('.')"
 
 
 def test_get_output_root_path_key_exists():
-    result = get_output_root_path(data={'output-root-dir': 'a/b'})
+    result = get_output_root_path(config_file_path=pathlib.Path("a/b/c.yaml"), data={'output-root-dir': 'd/e'})
     assert isinstance(result, pathlib.PosixPath)
-    assert repr(result) == "PosixPath('a/b')"
+    assert repr(result) == "PosixPath('a/b/d/e')"
 
 
 def test_get_setup_func_value_is_a_method():
@@ -60,3 +60,9 @@ def test_initialize_io_default():
 def test_load_config_data_invalid_config_file_path():
     result = load_config_data(config_file_path=pathlib.Path("not exist"))
     assert result == {}
+
+
+def test_resolve_path():
+    result = resolve_path(config_file_path=pathlib.Path("a/b/c.yaml"), path_str='d/e')
+    assert isinstance(result, pathlib.PosixPath)
+    assert repr(result) == "PosixPath('a/b/d/e')"

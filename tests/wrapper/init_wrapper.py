@@ -25,6 +25,11 @@ def convert_to_absolute_path_str(s: str) -> str:
 
 
 def init_config_wrapper():
+    """
+    Test the Python path is updated.
+
+    :return:
+    """
     # make a copy
     old_sys_path = list(sys.path)
     project_root_path = get_project_root_path()
@@ -36,7 +41,10 @@ def init_config_wrapper():
     # the new sys.path to have the assertions generated.
     expected_additional_path_str = str(project_root_path / "tests")
     assert_same(actual=sys.path, expected=old_sys_path + [expected_additional_path_str])
-    return config
+    # The output root path contains the path to the project root path.
+    # The tool can't generate the correct assertion automatically.
+    assert_same(actual=config.output_root_path, expected=project_root_path.joinpath("tests/generated"))
+    return config.setup_function
 
 
 def add_additional_python_paths_no_key() -> None:

@@ -70,20 +70,31 @@ def get_setup_func(data: dict) -> Union[Callable, None]:
 
 def add_additional_python_paths(config_file_path: Path, data: dict):
     path_strings = data.get(ADDITIONAL_PYTHON_PATH_KEY, [])
-    config_file_dir_path = config_file_path.parent
     # The path is relative to the location of the config file where it is defined.
     resolved_path_strings = [
-        str(config_file_dir_path.joinpath(p)) for p in path_strings
+        str(resolve_path(config_file_path=config_file_path, path_str=p)) for p in path_strings
     ]
     sys.path.extend(resolved_path_strings)
 
 
-def get_output_root_path(data: dict) -> Path:
+def get_output_root_path(config_file_path: Path, data: dict) -> Path:
     output_root_dir = data.get(OUTPUT_ROOT_DIR_KEY, "")
     if output_root_dir:
-        return Path(output_root_dir)
+        return resolve_path(config_file_path=config_file_path, path_str=output_root_dir)
     else:
         return Path()
+
+
+def resolve_path(config_file_path: Path, path_str: str) -> Path:
+    """
+    Resolve the configured path string to a Path object
+    :param config_file_path:
+    :param path_str: configured path string
+    :return:
+    """
+    config_file_dir_path = config_file_path.parent
+    # todo: handle absolute path
+    return config_file_dir_path.joinpath(path_str)
 
 
 def initialize_io(data: dict) -> IOProvider:
@@ -99,7 +110,7 @@ def init_config(config_file_path: Path) -> Config:
     data = load_config_data(config_file_path)
     add_additional_python_paths(config_file_path=config_file_path, data=data)
     initialize_io(data)
-    output_root_path = get_output_root_path(data)
+    output_root_path = get_output_root_path(config_file_path=config_file_path, data=data)
     func = get_setup_func(data)
     return Config(
         output_root_path=output_root_path,
