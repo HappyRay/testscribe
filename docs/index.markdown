@@ -70,7 +70,7 @@ Note that
 * parameter values to mock method calls are outputs
 
 Additionally, the test runs are recorded both as traditional unit tests 
-and a structured machine-readable format by the tool automatically. 
+and files in a structured machine-readable format by the tool automatically. 
 The machine-readable format will enable additional functionalities such as maintaining 
 regression tests.
 
