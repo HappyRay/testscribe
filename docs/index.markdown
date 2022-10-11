@@ -61,8 +61,8 @@ Table of Contents
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
-Developers should be able to test a function by providing inputs interactively and 
-verify outputs visually without having to write boilerplate code in most cases. 
+Developers should be able to test a function by providing inputs **interactively** and 
+verify outputs **visually** without having to write boilerplate code in most cases. 
 The process is similar to a debugging session which answers
 "what happens when I pass this input". 
 Note that 
