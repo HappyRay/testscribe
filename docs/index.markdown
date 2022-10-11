@@ -635,8 +635,8 @@ After all, you will need to input all the input data either way.
 With the tool, you can focus on the input data itself 
 without having to remember the syntax and type in the extra code to make pytest parametrization work 
 ,not to mention creating a test file, importing modules and writing other boilerplate code.
-As a bonus, since the production code has the proper type annotation, you don't even need to quote the
-input string.
+As a bonus, if the production code has the proper type annotation for string inputs, 
+you don't even need to quote the input string.
 
 The approach has the following additional benefits:
 * The generated test is easier to read when one would like to focus on one set of input. 
