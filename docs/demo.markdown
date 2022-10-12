@@ -191,7 +191,7 @@ value:
 
 An example test run:
 ```text
-Please provide the value for the parameter (person_list) of type: (typing.List[tsdemo.person.Person]) [[tsdemo.person.Person("a", 2), tsdemo.person.Person("b", 3)]]: [m, m]
+Please provide the value for the parameter (person_list) of type: (typing.List[tsdemo.person.Person]) []: [m, m]
 Created a mock: Mock: name (m_person) spec (<class 'tsdemo.person.Person'>)
 Created a mock: Mock: name (m_person_1) spec (<class 'tsdemo.person.Person'>)
 Calling get_average_age(person_list=[<testscribe.mock_proxy.MockProxy object at 0x7f43dd744af0>, <testscribe.mock_proxy.MockProxy object at 0x7f43dd744e50>])
