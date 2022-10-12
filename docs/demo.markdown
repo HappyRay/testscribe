@@ -388,9 +388,9 @@ is the generated test code.
 Proper type information makes input easier in some cases.
 
 In [this class](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/annotate_field_type.py)
-the model field is annotated with type information. For comparison, the owner field is not .
+the model field is annotated with type information. For comparison, the owner field is not.
 
-As the result, the model field input doesn't need to be quoted, the owner field input does.
+As the result, the model field input doesn't need to be quoted. The owner field input does.
 
 Here is an example test run:
 
