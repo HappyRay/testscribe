@@ -27,7 +27,7 @@ It's intentionally made as simple as possible to make it easier to understand.
 Feel free to download it and play with it.
 
 For more realistic examples, see how the tool uses itself to test
-[here](https://github.com/HappyRay/testscribe/tree/main/tests)
+[here](https://github.com/HappyRay/testscribe/tree/main/tests).
 
 # Test a method
 When the target function is a method of a class, the tool will automatically call the constructor
