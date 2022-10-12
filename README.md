@@ -50,12 +50,12 @@ Additional features such as launching the tool more easily only require simple s
 The tool won't get in your way.
 
 # Demo
-You can find demos here.
+You can find demos [here](https://happyray.github.io/testscribe/demo.html).
 Feel free to download the demo project and try for yourself.
 
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
-Please see the full documentation here.
+Please see the full documentation [here](https://happyray.github.io/testscribe/).
 
 # Copyright and license
 
