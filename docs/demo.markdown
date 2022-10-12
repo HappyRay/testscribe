@@ -7,7 +7,6 @@ Demonstrations of select features of [the TestScribe tool](https://github.com/Ha
 Table of Contents
 =================
 
-* [Table of Contents](#table-of-contents)
 * [Test a method](#test-a-method)
 * [Test multiple input sets](#test-multiple-input-sets)
 * [Mock a class instance](#mock-a-class-instance)
