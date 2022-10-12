@@ -2,7 +2,7 @@
 layout: my-home
 title: demo
 ---
-Demonstrations of select features
+Demonstrations of select features of [the TestScribe tool](https://github.com/HappyRay/testscribe).
 
 Table of Contents
 =================
