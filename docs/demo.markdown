@@ -7,6 +7,7 @@ Demonstrations of select features of [the TestScribe tool](https://github.com/Ha
 Table of Contents
 =================
 
+* [Exception result](#exception-result)
 * [Test a method](#test-a-method)
 * [Test multiple input sets](#test-multiple-input-sets)
 * [Mock a class instance](#mock-a-class-instance)
@@ -28,6 +29,33 @@ Feel free to download it and play with it.
 
 For more realistic examples, see how the tool uses itself to test
 [here](https://github.com/HappyRay/testscribe/tree/main/tests).
+
+# Exception result
+When a test run results in an exception, the tool can display the exception information and generate the 
+appropriate test code.
+
+This target function [always_raise_exception](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/raise_exception.py)
+will always raise an exception.
+
+An example test run output:
+
+```text
+...
+Calling always_raise_exception()
+The function always_raise_exception throws an exception.
+Traceback (most recent call last):
+  File "/home/ray/code/testscribe/src/testscribe/execution.py", line 86, in get_args_and_call
+    ret_value = call_target_function(func, args)
+  File "/home/ray/code/testscribe/src/testscribe/execution_util.py", line 87, in call_target_function
+    return func(*binded_args.args, **binded_args.kwargs)
+  File "/home/ray/code/testscribe-demo/tsdemo/raise_exception.py", line 7, in always_raise_exception
+    raise Exception("test exception")
+Exception: test exception
+...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_raise_exception_g.py) 
+is the generated test.
 
 # Test a method
 When the target function is a method of a class, the tool will automatically call the constructor
