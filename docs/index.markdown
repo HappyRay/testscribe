@@ -41,6 +41,7 @@ Table of Contents
     * [Move tests](#move-tests)
     * [Sync tests](#sync-tests)
     * [Sync All](#sync-all)
+* [Customize how class instances are displayed and asserted](#customize-how-class-instances-are-displayed-and-asserted)
 * [Wrapper function](#wrapper-function)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
@@ -506,6 +507,16 @@ Sync all tests under the configured output root directory
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
+
+# Customize how class instances are displayed and asserted
+If the class doesn't implement a custom \_\_repr\_\_ method, 
+the result display and generated assertions will be based on member fields.
+[Here](demo.markdown#the-class-doesnt-implement-a-custom-__repr__-method) is a demo.
+
+If it does, the result display and generated assertions will be based on the result of repr(object).
+[Here](demo.markdown#the-class-implements-a-custom-__repr__-method) is a demo.
+This way you can have some control. You can exclude some member fields for example.
+The generated assertions are typically more compact.
 
 # Wrapper function
 For more flexibility, you can create wrapper functions which call the target function.
