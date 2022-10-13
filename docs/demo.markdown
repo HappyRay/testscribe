@@ -448,3 +448,30 @@ Car model: camery, owner: Bob
 ***** Result end
 ...
 ```
+
+# Results that contain class instances
+
+## The class doesn't implement a custom \_\_repr\_\_ method.
+The result display and generated assertions will be based on member fields.
+
+The target function [create_simple_class_instance](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/object_result.py)
+returns an instance of the class SimpleClass.
+SimpleClass doesn't define a custom \_\_repr\_\_ method.
+The result display and generated assertions will be based on member fields.
+
+Here is an example test run:
+
+```text
+...
+Please provide the value for the parameter (s) of type: (str) []: a
+Please provide the value for the parameter (i) of type: (int) []: 1
+Calling create_simple_class_instance(s='a', i=1)
+***** Result:
+type: tsdemo.object_result.SimpleClass
+value:
+Object(type (tsdemo.object_result.SimpleClass), members ({'str_field': 'a', 'int_field': 1}))
+***** Result end
+...
+```
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_result_g.py)
+is the generated test code.
