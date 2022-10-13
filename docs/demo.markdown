@@ -462,9 +462,6 @@ Here is an example test run:
 
 ```text
 ...
-Please provide the value for the parameter (s) of type: (str) []: a
-Please provide the value for the parameter (i) of type: (int) []: 1
-Calling create_simple_class_instance(s='a', i=1)
 ***** Result:
 type: tsdemo.object_result.SimpleClass
 value:
