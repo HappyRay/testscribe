@@ -423,6 +423,7 @@ As the result, the model field input doesn't need to be quoted. The owner field 
 Here is an example test run:
 
 ```text
+...
 Please provide the value for the parameter (car) of type: (tsdemo.annotate_field_type.Car) []: m
 Created a mock: Mock: name (m_car) spec (<class 'tsdemo.annotate_field_type.Car'>)
 Calling get_car_info(car=Mock: name (m_car) spec (<class 'tsdemo.annotate_field_type.Car'>))
@@ -445,5 +446,5 @@ type: <class 'str'>
 value:
 Car model: camery, owner: Bob
 ***** Result end
-
+...
 ```
