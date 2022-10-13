@@ -22,6 +22,9 @@ Table of Contents
 * [Input alias](#input-alias)
 * [Wrapper function](#wrapper-function)
 * [Annotate a class instance member variable with type information](#annotate-a-class-instance-member-variable-with-type-information)
+* [Results that contain class instances](#results-that-contain-class-instances)
+  * [The class doesn't implement a custom __repr__ method.](#the-class-doesnt-implement-a-custom-__repr__-method)
+  * [The class implements a custom __repr__ method.](#the-class-implements-a-custom-__repr__-method)
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
 It's intentionally made as simple as possible to make it easier to understand.  
