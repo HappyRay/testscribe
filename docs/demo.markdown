@@ -455,9 +455,8 @@ Car model: camery, owner: Bob
 The result display and generated assertions will be based on member fields.
 
 The target function [create_simple_class_instance](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/object_result.py)
-returns an instance of the class SimpleClass.
-SimpleClass doesn't define a custom \_\_repr\_\_ method.
-The result display and generated assertions will be based on member fields.
+returns an instance of the class SimpleClass, 
+which doesn't define a custom \_\_repr\_\_ method.
 
 Here is an example test run:
 
@@ -474,4 +473,25 @@ Object(type (tsdemo.object_result.SimpleClass), members ({'str_field': 'a', 'int
 ...
 ```
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_result_g.py)
+is the generated test code.
+
+## The class implements a custom \_\_repr\_\_ method.
+The result display and generated assertions will be based on the result of repr(object).
+
+The target function 
+[create_class_with_repr_instance](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/object_with_repr_result.py)
+returns an instance of the class ClassWithRepr, which defines a custom \_\_repr\_\_ method.
+
+Here is an example test run:
+
+```text
+...
+***** Result:
+type: tsdemo.object_with_repr_result.ClassWithRepr
+value:
+Object(type (tsdemo.object_with_repr_result.ClassWithRepr), repr (ClassWithRepr(str_field='a', int_field=1)))
+***** Result end
+...
+```
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_with_repr_result_g.py)
 is the generated test code.
