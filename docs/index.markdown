@@ -55,6 +55,7 @@ Table of Contents
   * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
   * [Do you have real world examples?](#do-you-have-real-world-examples)
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
+  * [Can I modify the scribe files?](#can-i-modify-the-scribe-files)
   * [Is it better to keep only the scribe files for regression testing purposes?](#is-it-better-to-keep-only-the-scribe-files-for-regression-testing-purposes)
   * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
   * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
@@ -617,8 +618,15 @@ The tool uses itself to test. You can see the many examples
 [here](https://github.com/HappyRay/testscribe/tree/main/tests)
 
 ## Can I modify the generated tests?
-Your changes will be overwritten if you update the same test using the tool.
+Your changes will be overwritten if you update any test that the file contains using the tool.
 You may copy the generated test and use it as you see fit.
+
+## Can I modify the scribe files?
+You can. However, it is not recommended. 
+
+Some of your changes may be overwritten the next time the file is updated by the tool. 
+For example, the tool will group the tests targeting the same function together. 
+It is often easier and less error-prone if you use one of [the commands](#commands) to do so.
 
 ## Is it better to keep only the scribe files for regression testing purposes?
 If the unit test files are generated from the scribe files, is it better to keep only the scribe files
