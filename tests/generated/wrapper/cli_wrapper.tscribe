@@ -20,9 +20,9 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
-    \n\u2502 *    scribe_file_path      FILE  The testscribe file to sync [default:\
-    \ None] \u2502\n\u2502                                  [required]           \
-    \                       \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \n\u2502 *    scribe_file_path      FILE  The scribe file to sync [default: None]\
+    \     \u2502\n\u2502                                  [required]             \
+    \                     \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
@@ -53,7 +53,7 @@ tests:
     \          \n Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME  \
     \                \n                                                          \
     \                      \n Delete a test. This will delete the test from both the\
-    \ testscribe file and the \n unit test file.                                 \
+    \ scribe file and the     \n unit test file.                                 \
     \                               \n :param scribe_file_path: :param test_name:\
     \ :return:                            \n                                     \
     \                                           \n\u256D\u2500 Arguments \u2500\u2500\
@@ -62,9 +62,9 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\
-    \n\u2502 *    scribe_file_path      FILE  The testscribe file that contains the\
-    \ test  \u2502\n\u2502                                  to delete            \
-    \                       \u2502\n\u2502                                  [default:\
+    \n\u2502 *    scribe_file_path      FILE  The scribe file that contains the test\
+    \ to   \u2502\n\u2502                                  delete                \
+    \                      \u2502\n\u2502                                  [default:\
     \ None]                             \u2502\n\u2502                           \
     \       [required]                                  \u2502\n\u2502 *    test_name\
     \             TEXT  The name of the test to delete              \u2502\n\u2502\
@@ -109,33 +109,32 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502\
-    \ *    scribe_file_path      FILE  The testscribe file to update             \
-    \  \u2502\n\u2502                                  [default: None]           \
-    \                  \u2502\n\u2502                                  [required]\
-    \                                  \u2502\n\u2502 *    test_name             TEXT\
-    \  The name of the test to update              \u2502\n\u2502                \
-    \                  [default: None]                             \u2502\n\u2502\
-    \                                  [required]                                \
-    \  \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \ *    scribe_file_path      FILE  The scribe file to update [default: None] \
+    \  \u2502\n\u2502                                  [required]                \
+    \                  \u2502\n\u2502 *    test_name             TEXT  The name of\
+    \ the test to update              \u2502\n\u2502                             \
+    \     [default: None]                             \u2502\n\u2502             \
+    \                     [required]                                  \u2502\n\u2570\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u256F\n\u256D\u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u256F\n\u256D\u2500 Options \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --help  \
-    \        Show this message and exit.                                  \u2502\n\
-    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256E\n\u2502 --help          Show\
+    \ this message and exit.                                  \u2502\n\u2570\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
-    \u2500\u256F\n\n"
+    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256F\
+    \n\n"
 - name: test_run_cmd_help_create
   short_name: _create
   target:
@@ -419,9 +418,9 @@ tests:
     \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
     \u2500\u2500\u256E\n\u2502 create    Generate a new test.                    \
     \                           \u2502\n\u2502 delete    Delete a test. This will\
-    \ delete the test from both the testscribe  \u2502\n\u2502           file and\
-    \ the unit test file.                                       \u2502\n\u2502 move\
-    \      Move tests for a function to their new files corresponding to the  \u2502\
+    \ delete the test from both the scribe file \u2502\n\u2502           and the unit\
+    \ test file.                                            \u2502\n\u2502 move  \
+    \    Move tests for a function to their new files corresponding to the  \u2502\
     \n\u2502           new module to which the function has moved.               \
     \         \u2502\n\u2502 sync      Regenerate the unit test file.            \
     \                         \u2502\n\u2502 sync-all  Regenerate all unit test files\

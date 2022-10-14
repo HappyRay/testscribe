@@ -11,7 +11,7 @@ def test_run_cmd_help_sync():
  :param scribe_file_path: :return:                                              
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file to sync [default: None] │
+│ *    scribe_file_path      FILE  The scribe file to sync [default: None]     │
 │                                  [required]                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -27,13 +27,13 @@ def test_run_cmd_help_delete():
                                                                                 
  Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
                                                                                 
- Delete a test. This will delete the test from both the testscribe file and the 
+ Delete a test. This will delete the test from both the scribe file and the     
  unit test file.                                                                
  :param scribe_file_path: :param test_name: :return:                            
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file that contains the test  │
-│                                  to delete                                   │
+│ *    scribe_file_path      FILE  The scribe file that contains the test to   │
+│                                  delete                                      │
 │                                  [default: None]                             │
 │                                  [required]                                  │
 │ *    test_name             TEXT  The name of the test to delete              │
@@ -57,8 +57,7 @@ def test_run_cmd_help_update():
  :param test_name: :param scribe_file_path: :return:                            
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file to update               │
-│                                  [default: None]                             │
+│ *    scribe_file_path      FILE  The scribe file to update [default: None]   │
 │                                  [required]                                  │
 │ *    test_name             TEXT  The name of the test to update              │
 │                                  [default: None]                             │
@@ -224,8 +223,8 @@ def test_run_help():
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
 │ create    Generate a new test.                                               │
-│ delete    Delete a test. This will delete the test from both the testscribe  │
-│           file and the unit test file.                                       │
+│ delete    Delete a test. This will delete the test from both the scribe file │
+│           and the unit test file.                                            │
 │ move      Move tests for a function to their new files corresponding to the  │
 │           new module to which the function has moved.                        │
 │ sync      Regenerate the unit test file.                                     │

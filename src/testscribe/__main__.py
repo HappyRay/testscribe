@@ -105,13 +105,13 @@ def create(
 @exception_handler
 def delete(
     scribe_file_path: Path = create_file_argument(
-        help_str="The testscribe file that contains the test to delete",
+        help_str="The scribe file that contains the test to delete",
         writable=True,
     ),
     test_name: str = Argument(..., help="The name of the test to delete"),
 ):
     """
-    Delete a test. This will delete the test from both the testscribe file
+    Delete a test. This will delete the test from both the scribe file
     and the unit test file.
 
     :param scribe_file_path:
@@ -125,7 +125,7 @@ def delete(
 @exception_handler
 def sync(
     scribe_file_path: Path = create_file_argument(
-        help_str="The testscribe file to sync",
+        help_str="The scribe file to sync",
         writable=True,
     ),
 ):
@@ -153,7 +153,7 @@ def sync_all(
 @exception_handler
 def update(
     scribe_file_path: Path = create_file_argument(
-        help_str="The testscribe file to update",
+        help_str="The scribe file to update",
         writable=True,
     ),
     test_name: str = Argument(..., help="The name of the test to update"),
