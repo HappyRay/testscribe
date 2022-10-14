@@ -51,6 +51,7 @@ Table of Contents
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
 * [FAQ](#faq)
+  * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
   * [Do you have real world examples?](#do-you-have-real-world-examples)
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
   * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
@@ -587,6 +588,14 @@ And use (o,  test_data.simple.C()) as input.
 
 
 # FAQ
+
+## Are the generated tests valid if they always mirror the behavior of the code under test?
+You should only save the generated tests for regression test purpose **after** 
+you verify visually the test result.
+
+If the result is not what you expect, fix the code under test and update the test.
+The [update test](#update-test) command makes it easier to update a test. 
+You may use the generated test to debug the code under test if needed.
 
 ## Do you have real world examples?
 The tool uses itself to test. You can see the many examples 
