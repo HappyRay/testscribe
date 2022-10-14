@@ -25,6 +25,7 @@ Table of Contents
 * [Results that contain class instances](#results-that-contain-class-instances)
   * [The class doesn't implement a custom __repr__ method.](#the-class-doesnt-implement-a-custom-__repr__-method)
   * [The class implements a custom __repr__ method.](#the-class-implements-a-custom-__repr__-method)
+* [Scribe files](#scribe-files)
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
 It's intentionally made as simple as possible to make it easier to understand.  
@@ -495,3 +496,14 @@ Object(type (tsdemo.object_with_repr_result.ClassWithRepr), repr (ClassWithRepr(
 ```
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_with_repr_result_g.py)
 is the generated test code.
+
+# Scribe files
+The tool generates machine-readable YAML formatted files with the tscribe extension alongside the 
+unit test files.
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/calculator.tscribe)
+is a simple example that tests an add function.
+
+You can find more examples generated for other demos on this page 
+[here](https://github.com/HappyRay/testscribe-demo/tree/main/tests/generated/tsdemo).
+
