@@ -43,6 +43,7 @@ Table of Contents
     * [Sync All](#sync-all)
 * [Customize how class instances are displayed and asserted](#customize-how-class-instances-are-displayed-and-asserted)
 * [Wrapper function](#wrapper-function)
+* [Scribe files](#scribe-files)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
     * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
@@ -54,6 +55,7 @@ Table of Contents
   * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
   * [Do you have real world examples?](#do-you-have-real-world-examples)
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
+  * [Is it better to keep only the scribe files for regression testing purposes?](#is-it-better-to-keep-only-the-scribe-files-for-regression-testing-purposes)
   * [What to do if the tool doesn't support my use case?](#what-to-do-if-the-tool-doesnt-support-my-use-case)
   * [Does the tool support programming languages other than Python?](#does-the-tool-support-programming-languages-other-than-python)
   * [Can I still use it if I practice test-driven development](#can-i-still-use-it-if-i-practice-test-driven-development)
@@ -71,9 +73,11 @@ Note that
 * parameter values to mock method calls are outputs
 
 Additionally, the test runs are recorded both as traditional unit tests 
-and files in a structured machine-readable format by the tool automatically. 
+and files in a structured machine-readable format by the tool automatically.
 The machine-readable format will enable additional functionalities such as maintaining 
 regression tests.
+
+The machine-readable files are referred to as [scribe files](#scribe-files) in the documentation.
 
 # Minimum requirement
 * Python version >= 3.8.
@@ -480,7 +484,7 @@ corresponding tests.
 ```
 
 ## Sync tests
-Regenerate the unit test file to match the given TestScribe file.
+Regenerate the unit test file to match the given scribe file.
 
 ```text
 Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
@@ -488,7 +492,7 @@ Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
 :param scribe_file_path: :return:
 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file to sync [default: None] │
+│ *    scribe_file_path      FILE  The scribe file to sync [default: None] │
 │                                  [required]                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -533,6 +537,17 @@ functions used by the TestScribe project to test itself.
 
 Since these wrapper functions are typically used for testing only, you may put them in a
 test folder if you have one.
+
+# Scribe files
+The tool generates machine-readable [YAML](https://en.wikipedia.org/wiki/YAML) formatted files 
+with the tscribe extension alongside the unit test files.
+They are referred to as scribe files in the documentation.
+The [sync tests command](#sync-tests) and the [sync all](#sync-all) command generate unit test files
+based on the corresponding scribe files.
+
+[Here](demo.markdown#scribe-files) are scribe file demos.
+
+See the [FAQ](#faq) for more information related to the scribe files.
 
 # Tips
 
@@ -604,6 +619,17 @@ The tool uses itself to test. You can see the many examples
 ## Can I modify the generated tests?
 Your changes will be overwritten if you update the same test using the tool.
 You may copy the generated test and use it as you see fit.
+
+## Is it better to keep only the scribe files for regression testing purposes?
+If the unit test files are generated from the scribe files, is it better to keep only the scribe files
+for regression testing purposes?
+
+It's a valid choice to keep only the scribe files and dynamically regenerate the unit test files 
+for regression testing.
+
+There are a number of advantages of keeping the unit test files:
+- It's faster to run tests.
+- Some readers of your tests may prefer reading the unit test files.
 
 ## What to do if the tool doesn't support my use case?
 You can always fall back to the traditional ways of testing. The tool won't get in your way.
