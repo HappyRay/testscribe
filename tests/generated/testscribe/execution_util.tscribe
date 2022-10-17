@@ -57,6 +57,34 @@ tests:
   - name: base_name
     value: b
   result: test_b_g.py
+- name: test_infer_module_name_from_test_file_path_valid
+  short_name: _valid
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: test_mod_a_g.py
+  result: mod_a
+- name: test_infer_scribe_file_path_test_file
+  short_name: _test_file
+  target:
+    name: infer_scribe_file_path
+  parameters:
+  - name: file_path
+    value: !testscribe/expression 'pathlib.Path("a/test_mod_g.py")'
+  result: !testscribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/mod.tscribe')
+- name: test_infer_scribe_file_path_scribe_file
+  short_name: _scribe_file
+  target:
+    name: infer_scribe_file_path
+  parameters:
+  - name: file_path
+    value: !testscribe/expression 'pathlib.Path("a/b.tscribe")'
+  result: !testscribe/object
+    type: pathlib.PosixPath
+    repr: PosixPath('a/b.tscribe')
 - name: test_infer_unit_test_file_path_from_scribe_file
   short_name: _
   target:

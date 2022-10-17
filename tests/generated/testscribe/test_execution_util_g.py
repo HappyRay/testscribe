@@ -6,7 +6,7 @@ import testscribe.model_type
 from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from unittest.mock import patch
-from testscribe.execution_util import config_logging, create_unit_test_file_name, infer_unit_test_file_path_from_scribe_file, remove_file_if_no_test
+from testscribe.execution_util import config_logging, create_unit_test_file_name, infer_module_name_from_test_file_path, infer_scribe_file_path, infer_unit_test_file_path_from_scribe_file, remove_file_if_no_test
 
 
 def test_config_logging_no_config_file():
@@ -46,6 +46,23 @@ def test_config_logging_with_config_file():
 def test_create_unit_test_file_name():
     result = create_unit_test_file_name(base_name='b')
     assert result == 'test_b_g.py'
+
+
+def test_infer_module_name_from_test_file_path_valid():
+    result = infer_module_name_from_test_file_path(file_name='test_mod_a_g.py')
+    assert result == 'mod_a'
+
+
+def test_infer_scribe_file_path_test_file():
+    result = infer_scribe_file_path(file_path=pathlib.Path("a/test_mod_g.py"))
+    assert isinstance(result, pathlib.PosixPath)
+    assert repr(result) == "PosixPath('a/mod.tscribe')"
+
+
+def test_infer_scribe_file_path_scribe_file():
+    result = infer_scribe_file_path(file_path=pathlib.Path("a/b.tscribe"))
+    assert isinstance(result, pathlib.PosixPath)
+    assert repr(result) == "PosixPath('a/b.tscribe')"
 
 
 def test_infer_unit_test_file_path_from_scribe_file():

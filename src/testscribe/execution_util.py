@@ -16,10 +16,13 @@
 from logging import getLogger, basicConfig
 from logging.config import fileConfig
 from pathlib import Path
+from re import match
 from traceback import extract_stack, format_list
 from typing import List, Optional
 
 from testscribe.config import init_config, CONFIG_FILE_NAME, Config
+from testscribe.constant import SCRIBE_FILE_SUFFIX
+from testscribe.error import Error
 from testscribe.log import log
 from testscribe.model_type import TestModel
 
@@ -133,3 +136,29 @@ def show_user_call_stack(additional_num_system_frame: int) -> None:
 
 def get_all_scribe_files(root_path: Path):
     return sorted(root_path.glob("**/*.tscribe"))
+
+
+def infer_scribe_file_path(file_path: Path) -> Path:
+    """
+    Assumption: the scribe files should have the patten of <module name>.tscribe
+    and the unit test files have the pattern of test_<module name>_g.py
+    Raise an exception if the file path doesn't match either pattern above.
+
+    :param file_path: a scribe file or unit test file path
+    :return:
+    """
+    if file_path.suffix == SCRIBE_FILE_SUFFIX:
+        return file_path
+    module_name = infer_module_name_from_test_file_path(file_path.name)
+    if module_name == "":
+        raise Error(f"{file_path} is not a valid scribe file or a unit test file.")
+    file_name = module_name + SCRIBE_FILE_SUFFIX
+    return file_path.parent.joinpath(file_name)
+
+
+def infer_module_name_from_test_file_path(file_name: str) -> str:
+    result = match(pattern=r"test_(.+)_g\.py$", string=file_name)
+    if result:
+        return result.group(1)
+    else:
+        return ""

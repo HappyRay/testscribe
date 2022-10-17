@@ -22,3 +22,5 @@ GET_TEST_NAME_PROMPT = (
     "part of the prefix.\n"
     "Test name:"
 )
+
+SCRIBE_FILE_SUFFIX = ".tscribe"
