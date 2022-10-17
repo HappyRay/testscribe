@@ -625,8 +625,11 @@ You may copy the generated test and use it as you see fit.
 You can. However, it is not recommended. 
 
 Some of your changes may be overwritten the next time the file is updated by the tool. 
-For example, the tool will group the tests targeting the same function together. 
+For example, the tool will group the tests targeting the same function together.
+
 It is often easier and less error-prone if you use one of [the commands](#commands) to do so.
+These commands will also automatically regenerate the unit test files to keep them in sync with
+the scribe files.
 
 ## Is it better to keep only the scribe files for regression testing purposes?
 If the unit test files are generated from the scribe files, is it better to keep only the scribe files
