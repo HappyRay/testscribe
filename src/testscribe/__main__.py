@@ -124,18 +124,18 @@ def delete(
 @app.command()
 @exception_handler
 def sync(
-    scribe_file_path: Path = create_file_argument(
-        help_str="The scribe file to sync",
+    file_path: Path = create_file_argument(
+        help_str="The scribe file or test file to sync",
         writable=True,
     ),
 ):
     """
     Regenerate the unit test file.
 
-    :param scribe_file_path:
+    :param file_path:
     :return:
     """
-    return regenerate_tests(scribe_file_path=scribe_file_path)
+    return regenerate_tests(file_path=file_path)
 
 
 @app.command()

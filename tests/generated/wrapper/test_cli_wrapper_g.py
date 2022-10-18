@@ -5,14 +5,15 @@ def test_run_cmd_help_sync():
     result = run_cmd_help(cmd_name='sync')
     assert result == """\
                                                                                 
- Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH                              
+ Usage: testscribe sync [OPTIONS] FILE_PATH                                     
                                                                                 
  Regenerate the unit test file.                                                 
- :param scribe_file_path: :return:                                              
+ :param file_path: :return:                                                     
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The scribe file to sync [default: None]     │
-│                                  [required]                                  │
+│ *    file_path      FILE  The scribe file or test file to sync               │
+│                           [default: None]                                    │
+│                           [required]                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
@@ -139,10 +140,10 @@ def test_run_cmd_help_move():
 def test_cli_sync_cmd_with_missing_arguments_should_show_usage():
     result = run_cmd_without_args(cmd='sync')
     assert result == """\
-Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
+Usage: testscribe sync [OPTIONS] FILE_PATH
 Try 'testscribe sync --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
-│ Missing argument 'SCRIBE_FILE_PATH'.                                         │
+│ Missing argument 'FILE_PATH'.                                                │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 """
 

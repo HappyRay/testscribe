@@ -17,8 +17,8 @@ def test_regenerate_all_tests_internal():
     assert result == 2
     m_regenerate_tests_mock_calls = get_normalized_mock_calls(m_regenerate_tests, testscribe.sync_cmd.regenerate_tests)
     assert m_regenerate_tests_mock_calls == [
-        call(scribe_file_path=1),
-        call(scribe_file_path=2),
+        call(file_path=1),
+        call(file_path=2),
     ]
     m_get_all_scribe_files_mock_calls = get_normalized_mock_calls(m_get_all_scribe_files, testscribe.execution_util.get_all_scribe_files)
     assert m_get_all_scribe_files_mock_calls == [

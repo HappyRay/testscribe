@@ -485,13 +485,15 @@ corresponding tests.
 Regenerate the unit test file to match the given scribe file.
 
 ```text
-Usage: testscribe sync [OPTIONS] SCRIBE_FILE_PATH
-
-:param scribe_file_path: :return:
-
+ Usage: testscribe sync [OPTIONS] FILE_PATH                                     
+                                                                                
+ Regenerate the unit test file.                                                 
+ :param file_path: :return:                                                     
+                                                                                
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The scribe file to sync [default: None] │
-│                                  [required]                                  │
+│ *    file_path      FILE  The scribe file or test file to sync               │
+│                           [default: None]                                    │
+│                           [required]                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │

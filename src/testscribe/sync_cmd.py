@@ -21,6 +21,7 @@ from testscribe.execution import save_file
 from testscribe.execution_util import (
     init,
     get_all_scribe_files,
+    infer_scribe_file_path,
 )
 from testscribe.load_scribe_file import load_scribe_file
 from testscribe.log import log
@@ -45,8 +46,9 @@ def regenerate_all_tests_internal(output_root_path: Path):
     return total
 
 
-def regenerate_tests(scribe_file_path: Path) -> None:
+def regenerate_tests(file_path: Path) -> None:
     init()
+    scribe_file_path = infer_scribe_file_path(file_path)
     log(f"Regenerate unit tests from {scribe_file_path}")
     all_tests = load_scribe_file(scribe_file_path)
     regenerate_test_names(all_tests)

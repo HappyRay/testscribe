@@ -19,10 +19,10 @@ tests:
     spec: testscribe.sync_cmd.regenerate_tests
     calls:
     - parameters:
-      - name: scribe_file_path
+      - name: file_path
         value: 1
     - parameters:
-      - name: scribe_file_path
+      - name: file_path
         value: 2
   - name: m_get_all_scribe_files
     spec: testscribe.execution_util.get_all_scribe_files
