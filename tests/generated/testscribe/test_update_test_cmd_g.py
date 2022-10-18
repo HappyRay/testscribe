@@ -120,7 +120,7 @@ def test_update_test_cmd_no_such_test():
     m_load_scribe_file.return_value = m_all_tests
     m_all_tests.get_test_index_by_name.return_value = -1
     with patch('testscribe.update_test_cmd.load_scribe_file', m_load_scribe_file):
-        result = update_test_cmd(scribe_file_path=pathlib.Path("a/b.tscribe"), test_name='t1')
+        result = update_test_cmd(file_path=pathlib.Path("a/b.tscribe"), test_name='t1')
     assert result == 1
     m_load_scribe_file_mock_calls = get_normalized_mock_calls(m_load_scribe_file, testscribe.load_scribe_file.load_scribe_file)
     assert m_load_scribe_file_mock_calls == [

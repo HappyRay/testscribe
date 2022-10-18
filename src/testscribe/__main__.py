@@ -152,8 +152,8 @@ def sync_all(
 @app.command()
 @exception_handler
 def update(
-    scribe_file_path: Path = create_file_argument(
-        help_str="The scribe file to update",
+    file_path: Path = create_file_argument(
+        help_str="The scribe file or test file to update",
         writable=True,
     ),
     test_name: str = Argument(..., help="The name of the test to update"),
@@ -162,13 +162,13 @@ def update(
     Update the selected test.
 
     :param test_name:
-    :param scribe_file_path:
+    :param file_path:
     :return:
     """
     # The user defined setup function may call patch.
     # make sure the mode is set up before the setup function is called.
     global_var.g_test_generating_mode = True
-    return update_test_cmd(scribe_file_path=scribe_file_path, test_name=test_name)
+    return update_test_cmd(file_path=file_path, test_name=test_name)
 
 
 @app.command()

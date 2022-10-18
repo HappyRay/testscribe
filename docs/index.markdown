@@ -418,22 +418,21 @@ Usage: testscribe create [OPTIONS] SOURCE_FILE FUNCTION_NAME
 ```
 ## Update test
 ```text
-Usage: testscribe update [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
+Usage: testscribe update [OPTIONS] FILE_PATH TEST_NAME                         
                                                                                 
- :param test_name: :param scribe_file_path: :return:                            
+ Update the selected test.                                                      
+ :param test_name: :param file_path: :return:                                   
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file to update               │
-│                                  [default: None]                             │
-│                                  [required]                                  │
-│ *    test_name             TEXT  The name of the test to update              │
-│                                  [default: None]                             │
-│                                  [required]                                  │
+│ *    file_path      FILE  The scribe file or test file to update             │
+│                           [default: None]                                    │
+│                           [required]                                         │
+│ *    test_name      TEXT  The name of the test to update [default: None]     │
+│                           [required]                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-
 ```
 
 ## Delete a test 

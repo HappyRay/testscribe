@@ -23,7 +23,7 @@ from testscribe import global_var
 from testscribe.config import Config
 from testscribe.constant import INVALID_TEST_INDEX
 from testscribe.execution import execute_and_generate, run_setup_func
-from testscribe.execution_util import ERROR_RETURN_CODE, init
+from testscribe.execution_util import ERROR_RETURN_CODE, init, infer_scribe_file_path
 from testscribe.input_params import create_input_params
 from testscribe.load_scribe_file import load_scribe_file
 from testscribe.log import log
@@ -48,9 +48,10 @@ logger = logging.getLogger(__name__)
 
 
 def update_test_cmd(
-    scribe_file_path: Path,
+    file_path: Path,
     test_name: str,
 ) -> int:
+    scribe_file_path = infer_scribe_file_path(file_path)
     config = init()
     log(f"Update the test {test_name} in {scribe_file_path}")
     all_tests = load_scribe_file(scribe_file_path)
