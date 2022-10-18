@@ -48,6 +48,31 @@ def test_create_unit_test_file_name():
     assert result == 'test_b_g.py'
 
 
+def test_infer_module_name_from_test_file_path_test_not_at_the_beginning():
+    result = infer_module_name_from_test_file_path(file_name='atest_b_g.py')
+    assert result == ''
+
+
+def test_infer_module_name_from_test_file_path_no_module_name():
+    result = infer_module_name_from_test_file_path(file_name='test_g.py')
+    assert result == ''
+
+
+def test_infer_module_name_from_test_file_path_not_a_py_extension():
+    result = infer_module_name_from_test_file_path(file_name='test_a_g.txt')
+    assert result == ''
+
+
+def test_infer_module_name_from_test_file_path_not_end_with_g():
+    result = infer_module_name_from_test_file_path(file_name='test_a.py')
+    assert result == ''
+
+
+def test_infer_module_name_from_test_file_path_not_start_with_test():
+    result = infer_module_name_from_test_file_path(file_name='a_g.py')
+    assert result == ''
+
+
 def test_infer_module_name_from_test_file_path_valid():
     result = infer_module_name_from_test_file_path(file_name='test_mod_a_g.py')
     assert result == 'mod_a'

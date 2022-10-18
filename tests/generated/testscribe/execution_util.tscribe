@@ -57,6 +57,46 @@ tests:
   - name: base_name
     value: b
   result: test_b_g.py
+- name: test_infer_module_name_from_test_file_path_test_not_at_the_beginning
+  short_name: _test_not_at_the_beginning
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: atest_b_g.py
+  result: ''
+- name: test_infer_module_name_from_test_file_path_no_module_name
+  short_name: _no_module_name
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: test_g.py
+  result: ''
+- name: test_infer_module_name_from_test_file_path_not_a_py_extension
+  short_name: _not_a_py_extension
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: test_a_g.txt
+  result: ''
+- name: test_infer_module_name_from_test_file_path_not_end_with_g
+  short_name: _not_end_with_g
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: test_a.py
+  result: ''
+- name: test_infer_module_name_from_test_file_path_not_start_with_test
+  short_name: _not_start_with_test
+  target:
+    name: infer_module_name_from_test_file_path
+  parameters:
+  - name: file_name
+    value: a_g.py
+  result: ''
 - name: test_infer_module_name_from_test_file_path_valid
   short_name: _valid
   target:
