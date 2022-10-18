@@ -51,8 +51,8 @@ def update_test_cmd(
     file_path: Path,
     test_name: str,
 ) -> int:
-    scribe_file_path = infer_scribe_file_path(file_path)
     config = init()
+    scribe_file_path = infer_scribe_file_path(file_path)
     log(f"Update the test {test_name} in {scribe_file_path}")
     all_tests = load_scribe_file(scribe_file_path)
     index = all_tests.get_test_index_by_name(test_name)
