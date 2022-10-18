@@ -25,20 +25,19 @@ def test_run_cmd_help_delete():
     result = run_cmd_help(cmd_name='delete')
     assert result == """\
                                                                                 
- Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
+ Usage: testscribe delete [OPTIONS] FILE_PATH TEST_NAME                         
                                                                                 
  Delete a test. This will delete the test from both the scribe file and the     
  unit test file.                                                                
- :param scribe_file_path: :param test_name: :return:                            
+ :param file_path: :param test_name: :return:                                   
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The scribe file that contains the test to   │
-│                                  delete                                      │
-│                                  [default: None]                             │
-│                                  [required]                                  │
-│ *    test_name             TEXT  The name of the test to delete              │
-│                                  [default: None]                             │
-│                                  [required]                                  │
+│ *    file_path      FILE  The scribe file or test file that contains the     │
+│                           test to delete                                     │
+│                           [default: None]                                    │
+│                           [required]                                         │
+│ *    test_name      TEXT  The name of the test to delete [default: None]     │
+│                           [required]                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
@@ -162,10 +161,10 @@ Try 'testscribe update --help' for help.
 def test_cli_delete_cmd_missing_arguments_should_show_usage():
     result = run_cmd_without_args(cmd='delete')
     assert result == """\
-Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME
+Usage: testscribe delete [OPTIONS] FILE_PATH TEST_NAME
 Try 'testscribe delete --help' for help.
 ╭─ Error ──────────────────────────────────────────────────────────────────────╮
-│ Missing argument 'SCRIBE_FILE_PATH'.                                         │
+│ Missing argument 'FILE_PATH'.                                                │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 """
 

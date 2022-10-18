@@ -17,7 +17,7 @@ import logging
 from pathlib import Path
 
 from testscribe.execution import save_file
-from testscribe.execution_util import init
+from testscribe.execution_util import init, infer_scribe_file_path
 from testscribe.load_scribe_file import load_scribe_file
 from testscribe.log import log
 from testscribe.model_type import delete_test_by_name, AllTests
@@ -34,8 +34,9 @@ def delete_test_internal(scribe_file_path: Path, test_name: str, all_tests: AllT
         return
 
 
-def delete_test(scribe_file_path: Path, test_name: str):
+def delete_test(file_path: Path, test_name: str):
     init()
+    scribe_file_path = infer_scribe_file_path(file_path)
     log(f"Deleting the test {test_name} from {scribe_file_path}.")
     all_tests = load_scribe_file(scribe_file_path)
     # todo: if test_name is not specified, show a list of test names

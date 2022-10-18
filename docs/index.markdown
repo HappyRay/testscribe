@@ -437,25 +437,23 @@ Usage: testscribe update [OPTIONS] FILE_PATH TEST_NAME
 
 ## Delete a test 
 ```text
-Usage: testscribe delete [OPTIONS] SCRIBE_FILE_PATH TEST_NAME                  
+Usage: testscribe delete [OPTIONS] FILE_PATH TEST_NAME                         
                                                                                 
- Delete a test. This will delete the test from both the testscribe file and the 
+ Delete a test. This will delete the test from both the scribe file and the     
  unit test file.                                                                
- :param scribe_file_path: :param test_name: :return:                            
+ :param file_path: :param test_name: :return:                                   
                                                                                 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    scribe_file_path      FILE  The testscribe file that contains the test  │
-│                                  to delete                                   │
-│                                  [default: None]                             │
-│                                  [required]                                  │
-│ *    test_name             TEXT  The name of the test to delete              │
-│                                  [default: None]                             │
-│                                  [required]                                  │
+│ *    file_path      FILE  The scribe file or test file that contains the     │
+│                           test to delete                                     │
+│                           [default: None]                                    │
+│                           [required]                                         │
+│ *    test_name      TEXT  The name of the test to delete [default: None]     │
+│                           [required]                                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-
 ```
 ## Move tests
 The generated test files are organized the same way as the module hierarchy.

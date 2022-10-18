@@ -104,8 +104,8 @@ def create(
 @app.command()
 @exception_handler
 def delete(
-    scribe_file_path: Path = create_file_argument(
-        help_str="The scribe file that contains the test to delete",
+    file_path: Path = create_file_argument(
+        help_str="The scribe file or test file that contains the test to delete",
         writable=True,
     ),
     test_name: str = Argument(..., help="The name of the test to delete"),
@@ -114,11 +114,11 @@ def delete(
     Delete a test. This will delete the test from both the scribe file
     and the unit test file.
 
-    :param scribe_file_path:
+    :param file_path:
     :param test_name:
     :return:
     """
-    return delete_test(scribe_file_path=scribe_file_path, test_name=test_name)
+    return delete_test(file_path=file_path, test_name=test_name)
 
 
 @app.command()

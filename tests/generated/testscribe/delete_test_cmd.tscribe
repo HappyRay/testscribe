@@ -6,7 +6,7 @@ tests:
   target:
     name: delete_test_internal
   parameters:
-  - name: scribe_file_path
+  - name: file_path
     value: !testscribe/expression 'pathlib.Path("foo")'
   - name: test_name
     value: not_exist
