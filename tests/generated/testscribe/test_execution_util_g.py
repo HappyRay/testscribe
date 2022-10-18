@@ -1,11 +1,13 @@
 import logging
 import logging.config
 import pathlib
+import testscribe.error
 import testscribe.execution_util
 import testscribe.model_type
 from testscribe.api.mock_api import get_normalized_mock_calls
 from unittest.mock import ANY, call, create_autospec
 from unittest.mock import patch
+import pytest
 from testscribe.execution_util import config_logging, create_unit_test_file_name, infer_module_name_from_test_file_path, infer_scribe_file_path, infer_unit_test_file_path_from_scribe_file, remove_file_if_no_test
 
 
@@ -76,6 +78,12 @@ def test_infer_module_name_from_test_file_path_not_start_with_test():
 def test_infer_module_name_from_test_file_path_valid():
     result = infer_module_name_from_test_file_path(file_name='test_mod_a_g.py')
     assert result == 'mod_a'
+
+
+def test_infer_scribe_file_path_invalid_file():
+    with pytest.raises(testscribe.error.Error) as exception_info:
+        infer_scribe_file_path(file_path=pathlib.Path("a.py"))
+    assert 'a.py is not a valid scribe file or a generated unit test file.' == str(exception_info.value)
 
 
 def test_infer_scribe_file_path_test_file():

@@ -151,7 +151,7 @@ def infer_scribe_file_path(file_path: Path) -> Path:
         return file_path
     module_name = infer_module_name_from_test_file_path(file_path.name)
     if module_name == "":
-        raise Error(f"{file_path} is not a valid scribe file or a unit test file.")
+        raise Error(f"{file_path} is not a valid scribe file or a generated unit test file.")
     file_name = module_name + SCRIBE_FILE_SUFFIX
     return file_path.parent.joinpath(file_name)
 

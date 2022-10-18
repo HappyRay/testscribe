@@ -105,6 +105,16 @@ tests:
   - name: file_name
     value: test_mod_a_g.py
   result: mod_a
+- name: test_infer_scribe_file_path_invalid_file
+  short_name: _invalid_file
+  target:
+    name: infer_scribe_file_path
+  parameters:
+  - name: file_path
+    value: !testscribe/expression 'pathlib.Path("a.py")'
+  exception:
+    type: testscribe.error.Error
+    message: a.py is not a valid scribe file or a generated unit test file.
 - name: test_infer_scribe_file_path_test_file
   short_name: _test_file
   target:
