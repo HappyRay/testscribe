@@ -188,7 +188,7 @@ tests:
   target:
     name: update_test_cmd
   parameters:
-  - name: scribe_file_path
+  - name: file_path
     value: !testscribe/expression 'pathlib.Path("a/b.tscribe")'
   - name: test_name
     value: t1
