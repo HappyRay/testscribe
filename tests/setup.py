@@ -7,7 +7,7 @@ def setup():
     define_alias(alias="ts", full_str="testscribe")
     # define_alias(alias="mn", full_str="testscribe.model_type.MockNameModel")
     define_alias(alias="nv", full_str="testscribe.namedvalues.NamedValues")
-    define_alias(alias="Path", full_str="pathlib.Path")
+    define_alias(alias="path", full_str="pathlib.Path")
     # define_alias(alias="optional", full_str="typing.Optional")
     # define_alias(alias="union", full_str="typing.Union")
     # define_alias(alias="mp", full_str="testscribe.mock_proxy.MockProxy")
