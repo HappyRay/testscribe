@@ -638,6 +638,8 @@ It's a valid choice to keep only the scribe files and dynamically regenerate the
 for regression testing.
 
 There are a number of advantages of keeping the unit test files:
+- IDEs can index the test files. This allows you to find the tests for a target function more easily
+for example.
 - It's faster to run tests.
 - Some readers of your tests may prefer reading the unit test files.
 
