@@ -26,6 +26,7 @@ Table of Contents
   * [The class doesn't implement a custom __repr__ method.](#the-class-doesnt-implement-a-custom-__repr__-method)
   * [The class implements a custom __repr__ method.](#the-class-implements-a-custom-__repr__-method)
 * [Scribe files](#scribe-files)
+* [Assert class instances in mock call parameters](#assert-class-instances-in-mock-call-parameters)
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
 It's intentionally made as simple as possible to make it easier to understand.  
@@ -507,3 +508,27 @@ is a simple example that tests an add function.
 You can find more examples generated for other demos on this page 
 [here](https://github.com/HappyRay/testscribe-demo/tree/main/tests/generated/tsdemo).
 
+# Assert class instances in mock call parameters
+The tool automatically generates assertion for complex mock call parameters such as
+class instances. This would be cumbersome to do manually.
+
+The target function
+[call_b_method](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/object_in_mock_call_param.py)
+calls a method on its parameter with an instance of the class A.
+
+Here is an example test run:
+
+```text
+...
+Please provide the value for the parameter (b) of type: (tsdemo.object_in_mock_call_param.B) []: m
+Created a mock: Mock: name (m_b) spec (<class 'tsdemo.object_in_mock_call_param.B'>)
+Calling call_b_method(b=Mock: name (m_b) spec (<class 'tsdemo.object_in_mock_call_param.B'>))
+m_b's do method is called
+with: a=tsdemo.object_in_mock_call_param.A(i=1).
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/object_in_mock_call_param.py", line 15, in call_b_method
+    b.do(A(1))
+...
+```
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_in_mock_call_param_g.py)
+is the generated test code.
