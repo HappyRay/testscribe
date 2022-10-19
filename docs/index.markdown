@@ -44,6 +44,7 @@ Table of Contents
 * [Customize how class instances are displayed and asserted](#customize-how-class-instances-are-displayed-and-asserted)
 * [Wrapper function](#wrapper-function)
 * [Scribe files](#scribe-files)
+* [Assertion of complex objects](#assertion-of-complex-objects)
 * [Tips](#tips)
     * [Better output format in color](#better-output-format-in-color)
     * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
@@ -548,6 +549,11 @@ based on the corresponding scribe files.
 [Here](demo.markdown#scribe-files) are scribe file demos.
 
 See the [FAQ](#faq) for more information related to the scribe files.
+
+# Assertion of complex objects
+The tool automatically generates assertion for complex mock call parameters such as
+class instances. This would be cumbersome to do manually.
+[Here](demo.markdown#assert-class-instances-in-mock-call-parameters) is a demo.
 
 # Tips
 
