@@ -707,3 +707,6 @@ With this tool, some code duplication is ok since the duplicated part is handled
 effort from you.
 
 [Here](demo.markdown#test-multiple-input-sets) is an example that you can see/try for yourself.
+
+## Why is a mock annotated with the target type in the generated code
+This makes it easier to find where this type is used.
