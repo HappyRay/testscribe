@@ -1,0 +1,9 @@
+format_version: 1
+module: wrapper.exception_decorator_wrapper
+tests:
+- name: test_run_dummy_app_that_raise_exception
+  short_name: _
+  target:
+    name: run_dummy_app_that_raise_exception
+  parameters: []
+  result: 1
