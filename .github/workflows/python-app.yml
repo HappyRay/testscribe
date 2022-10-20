@@ -54,7 +54,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        ./run_tests.sh
+        ./run_tests.sh -c
 
     - name: flake8 check
       run: |
