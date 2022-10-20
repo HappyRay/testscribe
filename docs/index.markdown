@@ -620,7 +620,10 @@ You may use the generated test to debug the code under test if needed.
 
 ## Do you have real world examples?
 The tool uses itself to test. You can see the many examples 
-[here](https://github.com/HappyRay/testscribe/tree/main/tests)
+[here](https://github.com/HappyRay/testscribe/tree/main/tests).
+
+The tool made it much easier to get high code coverage for about 3000 statements. 
+See the latest code coverage report [here](https://app.codecov.io/gh/HappyRay/testscribe).
 
 ## Can I modify the generated tests?
 Your changes will be overwritten if you update any test that the file contains using the tool.
