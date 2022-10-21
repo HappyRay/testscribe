@@ -28,7 +28,6 @@ def main():
     scribe_file_only_list = [
         "calculator",
         "echo",
-        "merged_calculator",
         "patch_function_for_integration_test_wrapper",
         # This generated tscribe file is the source file for
         # testing updating a test will recreate patches.
@@ -38,6 +37,7 @@ def main():
     ]
     both_files_list = [
         "service",
+        "merged_calculator",
     ]
     for name in scribe_file_only_list:
         copy_scribe_file(file_name_only=name, copy_test_file=False)

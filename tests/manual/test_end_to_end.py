@@ -26,7 +26,10 @@ from fixture.helper import (
     generate_create_cmd_args,
     run_cli,
 )
-from testscribe.execution_util import infer_unit_test_file_path_from_scribe_file
+from testscribe.execution_util import (
+    infer_unit_test_file_path_from_scribe_file,
+    create_unit_test_file_name,
+)
 
 COPY_TEST_RESULT_ENV_VAR = "copy_test_result"
 
@@ -95,8 +98,12 @@ def verify_output_files(
             f"{prefix}{scribe_file_name}"
         )
 
-        generated_test_file_path = infer_unit_test_file_path_from_scribe_file(generated_scribe_file_path)
-        expected_test_file_path = infer_unit_test_file_path_from_scribe_file(expected_scribe_file_path)
+        generated_test_file_path = infer_unit_test_file_path_from_scribe_file(
+            generated_scribe_file_path
+        )
+        expected_test_file_path = infer_unit_test_file_path_from_scribe_file(
+            expected_scribe_file_path
+        )
 
         if not do_not_copy_result and COPY_TEST_RESULT_ENV_VAR in os.environ:
             print(
@@ -126,6 +133,19 @@ def copy_input_scribe_file(copy_input_file):
         )
 
     return _copy_input_scribe_file
+
+
+@fixture()
+def copy_input_test_file(copy_input_file):
+    def _copy_input_test_file(file_name_only: str, output_file_name: str = "") -> Path:
+        if output_file_name:
+            output_file_name = create_unit_test_file_name(output_file_name)
+        return copy_input_file(
+            file_name=create_unit_test_file_name(file_name_only),
+            output_file_name=output_file_name,
+        )
+
+    return _copy_input_test_file
 
 
 @fixture()
@@ -359,7 +379,37 @@ def test_delete_cmd(
     test_scribe_file_path = copy_input_scribe_file(
         file_name_only="merged_calculator", output_file_name=file_name_only
     )
-    test_arguments = ["delete", str(test_scribe_file_path), "test_add_1"]
+    delete_test_common(
+        file_name_only=file_name_only,
+        file_path=test_scribe_file_path,
+        verify_output_files=verify_output_files,
+    )
+
+
+def test_delete_cmd_from_test_file(
+    copy_input_test_file,
+    copy_input_scribe_file,
+    verify_output_files,
+):
+    """
+    Delete a test by selecting a test from a generated test file
+    """
+    file_name_only = "calculator"
+    copy_input_scribe_file(
+        file_name_only="merged_calculator", output_file_name=file_name_only
+    )
+    test_file_path = copy_input_test_file(
+        file_name_only="merged_calculator", output_file_name=file_name_only
+    )
+    delete_test_common(
+        file_name_only=file_name_only,
+        file_path=test_file_path,
+        verify_output_files=verify_output_files,
+    )
+
+
+def delete_test_common(file_name_only: str, file_path: Path, verify_output_files):
+    test_arguments = ["delete", str(file_path), "test_add_1"]
     run_cli(test_arguments=test_arguments, test_input="")
     verify_output_files(
         file_name_only=file_name_only, expected_file_prefix="after_delete"
