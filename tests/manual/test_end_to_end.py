@@ -26,7 +26,7 @@ from fixture.helper import (
     generate_create_cmd_args,
     run_cli,
 )
-from testscribe.execution_util import create_unit_test_file_name
+from testscribe.execution_util import infer_unit_test_file_path_from_scribe_file
 
 COPY_TEST_RESULT_ENV_VAR = "copy_test_result"
 
@@ -95,11 +95,8 @@ def verify_output_files(
             f"{prefix}{scribe_file_name}"
         )
 
-        test_output_file_name = create_unit_test_file_name(file_name_only)
-        generated_test_file_path = generated_data_path.joinpath(test_output_file_name)
-        expected_test_file_path = expected_test_data_path.joinpath(
-            f"{prefix}{test_output_file_name}"
-        )
+        generated_test_file_path = infer_unit_test_file_path_from_scribe_file(generated_scribe_file_path)
+        expected_test_file_path = infer_unit_test_file_path_from_scribe_file(expected_scribe_file_path)
 
         if not do_not_copy_result and COPY_TEST_RESULT_ENV_VAR in os.environ:
             print(
