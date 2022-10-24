@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "testscribe"
-version = "0.0.1-alpha-2"
+version = "0.0.1"
 description = "Unit test automation tool"
 authors = ["Ray Yang <ruiguo@gmail.com>"]
 readme = "README.md"
