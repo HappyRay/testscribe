@@ -56,6 +56,7 @@ Table of Contents
   * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
   * [Is this another test framework like pytest?](#is-this-another-test-framework-like-pytest)
   * [Does it support test frameworks other than pytest such as unittest?](#does-it-support-test-frameworks-other-than-pytest-such-as-unittest)
+  * [Does it require me to change the way I write code?](#does-it-require-me-to-change-the-way-i-write-code)
   * [Do you have real world examples?](#do-you-have-real-world-examples)
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
   * [Can I modify the scribe files?](#can-i-modify-the-scribe-files)
@@ -643,6 +644,16 @@ for the generated tests
 incur much of the maintenance cost of supporting another test framework. 
 
 It's possible to extend it to support other test frameworks.
+
+## Does it require me to change the way I write code?
+No, it doesn't. It doesn't get in your way.
+
+However, it gives you feedback to improve your code.
+For example:
+- It encourages you to annotate your code with type information since doing so makes it 
+easier to provide inputs such as strings, mock objects.
+- It encourages you to test more often and test earlier since the cost of doing so is much reduced.
+- It gives you feedback about the quality of your code, testability, simplicity for example.
 
 ## Do you have real world examples?
 The tool uses itself to test. You can see the many examples 
