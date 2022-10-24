@@ -12,7 +12,7 @@ tests:
     value: {}
   result: !testscribe/object
     type: pathlib.PosixPath
-    repr: PosixPath('.')
+    repr: PosixPath('test_scribe_tests')
 - name: test_get_output_root_path_key_exists
   short_name: _key_exists
   target:

@@ -13,8 +13,6 @@
 #     limitations under the License.
 #
 
-from __future__ import annotations
-
 INVALID_TEST_INDEX = -1
 GET_TEST_NAME_PROMPT = (
     "Test name help: 'test_' prefix will be added automatically. "
@@ -22,5 +20,5 @@ GET_TEST_NAME_PROMPT = (
     "part of the prefix.\n"
     "Test name:"
 )
-
 SCRIBE_FILE_SUFFIX = ".tscribe"
+DEFAULT_OUTPUT_ROOT_DIR_NAME = "test_scribe_tests"

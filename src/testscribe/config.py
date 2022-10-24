@@ -25,6 +25,7 @@ from yaml import safe_load
 
 from testscribe import global_var
 from testscribe.api.io_provider import IOProvider
+from testscribe.constant import DEFAULT_OUTPUT_ROOT_DIR_NAME
 from testscribe.error import Error
 from testscribe.file_info import get_function
 from testscribe.reflection_util import get_module_and_symbol, get_symbol
@@ -82,7 +83,9 @@ def get_output_root_path(config_file_path: Path, data: dict) -> Path:
     if output_root_dir:
         return resolve_path(config_file_path=config_file_path, path_str=output_root_dir)
     else:
-        return Path()
+        # Default to a subdirectory under the current directory
+        # to make clean up easier.
+        return Path(DEFAULT_OUTPUT_ROOT_DIR_NAME)
 
 
 def resolve_path(config_file_path: Path, path_str: str) -> Path:

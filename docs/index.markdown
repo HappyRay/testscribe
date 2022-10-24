@@ -186,13 +186,13 @@ The directories (config directory)/src and (config directory)/tests are added to
 for a test run that uses this configuration file.
 
 ### Output files root directory
-The value has to be an existing directory. 
+Default: a directory named test_scribe_tests in the current working directory.
 
-Default: the current working directory
+If the directory doesn't exist, it will be created.
 
 example:
 
-    output-root-dir: tests/generated
+    output-root-dir: tests/test_scribe_tests
 
 ### Setup function
 Specifies a python function to run before a test run

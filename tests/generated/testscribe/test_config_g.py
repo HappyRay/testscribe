@@ -9,7 +9,7 @@ from testscribe.config import get_output_root_path, get_setup_func, initialize_i
 def test_get_output_root_path_default():
     result = get_output_root_path(config_file_path=pathlib.Path("a/b/c.yaml"), data={})
     assert isinstance(result, pathlib.PosixPath)
-    assert repr(result) == "PosixPath('.')"
+    assert repr(result) == "PosixPath('test_scribe_tests')"
 
 
 def test_get_output_root_path_key_exists():
