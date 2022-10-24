@@ -54,6 +54,8 @@ Table of Contents
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
 * [FAQ](#faq)
   * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
+  * [Is this another test framework like pytest?](#is-this-another-test-framework-like-pytest)
+  * [Does it support test frameworks other than pytest such as unittest?](#does-it-support-test-frameworks-other-than-pytest-such-as-unittest)
   * [Do you have real world examples?](#do-you-have-real-world-examples)
   * [Can I modify the generated tests?](#can-i-modify-the-generated-tests)
   * [Can I modify the scribe files?](#can-i-modify-the-scribe-files)
@@ -617,6 +619,30 @@ you verify visually the test result.
 If the result is not what you expect, fix the code under test and update the test.
 The [update test](#update-test) command makes it easier to update a test. 
 You may use the generated test to debug the code under test if needed.
+
+## Is this another test framework like pytest?
+No. Typical test frameworks require you to **write** code in a certain way.
+This tool doesn't require you to write code in most cases. 
+Think of using this tool like a quick debugging session.
+Thus, the investment is lower, and it's easier for you to stop using this tool 
+without incurring much migration cost if you desire.
+
+It does build on existing libraries such as the standard Python mock object library
+and the pytest framework.
+
+## Does it support test frameworks other than pytest such as unittest?
+It currently only generates tests that uses the pytest framework. 
+
+Maintaining pytest based tests in addition to the regular tests you have
+may be easier than you may think because:
+- the tests are generated
+- you can [choose a different root directory](#output-files-root-directory) 
+for the generated tests
+- the generated tests use only the basic features of pytest, 
+- if you don't plan to keep the generated tests for regression testing, you won't 
+incur much of the maintenance cost of supporting another test framework. 
+
+It's possible to extend it to support other test frameworks.
 
 ## Do you have real world examples?
 The tool uses itself to test. You can see the many examples 
