@@ -106,7 +106,6 @@ def initialize_io(data: dict) -> IOProvider:
 
 
 def init_config(config_file_path: Path) -> Config:
-    # todo: make io provider configurable
     data = load_config_data(config_file_path)
     add_additional_python_paths(config_file_path=config_file_path, data=data)
     initialize_io(data)
