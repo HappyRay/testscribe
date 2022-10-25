@@ -3,6 +3,29 @@
 
 A tool to make python unit testing easier by automating the boring and repetitive parts.
 
+Do you wish you don't have to write assertions before a test is run but just visually verify the
+result just like you would with testing a web page?
+
+Do you write unit tests but don't like the overhead (create a file, name a function, write assertions...) 
+or repetitiveness?
+
+Have you experienced adjusting the mocking code multiple times before it allows the test to run? 
+Do you have to refer to documentation from time to time to figure out how to mock or assert complex 
+mock call parameters?
+
+Do you wish to start a debugging session with as little overhead as possible?
+
+Are you looking for an intuitive tool to help improve your code and coding skills?
+
+This tool can help. It will
+- ask for inputs only and show you the test result
+- take care of the repetitive and boring part of unit testing such as invoking the target function, 
+creating files and functions with proper conventions, generating the assertions...
+- interactively prompt for the mock object's behavior in context with the call stack
+- generate complete working test code, which can serve as regression tests, examples and basis 
+for further customization.
+- and more. Please see the complete documentation.
+
 # A simple example
 
 Here is a very basic simple example to illustrate the basic usage.
@@ -54,6 +77,7 @@ Feel free to download the demo project and try for yourself.
 
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
+
 Please see the full documentation [here](https://happyray.github.io/testscribe/).
 
 # Copyright and license
