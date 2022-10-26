@@ -9,6 +9,7 @@ Table of Contents
 
 * [Who is the tool designed for?](#who-is-the-tool-designed-for)
 * [Can the tool help with integration testing?](#can-the-tool-help-with-integration-testing)
+* [Is the tool useful for me if I do only integration testing?](#is-the-tool-useful-for-me-if-i-do-only-integration-testing)
 * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
 * [Is this another test framework like pytest?](#is-this-another-test-framework-like-pytest)
 * [Does it support test frameworks other than pytest such as unittest?](#does-it-support-test-frameworks-other-than-pytest-such-as-unittest)
@@ -30,6 +31,10 @@ Please see [this section in the user guide](index.markdown#who-can-benefit-from-
 # Can the tool help with integration testing?
 Yes if your test scenario can be covered by running a target function under the tool.
 Since the cost of trying it is low, you can always try.
+
+# Is the tool useful for me if I do only integration testing?
+See this FAQ [Can the tool help with integration testing?](#can-the-tool-help-with-integration-testing)
+and this section [Developers who don't write unit tests](index.markdown#developers-who-dont-write-unit-tests)
 
 # Are the generated tests valid if they always mirror the behavior of the code under test?
 You should only save the generated tests for regression test purpose **after** 
