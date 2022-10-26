@@ -8,6 +8,10 @@ Table of Contents
 =================
 
 * [The idea](#the-idea)
+* [Who can benefit from this tool?](#who-can-benefit-from-this-tool)
+  * [Developers who write unit tests but don't like the overhead](#developers-who-write-unit-tests-but-dont-like-the-overhead)
+  * [Developers who don't write unit tests](#developers-who-dont-write-unit-tests)
+  * [Casual Python users who don't know unit tests well](#casual-python-users-who-dont-know-unit-tests-well)
 * [Minimum requirement](#minimum-requirement)
 * [Quick start](#quick-start)
   * [If you just want to take a look first without installing anything](#if-you-just-want-to-take-a-look-first-without-installing-anything)
@@ -83,6 +87,38 @@ The machine-readable format will enable additional functionalities such as maint
 regression tests.
 
 The machine-readable files are referred to as [scribe files](#scribe-files) in the documentation.
+
+# Who can benefit from this tool?
+All the Python developers can benefit from this tool in ways as they see fit.
+
+Here are some example profiles:
+
+## Developers who write unit tests but don't like the overhead
+The author of the tool is one of them.
+
+The tool frees you from the boring and repetitive parts of testing and allows you to focus on
+the intellectually stimulating parts such as designing the test scenarios and verifying the output.
+
+You may discover/rediscover the fun of unit testing with the help of this tool.
+
+## Developers who don't write unit tests
+You may find the tool helpful on occasions when you need to quickly verify the behavior
+of your own code or some library or code someone else write. 
+
+For example, you may use this tool to test a code path, such as an error handling code,
+that is not easily invoked in an integration test. 
+
+Note that you don't have to use the generated test code if you don't need or want to.
+
+## Casual Python users who don't know unit tests well
+It will be another tool in your toolbox. It is not difficult to learn. It can introduce you 
+to the power of unit testing without a big commitment or a steep learning curve.
+You don't have to learn up front how to describe a mock object's behavior in code for example.
+You can use the generated tests as examples.
+
+For example, a data scientist or analyst or IT admins may use this tool to test some scripts
+to avoid wasting time discovering simple errors after the script is deployed, maybe to a large
+computing cluster.
 
 # Minimum requirement
 * Python version >= 3.8.
