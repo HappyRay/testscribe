@@ -24,7 +24,7 @@ creating files and functions with proper conventions, generating the assertions.
 - interactively prompt for the mock object's behavior in context with information such as the call stack.
 - generate complete working test code, which can serve as regression tests, examples and basis 
 for further customization.
-- and more. Please see the complete documentation.
+- and more. Please see [the complete documentation](#documentation).
 
 # A simple example
 
