@@ -18,10 +18,10 @@ Do you wish to start a debugging session with as little overhead as possible?
 Are you looking for an intuitive tool to help improve your code and coding skills?
 
 This tool can help. It will
-- ask for inputs only and show you the test result
+- ask for inputs only and show you the test result.
 - take care of the repetitive and boring part of unit testing such as invoking the target function, 
 creating files and functions with proper conventions, generating the assertions...
-- interactively prompt for the mock object's behavior in context with the call stack
+- interactively prompt for the mock object's behavior in context with information such as the call stack.
 - generate complete working test code, which can serve as regression tests, examples and basis 
 for further customization.
 - and more. Please see the complete documentation.
