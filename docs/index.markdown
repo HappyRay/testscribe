@@ -57,6 +57,7 @@ Table of Contents
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
 * [Frequently asked questions](#frequently-asked-questions)
+* [Demo](#demo)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -635,3 +636,6 @@ And use (o,  test_data.simple.C()) as input.
 
 # Frequently asked questions
 See [the FAQ page](faq.markdown)
+
+# Demo
+See [the demo page](demo.markdown)
