@@ -43,6 +43,8 @@ unit test code as follows:
     False
     ***** Result end
 
+Notice the only input you need to provide is the number 8.
+
 You can run it multiple times with different inputs and inspect the displayed output.
 If the output is not correct, fix the production code and test again.
 
