@@ -7,6 +7,7 @@ Frequently asked questions for [TestScribe](index.markdown)
 Table of Contents
 =================
 
+* [Who is the tool designed for?](#who-is-the-tool-designed-for)
 * [Are the generated tests valid if they always mirror the behavior of the code under test?](#are-the-generated-tests-valid-if-they-always-mirror-the-behavior-of-the-code-under-test)
 * [Is this another test framework like pytest?](#is-this-another-test-framework-like-pytest)
 * [Does it support test frameworks other than pytest such as unittest?](#does-it-support-test-frameworks-other-than-pytest-such-as-unittest)
@@ -21,6 +22,9 @@ Table of Contents
 * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
 * [Does it support test parametrization in generated tests?](#does-it-support-test-parametrization-in-generated-tests)
 * [Why is a mock annotated with the target type in the generated code](#why-is-a-mock-annotated-with-the-target-type-in-the-generated-code)
+
+# Who is the tool designed for?
+Please see [this section in the user guide](index.markdown#who-can-benefit-from-this-tool).
 
 # Are the generated tests valid if they always mirror the behavior of the code under test?
 You should only save the generated tests for regression test purpose **after** 
