@@ -104,7 +104,7 @@ to the power of unit testing without a big commitment or a steep learning curve.
 You don't have to learn up front how to describe a mock object's behavior in code for example.
 You can use the generated tests as examples.
 
-For example, a data scientist or analyst or IT admins may use this tool to test some scripts
+For example, a data scientist or analyst or IT admins may use this tool to test some components of scripts
 to avoid wasting time discovering simple errors after the script is deployed, maybe to a large
 computing cluster.
 
