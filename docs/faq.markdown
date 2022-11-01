@@ -41,7 +41,7 @@ You should only save the generated tests for regression test purpose **after**
 you verify visually the test result.
 
 If the result is not what you expect, fix the code under test and update the test.
-The [update test](#update-test) command makes it easier to update a test. 
+The [update test](index.markdown#update-test) command makes it easier to update a test. 
 You may use the generated test to debug the code under test if needed.
 
 # Is this another test framework like pytest?
@@ -60,7 +60,7 @@ It currently only generates tests that uses the pytest framework.
 Maintaining pytest based tests in addition to the regular tests you have
 may be easier than you may think because:
 - the tests are generated
-- you can [choose a different root directory](#output-files-root-directory) 
+- you can [choose a different root directory](index.markdown#output-files-root-directory) 
 for the generated tests
 - the generated tests use only the basic features of pytest, 
 - if you don't plan to keep the generated tests for regression testing, you won't 
@@ -95,7 +95,7 @@ You can. However, it is not recommended.
 Some of your changes may be overwritten the next time the file is updated by the tool. 
 For example, the tool will group the tests targeting the same function together.
 
-It is often easier and less error-prone if you use one of [the commands](#commands) to do so.
+It is often easier and less error-prone if you use one of [the commands](index.markdown#commands) to do so.
 These commands will also automatically regenerate the unit test files to keep them in sync with
 the scribe files.
 
@@ -143,8 +143,8 @@ Test again using the tool with a different customer's id to generate additional 
 You can choose which generated tests to keep. And the tool can help manage the generated tests you keep.
 
 For example:
-* [Move tests](#move-tests) after the target functions are moved.
-* [Update tests](#update-test) is often easier than creating a new test since it can use the existing input as default.
+* [Move tests](index.markdown#move-tests) after the target functions are moved.
+* [Update tests](index.markdown#update-test) is often easier than creating a new test since it can use the existing input as default.
 
 It's true that the generated tests are strict. If you prefer, you can make a copy of the generated test and 
 change it as you see fit. It's often easier than creating the same test manually.
