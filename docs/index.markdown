@@ -575,7 +575,7 @@ based on the corresponding scribe files.
 
 [Here](demo.markdown#scribe-files) are scribe file demos.
 
-See the [FAQ](#faq) for more information related to the scribe files.
+See the [FAQ](faq.markdown) for more information related to the scribe files.
 
 # Assertion of complex objects
 The tool automatically generates assertion for complex mock call parameters such as
