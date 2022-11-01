@@ -92,7 +92,7 @@ Hello Alice. My name is Bob
 is the generated unit test code.
 
 # Test multiple input sets
-See [this FAQ](index.markdown#does-it-support-test-parametrization-in-generated-tests) for the background information.
+See [this FAQ](faq.markdown#does-it-support-test-parametrization-in-generated-tests) for the background information.
 
 The [eval_expression](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/parametrization.py) function
 takes an expression as a string and returns its evaluation result. We will test different expressions
