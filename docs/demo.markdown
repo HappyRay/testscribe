@@ -7,11 +7,11 @@ Demonstrations of select features of [the TestScribe tool](https://github.com/Ha
 Table of Contents
 =================
 
+* [Mock a class instance](#mock-a-class-instance)
+* [Create a class instance](#create-a-class-instance)
 * [Exception result](#exception-result)
 * [Test a method](#test-a-method)
 * [Test multiple input sets](#test-multiple-input-sets)
-* [Mock a class instance](#mock-a-class-instance)
-* [Create a class instance](#create-a-class-instance)
 * [Multiple class instances in a list](#multiple-class-instances-in-a-list)
   * [Create multiple real instances in a list](#create-multiple-real-instances-in-a-list)
   * [Create multiple mocks in a list](#create-multiple-mocks-in-a-list)
@@ -34,6 +34,62 @@ Feel free to download it and play with it.
 
 For more realistic examples, see how the tool uses itself to test
 [here](https://github.com/HappyRay/testscribe/tree/main/tests).
+
+# Mock a class instance
+The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
+The service may involve a database or a network call.
+It's easier to test by mocking it.
+
+An example test run output:
+
+```text
+...
+Please provide the value for the parameter (service) of type: (tsdemo.service.Service) []: m
+Created a mock: Mock: name (m_service) spec (<class 'tsdemo.service.Service'>)
+Please provide the value for the parameter (keyword) of type: (str) []: Bob
+Calling search_name(service=Mock: name (m_service) spec (<class 'tsdemo.service.Service'>), keyword='Bob')
+m_service's search_a_name method is called
+with: keyword='key: Bob'.
+Call stack:
+  File "/home/ray/code/testscribe-demo/tsdemo/simple_mock.py", line 11, in search_name
+    name = service.search_a_name("key: " + keyword)
+
+Please provide the value for the return value of type: (str) []: real Bob
+Mock call return value: 'real Bob'
+***** Result:
+type: <class 'str'>
+value:
+{"name": "real Bob"}
+***** Result end
+...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py)
+is the generated unit test code.
+
+Here is a demo video
+
+{% include youtube.html id="FqHwR4BhzDM" %}
+
+# Create a class instance
+The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a
+[Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
+
+An example test run output:
+
+```text
+...
+Please provide the value for the parameter (p) of type: (tsdemo.person.Person) []: c("Bob", 10)
+Calling get_person_age(p=tsdemo.person.Person("Bob", 10))
+***** Result:
+type: <class 'int'>
+value:
+10
+***** Result end...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
+is the generated unit test code.
 
 # Exception result
 When a test run results in an exception, the tool can display the exception information and generate the 
@@ -148,62 +204,6 @@ is the manually written test for comparison.
 
 Try for yourself to see which method (manual vs using the tool) makes you and people who read your tests
 more productive for this test.
-
-# Mock a class instance
-The function [search_name](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/simple_mock.py) takes a [Service](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/service.py) object as a parameter.
-The service may involve a database or a network call.
-It's easier to test by mocking it.
-
-An example test run output:
-
-```text
-...
-Please provide the value for the parameter (service) of type: (tsdemo.service.Service) []: m
-Created a mock: Mock: name (m_service) spec (<class 'tsdemo.service.Service'>)
-Please provide the value for the parameter (keyword) of type: (str) []: Bob
-Calling search_name(service=Mock: name (m_service) spec (<class 'tsdemo.service.Service'>), keyword='Bob')
-m_service's search_a_name method is called
-with: keyword='key: Bob'.
-Call stack:
-  File "/home/ray/code/testscribe-demo/tsdemo/simple_mock.py", line 11, in search_name
-    name = service.search_a_name("key: " + keyword)
-
-Please provide the value for the return value of type: (str) []: real Bob
-Mock call return value: 'real Bob'
-***** Result:
-type: <class 'str'>
-value:
-{"name": "real Bob"}
-***** Result end
-...
-```
-
-[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py) 
-is the generated unit test code.
-
-Here is a demo video
-
-{% include youtube.html id="FqHwR4BhzDM" %}
-
-# Create a class instance
-The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a 
-[Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
-
-An example test run output:
-
-```text
-...
-Please provide the value for the parameter (p) of type: (tsdemo.person.Person) []: c("Bob", 10)
-Calling get_person_age(p=tsdemo.person.Person("Bob", 10))
-***** Result:
-type: <class 'int'>
-value:
-10
-***** Result end...
-```
-
-[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
-is the generated unit test code.
 
 # Multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a
