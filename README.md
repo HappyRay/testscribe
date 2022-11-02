@@ -60,6 +60,10 @@ The example above generates the following test file test_prime_g.py
 
 This is the code you would likely have to write to unit test the same without TestScribe's help.
 
+Below is a short demo video for the example above.
+
+[![TestScribe simple demo](https://img.youtube.com/vi/bMAyXsd8yAw/default.jpg)](https://youtu.be/bMAyXsd8yAw)
+
 # Easy to get started and setup
 Adding testscribe to your development dependencies is all you need to start using the basic features.
 Most of the features should be self-explanatory to developers.
