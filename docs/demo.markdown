@@ -181,6 +181,10 @@ value:
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_simple_mock_g.py) 
 is the generated unit test code.
 
+Here is a demo video
+
+{% include youtube.html id="FqHwR4BhzDM" %}
+
 # Create a class instance
 The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a 
 [Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
