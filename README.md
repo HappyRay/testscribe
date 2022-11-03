@@ -64,6 +64,10 @@ Below is a short demo video for the example above.
 
 [![TestScribe simple demo](https://img.youtube.com/vi/bMAyXsd8yAw/default.jpg)](https://youtu.be/bMAyXsd8yAw)
 
+The benefits will become more significant for more complex scenarios. 
+[Here](https://happyray.github.io/testscribe/demo.html#mock-a-class-instance) 
+is an example involving mocks with an embedded demo video.
+
 # Easy to get started and setup
 Adding testscribe to your development dependencies is all you need to start using the basic features.
 Most of the features should be self-explanatory to developers.
