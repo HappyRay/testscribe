@@ -155,7 +155,7 @@ def get_type_origin(t: type):
 
 
 def get_type_args(t: type):
-    # https://docs.python.org/3/library/typing.html#typing.get_origin
+    # https://docs.python.org/3/library/typing.html#typing.get_args
     if hasattr(typing, "get_args"):
         return typing.get_args(t)
     else:  # pragma: no cover
