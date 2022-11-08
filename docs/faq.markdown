@@ -24,6 +24,7 @@ Table of Contents
 * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
 * [Does it support test parametrization in generated tests?](#does-it-support-test-parametrization-in-generated-tests)
 * [Can the tool help me choose the inputs for tests?](#can-the-tool-help-me-choose-the-inputs-for-tests)
+* [Does the tool provide code coverage report?](#does-the-tool-provide-code-coverage-report)
 * [Why is a mock annotated with the target type in the generated code](#why-is-a-mock-annotated-with-the-target-type-in-the-generated-code)
 
 # Who is the tool designed for?
@@ -183,6 +184,11 @@ Currently, the tool only provides context and relies on users to think about wha
 It's a hard problem to do it well. Thus, the tool currently focuses on the parts that computers are good at.
 
 In the future, it may be able to integrate with other tools to provide additional assistance.
+
+# Does the tool provide code coverage report?
+It currently doesn't.
+There are excellent code coverage tools already. You can continue to use them the same way.
+In the future, there may be integration opportunities.
 
 # Why is a mock annotated with the target type in the generated code
 This makes it easier to find where this type is used.
