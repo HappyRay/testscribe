@@ -23,6 +23,7 @@ Table of Contents
 * [Can I still use it if I practice test-driven development](#can-i-still-use-it-if-i-practice-test-driven-development)
 * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
 * [Does it support test parametrization in generated tests?](#does-it-support-test-parametrization-in-generated-tests)
+* [Can the tool help me choose the inputs for tests?](#can-the-tool-help-me-choose-the-inputs-for-tests)
 * [Why is a mock annotated with the target type in the generated code](#why-is-a-mock-annotated-with-the-target-type-in-the-generated-code)
 
 # Who is the tool designed for?
@@ -176,6 +177,12 @@ With this tool, some code duplication is ok since the duplicated part is handled
 effort from you.
 
 [Here](demo.markdown#test-multiple-input-sets) is an example that you can see/try for yourself.
+
+# Can the tool help me choose the inputs for tests?
+Currently, the tool only provides context and relies on users to think about what inputs make sense.
+It's a hard problem to do it well. Thus, the tool currently focuses on the parts that computers are good at.
+
+In the future, it may be able to integrate with other tools to provide additional assistance.
 
 # Why is a mock annotated with the target type in the generated code
 This makes it easier to find where this type is used.
