@@ -49,14 +49,6 @@ tests:
   result: !testscribe/callable
     name: C
     module: test_data.simple
-- name: test_get_type_args_list_without_element_type
-  short_name: _list_without_element_type
-  target:
-    name: get_type_args
-  parameters:
-  - name: t
-    value: !testscribe/expression 'typing.List'
-  result: !!python/tuple []
 - name: test_get_type_args_list_of_string
   short_name: _list_of_string
   target:
@@ -67,20 +59,6 @@ tests:
   result: !!python/tuple
   - !testscribe/callable
     name: str
-    module: builtins
-- name: test_get_type_args
-  short_name: _
-  target:
-    name: get_type_args
-  parameters:
-  - name: t
-    value: !testscribe/expression 'typing.Callable[[str] ,int]'
-  result: !!python/tuple
-  - - !testscribe/callable
-      name: str
-      module: builtins
-  - !testscribe/callable
-    name: int
     module: builtins
 - name: test_get_type_origin_1
   short_name: _

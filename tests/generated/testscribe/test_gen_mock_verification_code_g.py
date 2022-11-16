@@ -13,7 +13,7 @@ def test_generate_complex_param_verification():
     params.name_to_value = {'p': 1, 'p2': 2}
     params.index_to_value = {3: True, 5: 'a'}
     result = generate_complex_param_verification(params=params, mock_calls_name='v')
-    assert result == ["    assert v[2].kwargs['p'] == 1", "    assert v[2].kwargs['p2'] == 2", '    assert v[2].args[3] is True', "    assert v[2].args[5] == 'a'"]
+    assert result == ["    assert v[2][2]['p'] == 1", "    assert v[2][2]['p2'] == 2", '    assert v[2][1][3] is True', "    assert v[2][1][5] == 'a'"]
     params.assert_not_called()
 
 
@@ -65,8 +65,8 @@ def test_generate_mock_call_verification():
     m_1: testscribe.model_type.MockModel = create_autospec(spec=testscribe.model_type.MockModel)
     m_mock_call_model: testscribe.model_type.MockCallModel = create_autospec(spec=testscribe.model_type.MockCallModel)
     m_1.calls = [m_mock_call_model]
-    m_1.spec_str = 'spec_str'
     m_1.name = 'm'
+    m_1.spec_str = 'spec_str'
     m_mock_call_model.parameters = testscribe.namedvalues.NamedValues([('p', test_data.value.object_model_c)])
     m_mock_call_model.name = 'c'
     result = generate_mock_call_verification(m=m_1)
@@ -75,8 +75,8 @@ def test_generate_mock_call_verification():
     assert m_mock_calls == [
         call.c(p=ANY),
     ]
-    assert isinstance(m_mock_calls[0].kwargs['p'], test_data.simple.C)
-    assert m_mock_calls[0].kwargs['p'].a == 1"""
+    assert isinstance(m_mock_calls[0][2]['p'], test_data.simple.C)
+    assert m_mock_calls[0][2]['p'].a == 1"""
     m_1.assert_not_called()
     m_mock_call_model.assert_not_called()
 

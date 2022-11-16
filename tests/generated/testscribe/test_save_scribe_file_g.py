@@ -19,8 +19,8 @@ def test_generate_scribe_file_no_test_calls_remove_file():
     assert m_remove_file_if_no_test_mock_calls == [
         call(file_path=ANY, tests=[]),
     ]
-    assert isinstance(m_remove_file_if_no_test_mock_calls[0].kwargs['file_path'], pathlib.PosixPath)
-    assert repr(m_remove_file_if_no_test_mock_calls[0].kwargs['file_path']) == "PosixPath('foo')"
+    assert isinstance(m_remove_file_if_no_test_mock_calls[0][2]['file_path'], pathlib.PosixPath)
+    assert repr(m_remove_file_if_no_test_mock_calls[0][2]['file_path']) == "PosixPath('foo')"
     all_tests.assert_not_called()
 
 

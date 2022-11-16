@@ -177,6 +177,32 @@ tests:
   - name: expression
     value: ("am", "m", bm())
   result: false
+- name: test_process_mock_marker_tuple_without_element_type
+  short_name: _tuple_without_element_type
+  target:
+    name: process_mock_marker
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Tuple'
+  - name: v
+    value: !!python/tuple
+    - 1
+    - 2
+  result: !!python/tuple
+  - 1
+  - 2
+- name: test_process_mock_marker_list_without_element_type
+  short_name: _list_without_element_type
+  target:
+    name: process_mock_marker
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.List'
+  - name: v
+    value:
+    - 1
+  result:
+  - 1
 - name: test_process_mock_marker_no_mock_in_input
   short_name: _no_mock_in_input
   target:

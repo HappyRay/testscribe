@@ -39,7 +39,15 @@ def generic_transform(v: Any, transform_func: callable) -> Any:
     elif isinstance(v, set):
         new_v = {_transform(item) for item in v}
     elif isinstance(v, dict):
-        new_v = {_transform(k): _transform(value) for k, value in v.items()}
+        new_v = {}
+        # In python 3.7, the dict comprehension constructs value first.
+        # new_v = {_transform(k): _transform(value) for k, value in v.items()}
+        # This breaks a unit test.
+        # To avoid this difference, have a tighter control on the order.
+        for k, value in v.items():
+            new_key = _transform(k)
+            new_value = _transform(value)
+            new_v[new_key] = new_value
     else:
         new_v = v
     return transform_func(new_v)

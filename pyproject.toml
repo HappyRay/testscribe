@@ -10,7 +10,7 @@ documentation = "https://happyray.github.io/testscribe/"
 
 [tool.poetry.dependencies]
 # typing.get_args is introduced in python 3.8
-python = "^3.8"
+python = "^3.7"
 typer = "*"
 # Before pyyaml 5.1 the directory keys are sorted, it is desirable to
 # control the order so that it is easier to read.

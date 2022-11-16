@@ -185,6 +185,9 @@ def process_mock_marker_list(t: type, v: Any):
 def process_mock_marker_tuple(t: type, v: Any):
     if get_type_origin(t) is tuple:
         item_types = get_normalized_item_types(t=t, v=v)
+        if not item_types:
+            # Element type is unknown. e.g. the type is Tuple
+            return v
         if len(v) != len(item_types):
             raise InputError(
                 f"tuple value ({v}) size doesn't match the tuple type ({t})."
@@ -204,6 +207,12 @@ def process_mock_marker_tuple(t: type, v: Any):
 
 
 def get_normalized_item_types(t: type, v: Any):
+    """
+    Handle special case of ellipsis. e.g. Tuple[int, ...]
+    :param t:
+    :param v: a value of the type
+    :return: tuple representing the types of the subcomponents
+    """
     item_types = get_type_args(t)
     if len(item_types) == 2 and item_types[1] == Ellipsis:
         item_types_list = []

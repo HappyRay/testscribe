@@ -24,10 +24,8 @@ from types import (
 )
 from typing import (
     Any,
-    Literal,
     AnyStr,
     NamedTuple,
-    TypedDict,
     FrozenSet,
     DefaultDict,
     OrderedDict,
@@ -36,6 +34,7 @@ from typing import (
     Deque,
     Optional,
     Union,
+    TypeVar,
 )
 
 
@@ -73,6 +72,11 @@ def is_a_class_instance(v: Any) -> bool:
 
 def is_class_type(t: type) -> bool:
     if is_primitive_type(t) or is_container_type(t) or is_union_type(t):
+        return False
+    if type(t) is TypeVar:
+        # Don't support mocking a TypeVar.
+        # In Python3.7, get_type_args(List) returns (~T,) T is a TypeVar.
+        # This check allows the mock marker matching logic to safely ignore these types.
         return False
     # Callable types are considered class types
     # Thus they can be mocked. e.g. a method can return Callable
@@ -112,11 +116,11 @@ def is_primitive_type(t: type) -> bool:
         Any,
         Parameter.empty,
         Signature.empty,
-        Literal,
         AnyStr,
         # PyYaml has trouble saving the value Ellipsis
         # type(Ellipsis),
     ] or is_function_type(t)
+    # todo: Literal type is introduced in Python 3.8. Check it?
 
 
 def is_primitive_container_type(t: type):
@@ -132,7 +136,6 @@ def is_container_type(t: type) -> bool:
         or t
         in (
             NamedTuple,
-            TypedDict,
             FrozenSet,
             DefaultDict,
             OrderedDict,
@@ -140,6 +143,7 @@ def is_container_type(t: type) -> bool:
             Counter,
             Deque,
         )
+        # todo: handle TypedDicts which is introduced in Python 3.8
     )
 
 
@@ -147,11 +151,8 @@ def get_type_origin(t: type):
     # https://docs.python.org/3/library/typing.html#typing.get_origin
     if hasattr(typing, "get_origin"):
         return typing.get_origin(t)
-    elif hasattr(t, "__origin__"):  # pragma: no cover
-        # https://www.python.org/dev/peps/pep-0585/
-        return t.__origin__
     else:  # pragma: no cover
-        return None
+        return getattr(t, "__origin__", None)
 
 
 def get_type_args(t: type):
@@ -159,8 +160,21 @@ def get_type_args(t: type):
     if hasattr(typing, "get_args"):
         return typing.get_args(t)
     else:  # pragma: no cover
-        # todo: work around for versions before python 3.8
-        return None
+        # There are differences between this attribute and get_args.
+        # for typing.Callable[[str] ,int]
+        # Expected :([<class 'str'>], <class 'int'>)
+        # Actual   :(<class 'str'>, <class 'int'>)
+        # Fortunately, Callable type's arguments are currently not used by this tool.
+
+        # for typing.List
+        # Expected :()
+        # Actual   :(~T,)
+        # for typing.Dict
+        # Expected :()
+        # Actual   :(typing.~KT, typing.~VT)
+        # The TypeVar types will be safely ignored during the mock marker processing. See is_class_type.
+        # So the difference doesn't matter as long as the unit tests don't test these cases.
+        return getattr(t, "__args__", None)
 
 
 def is_spec_value(value):

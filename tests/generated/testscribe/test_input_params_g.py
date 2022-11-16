@@ -49,10 +49,10 @@ def test_get_scribe_file_path():
     assert m_create_output_dir_for_module_mock_calls == [
         call(output_root_dir=ANY, module=ANY),
     ]
-    assert isinstance(m_create_output_dir_for_module_mock_calls[0].kwargs['output_root_dir'], pathlib.PosixPath)
-    assert repr(m_create_output_dir_for_module_mock_calls[0].kwargs['output_root_dir']) == "PosixPath('test_root')"
-    assert isinstance(m_create_output_dir_for_module_mock_calls[0].kwargs['module'], testscribe.module.Module)
-    assert m_create_output_dir_for_module_mock_calls[0].kwargs['module'].names == ('a', 'b')
+    assert isinstance(m_create_output_dir_for_module_mock_calls[0][2]['output_root_dir'], pathlib.PosixPath)
+    assert repr(m_create_output_dir_for_module_mock_calls[0][2]['output_root_dir']) == "PosixPath('test_root')"
+    assert isinstance(m_create_output_dir_for_module_mock_calls[0][2]['module'], testscribe.module.Module)
+    assert m_create_output_dir_for_module_mock_calls[0][2]['module'].names == ('a', 'b')
 
 
 def test_get_target_class_name_no_class():

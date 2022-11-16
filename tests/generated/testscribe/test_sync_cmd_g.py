@@ -24,5 +24,5 @@ def test_regenerate_all_tests_internal():
     assert m_get_all_scribe_files_mock_calls == [
         call(root_path=ANY),
     ]
-    assert isinstance(m_get_all_scribe_files_mock_calls[0].kwargs['root_path'], pathlib.PosixPath)
-    assert repr(m_get_all_scribe_files_mock_calls[0].kwargs['root_path']) == "PosixPath('a')"
+    assert isinstance(m_get_all_scribe_files_mock_calls[0][2]['root_path'], pathlib.PosixPath)
+    assert repr(m_get_all_scribe_files_mock_calls[0][2]['root_path']) == "PosixPath('a')"

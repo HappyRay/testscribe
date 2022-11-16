@@ -11,7 +11,6 @@
 #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
-
 from typing import (
     Any,
     List,
@@ -19,13 +18,13 @@ from typing import (
     Tuple,
     Dict,
     NamedTuple,
-    TypedDict,
     FrozenSet,
     DefaultDict,
     OrderedDict,
     ChainMap,
     Counter,
     Deque,
+    TypeVar,
 )
 
 from pytest import mark
@@ -75,7 +74,6 @@ def test_not_container_type(t: type):
         Tuple[str, int],
         Dict[str, int],
         NamedTuple,
-        TypedDict,
         FrozenSet,
         DefaultDict,
         OrderedDict,
@@ -87,6 +85,9 @@ def test_not_container_type(t: type):
 def test_is_container_type(t: type):
     r = is_container_type(t)
     assert r
+
+
+T = TypeVar("T")
 
 
 @mark.parametrize(
@@ -107,6 +108,7 @@ def test_is_container_type(t: type):
         type(foo),
         type(Foo.m),
         type(Foo().m),
+        T,
     ],
 )
 def test_not_class_type(t: type):

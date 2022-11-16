@@ -14,5 +14,5 @@ def test_call_mock_service_with_object():
     assert m_service_mock_calls == [
         call.f(p=ANY),
     ]
-    assert isinstance(m_service_mock_calls[0].kwargs['p'], pathlib.PosixPath)
-    assert repr(m_service_mock_calls[0].kwargs['p']) == "PosixPath('foo')"
+    assert isinstance(m_service_mock_calls[0][2]['p'], pathlib.PosixPath)
+    assert repr(m_service_mock_calls[0][2]['p']) == "PosixPath('foo')"

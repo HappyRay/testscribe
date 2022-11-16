@@ -221,12 +221,14 @@ def generate_complex_param_verification(
     params: ComplexMockCallParam, mock_calls_name: str
 ) -> List[str]:
     prefix = f"{mock_calls_name}[{params.index}]"
+    # Call's kwargs and args attributes are introduced in Python 3.8
+    # Use [2] and [1] respectively to make the generated code compatible with Python 3.7.
     keyword_args_statement = [
-        generate_assertion(f"{prefix}.kwargs[{repr(k)}]", v)
+        generate_assertion(f"{prefix}[2][{repr(k)}]", v)
         for k, v in params.name_to_value.items()
     ]
     position_args_statement = [
-        generate_assertion(f"{prefix}.args[{i}]", v)
+        generate_assertion(f"{prefix}[1][{i}]", v)
         for i, v in params.index_to_value.items()
     ]
     return keyword_args_statement + position_args_statement

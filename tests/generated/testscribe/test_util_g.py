@@ -55,8 +55,8 @@ def test_generic_transform_set():
         call(obj=2),
         call(obj=ANY),
     ]
-    assert isinstance(transform_func_mock_calls[2].kwargs['obj'], set)
-    assert sorted(list(transform_func_mock_calls[2].kwargs['obj'])) == [3, 4]
+    assert isinstance(transform_func_mock_calls[2][2]['obj'], set)
+    assert sorted(list(transform_func_mock_calls[2][2]['obj'])) == [3, 4]
 
 
 def test_generic_transform_tuple():

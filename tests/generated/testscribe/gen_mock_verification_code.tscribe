@@ -11,10 +11,10 @@ tests:
   - name: mock_calls_name
     value: v
   result:
-  - '    assert v[2].kwargs[''p''] == 1'
-  - '    assert v[2].kwargs[''p2''] == 2'
-  - '    assert v[2].args[3] is True'
-  - '    assert v[2].args[5] == ''a'''
+  - '    assert v[2][2][''p''] == 1'
+  - '    assert v[2][2][''p2''] == 2'
+  - '    assert v[2][1][3] is True'
+  - '    assert v[2][1][5] == ''a'''
   mocks:
   - name: params
     spec: testscribe.gen_mock_verification_code.ComplexMockCallParam
@@ -115,16 +115,16 @@ tests:
         assert m_mock_calls == [
             call.c(p=ANY),
         ]
-        assert isinstance(m_mock_calls[0].kwargs['p'], test_data.simple.C)
-        assert m_mock_calls[0].kwargs['p'].a == 1
+        assert isinstance(m_mock_calls[0][2]['p'], test_data.simple.C)
+        assert m_mock_calls[0][2]['p'].a == 1
   mocks:
   - name: m_1
     spec: testscribe.model_type.MockModel
     attributes:
       calls:
       - !testscribe/mock 'm_mock_call_model'
-      spec_str: spec_str
       name: m
+      spec_str: spec_str
   - name: m_mock_call_model
     spec: testscribe.model_type.MockCallModel
     attributes:

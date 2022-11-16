@@ -126,8 +126,8 @@ def test_update_test_cmd_no_such_test():
     assert m_load_scribe_file_mock_calls == [
         call(scribe_file=ANY),
     ]
-    assert isinstance(m_load_scribe_file_mock_calls[0].kwargs['scribe_file'], pathlib.PosixPath)
-    assert repr(m_load_scribe_file_mock_calls[0].kwargs['scribe_file']) == "PosixPath('a/b.tscribe')"
+    assert isinstance(m_load_scribe_file_mock_calls[0][2]['scribe_file'], pathlib.PosixPath)
+    assert repr(m_load_scribe_file_mock_calls[0][2]['scribe_file']) == "PosixPath('a/b.tscribe')"
     m_all_tests_mock_calls = get_normalized_mock_calls(m_all_tests, testscribe.model_type.AllTests)
     assert m_all_tests_mock_calls == [
         call.get_test_index_by_name(test_name='t1'),

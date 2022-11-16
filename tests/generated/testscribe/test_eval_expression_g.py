@@ -84,6 +84,16 @@ def test_is_m_function_in_expression_no_m_function():
     assert result is False
 
 
+def test_process_mock_marker_tuple_without_element_type():
+    result = process_mock_marker(t=typing.Tuple, v=(1, 2))
+    assert result == (1, 2)
+
+
+def test_process_mock_marker_list_without_element_type():
+    result = process_mock_marker(t=typing.List, v=[1])
+    assert result == [1]
+
+
 def test_process_mock_marker_no_mock_in_input():
     result = process_mock_marker(t=typing.Any, v=1)
     assert result == 1

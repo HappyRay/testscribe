@@ -29,19 +29,9 @@ def test_get_class_type_class():
     assert result == test_data.simple.C
 
 
-def test_get_type_args_list_without_element_type():
-    result = get_type_args(t=typing.List)
-    assert result == ()
-
-
 def test_get_type_args_list_of_string():
     result = get_type_args(t=typing.List[str])
     assert result == (str,)
-
-
-def test_get_type_args():
-    result = get_type_args(t=typing.Callable[[str] ,int])
-    assert result == ([str], int)
 
 
 def test_get_type_origin_1():

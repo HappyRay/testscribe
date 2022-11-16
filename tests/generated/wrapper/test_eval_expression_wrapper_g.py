@@ -34,14 +34,14 @@ def test_process_mock_marker_wrapper_callable_with_parameter_types():
     assert m_mock_proxy_mock_calls == [
         call(spec=ANY),
     ]
-    assert isinstance(m_mock_proxy_mock_calls[0].kwargs['spec'], typing._GenericAlias)
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._inst is True
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._special is False
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._name == 'Callable'
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__origin__ == collections.abc.Callable
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__args__ == (int, int)
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__parameters__ == ()
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__slots__ is None
+    assert isinstance(m_mock_proxy_mock_calls[0][2]['spec'], typing._GenericAlias)
+    assert m_mock_proxy_mock_calls[0][2]['spec']._inst is True
+    assert m_mock_proxy_mock_calls[0][2]['spec']._special is False
+    assert m_mock_proxy_mock_calls[0][2]['spec']._name == 'Callable'
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__origin__ == collections.abc.Callable
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__args__ == (int, int)
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__parameters__ == ()
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__slots__ is None
 
 
 def test_process_mock_marker_wrapper_callable():
@@ -54,15 +54,15 @@ def test_process_mock_marker_wrapper_callable():
     assert m_mock_proxy_mock_calls == [
         call(spec=ANY),
     ]
-    assert isinstance(m_mock_proxy_mock_calls[0].kwargs['spec'], typing._VariadicGenericAlias)
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._inst is True
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._special is True
-    assert m_mock_proxy_mock_calls[0].kwargs['spec']._name == 'Callable'
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__origin__ == collections.abc.Callable
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__args__ == ()
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__parameters__ == ()
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__slots__ is None
-    assert m_mock_proxy_mock_calls[0].kwargs['spec'].__doc__ == """\
+    assert isinstance(m_mock_proxy_mock_calls[0][2]['spec'], typing._VariadicGenericAlias)
+    assert m_mock_proxy_mock_calls[0][2]['spec']._inst is True
+    assert m_mock_proxy_mock_calls[0][2]['spec']._special is True
+    assert m_mock_proxy_mock_calls[0][2]['spec']._name == 'Callable'
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__origin__ == collections.abc.Callable
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__args__ == ()
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__parameters__ == ()
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__slots__ is None
+    assert m_mock_proxy_mock_calls[0][2]['spec'].__doc__ == """\
 Callable type; Callable[[int], str] is a function of (int) -> str.
 
     The subscription syntax must always be used with exactly two
