@@ -109,7 +109,7 @@ to avoid wasting time discovering simple errors after the script is deployed, ma
 computing cluster.
 
 # Minimum requirement
-* Python version >= 3.8.
+* Python version >= 3.7.
 
 # Quick start
 
