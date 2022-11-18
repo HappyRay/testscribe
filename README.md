@@ -93,6 +93,9 @@ It's capable of handling class instances, exceptions, class methods, mocking inp
 
 Please see the full documentation [here](https://happyray.github.io/testscribe/).
 
+You don't need to learn all the details at once. Refer to the documentation when your need for a specific feature 
+arises. It's helpful to browse the document or the table of content to learn what it covers.
+
 # Copyright and license
 
 Copyright 2022 Ruiguo (Ray) Yang
