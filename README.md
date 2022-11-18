@@ -85,6 +85,9 @@ The tool won't get in your way.
 You can find demos [here](https://happyray.github.io/testscribe/demo.html).
 Feel free to download the demo project and try for yourself.
 
+# Frequently asked questions
+Have questions before diving into details? You may find answers at the [FAQ page](https://happyray.github.io/testscribe/faq.html) 
+
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
 
