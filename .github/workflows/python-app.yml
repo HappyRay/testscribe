@@ -14,7 +14,8 @@ jobs:
     strategy:
           fail-fast: false
           matrix:
-            python-version: [3.7, 3.8]
+            # run python 3.7 test last to make sure the test coverage uploaded is for the 3.7 version.
+            python-version: [3.8, 3.7]
     runs-on: ubuntu-latest
 
     steps:
