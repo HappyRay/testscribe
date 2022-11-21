@@ -149,17 +149,19 @@ def is_container_type(t: type) -> bool:
 
 def get_type_origin(t: type):
     # https://docs.python.org/3/library/typing.html#typing.get_origin
-    if hasattr(typing, "get_origin"):
+    if hasattr(typing, "get_origin"):  # pragma: no cover
+        # This gets executed on Python 3.8 and above only.
         return typing.get_origin(t)
-    else:  # pragma: no cover
+    else:
         return getattr(t, "__origin__", None)
 
 
 def get_type_args(t: type):
     # https://docs.python.org/3/library/typing.html#typing.get_args
-    if hasattr(typing, "get_args"):
+    if hasattr(typing, "get_args"):  # pragma: no cover
+        # This gets executed on Python 3.8 and above only.
         return typing.get_args(t)
-    else:  # pragma: no cover
+    else:
         # There are differences between this attribute and get_args.
         # for typing.Callable[[str] ,int]
         # Expected :([<class 'str'>], <class 'int'>)
