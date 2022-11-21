@@ -29,6 +29,7 @@ pytest-cov = "*"
 twine = "*"
 # Get color output
 rich = "*"
+tox = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
