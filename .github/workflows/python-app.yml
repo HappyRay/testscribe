@@ -57,10 +57,12 @@ jobs:
         ./run_tests.sh -c
 
     - name: flake8 check
+      if: ${{ matrix.python-version == 3.7}}
       run: |
         ./flake8_check.sh
 
     - name: Upload coverage reports to Codecov with GitHub Action
+      if: ${{ matrix.python-version == 3.7}}
       uses: codecov/codecov-action@v3
       with:
         files: ./tmp/cov.xml
