@@ -14,7 +14,6 @@ jobs:
     strategy:
           fail-fast: false
           matrix:
-            # run python 3.7 test last to make sure the test coverage uploaded is for the 3.7 version.
             python-version: [3.8, 3.7]
     runs-on: ubuntu-latest
 
@@ -53,9 +52,15 @@ jobs:
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
 
-    - name: Test with pytest
+    - name: Test with pytest with code coverage
+      if: ${{ matrix.python-version == 3.7}}
       run: |
         ./run_tests.sh -c
+
+    - name: Test with pytest only
+      if: ${{ matrix.python-version > 3.7}}
+      run: |
+        ./run_tests.sh
 
     - name: flake8 check
       if: ${{ matrix.python-version == 3.7}}
