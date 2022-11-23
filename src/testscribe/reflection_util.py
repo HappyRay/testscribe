@@ -12,7 +12,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 #
-
+import collections
 import typing
 from functools import partial
 from inspect import Parameter, Signature, getmembers, signature, getattr_static
@@ -26,6 +26,7 @@ from testscribe.type_util import (
     is_typing_callable_type,
     is_function_instance,
     get_type_args,
+    get_type_origin,
 )
 from testscribe.util import BUILTIN_MODULE_NAME, load_object
 
@@ -58,14 +59,14 @@ def get_full_spec_name(t: Spec) -> str:
     :param t:
     :return: full name including module
     """
+    if is_callable_type(t):
+        # Callable or Callable[[int], int] doesn't have the __qualname__
+        # attribute prior to Python 3.10. In Python 3.10, the __qualname__ attribute doesn't contain the
+        # parameter type.
+        return repr(t)
     module_name = t.__module__
     module_str = "" if module_name == BUILTIN_MODULE_NAME else module_name + "."
-    if hasattr(t, "__qualname__"):
-        return f"{module_str}{t.__qualname__}"
-    else:
-        # Callable or Callable[[int], int] doesn't have the __qualname__
-        # attribute.
-        return repr(t)
+    return f"{module_str}{t.__qualname__}"
 
 
 def has_param_names(spec: Spec):
@@ -75,8 +76,13 @@ def has_param_names(spec: Spec):
     :param spec:
     :return:
     """
-    # both class and functions have this attribute. Callable doesn't.
-    return hasattr(spec, "__qualname__")
+    # todo: find a more reliable way to check
+    return not is_callable_type(spec)
+
+
+def is_callable_type(t: Spec) -> bool:
+    origin = get_type_origin(t)
+    return origin is collections.abc.Callable
 
 
 def get_typing_callable_return_type(t: type):

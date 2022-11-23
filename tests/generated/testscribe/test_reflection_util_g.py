@@ -19,6 +19,11 @@ def test_get_bound_arguments():
     assert result == {'a': 1, 'b': 2}
 
 
+def test_get_full_spec_name_callable_with_parameter_types():
+    result = get_full_spec_name(t=typing.Callable[[int], int])
+    assert result == 'typing.Callable[[int], int]'
+
+
 def test_get_full_spec_name_imported_name():
     """
     return the name where it is defined given an imported name

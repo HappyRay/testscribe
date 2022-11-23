@@ -17,6 +17,14 @@ tests:
   result:
     a: 1
     b: 2
+- name: test_get_full_spec_name_callable_with_parameter_types
+  short_name: _callable_with_parameter_types
+  target:
+    name: get_full_spec_name
+  parameters:
+  - name: t
+    value: !testscribe/expression 'typing.Callable[[int], int]'
+  result: typing.Callable[[int], int]
 - name: test_get_full_spec_name_imported_name
   short_name: _imported_name
   description: return the name where it is defined given an imported name
