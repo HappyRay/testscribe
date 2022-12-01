@@ -13,7 +13,8 @@ Have you experienced adjusting the mocking code multiple times before it allows 
 Do you have to refer to documentation from time to time to figure out how to mock or assert complex 
 mock call parameters?
 
-Do you wish to start a debugging session with as little overhead as possible?
+Do you wish to start a debugging session to understand a function better 
+with as little overhead as possible?
 
 Are you looking for an intuitive tool to help improve your code and coding skills?
 
