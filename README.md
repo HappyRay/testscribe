@@ -65,7 +65,7 @@ Below is a short demo video for the example above.
 [![TestScribe simple demo](https://img.youtube.com/vi/bMAyXsd8yAw/default.jpg)](https://youtu.be/bMAyXsd8yAw)
 
 The benefits will become more significant for more complex scenarios. 
-[Here](https://happyray.github.io/testscribe/demo.html#mock-a-class-instance) 
+[Here](https://www.pyscribe.org/demo.html#mock-a-class-instance) 
 is an example involving mocks with an embedded demo video.
 
 # Easy to get started and setup
@@ -82,16 +82,16 @@ Additional features such as launching the tool more easily only require simple s
 The tool won't get in your way.
 
 # Demo
-You can find demos [here](https://happyray.github.io/testscribe/demo.html).
+You can find demos [here](https://www.pyscribe.org/demo.html).
 Feel free to download the demo project and try for yourself.
 
 # Frequently asked questions
-Have questions before diving into details? You may find answers at the [FAQ page](https://happyray.github.io/testscribe/faq.html) 
+Have questions before diving into details? You may find answers at the [FAQ page](https://www.pyscribe.org/faq.html) 
 
 # Documentation
 It's capable of handling class instances, exceptions, class methods, mocking inputs, patching dependencies...
 
-Please see the full documentation [here](https://happyray.github.io/testscribe/).
+Please see the full documentation [here](https://www.pyscribe.org/).
 
 You don't need to learn all the details at once. Refer to the documentation when your need for a specific feature 
 arises. It's helpful to browse the document or the table of content to learn what it covers.
