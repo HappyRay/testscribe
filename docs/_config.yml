@@ -23,8 +23,8 @@ email:
 description: >- # this means to ignore newlines until "baseurl:"
   User guide for TestScribe for Python, a tool that makes python unit testing easier by automating 
   the boring and repetitive parts.
-baseurl: "/testscribe" # the subpath of your site, e.g. /blog
-url: "https://happyray.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/testscribe" # the sub path of your site, e.g. /blog
+url: "https://www.pyscribe.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
 github_username:  HappyRay
 
