@@ -6,7 +6,7 @@ authors = ["Ray Yang <ruiguo@gmail.com>"]
 readme = "README.md"
 license = "Apache-2.0"
 repository = "https://github.com/HappyRay/testscribe"
-documentation = "https://happyray.github.io/testscribe/"
+documentation = "https://www.pyscribe.org/"
 
 [tool.poetry.dependencies]
 # typing.get_args is introduced in python 3.8
