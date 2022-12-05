@@ -9,7 +9,7 @@ repository = "https://github.com/HappyRay/testscribe"
 documentation = "https://www.pyscribe.org/"
 
 [tool.poetry.dependencies]
-# typing.get_args is introduced in python 3.8
+# python 3.6 is no longer supported according to Python.org
 python = "^3.7"
 typer = "*"
 # Before pyyaml 5.1 the directory keys are sorted, it is desirable to
