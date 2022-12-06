@@ -44,8 +44,11 @@ def get_module(target_file: Path) -> Module:
             # Log the Python paths only in the error case to make debugging easier while not distracting
             # users in the normal cases.
             # Not include the Python Path in the exception message to make unit testing easier.
-            log(f"Python path:\n{absolute_sys_paths}")
-            raise Error(f"Can't match the target file path ({target_file}) with one of the paths in the Python path")
+            log(f"sys.path:\n{absolute_sys_paths}")
+            raise Error(
+                "Can't infer the target file's module name."
+                f" The target file path ({target_file})'s prefix is not in the sys.path list."
+            )
 
         if dir_path in absolute_sys_paths:
             return []

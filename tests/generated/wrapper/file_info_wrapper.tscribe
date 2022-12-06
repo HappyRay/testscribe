@@ -11,8 +11,8 @@ tests:
     value: /a/b.py
   exception:
     type: testscribe.error.Error
-    message: Can't match the target file path (/a/b.py) with one of the paths in the
-      Python path
+    message: Can't infer the target file's module name. The target file path (/a/b.py)'s
+      prefix is not in the sys.path list.
 - name: test_get_module_wrapper_success
   short_name: _success
   description: Notice that the input is a relative path and thus is under one of the
