@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import List, Tuple, Union
 
 from testscribe.error import Error
+from testscribe.log import log
 from testscribe.module import Module
 from testscribe.util import load_object
 
@@ -40,7 +41,11 @@ def get_module(target_file: Path) -> Module:
 
     def get_module_name(dir_path: Path) -> List[str]:
         if dir_path.name == "":
-            raise Error(f"The file ({target_file}) can't be loaded as a python module.")
+            # Log the Python paths only in the error case to make debugging easier while not distracting
+            # users in the normal cases.
+            # Not include the Python Path in the exception message to make unit testing easier.
+            log(f"Python path:\n{absolute_sys_paths}")
+            raise Error(f"Can't match the target file path ({target_file}) with one of the paths in the Python path")
 
         if dir_path in absolute_sys_paths:
             return []

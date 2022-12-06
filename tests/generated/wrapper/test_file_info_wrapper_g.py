@@ -10,7 +10,7 @@ def test_get_module_wrapper_bad_input():
     """
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_module_wrapper(test_file_name='/a/b.py')
-    assert "The file (/a/b.py) can't be loaded as a python module." == str(exception_info.value)
+    assert "Can't match the target file path (/a/b.py) with one of the paths in the Python path" == str(exception_info.value)
 
 
 def test_get_module_wrapper_success():
