@@ -25,6 +25,7 @@ from fixture.helper import (
     get_test_input_path,
     generate_create_cmd_args,
     run_cli,
+    get_test_root_path,
 )
 from testscribe.execution_util import (
     infer_unit_test_file_path_from_scribe_file,
@@ -318,9 +319,7 @@ def test_patch_with_setup(run_create_test_and_verify):
     run_create_test_and_verify(
         file_name_only="patch_function_for_integration_test",
         function_name="foo",
-        config_file=str(
-            get_test_data_root_path().joinpath("test-patch-func-config.yml")
-        ),
+        config_file=str(get_test_root_path().joinpath("test-patch-func-config.yml")),
     )
 
 
@@ -329,7 +328,7 @@ def test_patch_in_method(run_create_test_and_verify):
         file_name_only="patch_in_method",
         function_name="foo",
         test_input="1\n\n\n",
-        config_file=str(get_test_data_root_path().joinpath("test-patch-config.yml")),
+        config_file=str(get_test_root_path().joinpath("test-patch-config.yml")),
     )
 
 

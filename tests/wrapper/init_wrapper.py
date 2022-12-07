@@ -39,8 +39,8 @@ def init_config_wrapper():
     # The sys.path may contain absolute paths and paths that depend on
     # the environment in which it runs. So it doesn't work to return
     # the new sys.path to have the assertions generated.
-    expected_additional_path_str = str(project_root_path / "tests")
-    assert_same(actual=sys.path, expected=old_sys_path + [expected_additional_path_str])
+    expected_additional_path_strs = [str(project_root_path / "tests"), str(project_root_path)]
+    assert_same(actual=sys.path, expected=old_sys_path + expected_additional_path_strs)
     # The output root path contains the path to the project root path.
     # The tool can't generate the correct assertion automatically.
     assert_same(actual=config.output_root_path, expected=project_root_path.joinpath("tests/generated"))
@@ -48,7 +48,9 @@ def init_config_wrapper():
 
 
 def add_additional_python_paths_no_key() -> None:
-    old_sys_path = sorted(sys.path)
+    # make a copy first
+    old_sys_path = list(sys.path)
     add_additional_python_paths(config_file_path=Path(), data={})
     current = sorted(sys.path)
-    assert_same(actual=current, expected=old_sys_path)
+    expected = sorted(old_sys_path + ["."])
+    assert_same(actual=current, expected=expected)

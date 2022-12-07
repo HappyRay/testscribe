@@ -17,6 +17,7 @@ Table of Contents
   * [If you just want to take a look first without installing anything](#if-you-just-want-to-take-a-look-first-without-installing-anything)
   * [If you are ready to try it yourself quickly](#if-you-are-ready-to-try-it-yourself-quickly)
 * [Command line help](#command-line-help)
+* [Python path](#python-path)
 * [Required setup](#required-setup)
 * [Optional setup](#optional-setup)
   * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
@@ -152,6 +153,14 @@ For example:
 
     testscribe create --help
 
+# Python path
+Without [a configuration file](#add-config-files), the current working directory is appended to 
+the Python sys.path list.
+
+With a configuration file, the configuration file directory is appended to the Python sys.path list
+in addition to 
+[the additional directories you configure](#add-additional-directories-to-the-python-path-for-a-test-run). 
+
 # Required setup
 Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
 library dependencies. Note that it is not needed as a production dependency.
@@ -202,7 +211,7 @@ where they are defined.
 The configuration file support the following configurations.
 
 ### Add additional directories to the Python path for a test run 
-Default: no additional directories are added.
+See [the Python path](#python-path) section for the default behavior.
 
 For example:
 
@@ -210,7 +219,8 @@ For example:
     - src
     - tests
 
-The directories (config directory)/src and (config directory)/tests are added to the Python path 
+The directories (config directory)/src and (config directory)/tests are appended to the sys.path list 
+in addition to the directory of the configuration file
 for a test run that uses this configuration file.
 
 ### Output files root directory

@@ -71,6 +71,13 @@ def get_setup_func(data: dict) -> Union[Callable, None]:
 
 def add_additional_python_paths(config_file_path: Path, data: dict):
     path_strings = data.get(ADDITIONAL_PYTHON_PATH_KEY, [])
+    # Always append the config file path (which is the working directory by default)
+    # to the sys.path
+    # This is to make it easier to set up for common use cases.
+    # Note that when invoking the tool using testscribe wrapper script, the current working directory
+    # is not added to the sys.path.
+    # If this is undesirable, the config file has to be defined at a path that should be in the sys.path.
+    path_strings.append(".")
     # The path is relative to the location of the config file where it is defined.
     resolved_path_strings = [
         str(resolve_path(config_file_path=config_file_path, path_str=p)) for p in path_strings
