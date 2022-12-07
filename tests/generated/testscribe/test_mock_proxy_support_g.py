@@ -68,12 +68,6 @@ def test_get_attribute_type_function():
     assert result == int
 
 
-def test_get_attribute_type_dynamic_field_without_type_info():
-    result = get_attribute_type(spec=test_data.simple.D, name='a')
-    assert isinstance(result, typing._SpecialForm)
-    assert repr(result) == 'typing.Any'
-
-
 def test_get_attribute_type_data_class():
     result = get_attribute_type(spec=test_data.simple.SimpleDataClass, name='a')
     assert result == int

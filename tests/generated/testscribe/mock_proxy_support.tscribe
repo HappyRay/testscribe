@@ -104,18 +104,6 @@ tests:
   result: !testscribe/callable
     name: int
     module: builtins
-- name: test_get_attribute_type_dynamic_field_without_type_info
-  short_name: _dynamic_field_without_type_info
-  target:
-    name: get_attribute_type
-  parameters:
-  - name: spec
-    value: !testscribe/expression 'test_data.simple.D'
-  - name: name
-    value: a
-  result: !testscribe/object
-    type: typing._SpecialForm
-    repr: typing.Any
 - name: test_get_attribute_type_data_class
   short_name: _data_class
   target:
