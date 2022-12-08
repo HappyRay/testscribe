@@ -84,8 +84,6 @@ All the Python developers can benefit from this tool in ways as they see fit.
 Here are some example profiles:
 
 ## Developers who write unit tests but don't like the overhead
-The author of the tool is one of them.
-
 The tool frees you from the boring and repetitive parts of testing and allows you to focus on
 the intellectually stimulating parts such as designing the test scenarios and verifying the output.
 
