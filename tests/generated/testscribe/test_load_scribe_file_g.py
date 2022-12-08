@@ -9,7 +9,7 @@ from testscribe.load_scribe_file import get_named_value_element_value, load_exce
 def test_get_named_value_element_value_value_key_is_required():
     with pytest.raises(KeyError) as exception_info:
         get_named_value_element_value(d={})
-    assert "'value'" == str(exception_info.value)
+    assert str(exception_info.value) == "'value'"
 
 
 def test_get_named_value_element_value():
@@ -26,13 +26,13 @@ def test_load_exception_internal():
 def test_load_exception_internal_type_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_exception_internal(d={})
-    assert "'type'" == str(exception_info.value)
+    assert str(exception_info.value) == "'type'"
 
 
 def test_load_exception_internal_message_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_exception_internal(d={'type': 'a'})
-    assert "'message'" == str(exception_info.value)
+    assert str(exception_info.value) == "'message'"
 
 
 def test_load_exception_model():
@@ -86,13 +86,13 @@ def test_load_mock_calls_no_call():
 def test_load_mock_model_name_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_mock_model(m={})
-    assert "'name'" == str(exception_info.value)
+    assert str(exception_info.value) == "'name'"
 
 
 def test_load_mock_model_spec_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_mock_model(m={'name': 'm'})
-    assert "'spec'" == str(exception_info.value)
+    assert str(exception_info.value) == "'spec'"
 
 
 def test_load_mock_model():
@@ -137,13 +137,13 @@ def test_load_named_values():
 def test_load_one_patch_target_key_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_one_patch(d={})
-    assert "'target'" == str(exception_info.value)
+    assert str(exception_info.value) == "'target'"
 
 
 def test_load_one_patch_replacement_key_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_one_patch(d={'target': 'a'})
-    assert "'replacement'" == str(exception_info.value)
+    assert str(exception_info.value) == "'replacement'"
 
 
 def test_load_one_patch():
@@ -192,7 +192,7 @@ def test_load_patches_no_patch():
 def test_load_required_name_key_value_name_key_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_required_name_key_value(d={})
-    assert "'name'" == str(exception_info.value)
+    assert str(exception_info.value) == "'name'"
 
 
 def test_load_required_name_key_value():
@@ -224,13 +224,13 @@ def test_load_short_name():
 def test_load_short_name_short_name_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_short_name(d={})
-    assert "'short_name'" == str(exception_info.value)
+    assert str(exception_info.value) == "'short_name'"
 
 
 def test_load_target_target_key_is_required():
     with pytest.raises(KeyError) as exception_info:
         load_target(d={})
-    assert "'target'" == str(exception_info.value)
+    assert str(exception_info.value) == "'target'"
 
 
 def test_load_target():

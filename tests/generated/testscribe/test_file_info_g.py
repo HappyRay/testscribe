@@ -20,13 +20,13 @@ def test_get_function_valid_function():
 def test_get_function_throws_exception_non_existing_function():
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_function(module_name='test_data.calculator', func_name='foo')
-    assert "Can't find the function or method with the name foo in module test_data.calculator." == str(exception_info.value)
+    assert str(exception_info.value) == "Can't find the function or method with the name foo in module test_data.calculator."
 
 
 def test_get_function_throws_exception_non_function():
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_function(module_name='test_data.calculator', func_name='dummy')
-    assert "Can't find the function or method with the name dummy in module test_data.calculator." == str(exception_info.value)
+    assert str(exception_info.value) == "Can't find the function or method with the name dummy in module test_data.calculator."
 
 
 def test_get_module():

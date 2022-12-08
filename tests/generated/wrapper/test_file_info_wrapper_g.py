@@ -10,7 +10,7 @@ def test_get_module_wrapper_bad_input():
     """
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_module_wrapper(test_file_name='/a/b.py')
-    assert "Can't infer the target file's module name. The target file path (/a/b.py)'s prefix is not in the sys.path list." == str(exception_info.value)
+    assert str(exception_info.value) == "Can't infer the target file's module name. The target file path (/a/b.py)'s prefix is not in the sys.path list."
 
 
 def test_get_module_wrapper_success():

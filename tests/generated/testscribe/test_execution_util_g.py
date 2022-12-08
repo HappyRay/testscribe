@@ -83,7 +83,7 @@ def test_infer_module_name_from_test_file_path_valid():
 def test_infer_scribe_file_path_invalid_file():
     with pytest.raises(testscribe.error.Error) as exception_info:
         infer_scribe_file_path(file_path=pathlib.Path("a.py"))
-    assert 'a.py is not a valid scribe file or a generated unit test file.' == str(exception_info.value)
+    assert str(exception_info.value) == 'a.py is not a valid scribe file or a generated unit test file.'
 
 
 def test_infer_scribe_file_path_test_file():

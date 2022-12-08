@@ -30,7 +30,7 @@ tests:
   result: |-
     with pytest.raises(a.b.C) as exception_info:
         f()
-    assert 'msg' == str(exception_info.value)
+    assert str(exception_info.value) == 'msg'
   mocks:
   - name: test
     spec: testscribe.model_type.TestModel
@@ -54,7 +54,7 @@ tests:
             with pytest.raises(a.b.C) as exception_info:
                 instance = C()
                 instance.f()
-            assert 'msg' == str(exception_info.value)
+            assert str(exception_info.value) == 'msg'
   mocks:
   - name: test
     spec: testscribe.model_type.TestModel
@@ -399,7 +399,7 @@ tests:
     with pytest.raises(m.c) as exception_info:
         a
         b
-    assert 'message' == str(exception_info.value)
+    assert str(exception_info.value) == 'message'
   mocks:
   - name: exception_model
     spec: testscribe.model_type.ExceptionModel

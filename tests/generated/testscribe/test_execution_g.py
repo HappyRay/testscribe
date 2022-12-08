@@ -166,7 +166,7 @@ def test_transform_and_show_result_unsupported_data():
     m_call_result.result = [1, {test_data.value.object_model_c, 2}]
     with pytest.raises(testscribe.error.UnsupportedDataError) as exception_info:
         transform_and_show_result(call_result=m_call_result)
-    assert 'Sets that contain complex objects are not supported.' == str(exception_info.value)
+    assert str(exception_info.value) == 'Sets that contain complex objects are not supported.'
     m_call_result.assert_not_called()
 
 

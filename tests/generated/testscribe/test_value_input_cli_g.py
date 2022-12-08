@@ -66,7 +66,7 @@ def test_convert_str_to_bool_false():
 def test_convert_str_to_bool_invalid_input_raise_exception():
     with pytest.raises(ValueError) as exception_info:
         convert_str_to_bool(s='a')
-    assert "invalid truth value 'a'" == str(exception_info.value)
+    assert str(exception_info.value) == "invalid truth value 'a'"
 
 
 def test_post_process_raw_input_int():

@@ -62,7 +62,7 @@ def test_transform_class_no_repr():
 def test_transform_value_complex_set_throw_exception():
     with pytest.raises(testscribe.error.UnsupportedDataError) as exception_info:
         transform_value(v=[1, {test_data.value.object_model_c, 2}])
-    assert 'Sets that contain complex objects are not supported.' == str(exception_info.value)
+    assert str(exception_info.value) == 'Sets that contain complex objects are not supported.'
 
 
 def test_transform_value_simple_1():

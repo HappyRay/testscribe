@@ -154,7 +154,7 @@ def wrap_exception_assertion(
     template_str = """\
 with pytest.raises($type) as exception_info:
 $inner_statement
-assert $message == str(exception_info.value)"""
+assert str(exception_info.value) == $message"""
     template = Template(template_str)
     output_str = template.substitute(
         type=exception_model.type,

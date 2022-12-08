@@ -70,7 +70,7 @@ def test_get_method_valid_method():
 def test_get_method_signature_for_caller_invalid_method_name():
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_method_signature_for_caller(clazz=test_data.service.Service, name='invalid')
-    assert "invalid is not a method of the class <class 'test_data.service.Service'>" == str(exception_info.value)
+    assert str(exception_info.value) == "invalid is not a method of the class <class 'test_data.service.Service'>"
 
 
 def test_get_method_signature_for_caller_static_method():
@@ -192,7 +192,7 @@ def test_get_return_type_no_return_annotation():
 def test_get_symbol_invalid():
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_symbol(full_name='test_data.simple.invalid')
-    assert 'test_data.simple.invalid is not a valid identifier.' == str(exception_info.value)
+    assert str(exception_info.value) == 'test_data.simple.invalid is not a valid identifier.'
 
 
 def test_get_symbol_valid_symbol():

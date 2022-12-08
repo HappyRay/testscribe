@@ -34,7 +34,7 @@ def test_gen_invocation_str_with_exception():
     assert result == """\
 with pytest.raises(a.b.C) as exception_info:
     f()
-assert 'msg' == str(exception_info.value)"""
+assert str(exception_info.value) == 'msg'"""
     test.assert_not_called()
 
 
@@ -56,7 +56,7 @@ def test_gen_invocation_str_with_patch():
         with pytest.raises(a.b.C) as exception_info:
             instance = C()
             instance.f()
-        assert 'msg' == str(exception_info.value)"""
+        assert str(exception_info.value) == 'msg'"""
     test.assert_not_called()
     m_patch_model.assert_not_called()
 
@@ -278,5 +278,5 @@ def test_wrap_exception_assertion():
 with pytest.raises(m.c) as exception_info:
     a
     b
-assert 'message' == str(exception_info.value)"""
+assert str(exception_info.value) == 'message'"""
     exception_model.assert_not_called()

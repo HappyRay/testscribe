@@ -183,7 +183,7 @@ def test_get_mock_call_signature_method():
 def test_get_true_return_value_exception_expression():
     with pytest.raises(Exception) as exception_info:
         get_true_return_value(value=testscribe.value_util.InputValue(expression="throw Exception()", value=testscribe.user_triggered_exception.UserTriggeredException(Exception())))
-    assert '' == str(exception_info.value)
+    assert str(exception_info.value) == ''
 
 
 def test_get_true_return_value_non_exception_expression():

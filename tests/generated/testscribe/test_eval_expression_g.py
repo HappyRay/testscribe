@@ -105,13 +105,13 @@ def test_process_mock_marker_input_tuple_size_not_match_type():
     """
     with pytest.raises(testscribe.error.InputError) as exception_info:
         process_mock_marker(t=typing.Tuple[int, str], v=(1, 2, 3))
-    assert "tuple value ((1, 2, 3)) size doesn't match the tuple type (typing.Tuple[int, str])." == str(exception_info.value)
+    assert str(exception_info.value) == "tuple value ((1, 2, 3)) size doesn't match the tuple type (typing.Tuple[int, str])."
 
 
 def test_process_mock_marker_type_mismatch_throw_error():
     with pytest.raises(testscribe.error.InputError) as exception_info:
         process_mock_marker(t=typing.Tuple[int, int], v=(testscribe.api.mock_api.m, 1))
-    assert "The type (<class 'int'>) can't be mocked." == str(exception_info.value)
+    assert str(exception_info.value) == "The type (<class 'int'>) can't be mocked."
 
 
 def test_process_mock_marker_dict_not_dict_type():

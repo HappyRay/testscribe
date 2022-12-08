@@ -22,7 +22,7 @@ def test_check_unsupported_attributes_supported():
 def test_check_unsupported_attributes_len_magic_method_is_not_supported():
     with pytest.raises(AttributeError) as exception_info:
         check_unsupported_attributes(attribute_name='__len__')
-    assert 'mocking the __len__ method is not supported.' == str(exception_info.value)
+    assert str(exception_info.value) == 'mocking the __len__ method is not supported.'
 
 
 def test_create_default_mock_name():

@@ -25,4 +25,4 @@ def test_use_not_hashable():
     with patch('testscribe.global_var.g_mock_name_counter', collections.Counter(testscribe.global_var.g_mock_name_counter)), patch('testscribe.global_var.g_name_mock_dict', {}):
         with pytest.raises(TypeError) as exception_info:
             use_not_hashable()
-        assert "The mock target <class 'test_data.simple.SimpleDataClass'> is not hashable." == str(exception_info.value)
+        assert str(exception_info.value) == "The mock target <class 'test_data.simple.SimpleDataClass'> is not hashable."

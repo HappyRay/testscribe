@@ -6,4 +6,4 @@ def test_f():
     with pytest.raises(Exception) as exception_info:
         instance = BadInit()
         
-    assert 'bad init' == str(exception_info.value)
+    assert str(exception_info.value) == 'bad init'

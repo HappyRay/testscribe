@@ -105,7 +105,7 @@ def test_is_class_name_function():
 def test_is_class_name_method():
     with pytest.raises(testscribe.error.Error) as exception_info:
         is_class_name(module_str='test_data.product', class_or_function_name='create_sample_products')
-    assert 'create_sample_products is not a valid function or class in the module test_data.product' == str(exception_info.value)
+    assert str(exception_info.value) == 'create_sample_products is not a valid function or class in the module test_data.product'
 
 
 def test_is_class_name_class():
@@ -116,7 +116,7 @@ def test_is_class_name_class():
 def test_is_class_name_non_exist_symbol():
     with pytest.raises(testscribe.error.Error) as exception_info:
         is_class_name(module_str='test_data.product', class_or_function_name='foo')
-    assert 'foo is not a valid function or class in the module test_data.product' == str(exception_info.value)
+    assert str(exception_info.value) == 'foo is not a valid function or class in the module test_data.product'
 
 
 def test_module_contain_same_symbol_method_should_not_match():

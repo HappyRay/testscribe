@@ -20,7 +20,7 @@ def test_magic_len_method_throw_exception():
     with patch('testscribe.global_var.g_mock_name_counter', collections.Counter(testscribe.global_var.g_mock_name_counter)), patch('testscribe.global_var.g_name_mock_dict', {}):
         with pytest.raises(AttributeError) as exception_info:
             magic_len_method_throw_exception()
-        assert 'mocking the __len__ method is not supported.' == str(exception_info.value)
+        assert str(exception_info.value) == 'mocking the __len__ method is not supported.'
 
 
 def test_mock_pass_is_instance():

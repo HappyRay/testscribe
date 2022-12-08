@@ -12,7 +12,7 @@ def test_check_target_can_be_used_as_spec_func_can_be_a_spec():
 def test_check_target_can_be_used_as_spec_int_not_a_spec():
     with pytest.raises(testscribe.error.Error) as exception_info:
         check_target_can_be_used_as_spec(obj=1)
-    assert "1 is not a type or Callable. It can't be used as a spec for a mock object." == str(exception_info.value)
+    assert str(exception_info.value) == "1 is not a type or Callable. It can't be used as a spec for a mock object."
 
 
 def test_get_mock_target_str_class():
@@ -28,7 +28,7 @@ def test_get_mock_target_str_str():
 def test_get_target_str_from_obj_invalid_object_for_spec():
     with pytest.raises(testscribe.error.Error) as exception_info:
         get_target_str_from_obj(obj=1)
-    assert "1 is not a type or Callable. It can't be used as a spec for a mock object." == str(exception_info.value)
+    assert str(exception_info.value) == "1 is not a type or Callable. It can't be used as a spec for a mock object."
 
 
 def test_get_target_str_from_obj_class():
