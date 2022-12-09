@@ -131,11 +131,11 @@ This is the code you would likely have to write to unit test the same without Te
 
 Below is a short demo video for the example above.
 
-[![TestScribe simple demo](https://img.youtube.com/vi/bMAyXsd8yAw/default.jpg)](https://youtu.be/bMAyXsd8yAw)
+{% include youtube.html id="bMAyXsd8yAw" %}
 
 The benefits will become more significant for more complex scenarios.
-[Here](https://www.pyscribe.org/demo.html#mock-a-class-instance)
-is an example involving mocks with an embedded demo video.
+[Here](demo.markdown#mock-a-class-instance)
+is an example involving mocks with another demo video.
 
 ## Demo
 You can find more demos [here](demo.markdown).
