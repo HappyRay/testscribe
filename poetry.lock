@@ -605,7 +605,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "tox"
-version = "4.0.0"
+version = "4.0.3"
 description = "tox is a generic virtualenv management and test command line tool"
 category = "dev"
 optional = false
@@ -617,8 +617,8 @@ chardet = ">=5.1"
 colorama = ">=0.4.6"
 filelock = ">=3.8.2"
 importlib-metadata = {version = ">=5.1", markers = "python_version < \"3.8\""}
-packaging = ">=21.3"
-platformdirs = ">=2.5.4"
+packaging = ">=22"
+platformdirs = ">=2.6"
 pluggy = ">=1"
 pyproject-api = ">=1.2.1"
 tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
@@ -626,8 +626,8 @@ typing-extensions = {version = ">=4.4", markers = "python_version < \"3.8\""}
 virtualenv = ">=20.17.1"
 
 [package.extras]
-docs = ["furo (>=2022.9.29)", "sphinx (>=5.3)", "sphinx-argparse-cli (>=1.10)", "sphinx-autodoc-typehints (>=1.19.5)", "sphinx-copybutton (>=0.5.1)", "sphinx-inline-tabs (>=2022.1.2b11)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=22.8)"]
-testing = ["build[virtualenv] (>=0.9)", "covdefaults (>=2.2.2)", "devpi-process (>=0.3)", "diff-cover (>=7.2)", "distlib (>=0.3.6)", "flaky (>=3.7)", "hatch-vcs (>=0.2)", "hatchling (>=1.11.1)", "psutil (>=5.9.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest-xdist (>=3.1)", "re-assert (>=1.1)", "time-machine (>=2.8.2)"]
+docs = ["furo (>=2022.12.7)", "sphinx (>=5.3)", "sphinx-argparse-cli (>=1.10)", "sphinx-autodoc-typehints (>=1.19.5)", "sphinx-copybutton (>=0.5.1)", "sphinx-inline-tabs (>=2022.1.2b11)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=22.8)"]
+testing = ["build[virtualenv] (>=0.9)", "covdefaults (>=2.2.2)", "devpi-process (>=0.3)", "diff-cover (>=7.2)", "distlib (>=0.3.6)", "flaky (>=3.7)", "hatch-vcs (>=0.2.1)", "hatchling (>=1.11.1)", "psutil (>=5.9.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest-xdist (>=3.1)", "re-assert (>=1.1)", "time-machine (>=2.8.2)"]
 
 [[package]]
 name = "twine"
@@ -1136,8 +1136,8 @@ tomli = [
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 tox = [
-    {file = "tox-4.0.0-py3-none-any.whl", hash = "sha256:e6adcebddfec5e456e5d2884f82b9468e38c4ec6439ec97f7f1fb85d5b1bf846"},
-    {file = "tox-4.0.0.tar.gz", hash = "sha256:17643b0e29c41f784c9c266a13302dc0604884b9ceff6686fbb31bada4a7aa3a"},
+    {file = "tox-4.0.3-py3-none-any.whl", hash = "sha256:9661644cc970cd52660e0b724d45baffaa300665298b712705aabbda32b2c8bb"},
+    {file = "tox-4.0.3.tar.gz", hash = "sha256:e067703550a28ebe010b4f650a16d3efa30340f7ba32016b08759fbb52a6f80c"},
 ]
 twine = [
     {file = "twine-4.0.2-py3-none-any.whl", hash = "sha256:929bc3c280033347a00f847236564d1c52a3e61b1ac2516c97c48f3ceab756d8"},
