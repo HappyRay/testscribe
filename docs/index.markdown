@@ -7,6 +7,12 @@ TestScribe, a tool to make python unit testing easier by automating the boring a
 Table of Contents
 =================
 
+* [Introduction](#introduction)
+  * [A simple example](#a-simple-example)
+  * [Demo](#demo)
+  * [Easy to get started and setup](#easy-to-get-started-and-setup)
+  * [Low risk to try](#low-risk-to-try)
+  * [Frequently asked questions](#frequently-asked-questions)
 * [The idea](#the-idea)
 * [Who can benefit from this tool?](#who-can-benefit-from-this-tool)
   * [Developers who write unit tests but don't like the overhead](#developers-who-write-unit-tests-but-dont-like-the-overhead)
@@ -29,37 +35,127 @@ Table of Contents
     * [Setup function](#setup-function)
 * [Test a method](#test-a-method)
 * [Input Support](#input-support)
-    * [Default value](#default-value)
-    * [String](#string)
-    * [Expression](#expression)
-    * [Create a real class instance](#create-a-real-class-instance)
-    * [Create a mock](#create-a-mock)
-    * [Raise an exception for a mock call](#raise-an-exception-for-a-mock-call)
-    * [Ignore the return value for a mock call](#ignore-the-return-value-for-a-mock-call)
-    * [Input alias](#input-alias)
+  * [Default value](#default-value)
+  * [String](#string)
+  * [Expression](#expression)
+  * [Create a real class instance](#create-a-real-class-instance)
+  * [Create a mock](#create-a-mock)
+  * [Raise an exception for a mock call](#raise-an-exception-for-a-mock-call)
+  * [Ignore the return value for a mock call](#ignore-the-return-value-for-a-mock-call)
+  * [Input alias](#input-alias)
 * [Test name](#test-name)
 * [Patch](#patch)
 * [Commands](#commands)
-    * [Create a test run](#create-a-test-run)
-    * [Update test](#update-test)
-    * [Delete a test](#delete-a-test)
-    * [Move tests](#move-tests)
-    * [Sync tests](#sync-tests)
-    * [Sync All](#sync-all)
+  * [Create a test run](#create-a-test-run)
+  * [Update test](#update-test)
+  * [Delete a test](#delete-a-test)
+  * [Move tests](#move-tests)
+  * [Sync tests](#sync-tests)
+  * [Sync All](#sync-all)
 * [Customize how class instances are displayed and asserted](#customize-how-class-instances-are-displayed-and-asserted)
 * [Wrapper function](#wrapper-function)
 * [Scribe files](#scribe-files)
 * [Assertion of complex objects](#assertion-of-complex-objects)
 * [Tips](#tips)
-    * [Better output format in color](#better-output-format-in-color)
-    * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
-    * [Annotate instance member variables with type information](#annotate-instance-member-variables-with-type-information)
+  * [Better output format in color](#better-output-format-in-color)
+  * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
+  * [Annotate instance member variables with type information](#annotate-instance-member-variables-with-type-information)
 * [Debug logging](#debug-logging)
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
-* [Frequently asked questions](#frequently-asked-questions)
-* [Demo](#demo)
 * [Project page](#project-page)
+* [Copyright and license](#copyright-and-license)
+
+# Introduction
+Do you wish you don't have to write assertions before a test is run but just visually verify the
+result just like you would with testing a web page?
+
+Do you write unit tests but don't like the overhead (create a file, name a function, write assertions...)
+or repetitiveness?
+
+Have you experienced adjusting the mocking code multiple times before it allows the test to run?
+Do you have to refer to documentation from time to time to figure out how to mock or assert complex
+mock call parameters?
+
+Do you wish to start a debugging session to understand a function better
+with as little overhead as possible?
+
+Are you looking for an intuitive tool to help improve your code and coding skills?
+
+This tool can help. It will
+- ask for inputs only and show you the test result.
+- take care of the repetitive and boring part of unit testing such as invoking the target function,
+  creating files and functions with proper conventions, generating the assertions...
+- interactively prompt for the mock object's behavior in context with information such as the call stack.
+- generate complete working test code, which can serve as regression tests, examples and basis
+  for further customization.
+- and more. It's capable of handling class instances, exceptions, class methods, mocking inputs, 
+patching dependencies... Please see the rest of this document for more details.
+
+You don't need to learn all the details at once. Refer to the documentation when your need for a specific feature
+arises. It's helpful to browse the document or the table of content to learn what it covers.
+
+## A simple example
+
+Here is a very basic simple example to illustrate the basic usage.
+Suppose you have a function called is_prime in a file prime.py. It checks if the input
+number is a prime number. You can unit test the function using TestScribe without writing any boilerplate
+unit test code as follows:
+
+    $ testscribe create prime.py is_prime
+    ...
+    Please provide the value for the parameter (n) of type: (int) []: 8
+    Calling is_prime(n=8)
+    ***** Result:
+    type: <class 'bool'>
+    value:
+    False
+    ***** Result end
+
+Notice the only input you need to provide is the number 8.
+
+You can run it multiple times with different inputs and inspect the displayed output.
+If the output is not correct, fix the production code and test again.
+
+TestScribe automatically creates fully functional unit test files. You can use them to debug a test run or save
+them as regression tests or simply discard them.
+
+The example above generates the following test file test_prime_g.py
+
+    from prime import is_prime
+    def test_is_prime():
+        result = is_prime(n=8)
+        assert result is False
+
+This is the code you would likely have to write to unit test the same without TestScribe's help.
+
+Below is a short demo video for the example above.
+
+[![TestScribe simple demo](https://img.youtube.com/vi/bMAyXsd8yAw/default.jpg)](https://youtu.be/bMAyXsd8yAw)
+
+The benefits will become more significant for more complex scenarios.
+[Here](https://www.pyscribe.org/demo.html#mock-a-class-instance)
+is an example involving mocks with an embedded demo video.
+
+## Demo
+You can find more demos [here](demo.markdown).
+Feel free to download the demo project and try for yourself.
+
+## Easy to get started and setup
+Adding testscribe to your development dependencies is all you need to start using the basic features.
+Most of the features should be self-explanatory to developers.
+Additional features such as launching the tool more easily only require simple setups.
+
+## Low risk to try
+* The tool doesn't modify the code you test in any way.
+* It doesn't introduce any dependency to your production code.
+* At any time, removing the tool won't break your existing production code or tests.
+* It's free and open source with the Apache 2.0 license.
+* You can always fall back to the traditional ways of testing for use cases the tool doesn't support yet.
+  The tool won't get in your way.
+
+## Frequently asked questions
+Have questions before diving into details? You may find answers at the [FAQ page](faq.markdown)
 
 # The idea
 Unit tests should be as intuitive as testing a web page. 
@@ -77,6 +173,9 @@ The machine-readable format will enable additional functionalities such as maint
 regression tests.
 
 The machine-readable files are referred to as [scribe files](#scribe-files) in the documentation.
+
+See [the project readme](https://github.com/HappyRay/testscribe) for more high level introduction 
+and references including a simple example with demo video, why it is easy and low risk to try etc.
 
 # Who can benefit from this tool?
 All the Python developers can benefit from this tool in ways as they see fit.
@@ -153,9 +252,9 @@ For example:
 
 # Python path
 Without [a configuration file](#add-config-files), the current working directory is appended to 
-the Python sys.path list.
+the Python path.
 
-With a configuration file, the configuration file directory is appended to the Python sys.path list
+With a configuration file, the configuration file directory is appended to the Python path
 in addition to 
 [the additional directories you configure](#add-additional-directories-to-the-python-path-for-a-test-run). 
 
@@ -217,7 +316,7 @@ For example:
     - src
     - tests
 
-The directories (config directory)/src and (config directory)/tests are appended to the sys.path list 
+The directories (config directory)/src and (config directory)/tests are appended to the Python path
 in addition to the directory of the configuration file
 for a test run that uses this configuration file.
 
@@ -407,7 +506,7 @@ Use the
 to instruct the tool to patch before the target function is executed. 
 
 One way is to 
-use [the setup function feature](#). Invoke these functions in a setup function you define for a test 
+use [the setup function feature](#setup-function). Invoke these functions in a setup function you define for a test 
 run. Remember to comment out or remove these calls for test runs to which these patches don't apply.
 
 Alternatively you may create a wrapper function to call these functions before calling the target function.
@@ -643,11 +742,21 @@ An alternative is to create a wrapper function. For example:
 foo_wrapper(o: test_data.simple.C)
 And use (o,  test_data.simple.C()) as input.
 
-# Frequently asked questions
-See [the FAQ page](faq.markdown)
-
-# Demo
-See [the demo page](demo.markdown)
-
 # Project page
 [Here](https://github.com/HappyRay/testscribe) is the project page.
+
+# Copyright and license
+
+Copyright 2022 Ruiguo (Ray) Yang
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
