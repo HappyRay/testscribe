@@ -3,4 +3,4 @@
 
 A tool to make python unit testing easier by automating the boring and repetitive parts.
 
-Please see [the documentation](https://www.pyscribe.org/).
+Please see [https://pyscribe.org/](https://www.pyscribe.org/).
