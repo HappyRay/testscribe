@@ -146,6 +146,9 @@ Please provide the value for the parameter (v) of type: (any) []: a
 The value is invalid. Please try again.
 Error detail:
 name 'a' is not defined
+Note: string values may need to be quoted.
+Use fully qualified type names where a type is expected.
+See the input support section of the user guide for more details.
 Please provide the value for the parameter (v) of type: (any) []: test_data.simple.C(1)
 Calling echo(v=test_data.simple.C(1))
 ***** Result:

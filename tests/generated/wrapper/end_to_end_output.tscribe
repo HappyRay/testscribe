@@ -91,8 +91,10 @@ tests:
     \ the setup function setup.setup.\nsetup function is called.\nPrepare to call\
     \ the target function.\nGetting parameters for the function (echo)\nPlease provide\
     \ the value for the parameter (v) of type: (any) []: a\nThe value is invalid.\
-    \ Please try again.\nError detail:\nname 'a' is not defined\nPlease provide the\
-    \ value for the parameter (v) of type: (any) []: test_data.simple.C(1)\nCalling\
+    \ Please try again.\nError detail:\nname 'a' is not defined\nNote: string values\
+    \ may need to be quoted.\nUse fully qualified type names where a type is expected.\n\
+    See the input support section of the user guide for more details.\nPlease provide\
+    \ the value for the parameter (v) of type: (any) []: test_data.simple.C(1)\nCalling\
     \ echo(v=test_data.simple.C(1))\n***** Result:\ntype: test_data.simple.C\nvalue:\n\
     Object(type (test_data.simple.C), members ({'a': 1}))\n***** Result end\nTest\
     \ name help: 'test_' prefix will be added automatically. Use a leading '_' to\

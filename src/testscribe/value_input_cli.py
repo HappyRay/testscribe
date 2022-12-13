@@ -44,7 +44,11 @@ def get_one_value_cli(prompt_name: str, t: type, default: Any):
             raise e
         except Exception as e:
             # todo: don't catch exceptions that are not related to the user input errors.
-            msg = f"The value is invalid. Please try again.\nError detail:\n{str(e)}"
+            msg = ("The value is invalid. Please try again."
+                   f"\nError detail:\n{str(e)}" 
+                   "\nNote: string values may need to be quoted."
+                   "\nUse fully qualified type names where a type is expected."
+                   "\nSee the input support section of the user guide for more details.")
             log(msg)
             continue
 
