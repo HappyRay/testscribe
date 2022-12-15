@@ -26,6 +26,7 @@ Table of Contents
 * [Can the tool help me choose the inputs for tests?](#can-the-tool-help-me-choose-the-inputs-for-tests)
 * [Does the tool provide code coverage report?](#does-the-tool-provide-code-coverage-report)
 * [Why is a mock annotated with the target type in the generated code](#why-is-a-mock-annotated-with-the-target-type-in-the-generated-code)
+* [Is the tool helpful if I use Python notebooks?](#is-the-tool-helpful-if-i-use-python-notebooks)
 
 # Who is the tool designed for?
 Please see [this section in the user guide](index.markdown#who-can-benefit-from-this-tool).
@@ -195,3 +196,8 @@ In the future, there may be integration opportunities.
 
 # Why is a mock annotated with the target type in the generated code
 This makes it easier to find where this type is used.
+
+# Is the tool helpful if I use Python notebooks?
+Currently, there is no direct integration of this tool with Python notebooks such as Jupyter Notebooks.
+The tool can be helpful to test Python functions defined in Python scripts which are referenced 
+by the notebooks. You can maintain more complex logics in these functions.
