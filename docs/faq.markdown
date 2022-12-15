@@ -84,6 +84,9 @@ easier to provide inputs such as strings, mock objects.
 The tool uses itself to test. You can see the many examples 
 [here](https://github.com/HappyRay/testscribe/tree/main/tests).
 
+[Here](demo.markdown#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it) 
+is a demo using one of these tests.
+
 The tool made it much easier to get high code coverage for about 3000 statements. 
 See the latest code coverage report [here](https://app.codecov.io/gh/HappyRay/testscribe).
 
