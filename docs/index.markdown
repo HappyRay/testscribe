@@ -10,6 +10,7 @@ Table of Contents
 * [Introduction](#introduction)
   * [A simple example](#a-simple-example)
   * [Demo](#demo)
+    * [Demo Videos](#demo-videos)
   * [Easy to get started and setup](#easy-to-get-started-and-setup)
   * [Low risk to try](#low-risk-to-try)
   * [Frequently asked questions](#frequently-asked-questions)
@@ -141,6 +142,11 @@ is an example involving mocks with another demo video.
 You can find more demos [here](demo.markdown).
 Feel free to download the demo project and try for yourself.
 
+### Demo videos
+* [Mock a class instance](demo.markdown#mock-a-class-instance)
+* [A real-world example of an end-to-end test scenario and how to update it](demo.markdown#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it)
+
+
 ## Easy to get started and setup
 Adding testscribe to your development dependencies is all you need to start using the basic features.
 Most of the features should be self-explanatory to developers.
@@ -213,7 +219,7 @@ computing cluster.
 # Quick start
 
 ## If you just want to take a look first without installing anything 
-Check out the [demos](demo.markdown)
+Check out the [demos including demo videos](#demo)
 
 ## If you are ready to try it yourself quickly
 It doesn't modify your existing files.
