@@ -8,6 +8,7 @@ Table of Contents
 =================
 
 * [Mock a class instance](#mock-a-class-instance)
+* [A real-world example of an end-to-end test scenario and update it](#a-real-world-example-of-an-end-to-end-test-scenario-and-update-it)
 * [Create a class instance](#create-a-class-instance)
 * [Exception result](#exception-result)
 * [Test a method](#test-a-method)
@@ -70,6 +71,33 @@ is the generated unit test code.
 Here is a demo video
 
 {% include youtube.html id="FqHwR4BhzDM" %}
+
+# A real-world example of an end-to-end test scenario and update it
+The tool uses itself to test. See [this FAQ](faq.markdown#do-you-have-real-world-examples) for more details.
+
+[test_retry_invalid_input_output](
+https://github.com/HappyRay/testscribe/blob/bcb269d044222934b1f6b7a67d9b389a0ee5bfb0/tests/generated/wrapper/test_end_to_end_output_g.py#L131
+) is a generated test targeting a wrapper function
+[retry_invalid_input_output](
+https://github.com/HappyRay/testscribe/blob/bcb269d044222934b1f6b7a67d9b389a0ee5bfb0/tests/wrapper/end_to_end_output.py#L49
+).
+The wrapper function encapsulates the testing logic of running an end-to-end
+testing session with an invalid input and return the command line output.
+
+The following demo video demonstrates how this test can be easily updated
+when the error message is changed.
+
+[Here](
+https://github.com/HappyRay/testscribe/commit/f49ab6e3825ab642b5ea9d4c0c408835e796476f#diff-ce2c44bccad8f4868f24976230a37267f4ddcc429610641a83c9e6811996e6fe
+) is the commit diff of the change.
+
+Updating the test only involves a few routine key presses and visual inspection.
+
+[Here](
+https://github.com/HappyRay/testscribe/blob/f49ab6e3825ab642b5ea9d4c0c408835e796476f/tests/generated/wrapper/test_end_to_end_output_g.py#L131
+) is the updated test.
+
+{% include youtube.html id="PLMp5UtStQA" %}
 
 # Create a class instance
 The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a
