@@ -8,7 +8,7 @@ Table of Contents
 =================
 
 * [Mock a class instance](#mock-a-class-instance)
-* [A real-world example of an end-to-end test scenario and update it](#a-real-world-example-of-an-end-to-end-test-scenario-and-update-it)
+* [A real-world example of an end-to-end test scenario and how to update it](#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it)
 * [Create a class instance](#create-a-class-instance)
 * [Exception result](#exception-result)
 * [Test a method](#test-a-method)
@@ -72,7 +72,7 @@ Here is a demo video
 
 {% include youtube.html id="FqHwR4BhzDM" %}
 
-# A real-world example of an end-to-end test scenario and update it
+# A real-world example of an end-to-end test scenario and how to update it
 The tool uses itself to test. See [this FAQ](faq.markdown#do-you-have-real-world-examples) for more details.
 
 [test_retry_invalid_input_output](
