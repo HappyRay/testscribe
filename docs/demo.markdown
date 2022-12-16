@@ -27,6 +27,7 @@ Table of Contents
   * [The class doesn't implement a custom __repr__ method.](#the-class-doesnt-implement-a-custom-__repr__-method)
   * [The class implements a custom __repr__ method.](#the-class-implements-a-custom-__repr__-method)
 * [Scribe files](#scribe-files)
+* [A real world example of how the tool makes it easy to make some batch updates to tests](#a-real-world-example-of-how-the-tool-makes-it-easy-to-make-some-batch-updates-to-tests)
 * [Assert class instances in mock call parameters](#assert-class-instances-in-mock-call-parameters)
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
@@ -539,6 +540,14 @@ is a simple example that tests an add function.
 
 You can find more examples generated for other demos on this page 
 [here](https://github.com/HappyRay/testscribe-demo/tree/main/tests/generated/tsdemo).
+
+# A real world example of how the tool makes it easy to make some batch updates to tests
+[This change](https://github.com/HappyRay/testscribe/commit/3b3e8572d853d5a5cc61d134e4ea27c055fb9ff9)
+fixed the order of a generated assertion after an exception is thrown. The expected value should be on 
+the right hand side of the equation.
+
+After making this change to the production code, running the [sync-all](index.markdown#sync-all) command
+once updated all the generated tests.
 
 # Assert class instances in mock call parameters
 The tool automatically generates assertion for complex mock call parameters such as
