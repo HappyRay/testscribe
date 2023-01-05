@@ -30,6 +30,10 @@ Table of Contents
   * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
     * [An example intellij external tool configuration for the create command](#an-example-intellij-external-tool-configuration-for-the-create-command)
     * [References](#references)
+  * [Quick launch for the Visual Studio Code IDE](#quick-launch-for-the-visual-studio-code-ide)
+    * [Prevent the auto activation of the Python environment](#prevent-the-auto-activation-of-the-python-environment)
+    * [An example VS Code configuration for the create command](#an-example-vs-code-configuration-for-the-create-command)
+    * [Configure keyboard shortcut](#configure-keyboard-shortcut)
   * [Add config files](#add-config-files)
     * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
@@ -298,6 +302,67 @@ Notice that the program can't be testscribe. The wrapper script is not available
 [Pycharm external tools instructions](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html#pylint-configure)
 
 [Pycharm configure keyboard shortcut](https://www.jetbrains.com/help/pycharm/configuring-keyboard-and-mouse-shortcuts.html)
+
+## Quick launch for the Visual Studio Code IDE
+Visual Studio code IDE can be configured to launch the tool more easily and quickly.
+
+### Prevent the auto activation of the Python environment
+Add the following config to the settings.json file
+
+"python.terminal.activateEnvironment": false
+
+Without it, the program may incorrectly receive the activation message as the first input.
+
+### An example VS Code configuration for the create command
+Add to the tasks.json file in the .vscode folder
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create TestScribe tests",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m testscribe create ${file} ${selectedText}",
+            "group": {
+                "kind": "test"
+            },
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            }
+        }
+    ]
+}
+```
+
+To test a function, open the target file, highlight the function to test, invoke the configured task.
+
+Other commands can be configured in a similar way.
+
+Notice that the program can't be testscribe. The wrapper script is not available outside the activated environment.
+
+Reference:
+
+[Integrate with External Tools via Tasks](https://code.visualstudio.com/docs/editor/tasks)
+
+### Configure keyboard shortcut
+It's helpful to configure keyboard shortcuts to launch the tasks defined above.
+
+Here is an example for launching the create test command task defined above.
+
+Add to [the keybindings.json file](https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization)
+```json
+[
+    {
+        "key": "ctrl+shift+q",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Create TestScribe tests",
+        "when": "editorTextFocus"
+    }
+]
+```
+Reference:
+[Configure key bindings for tasks](https://code.visualstudio.com/docs/editor/tasks#_binding-keyboard-shortcuts-to-tasks)
 
 ## Add config files
 
