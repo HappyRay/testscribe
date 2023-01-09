@@ -74,7 +74,7 @@ Table of Contents
 * [Assertion of complex objects](#assertion-of-complex-objects)
 * [Tips](#tips)
   * [Better output format in color](#better-output-format-in-color)
-  * [Better string readability in the tscribe file](#better-string-readability-in-the-tscribe-file)
+  * [Better string readability in scribe files](#better-string-readability-in-scribe-files)
   * [Annotate instance member variables with type information](#annotate-instance-member-variables-with-type-information)
 * [Debug logging](#debug-logging)
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
@@ -768,10 +768,10 @@ class instances. This would be cumbersome to do manually.
 
 Add [the rich library](https://github.com/Textualize/rich) as a dev dependency.
 
-## Better string readability in the tscribe file
+## Better string readability in scribe files
 Prefer double quotes over single quotes to quote strings in inputs when needed.
 Since YAML quotes strings with single quotes, it results in
-a more readable YAML representation of strings in the tscribe files.
+a more readable YAML representation of strings in scribe files.
 
 ## Annotate instance member variables with type information
 Proper type information makes input easier in some cases. 
