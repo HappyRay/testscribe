@@ -5,12 +5,12 @@ title: home
 TestScribe, a tool to make python unit testing easier by automating the boring and repetitive parts.
 
 ## Tips for navigating this guide
-If you prefer seeing the tool in action, start with [a simple demo](#a-simple-example) 
+If you prefer learning by watching the tool in action, start with [a simple demo](#a-simple-example) 
 and [more demo videos](#demo-videos).
 
 If you prefer reading first to figure out if the tool is for you, start with [the introduction](#introduction)
-followed by [the idea](#the-idea), [Who can benefit from this tool?](#who-can-benefit-from-this-tool) 
-section, [the FAQ](#frequently-asked-questions).
+followed by [the idea](#the-idea), [Who can benefit from this tool](#who-can-benefit-from-this-tool) 
+, [the FAQ](#frequently-asked-questions) sections.
 
 If you prefer trying it with minimum effort, start with [the quick start](#quick-start).
 
