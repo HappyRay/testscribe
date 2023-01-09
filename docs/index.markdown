@@ -34,8 +34,6 @@ Table of Contents
   * [Casual Python users who don't know unit tests well](#casual-python-users-who-dont-know-unit-tests-well)
 * [Minimum requirement](#minimum-requirement)
 * [Quick start](#quick-start)
-  * [If you just want to take a look first without installing anything](#if-you-just-want-to-take-a-look-first-without-installing-anything)
-  * [If you are ready to try it yourself quickly](#if-you-are-ready-to-try-it-yourself-quickly)
 * [Command line help](#command-line-help)
 * [Python path](#python-path)
 * [Required setup](#required-setup)
@@ -232,10 +230,6 @@ computing cluster.
 
 # Quick start
 
-## If you just want to take a look first without installing anything 
-Check out the [demos including demo videos](#demo)
-
-## If you are ready to try it yourself quickly
 It doesn't modify your existing files.
 You can easily restore your original state, especially when you are using a version control system.
 
