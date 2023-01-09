@@ -192,9 +192,6 @@ regression tests.
 
 The machine-readable files are referred to as [scribe files](#scribe-files) in the documentation.
 
-See [the project readme](https://github.com/HappyRay/testscribe) for more high level introduction 
-and references including a simple example with demo video, why it is easy and low risk to try etc.
-
 # Who can benefit from this tool?
 All the Python developers can benefit from this tool in ways as they see fit.
 
