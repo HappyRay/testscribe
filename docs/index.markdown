@@ -79,6 +79,7 @@ Table of Contents
 * [Debug logging](#debug-logging)
 * [Limitations and possible workaround](#limitations-and-possible-workaround)
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
+  * [Unsupported python features](#unsupported-python-features)
 * [Project page](#project-page)
 * [Copyright and license](#copyright-and-license)
 
@@ -813,6 +814,12 @@ The generated test won't be correct. The displayed output is still correct, howe
 An alternative is to create a wrapper function. For example:
 foo_wrapper(o: test_data.simple.C)
 And use (o,  test_data.simple.C()) as input.
+
+## Unsupported python features
+Some Python features may not be supported yet. For example the async related features.
+The command line output may still be useful even though the generated tests need to be discarded.
+Try creating [wrapper test functions](#wrapper-function) as workarounds.
+You can always fall back to traditional testing methods. 
 
 # Project page
 [Here](https://github.com/HappyRay/testscribe) is the project page.
