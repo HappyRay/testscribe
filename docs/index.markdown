@@ -10,7 +10,7 @@ and [more demo videos](#demo-videos).
 
 If you prefer reading first to figure out if the tool is for you, start with [the introduction](#introduction)
 followed by [the idea](#the-idea), [Who can benefit from this tool](#who-can-benefit-from-this-tool) 
-, [the FAQ](#frequently-asked-questions) sections.
+sections.
 
 If you prefer trying it with minimum effort, start with [the quick start](#quick-start).
 
