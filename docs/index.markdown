@@ -81,6 +81,7 @@ Table of Contents
   * [Expression with both mocks and objects](#expression-with-both-mocks-and-objects)
   * [Unsupported python features](#unsupported-python-features)
 * [Project page](#project-page)
+* [How to engage the user community](#how-to-engage-the-user-community)
 * [Copyright and license](#copyright-and-license)
 
 # Introduction
@@ -823,6 +824,22 @@ You can always fall back to traditional testing methods.
 
 # Project page
 [Here](https://github.com/HappyRay/testscribe) is the project page.
+
+# How to engage the user community
+
+## Google group for discussions
+Join [the Google group pyscribe@googlegroups.com](https://groups.google.com/g/pyscribe)
+
+## Stackoverflow for questions
+Include the text testscribe in the question to increase the chance that the question is answered.
+
+## GitHub for reporting issues or feature requests
+Open an issue at [the GitHub project](https://github.com/HappyRay/testscribe).
+Please only use this channel for reporting issues or suggesting a new feature.
+
+## Social media
+Use the tag #testscribe
+
 
 # Copyright and license
 
