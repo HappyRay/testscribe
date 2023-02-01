@@ -834,7 +834,7 @@ Join [the Google group pyscribe@googlegroups.com](https://groups.google.com/g/py
 Include the text testscribe in the question to increase the chance that the question is answered.
 
 ## GitHub for reporting issues or feature requests
-Open an issue at [the GitHub project](https://github.com/HappyRay/testscribe).
+Open an issue at [the GitHub project](https://github.com/HappyRay/testscribe/issues).
 Please only use this channel for reporting issues or suggesting a new feature.
 
 ## Social media
