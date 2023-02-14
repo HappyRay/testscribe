@@ -181,7 +181,16 @@ See [this FAQ](faq.markdown#does-it-support-test-parametrization-in-generated-te
 
 The [eval_expression](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/parametrization.py) function
 takes an expression as a string and returns its evaluation result. We will test different expressions
-with multiple test runs. Here are the test runs:
+with multiple test runs. 
+
+Here is a demo video comparing testing with TestScribe with the traditional testing approach.
+TestScribe makes you about 5 times more productive in this test scenario ( 30 seconds vs 140 seconds ).  
+This assumes perfect execution of the traditional test method.
+In practice, looking up documentation and fixing errors usually takes additional time.
+More importantly, the saved steps are the boring parts.
+{% include youtube.html id="mLRPMlxx5ms" %}
+
+Here are the test runs:
 
 ```text
 ...
@@ -233,6 +242,7 @@ is the manually written test for comparison.
 
 Try for yourself to see which method (manual vs using the tool) makes you and people who read your tests
 more productive for this test.
+
 
 # Multiple class instances in a list
 The function [get_average_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/objects_in_list.py) takes a

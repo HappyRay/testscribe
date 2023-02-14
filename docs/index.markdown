@@ -159,7 +159,7 @@ Feel free to download the demo project and try for yourself.
 ### Demo videos
 * [Mock a class instance](demo.markdown#mock-a-class-instance)
 * [A real-world example of an end-to-end test scenario and how to update it](demo.markdown#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it)
-
+* [Compare testing with the TestScribe testing tool with the traditional test method](demo.markdown#test-multiple-input-sets) 
 
 ## Easy to get started and setup
 Adding testscribe to your development dependencies is all you need to start using the basic features.
