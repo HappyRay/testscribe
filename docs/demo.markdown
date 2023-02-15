@@ -8,8 +8,8 @@ Table of Contents
 =================
 
 * [Mock a class instance](#mock-a-class-instance)
-* [A real-world example of an end-to-end test scenario and how to update it](#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it)
 * [Create a class instance](#create-a-class-instance)
+* [A real-world example of an end-to-end test scenario and how to update it](#a-real-world-example-of-an-end-to-end-test-scenario-and-how-to-update-it)
 * [Exception result](#exception-result)
 * [Test a method](#test-a-method)
 * [Test multiple input sets](#test-multiple-input-sets)
@@ -73,6 +73,26 @@ Here is a demo video
 
 {% include youtube.html id="FqHwR4BhzDM" %}
 
+# Create a class instance
+The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a
+[Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
+
+An example test run output:
+
+```text
+...
+Please provide the value for the parameter (p) of type: (tsdemo.person.Person) []: c("Bob", 10)
+Calling get_person_age(p=tsdemo.person.Person("Bob", 10))
+***** Result:
+type: <class 'int'>
+value:
+10
+***** Result end...
+```
+
+[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
+is the generated unit test code.
+
 # A real-world example of an end-to-end test scenario and how to update it
 The tool uses itself to test. See [this FAQ](faq.markdown#do-you-have-real-world-examples) for more details.
 
@@ -99,26 +119,6 @@ https://github.com/HappyRay/testscribe/blob/f49ab6e3825ab642b5ea9d4c0c408835e796
 ) is the updated test.
 
 {% include youtube.html id="PLMp5UtStQA" %}
-
-# Create a class instance
-The function [get_person_age](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/create_object.py) takes a
-[Person](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/person.py) object as a parameter.
-
-An example test run output:
-
-```text
-...
-Please provide the value for the parameter (p) of type: (tsdemo.person.Person) []: c("Bob", 10)
-Calling get_person_age(p=tsdemo.person.Person("Bob", 10))
-***** Result:
-type: <class 'int'>
-value:
-10
-***** Result end...
-```
-
-[Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_create_object_g.py)
-is the generated unit test code.
 
 # Exception result
 When a test run results in an exception, the tool can display the exception information and generate the 
