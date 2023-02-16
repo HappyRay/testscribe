@@ -2,7 +2,7 @@
 layout: my-home
 title: home
 ---
-TestScribe, a command line tool to make python testing easier by automating the boring and repetitive parts.
+TestScribe, a "low code/no code" command line tool to make python testing easier by automating the boring and repetitive parts.
 
 ## Tips for navigating this guide
 If you prefer learning by watching the tool in action, start with [a simple demo](#a-simple-example) 
