@@ -85,7 +85,7 @@ Table of Contents
 * [Copyright and license](#copyright-and-license)
 
 # Introduction
-Do you wish you don't have to write assertions before a test is run but just visually verify the
+Do you wish you don't have to write expected results in code but just visually verify the
 result just like you would with testing a web page?
 
 Do you write unit tests but don't like the overhead (create a file, name a function, write assertions...)
