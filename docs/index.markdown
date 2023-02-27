@@ -35,7 +35,7 @@ Table of Contents
 * [Minimum requirement](#minimum-requirement)
 * [Quick start](#quick-start)
 * [Command line help](#command-line-help)
-* [Python path](#python-path)
+* [Python module search path](#python-module-search-path)
 * [Required setup](#required-setup)
 * [Optional setup](#optional-setup)
   * [Quick launch for the Intellij/Pycharm IDE](#quick-launch-for-the-intellijpycharm-ide)
@@ -263,11 +263,11 @@ For example:
 
     testscribe create --help
 
-# Python path
+# Python module search path
 Without [a configuration file](#add-config-files), the current working directory is appended to 
-the Python path.
+the Python module search path which is accessible in the Python variable sys.path.
 
-With a configuration file, the configuration file directory is appended to the Python path
+With a configuration file, the configuration file directory is appended to the search path
 in addition to 
 [the additional directories you configure](#add-additional-directories-to-the-python-path-for-a-test-run). 
 
@@ -381,8 +381,8 @@ where they are defined.
 
 The configuration file support the following configurations.
 
-### Add additional directories to the Python path for a test run 
-See [the Python path](#python-path) section for the default behavior.
+### Add additional directories to the Python module search path for a test run 
+See [the Python module search path](#python-module-search-path) section for the default behavior.
 
 For example:
 
@@ -390,7 +390,7 @@ For example:
     - src
     - tests
 
-The directories (config directory)/src and (config directory)/tests are appended to the Python path
+The directories (config directory)/src and (config directory)/tests are appended to the Python module search path
 in addition to the directory of the configuration file
 for a test run that uses this configuration file.
 
