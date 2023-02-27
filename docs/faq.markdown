@@ -201,3 +201,8 @@ This makes it easier to find where this type is used.
 Currently, there is no direct integration of this tool with Python notebooks such as Jupyter Notebooks.
 The tool can be helpful to test Python functions defined in Python scripts which are referenced 
 by the notebooks. You can maintain more complex logics in these functions.
+
+# Can I invoke TestScribe from a directory different from the project root directory?
+Yes. Note that the current directory affects the default TestScribe config file location and 
+default output directory location, etc. It's more convenient and consistent to use [the integrated
+IDE's quick launch feature](index.markdown#optional-setup) to invoke TestScribe.
