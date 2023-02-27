@@ -218,11 +218,14 @@ Note that you don't have to use the generated test code if you don't need or wan
 It will be another tool in your toolbox. It is not difficult to learn. It can introduce you 
 to the power of unit testing without a big commitment or a steep learning curve.
 You don't have to learn up front how to describe a mock object's behavior in code for example.
-You can use the generated tests as examples.
+You can use the generated tests as examples to learn gradually how to write unit tests yourself.
 
-For example, a data scientist or analyst or IT admins may use this tool to test some components of scripts
+For example, data scientists or analyst or IT admins may use this tool to test some components of scripts
 to avoid wasting time discovering simple errors after the script is deployed, maybe to a large
-computing cluster.
+computing cluster. 
+
+You don't have to use the generated test files for regression testing, although
+you may find regression testing as a bonus later on.
 
 # Minimum requirement
 * Python version >= 3.7.
