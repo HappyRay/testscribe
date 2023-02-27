@@ -32,7 +32,8 @@ Table of Contents
 
 [Here](https://github.com/HappyRay/testscribe-demo) is the demo project.
 It's intentionally made as simple as possible to make it easier to understand.  
-Feel free to download it and play with it.
+Feel free to download it and play with it. 
+Recommend setting up [the IDE quick launch](index.markdown#optional-setup) to make it easier to try the examples.
 
 For more realistic examples, see how the tool uses itself to test
 [here](https://github.com/HappyRay/testscribe/tree/main/tests).
