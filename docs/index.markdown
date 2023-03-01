@@ -744,6 +744,8 @@ Example scenarios when a wrapper function may be useful:
 * Test a magic method such as __str__. [Here](demo.markdown#wrapper-function) is a demo.
 * Use code to set up the preconditions before invoking the target function
 * Additional verification of the output. For example, check if a file is indeed created.
+* Test a scenario which is not covered by an existing function. 
+e.g. test pushing one item to a stack and popping it twice. 
 
 [Here](https://github.com/HappyRay/testscribe/tree/main/tests/wrapper) are some example wrapper
 functions used by the TestScribe project to test itself.
