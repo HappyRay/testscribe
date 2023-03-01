@@ -24,6 +24,7 @@ Table of Contents
 * [Will it increase the maintenance cost of tests](#will-it-increase-the-maintenance-cost-of-tests)
 * [Does it support test parametrization in generated tests?](#does-it-support-test-parametrization-in-generated-tests)
 * [Can the tool help me choose the inputs for tests?](#can-the-tool-help-me-choose-the-inputs-for-tests)
+* [What are the advantages of this tool over ChatGPT or similar AI based test generation tool?](#what-are-the-advantages-of-this-tool-over-chatgpt-or-similar-ai-based-test-generation-tool)
 * [Does the tool provide code coverage report?](#does-the-tool-provide-code-coverage-report)
 * [Why is a mock annotated with the target type in the generated code](#why-is-a-mock-annotated-with-the-target-type-in-the-generated-code)
 * [Is the tool helpful if I use Python notebooks?](#is-the-tool-helpful-if-i-use-python-notebooks)
@@ -188,6 +189,19 @@ Currently, the tool only provides context and relies on users to think about wha
 It's a hard problem to do it well. Thus, the tool currently focuses on the parts that computers are good at.
 
 In the future, it may be able to integrate with other tools to provide additional assistance.
+
+# What are the advantages of this tool over ChatGPT or similar AI based test generation tool?
+Despite the impressive advances of AI, AI's ability to understand complex programs is still not as good
+as humans. TestScribe  
+* can test more complex functions which may call other functions defined in other modules
+* is more reliable since it shows you the actual result of your function execution
+* gives you more control over the inputs
+* doesn't require you to copy-paste code and result between a web page and your editor
+* shows you the result directly for you to check visually without having to run the AI generated tests first
+* generate [structured test output](index.markdown#scribe-files) to make maintaining tests easier
+
+In the future, it is possible to use AI to enhance TestScribe's ability. 
+See [this related FAQ](#can-the-tool-help-me-choose-the-inputs-for-tests).
 
 # Does the tool provide code coverage report?
 It currently doesn't.
