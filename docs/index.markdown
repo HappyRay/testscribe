@@ -23,7 +23,7 @@ Table of Contents
 * [Introduction](#introduction)
   * [A simple example](#a-simple-example)
   * [Demo](#demo)
-    * [Demo Videos](#demo-videos)
+    * [Demo videos](#demo-videos)
   * [Easy to get started and setup](#easy-to-get-started-and-setup)
   * [Low risk to try](#low-risk-to-try)
   * [Frequently asked questions](#frequently-asked-questions)
@@ -46,7 +46,7 @@ Table of Contents
     * [An example VS Code configuration for the create command](#an-example-vs-code-configuration-for-the-create-command)
     * [Configure keyboard shortcut](#configure-keyboard-shortcut)
   * [Add config files](#add-config-files)
-    * [Add additional directories to the Python path for a test run](#add-additional-directories-to-the-python-path-for-a-test-run)
+    * [Add additional directories to the Python module search path for a test run](#add-additional-directories-to-the-python-module-search-path-for-a-test-run)
     * [Output files root directory](#output-files-root-directory)
     * [Setup function](#setup-function)
 * [Test a method](#test-a-method)
@@ -82,6 +82,10 @@ Table of Contents
   * [Unsupported python features](#unsupported-python-features)
 * [Project page](#project-page)
 * [How to engage the user community](#how-to-engage-the-user-community)
+  * [Google group for discussions](#google-group-for-discussions)
+  * [Stackoverflow for questions](#stackoverflow-for-questions)
+  * [GitHub for reporting issues or feature requests](#github-for-reporting-issues-or-feature-requests)
+  * [Social media](#social-media)
 * [Copyright and license](#copyright-and-license)
 
 # Introduction
