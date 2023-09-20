@@ -345,6 +345,11 @@ Add to the tasks.json file in the .vscode folder
     ]
 }
 ```
+If the task fails to launch and the output window shows an error related to the 
+python command path, change the command value to a relative path to the python executable
+your project is using as a workaround.
+For example:
+"command": ".venv\\Scripts\\python.exe",
 
 To test a function, open the target file, highlight the function to test, invoke the configured task.
 
