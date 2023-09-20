@@ -803,7 +803,7 @@ class Car:
     model: str
 
     def __init__(self, model: str):
-        self.owner = owner
+        self.model = model
 ```
 
 [Here](demo.markdown#annotate-a-class-instance-member-variable-with-type-information) 
