@@ -24,8 +24,8 @@ Table of Contents
 * [Wrapper function](#wrapper-function)
 * [Annotate a class instance member variable with type information](#annotate-a-class-instance-member-variable-with-type-information)
 * [Results that contain class instances](#results-that-contain-class-instances)
-  * [The class doesn't implement a custom __repr__ method.](#the-class-doesnt-implement-a-custom-__repr__-method)
-  * [The class implements a custom __repr__ method.](#the-class-implements-a-custom-__repr__-method)
+  * [The class doesn't implement a custom __repr__ method](#the-class-doesnt-implement-a-custom-repr-method)
+  * [The class implements a custom __repr__ method](#the-class-implements-a-custom-repr-method)
 * [Scribe files](#scribe-files)
 * [A real world example of how the tool makes it easy to make some batch updates to tests](#a-real-world-example-of-how-the-tool-makes-it-easy-to-make-some-batch-updates-to-tests)
 * [Assert class instances in mock call parameters](#assert-class-instances-in-mock-call-parameters)
@@ -500,7 +500,7 @@ Car model: camery, owner: Bob
 
 # Results that contain class instances
 
-## The class doesn't implement a custom \_\_repr\_\_ method.
+## The class doesn't implement a custom \_\_repr\_\_ method
 The result display and generated assertions will be based on member fields.
 
 The target function [create_simple_class_instance](https://github.com/HappyRay/testscribe-demo/blob/main/tsdemo/object_result.py)
@@ -521,7 +521,7 @@ Object(type (tsdemo.object_result.SimpleClass), members ({'str_field': 'a', 'int
 [Here](https://github.com/HappyRay/testscribe-demo/blob/main/tests/generated/tsdemo/test_object_result_g.py)
 is the generated test code.
 
-## The class implements a custom \_\_repr\_\_ method.
+## The class implements a custom \_\_repr\_\_ method
 The result display and generated assertions will be based on the result of repr(object).
 
 The target function 

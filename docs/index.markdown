@@ -276,7 +276,7 @@ the Python module search path which is accessible in the Python variable sys.pat
 
 With a configuration file, the configuration file directory is appended to the search path
 in addition to 
-[the additional directories you configure](#add-additional-directories-to-the-python-path-for-a-test-run). 
+[the additional directories you configure](#add-additional-directories-to-the-python-module-search-path-for-a-test-run). 
 
 # Required setup
 Use your favorite tool to add [testscribe](https://pypi.org/project/testscribe/) to your development python 
@@ -292,7 +292,7 @@ To take full advantage of the tool, some optional setups are needed.
 Intellij and Pycharm IDEs support external tools and keyboard shortcuts.
 You can leverage this support to launch the tool more easily and quickly.
 
-### An example intellij external tool configuration for the create command 
+### An example intellij external tool configuration for the create command
 Program: $ModuleSdkPath$
 
 Arguments: -m testscribe create $FilePath$ $SelectedText$
@@ -394,7 +394,7 @@ where they are defined.
 
 The configuration file support the following configurations.
 
-### Add additional directories to the Python module search path for a test run 
+### Add additional directories to the Python module search path for a test run
 See [the Python module search path](#python-module-search-path) section for the default behavior.
 
 For example:
@@ -658,7 +658,7 @@ Usage: testscribe update [OPTIONS] FILE_PATH TEST_NAME
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-## Delete a test 
+## Delete a test
 ```text
 Usage: testscribe delete [OPTIONS] FILE_PATH TEST_NAME                         
                                                                                 
@@ -739,10 +739,10 @@ Sync all tests under the configured output root directory
 # Customize how class instances are displayed and asserted
 If the class doesn't implement a custom \_\_repr\_\_ method, 
 the result display and generated assertions will be based on member fields.
-[Here](demo.markdown#the-class-doesnt-implement-a-custom-__repr__-method) is a demo.
+[Here](demo.markdown#the-class-doesnt-implement-a-custom-repr-method) is a demo.
 
 If it does, the result display and generated assertions will be based on the result of repr(object).
-[Here](demo.markdown#the-class-implements-a-custom-__repr__-method) is a demo.
+[Here](demo.markdown#the-class-implements-a-custom-repr-method) is a demo.
 This way you can have some control. You can exclude some member fields for example.
 The generated assertions are typically more compact.
 
