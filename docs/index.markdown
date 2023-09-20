@@ -331,16 +331,17 @@ Add to the tasks.json file in the .vscode folder
     "tasks": [
         {
             "label": "Create TestScribe tests",
-            "type": "shell",
-            "command": "${command:python.interpreterPath} -m testscribe create ${file} ${selectedText}",
+            "type": "process",
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "testscribe", "create", "${file}", "${selectedText}"],
             "group": {
-                "kind": "test"
-            },
-            "presentation": {
-                "reveal": "always",
-                "focus": true
-            }
-        }
+                  "kind": "test"
+              },
+              "presentation": {
+                  "reveal": "always",
+                  "focus": true
+              }
+          }
     ]
 }
 ```
