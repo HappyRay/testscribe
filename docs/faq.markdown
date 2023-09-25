@@ -121,9 +121,10 @@ for example.
 
 # What to do if the tool doesn't support my use case?
 You can always fall back to the traditional ways of testing. The tool won't get in your way.
-It may however provide examples, tests for further customization etc.
-A wrapper function may be used to provide partial help. For example help with generating the 
-test file and test function while leaving the bulk of the work to the wrapper function.
+
+A [wrapper function](index.markdown#wrapper-function) may be used to provide partial help. For example, write a wrapper function
+that contains your testing logic. And use the tool to generate the 
+test file and test function.
 
 # Does the tool support programming languages other than Python?
 Not currently. However, the same technique can be applied to other languages.
