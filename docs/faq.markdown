@@ -194,7 +194,8 @@ In the future, it may be able to integrate with other tools to provide additiona
 # What are the advantages of this tool over ChatGPT or similar AI based test generation tool?
 Despite the impressive advances of AI, AI's ability to understand complex programs is still not as good
 as humans. TestScribe  
-* can test more complex functions which may call other functions defined in other modules
+* can test more complex functions which may call other functions defined in other modules. 
+It's not subject to the large language AI model's context window limitation.
 * is more reliable since it shows you the actual result of your function execution
 * gives you more control over the inputs
 * doesn't require you to copy-paste code and result between a web page and your editor
